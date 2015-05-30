@@ -1,0 +1,89 @@
+<div class="modal-header">
+Double clic sur un fichier pour l'ajouter
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="panel-heading-table col-xs-12">
+        <form role="form" class="" >
+            <div class="form-group input-group  col-md-6 pull-right">
+                <form name="searchUser">
+
+                    <input type="text" class="form-control" ng-model="filter.slug" ng-blur="reloadDocuments()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-search" type="submit" ng-click="reloadDocuments()"><i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </form>
+            </div>
+           <!--  <div class="FilterBox pull-right form-group col-md-6 input-group ">
+
+                <div class="label label-primary pull-right"><i class="fa fa-graduation-cap fa-fw"></i> Admin <input type="checkbox" ng-model="filter.admin" ng-click="reloadUsers()"class="labelcheckbox" ng-model="userService.filter.admin" checked></div>
+                <div class="label label-default pull-right"><i class="fa fa-user fa-fw"></i> User <input type="checkbox" ng-model="filter.user" class="labelcheckbox" checked ng-click="reloadUsers()"></div>
+                <div class="label label-success pull-right"><i class="fa fa-user-plus fa-fw"></i> Membre <input type="checkbox" ng-model="filter.member" ng-click="reloadUsers()" class="labelcheckbox" checked></div>
+            </div> -->
+        </form>
+    	</div>
+	    <div class="col-lg-12 table-responsive documentslist" ng-class="{documentslistSmall:filter.perPage>10 && documents.length>9}">
+	    	<div class="chargement" ng-if="loadingDocuments"> <td colspan="6"><i class="fa fa-user sorter fa-spinner fa-spin"></i></td></div>
+	    	<ul >
+	    		<li ng-repeat="document in documents"  ng-click="selectImg($index)" ng-class="{selecteddoc :document.selected }">
+	    			<!-- <li ng-repeat="document in formData.documents  | orderBy:'index':false"> -->
+	    			 					<div>{{document.name}}</div>
+										<div class="fileicons"  ng-switch="name.type" >
+
+
+								            <div ng-if="document.type | regex:'image':false" class="text-center" tooltip='image' tooltip-placement="bottom"><i  class="fa fa-file-image-o"></i></div>
+								            <div ng-if="document.type | regex:'video':false" class="text-center" tooltip='video' tooltip-placement="bottom"><i  class="fa fa-file-video-o"></i></div>
+								            <div ng-if="document.type | regex:'pdf':false" class="text-center" tooltip='pdf' tooltip-placement="bottom"><i  class="fa fa-file-pdf-o"></i></div>
+								            <div ng-if="document.type | regex:'zip':false" class="text-center" tooltip='zip' tooltip-placement="bottom"><i  class="fa fa-file-zip-o"></i></div>
+								            <div ng-if="document.type | regex:'rar':false" class="text-center" tooltip='rar' tooltip-placement="bottom"><i  class="fa fa-file-rar-o"></i></div>
+								            <div ng-if="document.type | regex:'audio':false" class="text-center" tooltip='audio' tooltip-placement="bottom"><i  class="fa fa-file-sound-o"></i></div>
+								            <div ng-if="document.type | regex:'spreadsheet':false" class="text-center" tooltip='feuille de calcule' tooltip-placement="bottom"><i  class="fa fa-file-excel-o"></i></div>
+								            <div ng-if="document.type | regex:'excel':false" class="text-center" tooltip='feuille de calcule' tooltip-placement="bottom"><i  class="fa fa-file-excel-o"></i></div>
+								            <div ng-if="(document.type | regex:'text':false) " class="text-center" tooltip='text' tooltip-placement="bottom"><i  class="fa fa-file-text-o"></i></div>
+								            <div ng-if="(document.type | regex:'word':false) " class="text-center" tooltip='word' tooltip-placement="bottom"><i  class="fa fa-file-text-o"></i></div>
+
+								            <div ng-if="
+								            !(document.type | regex:'image':false)
+								             &&
+								            !(document.type | regex:'video':false) &&
+								            !(document.type | regex:'pdf':false) &&
+								            !(document.type | regex:'zip':false) &&
+								            !(document.type | regex:'rar':false) &&
+								            !(document.type | regex:'audio':false) &&
+								            !(document.type | regex:'spreadsheet':false) &&
+								            !(document.type | regex:'excel':false) &&
+								            !(document.type | regex:'text':false) &&
+								            !(document.type | regex:'word':false)" 
+								            class="text-center" tooltip='{{item.type}}' tooltip-placement="bottom"><i  class="fa fa-file-o"></i></div>
+										<removeremovetable class="btnremoveimg " action="removedocument" ></removeremovetable>
+									</li>
+
+
+	    			
+	    	</ul>
+
+	    </div>
+	   	<nav class=" col-xs-8">
+	      <pagination ng-change="pageChanged(page)" total-items="total" ng-model="filter.page" max-size="3" items-per-page="filter.perPage" class="pagination-sm pull-left" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	        <span class="totalTable pull-left"  ng-pluralize count="total"
+	            when="{'0': 'aucun résultats',
+	            'one': '1 résultat',
+	            'other': '{} résultats'}">
+	        </span>
+	    </nav>
+	   	<nav class=" col-xs-4">
+	        <span class=" pull-right totalTable" style="">par page</span>
+		   <select class="form-control pull-right" ng-change="reloadDocuments()" style="width: 80px;margin: 20px 0px;padding: 5px 10px;height: 30px;" ng-model="filter.perPage" name="perPage" >
+	                            <option value="10">10</option>
+	                            <option value="20">20</option>
+	                            <option value="50">50</option>
+	                            <option value="100">100</option>
+	                        </select> 
+	    </nav>
+
+
+	</div>
+
+    
+</div>

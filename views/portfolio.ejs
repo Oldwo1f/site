@@ -1,0 +1,78 @@
+ <div class="portfo">
+            <div id="header">
+                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
+                <h1><%= __('Portfolio') %></h1>
+                
+            </div>
+            <header class="listCatProj major container 75%">
+                    <ul class="">
+                        <li class="active" rel="all"><%= __('Tous') %></li>
+                        <% for(var i=0; i<categories.length; i++) {%>
+                            <li rel="<%= categories[i].id %>" >
+                                <span><%= categories[i].name %></span>
+                            </li>
+                        <% } %>
+                    </ul>
+            </header>
+            <div id="main">
+
+
+                 <% for(var i=0; i<projects.length; i++) {%>
+                   
+                            
+                    <div class="box container collapse in  wow zoomInUp" rel="<% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
+                        <header>
+                            <h2><%= projects[i].title %></h2>
+                        </header>
+                        <div  class="col col-xs-12 ">
+                                <% if(projects[i].publishVideo==true && projects[i].video){ %>
+                                            <div class="pretty-embed" data-pe-videoid="<%= projects[i].video %>"></div>
+                                <%}else if(projects[i].img) { %>
+                                    <img src="/file/image/originalsize/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
+                                <% } %>
+                        </div>
+                        <div  class="col col-xs-12 text-center">
+                            <% if(projects[i].rewriteurl){ %>
+                            <a href="projet/<%= projects[i].id %>/<%= projects[i].rewriteurl %>" class="button"><%= __('see_project_button') %></a>
+                            <% } else {%>
+                            <a href="projet/<%= projects[i].id %>/" class="button"><%= __('see_project_button') %></a>
+                            <% } %>
+                        </div>
+                    </div>
+                    <% } %>
+                
+
+            </div>
+
+        <!-- Footer -->
+            <div id="footer">
+                <div class="container 75%">
+
+                    <header class="major last">
+                    </header>
+
+
+                    
+
+                    <ul class="icons">
+                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
+                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
+                    </ul>
+
+                    <ul class="copyright">
+                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
+                    </ul>
+
+                </div>
+            </div>
+ </div>
+<script type="text/javascript">
+
+var projects = <%- JSON.stringify(projects) %>;
+        console.log(projects);
+
+
+</script>

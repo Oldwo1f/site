@@ -1,0 +1,57 @@
+<!-- Default Validation Template -->
+<div ng-messages="field.$error"
+     class="validation">
+     <!-- Show errors for invalid fields, when it has been either focused,
+      has been changed or the user tried to submit the form without success
+      (requisres the setDirtyOnSubmit-option to be set-->
+    <ul class="list-unstyled validation-errors"
+        ng-show="field.$invalid && (field.$touched || field.$dirty || form.$triedSubmit)">
+        <li ng-message="required">Champ requis</li>
+        <li ng-message="password">Mot de passe invalide</li>
+        <li ng-message="email">Email invalide</li>
+        <li ng-message="pattern">Veuillez revoir votre saisie</li>
+        <li ng-message="date">Cette date est invalide</li>
+        <li ng-message="time">Cette heure est invalide</li>
+        <li ng-message="datetime">Date et heure invalide</li>
+        <li ng-message="datetime-local">This is no valid local datetime</li>
+        <li ng-message="number">Veuillez saisir un nombre</li>
+        <li ng-message="color">Cette couleur n'est pas valide</li>
+        <li ng-message="range">Intervalle non valide</li>
+        <li ng-message="month">Ce mois est incorrect</li>
+        <li ng-message="url">Cette url est invalide</li>
+        <li ng-message="file">Erreur avec le fichier</li>
+        <li ng-message="uniqueemail">Cette email est déjà utilisée</li>
+        <li ng-message="uniquepseudo">Ce pseudo est déjà utilisé</li>
+        <li ng-message="uniquename">Ce nom est déjà utilisé</li>
+
+        <!-- ng-fab-form provides you with access to the
+        input-element-attributes, allowing you to display their values
+        inside of the message-->
+        <li ng-message="minlength">{{ attrs.minlength }} charactères requis</li>
+        <li ng-message="maxlength">{{ attrs.maxlength }} charactères maximum</li>
+
+        <li ng-if="attrs.type == 'time' "
+            ng-message="min">L'heure choisis doit est supérieur à {{ attrs.min |date: 'HH:MM' }}
+        </li>
+        <li ng-message="match">Les mots de passes sont différents</li>
+
+
+        <!-- you can use ng-if or ng-show for more advanced
+        error messages -->
+        <li ng-message="max"
+            ng-if="attrs.type == 'time' ">L'heure choisis doit est antérieur à {{attrs.max |date: 'HH:MM'}}
+        </li>
+        <li ng-message="min"
+            ng-if="attrs.type == 'date' ">La date choisis doit est supérieur à {{attrs.max
+            |date:'dd.MM.yy'}}
+        </li>
+        <li ng-message="max"
+            ng-if="attrs.type == 'date' ">TL'heure choisis doit est antérieur à {{attrs.max |date: 'dd.MM.yy'}}
+        </li>
+    </ul>
+    <!-- It is also possible to show a success element
+    using the standard form syntax -->
+    <div class="validation-success"
+         ng-show="field.$valid && !field.$invalid">
+    </div>
+</div>

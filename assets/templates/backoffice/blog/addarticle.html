@@ -1,0 +1,244 @@
+<div class="col-lg-12">
+<!--  -->
+    
+    <!-- /.panel-heading -->
+    <tabset>
+		<tab heading="Informations générales">
+     	
+        <form  name="FORMaddNewArticle" ng-submit="submit()" role="form" ng-fab-form-options="customFormOptions" ng-init="setFormScope(this)">
+			<div class="panel-body">
+
+	    		
+	        	<div class="col-md-6 col-lg-8">
+	                <div class="row">
+		        		
+		        		<div class="form-group col-lg-9 col-md-8 ">
+		                    <label>Titre </label>
+		                    <input prevent-submit-enter auto-focus class="form-control" type="text" name="name" ng-model="formData.title" placeholder="Titre principale (rang 1)" ng-minlength="5"
+	                       required>
+		                </div>
+		        		<div class="form-group col-lg-3 col-md-4   ">
+		                    <label>Catégorie </label>
+		                    <select prevent-submit-enter class="form-control"  ng-model="formData.category"  name="category">
+	                            <option   value="">Aucune</option>
+	                            <option  ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+	                        </select>
+		                </div>
+		        		
+	                </div> 
+	                <div class="row">	        		
+		        		<div class="form-group col-lg-12 ">
+		                    <label>Contenu </label>
+		                    <markdownpreview ng-model="formData.content" handleerror="'content'" minheight="350" placehold="'Contenu'" />
+		                </div>
+	                </div>
+	                <div class="row">	        		
+		        		<div class="form-group col-lg-12 ">
+		                    <label >Tags</label>
+		                    <tags-input class="mytaginput" ng-model="formData.tags">
+		                    	<auto-complete source="autocompleteTag($query)"></auto-complete>
+		                	</tags-input>
+		                </div>
+	                </div> 
+	                <div class="row">	        		
+		        		<div class="form-group col-xs-12 col-md-4 col-lg-4 ">
+		                    <label >Date</label>
+		                    <p class="input-group">
+		                    <input prevent-submit-enter type="text" required ng-date class="form-control" ng-model="formData.date" datepicker-popup="dd/MM/yyyy" name="date" is-open="opened" close-text="Fermer" />
+		                    <span class="input-group-btn">
+				                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+				            </span>
+				        	</p>
+		                </div>
+		                <div class="form-group col-xs-12 col-md-4 col-lg-4 ">
+		                    <label >Status</label>
+		                    <div>
+			                    <div class="btn-group">
+							        <label class="btn" ng-class="{'btn-success':formData.status=='actif','btn-warning':formData.status=='draft','btn-danger':formData.status=='inactif'}" ng-model="formData.status" btn-radio="'actif'">Actif</label>
+							        <label class="btn" ng-class="{'btn-success':formData.status=='actif','btn-warning':formData.status=='draft','btn-danger':formData.status=='inactif'}" ng-model="formData.status" btn-radio="'draft'">Brouillon</label>
+							        <label class="btn" ng-class="{'btn-success':formData.status=='actif','btn-warning':formData.status=='draft','btn-danger':formData.status=='inactif'}" ng-model="formData.status" btn-radio="'inactif'">Inactif</label>
+							    </div>
+							</div>
+		                </div>
+	                </div>
+		        	 
+				</div>
+				<div class="col-md-6 col-lg-4">
+		            <div class="panel panel-default">
+		            	
+		            	<div class="panel-heading">
+		            		<i class="fa fa-gears fa-fw"></i> Option de référencement
+		            	</div>
+		            	<div class="panel-body">
+			            	<div class="form-group col-xs-12 ">
+			            		<label>Mots clefs</label>
+			                    <input prevent-submit-enter inputcount="255" type="text"  name="keyword" class="form-control" ng-model="formData.keyword" placeholder="Mots clefs, Mots, clefs, clef, Mot clef, Mot">
+			                </div> 
+			                <div class="form-group col-xs-12 ">
+			                	<label>Réécriture d'url</label>
+			                    <input prevent-submit-enter inputcount="1000" urlprefixerwidth="195px" urlprefixer="http://momsite.com/blog/article/" model="formData.rewriteurl" type="text" name="rewriteurl" class="form-control " ng-model="formData.rewriteurl" placeholder="Réécriture de l'url">
+			                </div>
+			                <div class="form-group col-xs-12 ">
+			                	 <label>Description</label>
+			                    <textarea prevent-submit-enter inputcount="160" model="formData.description" rows="4" name="description" class="form-control " ng-model="formData.description" placeholder="Description pour les moteurs de recherche"></textarea>
+			                </div>
+			                <div class="form-group col-xs-12 ">
+			                	<auditref model="formData"></auditref>
+			                </div>
+				    	</div>
+				    </div>
+	        	</div>
+	        	 
+		</div>
+		<div class="panel-footer" style="text-align:center">
+			<div class="row">
+				<div class="col-sm-4" style='margin-bottom:4px;'>
+					<a class="btn  btn-default col-sm-12"   ng-click="addArticle('stay')"><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et rester</a>
+				</div>
+				<div class="col-sm-4" style='margin-bottom:4px;'>
+					<a class="btn  btn-success col-sm-12" ng-click="addArticle('close')" ><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et fermer</a>
+				</div>
+				<div class="col-sm-4" style='margin-bottom:4px;'>
+	    			<a ui-sref="^"><div class="btn  btn-danger col-sm-12"><i class="fa fa-times fa-fw"></i> Annuler</div></a>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	</tab>
+	<tab heading="Images et médias">
+
+	            	<div class="panel-body" >
+	            		<div class="row">
+	            			<div class="col col-xs-12">
+		            			<h3>Images de l'article <button class="btn btn-primary pull-right" ng-click="openImages()">Ajouter une image</button></h3>
+			            		<ul class="listbigimages" ui-sortable="sortableOptions" ng-model="formData.images">
+			            			<li ng-if="formData.images.length==0" style="border:none;width:100%" class="not-sortable"><p style="text-align:center;padding-top:90px;color:grey;">Aucune image</p></li>
+									<li ng-repeat="image in formData.images  | orderBy:'index':false" class="pull-left">
+										<img ng-src="file/image/adminThumbs/{{image.filename}}" alt="{{image.filename}}" width="200" height="200" >
+										<div class="btn btn-xs btn-danger btnremoveimg" ng-click="removeimage($index)"><i  class="fa fa-times"></i></div>
+									</li>
+								</ul>
+								<hr>
+	            			</div>
+	            			
+	            			<div class="col col-xs-12">
+	            				<h3>Video</h3>
+	            				<div class="form-group col-sm-6 ">
+	            					<div class="form-group">
+				                        <label tooltip-placement="right" tooltip="Préférer la vidéo aux images en tant que contenu principale.">Faire de la video le media principale</label>
+				                        <div class="btn-group">
+									        <label class="btn "  ng-class="{'btn-success':formData.publishVideo==true,'btn-danger':formData.publishVideo==false}"  ng-model="formData.publishVideo" btn-radio="true">Oui</label>
+									        <label class="btn "  ng-class="{'btn-success':formData.publishVideo==true,'btn-danger':formData.publishVideo==false}"  ng-model="formData.publishVideo" btn-radio="false">Non</label>
+									    </div>
+	            					</div>
+								    <div class="form-group">
+									    <label>Url de la video</label>
+				            			<input type="text" ng-model="formData.video" placeholder="http://youtube.com/watch?v=LOKyEt36Kjc" name="video" class="form-control">
+								    </div>
+				            		
+				                </div>
+	            				<div class="form-group col-sm-6">
+	            					<embed-video iframe-id="video"   ng-href="formData.video" controls=1></embed-video>
+	            				</div>
+	            				
+	            			</div>
+	            			<div class="col col-xs-12" id="divDocument">
+	            				<hr>
+	            				
+	            			</div>
+	            			<div class="col col-xs-12" >
+	            				<h3>Pièces jointes <button class="btn btn-primary pull-right" ng-click="openDocuments()">Ajouter un fichier</button></h3>
+			            		<ul class="listDocs" ui-sortable="sortableOptions2" ng-model="formData.documents">
+			            			<li ng-if="formData.documents.length==0" style="border:none;width:100%"><p style="text-align:center;padding-top:0px;color:grey;">Aucun document</p></li>
+									<li ng-repeat="document in formData.documents  | orderBy:'index':false" class="pull-left">
+										<div class="btn btn-xs btn-danger bntdocumentsremove" ng-click="removedocument($index)"><i  class="fa fa-times"></i></div>
+										<div> {{document.name}}</div>
+										
+										
+										<!-- <removeremovetable class="btnremoveimg " action="removedocument" ></removeremovetable> -->
+
+										<div   ng-switch="name.type" class="fileicons" >
+
+
+								            <div ng-if="document.type | regex:'image':false" class="text-center" tooltip='image' tooltip-placement="bottom"><i  class="fa fa-file-image-o"></i></div>
+								            <div ng-if="document.type | regex:'video':false" class="text-center" tooltip='video' tooltip-placement="bottom"><i  class="fa fa-file-video-o"></i></div>
+								            <div ng-if="document.type | regex:'pdf':false" class="text-center" tooltip='pdf' tooltip-placement="bottom"><i  class="fa fa-file-pdf-o"></i></div>
+								            <div ng-if="document.type | regex:'zip':false" class="text-center" tooltip='zip' tooltip-placement="bottom"><i  class="fa fa-file-zip-o"></i></div>
+								            <div ng-if="document.type | regex:'rar':false" class="text-center" tooltip='rar' tooltip-placement="bottom"><i  class="fa fa-file-rar-o"></i></div>
+								            <div ng-if="document.type | regex:'audio':false" class="text-center" tooltip='audio' tooltip-placement="bottom"><i  class="fa fa-file-sound-o"></i></div>
+								            <div ng-if="document.type | regex:'spreadsheet':false" class="text-center" tooltip='feuille de calcule' tooltip-placement="bottom"><i  class="fa fa-file-excel-o"></i></div>
+								            <div ng-if="document.type | regex:'excel':false" class="text-center" tooltip='feuille de calcule' tooltip-placement="bottom"><i  class="fa fa-file-excel-o"></i></div>
+								            <div ng-if="(document.type | regex:'text':false) " class="text-center" tooltip='text' tooltip-placement="bottom"><i  class="fa fa-file-text-o"></i></div>
+								            <div ng-if="(document.type | regex:'word':false) " class="text-center" tooltip='word' tooltip-placement="bottom"><i  class="fa fa-file-text-o"></i></div>
+
+								            <div ng-if="
+								            !(document.type | regex:'image':false)
+								             &&
+								            !(document.type | regex:'video':false) &&
+								            !(document.type | regex:'pdf':false) &&
+								            !(document.type | regex:'zip':false) &&
+								            !(document.type | regex:'rar':false) &&
+								            !(document.type | regex:'audio':false) &&
+								            !(document.type | regex:'spreadsheet':false) &&
+								            !(document.type | regex:'excel':false) &&
+								            !(document.type | regex:'text':false) &&
+								            !(document.type | regex:'word':false)" 
+								            class="text-center" tooltip='{{item.type}}' tooltip-placement="bottom"><i  class="fa fa-file-o"></i></div>
+									</li>
+								</ul>
+		            			
+	            				<hr>
+	            			</div>
+	            		</div>
+	            	</div>
+	            	<div class="panel-footer" style="text-align:center">
+						<div class="row">
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+								<a class="btn  btn-default col-sm-12"   ng-click="addArticle('stay')"><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et rester</a>
+							</div>
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+								<a class="btn  btn-success col-sm-12" ng-click="addArticle('close')" ><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et fermer</a>
+							</div>
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+				    			<a ui-sref="^"><div class="btn  btn-danger col-sm-12"><i class="fa fa-times fa-fw"></i> Annuler</div></a>
+							</div>
+						</div>
+					</div>
+	</tab>
+	<tab heading="Commentaires">
+		<div class="panel-body" >
+		<div class="row">
+			<div class="col col-xs-12">
+				
+				<div class="form-group col-sm-6 ">
+					<div class="form-group">
+                        <label tooltip-placement="right" tooltip="Préférer la vidéo aux images en tant que contenu principale.">Activer les commentaires</label>
+                        <div class="btn-group">
+					        <label class="btn "  ng-class="{'btn-success':formData.activeComent==true,'btn-danger':formData.activeComent==false}"  ng-model="formData.activeComent" btn-radio="true">Oui</label>
+					        <label class="btn "  ng-class="{'btn-success':formData.activeComent==true,'btn-danger':formData.activeComent==false}"  ng-model="formData.activeComent" btn-radio="false">Non</label>
+					    </div>
+					</div>
+                </div>
+			</div>
+		</div>
+		</div>
+		<div class="panel-footer" style="text-align:center">
+						<div class="row">
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+								<a class="btn  btn-default col-sm-12"   ng-click="addArticle('stay')"><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et rester</a>
+							</div>
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+								<a class="btn  btn-success col-sm-12" ng-click="addArticle('close')" ><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et fermer</a>
+							</div>
+							<div class="col-sm-4" style='margin-bottom:4px;'>
+				    			<a ui-sref="^"><div class="btn  btn-danger col-sm-12"><i class="fa fa-times fa-fw"></i> Annuler</div></a>
+							</div>
+						</div>
+					</div>
+	</tab>
+		   
+	</tabset>
+
+<!-- </div> -->
+</div>

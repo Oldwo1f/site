@@ -1,0 +1,161 @@
+<div class="row" >
+<div class="col-lg-12" style="margin-top:20px">
+<!--  -->
+    
+    <!-- /.panel-heading -->
+    <tabset>
+		<tab heading="Modifier mes informations de profile">
+     	
+        <form  name="FORMProfile" role="form" ng-fab-form-options="customFormOptions" ng-init="setFormScope(this)">
+			<div class="panel-body">
+
+	    		<div class="col-md-6 col-lg-4">
+		            <div class="panel panel-default">
+		            	
+		            	<div class="panel-heading">
+			            	<div class="row">
+					    	
+					    		<div class="form-group form-group-image col-lg-12">
+					    			<img src="images/no-user.jpg" style="width:100%" ng-if="!changingimage && !formData.image">
+					    			<img ng-src="{{formData.image}}" style="width:100%"  ng-if="!changingimage && formData.image">
+					    			<img-crop image="myImage" on-change="changing($dataURI)" result-image-size="200" result-image-quality="1" change-on-fly="false" style="min-height:400px;"  ng-if="changingimage" result-image="croppedImage"></img-crop>
+
+					    			<div class="btn btn-default " ng-if="!changingimage" ng-click="clickonimgbtn($event)"><i class="fa fa-floppy-o fa-fw"></i> Ajouter une image <input ng-hide="true" type="file" name="image" id="fileInput" ng-file-select="onFileSelect($files)"/></div>
+					    		</div>
+					    		<div class="form-group col-lg-12 "style="margin-bottom:0px;margin-top:15px;">
+					    			<div class="btn btn-danger pull-right" ng-if="changingimage" ng-click="cancelImage()"> Annuler</div>
+					    		</div>
+					    	</div>
+					    	<hr>
+			                
+			                <div class="row">
+			                	<div class="form-group col-lg-12">
+	                                    <label for="disabledSelect">Connecté via</label>
+	                                    <input class="form-control"  type="text" value="Facebook" disabled="" >
+				                </div>
+			                </div>
+
+					    	
+			                <div class="row">
+			                	<div class="form-group col-lg-12 ">
+	                                    <label for="disabledSelect">Date de création</label>
+	                                    <input class="form-control" value="{{formData.createdAt | amCalendar}}" disabled="" >
+				                </div>
+			                </div>
+			                
+				    	</div>
+				    </div>
+	        	</div>
+	        	<div class="col-md-6 col-lg-8">
+	                <div class="row">
+		        		<div class="form-group col-lg-3 col-md-4   ">
+		                    <label>Civilité </label>
+		                    <select class="form-control" required ng-model="formData.civ"  name="civ">
+	                            <option value="M.">M.</option>
+	                            <option value="Mme">Mme</option>
+	                            <option value="Mlle">Mlle</option>
+	                        </select>
+		                </div>
+		        		<div class="form-group col-lg-9 col-md-8 ">
+		                    <label>Nom Complet </label>
+		                    <input class="form-control" type="text" name="name" ng-model="formData.name" placeholder="Oliver Durant" ng-minlength="5"
+	                       required>
+		                </div>
+		        		
+		        		
+	                </div> 
+	                <div class="row">	        		
+		        		<div class="form-group col-lg-12 ">
+		                    <label>Pseudo *</label>
+		                    <input class="form-control" placeholder="Oliv75" name="pseudo" ng-model-options="{ debounce : { 'default' : 500, blur : 0 } }" required ng-model="formData.pseudo" disabled >
+		                </div>
+	                </div> 
+	        		<div class="row">
+		        		<div class="form-group col-lg-12 ">
+		                    <label>Email *</label>
+		                    
+		                    <input type="email"  disabled name="email" ng-model-options="{ debounce : { 'default' : 500, blur : 0 } }"
+	                       class="form-control"
+	                       ng-model="formData.email"
+	                       required placeholder="test@emailtest.fr">
+		                </div>
+		        		
+	        		</div>
+	        		<div class="row">
+	        			<div class="form-group col-lg-12 ">
+		                    <label>Téléphone</label>
+		                    <input class="form-control" name="phone"  ng-model="formData.phone" ng-pattern="/^\+?([0-9]|-|\ )*$/i" placeholder="+3356895478" validation-msg-pattern="Entrez un numéro au format international" max-length="12" required>
+		                </div>
+		            </div>
+		            <hr>
+	                <div class="row">
+		        		<div class="form-group col-lg-12  ">
+		                    <label>Entreprise</label>
+		                    <input class="form-control" name="company" placeholder="SARL TITOTI" ng-model="formData.company" required>
+		                </div>
+	                </div>
+	                <div class="row">
+	                	<div class="form-group col-lg-12  ">
+		                    <label>Fonction / Poste</label>
+		                    <input class="form-control" name="fonction" placeholder="R&D - chercheur"  ng-model="formData.fonction" >
+		                </div>
+	                </div>
+	                <hr>
+	                <div class="row">
+	                	<div class="form-group col-lg-12 ">
+	                		<h4 class="pointer" ng-click="isCollapsed = !isCollapsed" >Paramètre de confidentialité <i class="glyphicon" ng-class="{'glyphicon-chevron-down': !isCollapsed, 'glyphicon-chevron-right': isCollapsed}"></i></h4>
+	                	</div>
+						<div collapse="isCollapsed">
+						
+						<div class="form-group col-lg-12 ">
+	                        <label>Utilisé le nom complet</label>
+						    <div class="btn-group" required>
+						        <label class="btn"  ng-class="{'btn-success':formData.usename==true,'btn-danger':formData.usename==false}" ng-model="formData.usename" btn-radio="true">Oui</label>
+						        <label class="btn"  ng-class="{'btn-success':formData.usename==true,'btn-danger':formData.usename==false}"  ng-model="formData.usename" btn-radio="false">Non</label>
+						    </div>
+		                </div>
+						<div class="form-group col-lg-12 ">
+	                        <label>Publier mon email</label>
+	                        <div class="btn-group">
+						        <label class="btn "  ng-class="{'btn-success':formData.publishEmail==true,'btn-danger':formData.publishEmail==false}"  ng-model="formData.publishEmail" btn-radio="true">Oui</label>
+						        <label class="btn "  ng-class="{'btn-success':formData.publishEmail==true,'btn-danger':formData.publishEmail==false}"  ng-model="formData.publishEmail" btn-radio="false">Non</label>
+						    </div>
+		                </div>
+						<div class="form-group col-lg-12 ">
+	                        <label>Publier mon numéro de téléphone</label>
+	                        <div class="btn-group">
+						        <label class="btn "  ng-class="{'btn-success':formData.publishPhone==true,'btn-danger':formData.publishPhone==false}"  ng-model="formData.publishPhone" btn-radio="true">Oui</label>
+						        <label class="btn "  ng-class="{'btn-success':formData.publishPhone==true,'btn-danger':formData.publishPhone==false}"  ng-model="formData.publishPhone" btn-radio="false">Non</label>
+						    </div>
+		                </div>
+						</div>
+
+	            	</div>
+
+				</div>
+	        	 
+		</div>
+		<div class="panel-footer" style="text-align:center">
+			<div class="row">
+				<div class="col-sm-4">
+				</div>
+				<div class="col-sm-4">
+					<button type="submit" ng-click="editProfile()" class="btn  btn-success col-sm-12"><i class="fa fa-floppy-o fa-fw"></i> Enregistrer et fermer</button>
+				</div>
+				<div class="col-sm-4">
+	    			<a ng-click="close()"><div class="btn  btn-danger col-sm-12"><i class="fa fa-times fa-fw"></i> Annuler</div></a>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	</tab>
+		   
+	</tabset>
+    
+<!-- </div> -->
+</div>
+</div>
+
+
+

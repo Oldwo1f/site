@@ -1,0 +1,55 @@
+<div class="modal-header">
+Double clic sur une image pour l'ajouter
+</div>
+<div class="modal-body">
+	<div class="row">
+		<div class="panel-heading-table col-xs-12">
+        <form role="form" class="" >
+            <div class="form-group input-group  col-md-6 pull-right">
+                <form name="searchUser">
+
+                    <input type="text" class="form-control" ng-model="filter.slug" ng-blur="reloadImages()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default btn-search" type="submit" ng-click="reloadImages()"><i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </form>
+            </div>
+           <!--  <div class="FilterBox pull-right form-group col-md-6 input-group ">
+
+                <div class="label label-primary pull-right"><i class="fa fa-graduation-cap fa-fw"></i> Admin <input type="checkbox" ng-model="filter.admin" ng-click="reloadUsers()"class="labelcheckbox" ng-model="userService.filter.admin" checked></div>
+                <div class="label label-default pull-right"><i class="fa fa-user fa-fw"></i> User <input type="checkbox" ng-model="filter.user" class="labelcheckbox" checked ng-click="reloadUsers()"></div>
+                <div class="label label-success pull-right"><i class="fa fa-user-plus fa-fw"></i> Membre <input type="checkbox" ng-model="filter.member" ng-click="reloadUsers()" class="labelcheckbox" checked></div>
+            </div> -->
+        </form>
+    	</div>
+	    <div class="col-lg-12 table-responsive imageslist" ng-class="{imageslistSmall:filter.perPage>10 && images.length>9}">
+	    	<div class="chargement" ng-if="loadingImages"> <td colspan="6"><i class="fa fa-user sorter fa-spinner fa-spin"></i></td></div>
+	    	<ul >
+	    		<li ng-repeat="image in images"  ng-click="selectImg($index)"><img ng-show="image.finishloading" imageonload action="loadImage" index="$index"   ng-class="{selectedimg :image.selected }" ng-src="file/image/adminThumbs/{{image.filename}}" ><div ng-show="!image.finishloading" class="miniaturespinner"><i class="fa fa-user sorter fa-spinner fa-spin"></i></div></li>
+	    	</ul>
+
+	    </div>
+	   	<nav class=" col-xs-8">
+	      <pagination ng-change="pageChanged(page)" total-items="total" ng-model="filter.page" max-size="3" items-per-page="filter.perPage" class="pagination-sm pull-left" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"></pagination>
+	        <span class="totalTable pull-left"  ng-pluralize count="total"
+	            when="{'0': 'aucun résultats',
+	            'one': '1 résultat',
+	            'other': '{} résultats'}">
+	        </span>
+	    </nav>
+	   	<nav class=" col-xs-4">
+	        <span class=" pull-right totalTable" style="">par page</span>
+		   <select class="form-control pull-right" ng-change="reloadImages()" style="width: 80px;margin: 20px 0px;padding: 5px 10px;height: 30px;" ng-model="filter.perPage" name="perPage" >
+	                            <option value="9">9</option>
+	                            <option value="20">20</option>
+	                            <option value="50">50</option>
+	                            <option value="100">100</option>
+	                        </select> 
+	    </nav>
+
+
+	</div>
+
+    
+</div>
