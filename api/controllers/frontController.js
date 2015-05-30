@@ -52,7 +52,7 @@ module.exports={
 					
 				}).then(function (articless) {
 					console.log(articless);
-					res.status(200).view('homepage',{
+					res.status(200).view('index',{
 						articles:articles,
 						marked:marked,
 						title: req.__('SEO_HOME_title'),
@@ -341,18 +341,6 @@ module.exports={
 				}
 			});
 		})
-	},
-	test:function(req,res,next) {
-
-		
-			    	res.status(200).view('test',{title: req.__('SEO_PORTFO_title'),
-				keyword: req.__('SEO_PORTFO_keyword'),
-				description:req.__('SEO_PORTFO_description'),
-				scripturl:'portfo.js',
-				menu:'portfo',
-				marked:marked
-			})
-		
 	},
 	addReponseProj:function(req,res,next) {
 

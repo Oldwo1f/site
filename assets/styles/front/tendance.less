@@ -1,0 +1,71 @@
+@import 'var.less';
+@import '../meyerreset.less';
+
+html{font-size:100%;font-family:'Open Sans', sans-serif,arial;}
+body{background:white;font-size:1em;overflow-x: hidden;}
+div.site {padding-top: 120px;}
+nav{background : black;position:fixed;top:0px;z-index:100;border-top:3px solid @rose;width:100%;}
+nav.stuck{position:fixed;top:0px;left:0px;}
+h1{font-size : 3em;line-height:1.5em;color:@rose;outline:none;display:inline-block;margin:0px; padding:0px;}
+h1 a{color:@rose;outline:none;}
+h1 a:hover{color:@violet;outline:none;}
+nav img{padding-top:10px;}
+nav ul {display:inline-block;}
+nav ul li{color:@rose;display:inline-block;margin:30px 0px;padding:0px 15px;font-size:1.2em;}
+nav ul li a{color:@rose; outline:none;}
+nav ul li a:hover{color:@violet;outline:none;}
+nav ul li a.active{color:@violet;outline:none;}
+nav ul li a.focus{color:@violet;outline:none;}
+
+
+.articles {position:relative; height:auto;}
+.article {.border-radius(33px);border-bottom:3px solid @rose;padding-bottom:70px; margin-bottom:40px; position:relative;}
+.article h2{ text-indent:10px;background:black;border-top:3px solid @rose; padding:5px;text-indent:0px;font-size : 2em;line-height:1.5em;color:@rose;outline:none;}
+.article img{max-width:100%;}
+.article footer{position:absolute; bottom:20px; left : 50px;}
+.article p{padding:10px 20px;}
+.article a{color:@rose;}
+.article a:hover{color:@violet;}
+
+.btn.btn-primary{background:@rose;border:transparent 2px solid;}
+.btn.btn-primary a{color:black; }
+.btn.btn-primary:hover{border:@violet 2px solid; }
+.btn.btn-primary:hover a{color:@violet;}
+
+.article .btn.btn-primary{position:absolute; right : 50px; bottom:20px;}
+.date{font-style:italic;}
+.blockpub{border:3px solid @violet; padding:20px;margin-top:10px;margin-bottom:20px;}
+.blockpub.toto{padding-top:40px;min-height:200px;}
+
+.backtotop{ display:none; padding-top:7px;cursor:pointer;font-size:3em;position:fixed;bottom:30px;background:@rose;color:black;height:70px;width:70px;left:75%; }
+.backtotop:hover{ color:@violet;border:1px solid @violet;}
+
+.catHeader{position:relative;margin-bottom:50px;height:200px;overflow:hidden;;} 
+.catHeader img{ max-width:100%;}
+.catHeader h1{display:inline-block;position:absolute; bottom:20px; left:20px;font-size:4em;color:@rose;font-weight:bold;background:black;padding:0 25px;}
+
+p{color:@violet;font-size:1.2em;line-height:1.2em;}
+
+.abonnement{background:black; padding:40px; padding-top:50px; margin:30px 0px;;;}
+.abonnement .form-control{ font-size:1.6em;height: 53px}
+.abonnement .btn.btn-primary{ font-size:1.6em;color:black; }
+.abonnement .btn.btn-primary {}
+.abonnement .btn.btn-primary:hover{border:@violet 2px solid;color:@violet; }
+.abonnement .btn.btn-primary:hover {}
+.abonnement .btn.btn-info {display:none;cursor:auto;color:black;border:@violet 2px solid;background-color:@violet;font-size:1.6em;}
+.abonnement .btn.btn-info:hover{border:@violet 2px solid; }
+/*.abonnement .btn.btn-info:hover {color:@violet;}*/
+
+.dl{ padding-top:50px; margin:30px 0px;;;}
+.dl h2{font-size:3em;color:@rose;margin:30px 0px;}
+
+.dl .btn.btn-default{ font-size:1em; margin-top:-15px;}
+.dl li:hover .btn.btn-default {color:@violet;background:@rose; border:transparent 2px solid;}
+.dl li:hover .btn.btn-default:hover {color:black;background:@rose; border:@violet 2px solid;}
+
+
+.dl ol li{ padding: 20px 10px;font-size:2em;border: 1px solid grey;position:relative; margin : 5px 0px;}
+.dl ol li *{ display:inline-block;}
+.dl ol li:hover{ border: 1px solid @rose;}
+.dl ol li label{color : @rose; height:100%; margin-right : 10px;}
+.dl ol li small{font-size:0.6em;color:@violet;margin-left:20px;}
