@@ -1,97 +1,398 @@
 <!DOCTYPE html>
-<html>
-
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if (IE 9)]><html class="no-js ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US"> <!--<![endif]-->
 <head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Meta Tags -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <title>madmin</title>
+<title><%- __('SEO_TITLE') %></title>   
 
-    <!--STYLES-->
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
-    <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/skel.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style-wide.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <!--STYLES END-->
+<meta name="description" content="<%- __('SEO_DESCRIPTION') %>" /> 
+<meta name="keyword" content="<%- __('SEO_KEYWORD') %>" /> 
+
+<!-- Mobile Specifics -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="HandheldFriendly" content="true"/>
+<meta name="MobileOptimized" content="320"/>   
+
+<!-- Mobile Internet Explorer ClearType Technology -->
+<!--[if IEMobile]>  <meta http-equiv="cleartype" content="on">  <![endif]-->
+
+<!-- Bootstrap -->
+<link href="_include/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
+<!-- Main Style -->
+<link href="styles/importer.css" rel="stylesheet">
+
+<!-- Supersized -->
+<link href="_include/css/supersized.css" rel="stylesheet">
+<link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+<!-- FancyBox -->
+<!-- <link href="_include/css/fancybox/jquery.fancybox.css" rel="stylesheet"> -->
+
+<!-- Font Icons -->
+<link href="_include/css/fonts.css" rel="stylesheet">
+<!-- Shortcodes -->
+<link href="_include/css/shortcodes.css" rel="stylesheet">
+
+<!-- Responsive -->
+<link href="_include/css/bootstrap-responsive.min.css" rel="stylesheet">
+<link href="_include/css/responsive.css" rel="stylesheet">
+
+<!-- Supersized -->
+<link href="_include/css/supersized.css" rel="stylesheet">
+<link href="_include/css/supersized.shutter.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:400,200,200italic,300,300italic,400italic,600,600italic,700,700italic,900' rel='stylesheet' type='text/css'>
+
+<!-- Fav Icon -->
+<link rel="shortcut icon" href="#">
+
+<link rel="apple-touch-icon" href="#">
+<link rel="apple-touch-icon" sizes="114x114" href="#">
+<link rel="apple-touch-icon" sizes="72x72" href="#">
+<link rel="apple-touch-icon" sizes="144x144" href="#">
+
+<!-- Modernizr -->
+<script src="_include/js/modernizr.js"></script>
+
+<!-- Analytics -->
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'Insert Your Code']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!-- End Analytics -->
+
 </head>
 
-  <body ng-app="app" ng-controller="appCtrl">
+
+<body>
+
+<!-- This section is for Splash Screen -->
+<div class="ole">
+<section id="jSplash">
+  <div id="circle"></div>
+</section>
+</div>
+<!-- End of Splash Screen -->
+
+<!-- Homepage Slider -->
+<div id="home-slider">  
+    <div class="overlay"></div>
+
+    <div class="slider-text">
+      <div id="slidecaption"></div>
+    </div>   
   
-         
-        <div ui-view=""></div>
-        <div ui-view="menuView"></div>
-        <div ui-view="rootView"></div>
-        <!-- <div ui-view="loginView"></div> -->
-       
-
-    <!--
-        Client-side Templates
-        ========================
-
-        HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/linker/templates` folder, then
-        include them here automatically (between TEMPLATES and TEMPLATES END).
+  <div class="control-nav">
+        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+        <ul id="slide-list"></ul>
         
-        To customize this behavior to fit your needs, just edit your Gruntfile.
-        For example, here are a few things you could do:
+        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+    </div>
+</div>
+<!-- End Homepage Slider -->
 
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your client-side templates using a server-side
-              stringfile before they're served.
-    -->
+<!-- Header -->
+<header>
+    <div class="sticky-nav">
+      <a id="mobile-nav" class="menu-nav" href="#menu-nav"></a>
+        
+        <div id="logo">
+          <a id="goUp"  href="#home-slider" ><%- __('Elisabeth HOURS') %></a>
+        </div>
+        
+        <nav id="menu">
+          <ul id="menu-nav">
+              <li class="current"><a href="#home-slider"><%- __('menu_home') %></a></li>
+                <li ><a href="#work"><%- __('menu_project') %></a></li>
+                <li ><a href="#about"><%- __('menu_news') %></a></li>
+                <li ><a href="#contact"><%- __('menu_contact') %></a></li>
+        <!-- <li><a href="shortcodes.html" class="external">Shortcodes</a></li> -->
+            </ul>
+        </nav>
+        
+    </div>
+</header>
+<!-- End Header -->
 
-    <!--TEMPLATES-->
-    <script type="text/javascript" src="/jst.js"></script>
-    <!--TEMPLATES END-->
+<!-- Our Work Section -->
+<div id="work" class="page">
+  <div class="container">
+      <!-- Title Page -->
+        <div class="row">
+            <div class="span12">
+                <div class="title-page">
+                    <h2 class="title wow fadeInRight"><%- __('title-project') %></h2>
+                    <h3 class="title-description wow fadeInRight" data-wow-delay="0.5s"><%- __('subtitle-project') %></h3>
+                </div>
+            </div>
+        </div>
+        <!-- End Title Page -->
+        
+        <!-- Portfolio Projects -->
+        <div class="row">
+          <div class="span3">
+              <!-- Filter -->
+                <nav id="options" class="work-nav">
+                    <ul id="filters" class="option-set" data-option-key="filter">
+                        <li class="type-work  wow fadeInLeft"><%- __('category-project') %></li>
+                        <li class="wow fadeInUp" data-wow-delay="0.5s"><a href="#filter" data-option-value="*" class="selected"><%- __('all projects') %></a></li>
+                        <% for(var i=0; i<categories.length; i++) {%>
+                        <li class="wow fadeInUp" data-wow-delay="<%= (i+2)*0.5%>s"><a href="#filter" data-option-value=".<%= categories[i].id %>" class=""><%= categories[i].name %></a></li>
+                        <% } %>
+                    </ul>
+                </nav>
+                <!-- End Filter -->
+            </div>
+            
+            <div class="span9">
+              <div class="row">
+                  <section id="projects">
+                      <ul id="thumbs">
+                        
+                          <% for(var i=0; i<projects.length; i++) {%>
+
+                            <% 
+                            var url = 'projet/'+projects[i].id + '/';
+                            if(projects[i].rewriteurl){ 
+                              url = 'projet/'+projects[i].id + '/'+projects[i].rewriteurl; 
+                            } 
+                            %>
+                            <li data-wow-delay="<%= (i)*0.5%>s" class="item-thumbs span3 wow zoomInUp <% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
+                              <!-- Fancybox - Gallery Enabled - Title - Full Image -->
+                                <a class="hover-wrap fancybox"  title="<%= projects[i].title %>" content=" " href="<%= url %>">
+                                  <span class="overlay-img"></span>
+                                    <span class="overlay-img-thumb font-icon-eye"></span>
+                                </a>
+                                <!-- Thumb Image and Description -->
+                                <% if(projects[i].img){ %>
+                                <img src="/file/image/adminThumbs/<%= projects[i].img.filename %>" alt="TOTOTOTO <%= projects[i].img.alt %>"/><% } %>
+                            </li>
+                          <% } %>
+                          
+                        </ul>
+                    </section>
+                    
+              </div>
+            </div>
+        </div>
+        <!-- End Portfolio Projects -->
+    </div>
+</div>
+<!-- End Our Work Section -->
+
+<!-- About Section -->
+<div id="about" class="page-alternate">
+<div class="container">
+    <!-- Title Page -->
+    <div class="row">
+        <div class="span12">
+            <div class="title-page">
+                <h2 class="title wow fadeInRight"><%- __('title-news') %></h2>
+                <h3 class="title-description wow fadeInRight" data-wow-delay="0.5s"><%- __('subtitle-news') %></h3>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <% for(var i=0; i<articles.length; i++) {%>
+
+        <% 
+            var url2 = 'article/'+articles[i].id + '/';
+            if(articles[i].rewriteurl){ 
+              url2 = 'article/'+articles[i].id + '/'+articles[i].rewriteurl; 
+            } 
+            %>
+        <div class="span4 profile wow fadeInUp" data-wow-delay="<%= (i)*0.5%>s">
+          <div class="image-wrap ">
+                <a class="hover-wrap fancybox2"  title="<%= projects[i].title %>" content=" " href="<%= url2 %>">
+                    <span class="overlay-img"></span>
+                    <span class="overlay-text-thumb"><span class="font-icon-eye"></span> Voir l'article</span>
+                </a>
+                 <% if(articles[i].img){ %>
+                    <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>" />
+                  <% } %>
+            </div>
+            <h3 class="profile-name"><%= articles[i].title %></h3>
+            <p class="profile-description"><%- marked(articles[i].content) %><a class="fancybox2"  title="<%= projects[i].title %>" content=" " href="<%= url2 %>"><%= __('Lire_la_suite') %></a></p>
+                
+
+              
+            <!-- <div class="social">
+              <ul class="social-icons">
+                  <li><a href="#"><i class="font-icon-social-twitter"></i></a></li>
+                    <li><a href="#"><i class="font-icon-social-dribbble"></i></a></li>
+                    <li><a href="#"><i class="font-icon-social-facebook"></i></a></li>
+                </ul>
+                
+                
+            </div> -->
+        </div>
+        <% } %>
+
+    
+        
+    </div>
+</div>
+</div>
+<!-- End About Section -->
 
 
-    <!--
+<!-- Contact Section -->
+<div id="contact" class="page">
+<div class="container">
+    <!-- Title Page -->
+    <div class="row">
+        <div class="span12">
+            <div class="title-page">
+                <h2 class="title wow fadeInRight"><%= __('title-contact') %></h2>
+                <h3 class="title-description wow fadeInRight" data-wow-delay="0.5s"><%= __('subtitle-contact') %></h3>
+            </div>
+        </div>
+    </div>
+    <!-- End Title Page -->
+    
+    <!-- Contact Form -->
+    <div class="row">
+      <div class="span9">
+        
+          <form id="contact-form" class="contact-form wow fadeInLeft" data-wow-delay="0.5s">
+              <p class="contact-name">
+                <input id="contact_name" type="text" placeholder="<%= __('form-full_name') %>" value="" name="name" />
+                </p>
+                <p class="contact-email">
+                  <input id="contact_email" type="text" placeholder="<%= __('form-email_adress') %>" value="" name="email" />
+                </p>
+                <p class="contact-message">
+                  <textarea id="contact_message" placeholder="<%= __('form-message') %>" name="message" rows="15" cols="40"></textarea>
+                </p>
+                
+                <div class="response">
+                        <div class="row errorMessageRequired">
+                            <div class="12u text-center">
+                                <small class=" label label-danger"><%= __('contact_all_required') %></small>
+                            </div>
+                        </div>
+                        <div class="row errorMessageError">
+                            <div class="12u text-center">
+                                <small class=" label label-danger"><%= __('contact_error_message') %></small>
+                            </div>
+                        </div>
+                        <div class="row SuccessMessage">
+                            <div class="12u text-center">
+                                <small class=" label label-success"><%= __('contact_success_message') %></small>
+                            </div>
+                        </div>
+                </div>
+                <p class="contact-submit wow fadeInRight" data-wow-delay="1.5s" >
+                  <input id="contact-submit" type="submit" class="submit" value="<%= __('form-send-button') %>"></input>
+                </p>
+            </form>
+         
+        </div>
+        
+        <div class="span3">
+          <div class="contact-details wow fadeInRight" data-wow-delay="0.5s">
+            <h3><%= __('contact-details-title') %></h3>
+                <ul>
+                    <li><a href="#"><%= __('contact-details-email') %></a></li>
+                    <li><%= __('contact-details-phone') %></li>
+                    <li>
+                        <%= __('adresse_l1') %>
+                        <br>
+                        <%= __('adresse_l2') %>
+                        <br>
+                        <%= __('adresse_l3') %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End Contact Form -->
+</div>
+</div>
+<!-- End Contact Section -->
 
-      Client-side Javascript
-      ========================
 
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
+<!-- Socialize -->
+<!-- <div id="social-area" class="page">
+  <div class="container">
+      <div class="row">
+            <div class="span12">
+                <nav id="social">
+                    <ul>
+                        <li><a href="https://twitter.com/Bluxart" title="Follow Me on Twitter" target="_blank"><span class="font-icon-social-twitter"></span></a></li>
+                        <li><a href="http://dribbble.com/Bluxart" title="Follow Me on Dribbble" target="_blank"><span class="font-icon-social-dribbble"></span></a></li>
+                        <li><a href="http://forrst.com/people/Bluxart" title="Follow Me on Forrst" target="_blank"><span class="font-icon-social-forrst"></span></a></li>
+                        <li><a href="http://www.behance.net/alessioatzeni" title="Follow Me on Behance" target="_blank"><span class="font-icon-social-behance"></span></a></li>
+                        <li><a href="https://www.facebook.com/Bluxart" title="Follow Me on Facebook" target="_blank"><span class="font-icon-social-facebook"></span></a></li>
+                        <li><a href="https://plus.google.com/105500420878314068694" title="Follow Me on Google Plus" target="_blank"><span class="font-icon-social-google-plus"></span></a></li>
+                        <li><a href="http://www.linkedin.com/in/alessioatzeni" title="Follow Me on LinkedIn" target="_blank"><span class="font-icon-social-linkedin"></span></a></li>
+                        <li><a href="http://themeforest.net/user/Bluxart" title="Follow Me on ThemeForest" target="_blank"><span class="font-icon-social-envato"></span></a></li>
+                        <li><a href="http://zerply.com/Bluxart/public" title="Follow Me on Zerply" target="_blank"><span class="font-icon-social-zerply"></span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- End Socialize -->
 
-      By default, filesin your `assets/linker/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
-      
-      To customize any part of the built-in behavior, just edit your Gruntfile.
-      For example, here are a few things you could do:
-          
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
+<!-- Footer -->
+<footer>
+  <p class="credits">&copy; <%- __('Elisabeth HOURS') %>. - <a href="http://momcreation.fr" > website</a> by <a href="http://momcreation.fr" >Momcreation</a></p>
+</footer>
+<!-- End Footer -->
 
-    -->
+<!-- Back To Top -->
+<a id="back-to-top" href="#">
+  <i class="font-icon-arrow-simple-up"></i>
+</a>
+<!-- End Back to Top -->
 
-    <!--SCRIPTS-->
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/wow/dist/wow.min.js"></script>
-    <script src="/bower_components/sharrre/jquery.sharrre.min.js"></script>
-    <script src="/bower_components/fitvids/jquery.fitvids.js"></script>
-    <script src="/js/dependencies/backstretch.js"></script>
-    <script src="/js/dependencies/jquery-ui-custom.js"></script>
-    <script src="/js/dependencies/lodash.js"></script>
-    <script src="/js/dependencies/myfunctionsTools.js"></script>
-    <script src="/js/dependencies/prettyembed.js"></script>
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/skel.min.js"></script>
-    <script src="/js/menu.js"></script>
-    <!--SCRIPTS END-->
-  </body>
+
+<!-- Js -->
+<script src="/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/bower_components/wow/dist/wow.min.js"></script>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bower_components/jquery.nicescroll/dist/jquery.nicescroll.min.js"></script>
+<script src="/js/dependencies/prettyembed.js"></script>
+<script src="_include/js/supersized.3.2.7.min.js"></script> <!-- Slider -->
+<script src="_include/js/waypoints.js"></script> <!-- WayPoints -->
+<script src="_include/js/waypoints-sticky.js"></script> <!-- Waypoints for Header -->
+<script src="_include/js/jquery.isotope.js"></script> <!-- Isotope Filter -->
+<script src="_include/js/jquery.fancybox.pack.js"></script> <!-- Fancybox -->
+<script src="_include/js/jquery.fancybox-media.js"></script> <!-- Fancybox for Media -->
+<script src="_include/js/plugins.js"></script> <!-- Contains: jPreloader, jQuery Easing, jQuery ScrollTo, jQuery One Page Navi -->
+<!-- End Js -->
+<script type="text/javascript">
+new WOW().init();
+console.log('MYSCRIPT');
+var articles = <%- JSON.stringify(articles) %>;
+        console.log(articles);
+var projects = <%- JSON.stringify(projects) %>;
+        console.log(projects);
+var eli = <%- JSON.stringify(eli) %>;
+
+</script>
+<script src="_include/js/main.js"></script> <!-- Default JS -->
+</body>
 </html>
