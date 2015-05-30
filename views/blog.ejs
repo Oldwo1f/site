@@ -1,5 +1,4 @@
-
-        <div class="portfo">
+ <div class="portfo">
             <div id="header">
                 <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
                 <h1><%= __('Blog') %></h1>
@@ -21,22 +20,12 @@
                  <% for(var i=0; i<articles.length; i++) {%>
                    
                             
-                    <div class="box container collapse in  wow zoomInUp" rel="<% if(articles[i].category){ %><%= articles[i].category.id %><% } %>">
+                    <div class="box container collapse in" rel="<% if(articles[i].category){ %><%= articles[i].category.id %><% } %>">
                         <header>
                             <h2><%= articles[i].title %></h2>
                         </header>
                         <div  class="col col-xs-12 ">
- 
-
                                 <% if(articles[i].publishVideo==true && articles[i].video){ %>
-
-                                         <!--  <div class="container2">
-                                            <div class="vendor">
-                                                <iframe src="https://player.vimeo.com/video/127909728?badge=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                              </div>
-                                              
-
-                                          </div>   -->
                                             <div class="pretty-embed" data-pe-videoid="<%= articles[i].video %>"></div>
                                 <%}else if(articles[i].img) { %>
                                     <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>"/>
@@ -57,13 +46,7 @@
                 
 
             </div>
-            <div class="box container toto"> 
-                
-             
 
-
-            </div>
-        </div>
         <!-- Footer -->
             <div id="footer">
                 <div class="container 75%">
@@ -93,6 +76,6 @@
 
 var categories = <%- JSON.stringify(categories) %>;
         console.log(categories);
-        // Custom selector and No-Double-Wrapping Prevention Test
+
 
 </script>
