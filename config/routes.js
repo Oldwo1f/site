@@ -37,6 +37,7 @@ module.exports.routes = {
   'GET /projet/:id/*':'frontController.projet',
   'GET /blog': 'frontController.blog',
   'GET /article/:id/*':'frontController.article',
+  'GET /contact':'frontController.contact',
   
   'POST /contactEmail':'frontController.contactEmail',
   'POST /project/:itemid/addComment':'frontController.addCommentProj',

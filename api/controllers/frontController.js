@@ -752,6 +752,11 @@ module.exports={
 		}else{
 			res.status(400).send('field error');
 		}
-	}
-	
+	},
+	contact:function(req,res) {
+		var ua = req.headers['user-agent'].toLowerCase();
+
+		
+			return res.view('contact',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
+	},	
 }
