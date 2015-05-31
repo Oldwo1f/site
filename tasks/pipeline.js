@@ -23,7 +23,8 @@ var cssFilesToInject = [
   'css/style.css',
   'css/style-wide.css',
   // 'css/style-mobile.css',
-  'styles/**/*.css'
+  // 'styles/**/*.css'
+  'styles/importer.css'
 ];
 
 
