@@ -46,7 +46,7 @@
   <body ng-app="app" ng-controller="appCtrl">
 
     <h1 class="ms-layer center" id="logo" ><center><img src="images/front/streetlogo.svg" class="biglogo" style="user-select:none;max-height:100%;" alt="Streetcolors logo" onload="loadlogo()" /><img style="display:block;user-select:none;margin-top:-20px" src="images/front/graffiti.png" class="hidden-xs" alt="Graffiti logo"  /></center></h1>
-    <p class="baseline">Décoration intérieure & extérieure sur tous supports - Initiations - Ateliers - Performances - Evénementiel</p>
+    <p class="baseline"><%= __('baseline') %></p>
     <div class="slider-wrapper">
         
         <!-- masterslider -->
@@ -66,7 +66,7 @@
                     data-duration="2500"
                     data-delay="0"
                     data-ease="easeOutExpo"
-                >Promotion et développement de la culture urbaine</h2>
+                ><%= __('slider-text-1') %></h2>
                 
                 
              
@@ -85,7 +85,7 @@
                     data-duration="2500"
                     data-delay="0"
                     data-ease="easeOutExpo"
-                >Une association pas comme les autres. <br> Jeune et dynamique.<br> Des relations étroites avec le public.</h2>
+                ><%- __('slider-text-2') %></h2>
                
                 
                 
@@ -108,7 +108,7 @@
                     data-duration="2500"
                     data-delay="0"
                     data-ease="easeOutExpo"
-                >De la couleur à vos projets, une passion à partager.</h2>
+                ><%= __('slider-text-3') %></h2>
                
                 
             </div>
@@ -140,10 +140,10 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>
-                            <li class=""><a href="/portfolio">Portfolio</a></li>
-                            <li class=""><a href="/blog">Blog</a></li>
-                            <li class=""><a href="/contact">Contact</a> </li>
+                            <li class="active"><a href="/"><%= __('Home') %></a></li>
+                            <li class=""><a href="/portfolio"><%= __('Portfolio') %></a></li>
+                            <li class=""><a href="/blog"><%= __('Blog') %></a></li>
+                            <li class=""><a href="/contact"><%= __('Contact') %></a> </li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
@@ -157,15 +157,14 @@
     <section class="content-section" id="firstSection">
         <div class="container">
             <p class="anim fadeInUp">
-                Créé en Novembre 2011, Street Colors est une collectif situé dans un ancien site industriel réhabilité en pôle culturel, appelé U1, à Château-Thierry. Ces membres, avant des amis, sont issus du milieu de l’image (graphisme, photo, graffiti ou simplement passionné). Nous nous sommes organisés en structure associative afin de partager notre passion commune avec vous (collectivité, professionnels ou particuliers). Toujours en quête d’originalité et de perfectionnement, cela nous permet d’explorer d’autres univers et d’élargir notre champ d’actions. C’est donc naturellement que nos décorations, ateliers d’initiations, évènements, échanges entres artistes et fresques se font partout en France et plus particulièrement en Picardie, en Champagne-Ardenne, sur le bassin Parisien, et même à l’étranger (Australie, Allemagne, Pays-Bas, Thaïlande, Burkina Faso … ).
+                <%= __('text-prez') %>
+                
             </p>
         </div>
     
         <div class="container">
-            <h1 class="anim fadeInDown"><i class="fa fa-gear"></i>Nos <span>Demarches</span></h1>
-            <p style="margin-bottom:100px"> Lors de notre premier contact, l’équipe Street Colors cible vos besoins pour vous accompagner tout au long de votre projet. <br>
-Après vous avoir rencontré, nous établissons un devis afin de fixer un budget. <br>
-Une simulation vous sera proposée pour vous donner un aperçu du travail possible avant réalisation.</p>
+            <h1 class="anim fadeInDown"><i class="fa fa-gear"></i> <%- __('title-demarche') %> </h1>
+            <p style="margin-bottom:100px"><%- __('text-demarche') %> </p>
         </div>
         
         <div class="container">
@@ -173,32 +172,32 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
             <div class="col-md-3 col-sm-6 feature anim fadeInLeft" data-wow-delay="0.25s">
                 <i class="fa fa-user" style="padding:auto 5px;"></i>
                 <div class="content">
-                    <h4>Particuliers</h4>
-                    <p>Donnez une ambiance originale à votre lieu, en fonction d’un thème, d’une couleur, d’un mot ou d’une photo.</p>
+                    <h4> <%- __('Particuliers') %></h4>
+                    <p><%- __('text-Particuliers') %></p>
                 </div>
             </div>
             
             <div class="col-md-3 col-sm-6 feature anim fadeInDown" data-wow-delay="0.25s">
                 <i class="fa fa-eur"></i>
                 <div class="content">
-                    <h4>Professionnels</h4>
-                    <p>Dynamiser votre activité par une communication originale tout en respectant votre charte graphique.</p>
+                    <h4> <%- __('Professionnels') %></h4>
+                    <p><%- __('text-Professionnels') %></p>
                 </div>
             </div>
             
             <div class="col-md-3 col-sm-6 feature anim fadeInRight" data-wow-delay="0.25s">
                 <i class="fa fa-warning"></i>
                 <div class="content">
-                    <h4>Evenementiel</h4>
-                    <p>Promouvoir votre manifestation par une démonstration artistique interactive avec votre public. </p>
+                    <h4> <%- __('Evenementiel') %></h4>
+                    <p><%- __('text-Evenementiel') %></p>
                 </div>
             </div>
 
             <div class="col-md-3 col-sm-6 feature anim fadeInRight" data-wow-delay="0.25s">
                 <i class="fa fa-graduation-cap"></i>
                 <div class="content">
-                    <h4>Initiations</h4>
-                    <p>Découvrir une culture par des ateliers progressifs et participatifs au sein de votre structure. </p>
+                    <h4> <%- __('Initiations') %></h4>
+                    <p><%- __('text-Initiations') %></p>
                 </div>
             </div>
             
@@ -228,9 +227,9 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
     
     <section class="content-section team" >
             <div class="container">
-                <h1><i class="fa fa-star"></i>Colors <span>Team</span></h1>
+                <h1><i class="fa fa-star"></i><%- __('title-color') %></h1>
                 <p>
-                    Voici devant vous toute l’équipe de Street Colors.
+                    <%- __('text-team') %>
                 </p>
             </div>
         <div class="overlay">
@@ -623,9 +622,9 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
 
     <section class="content-section anim fadeInDown contact  form">
         <div class="container">
-            <h1><i class="fa fa-pencil-square-o"></i>Contactez <span>Nous</span></h1>
+            <h1><i class="fa fa-pencil-square-o"></i><%- __('title-contact') %></h1>
             <p>
-                Une question ? Un commentaire ? Nous serons ravis de vous renseigner.
+                <%- __('text-contact') %>
             </p>
         </div>
     
@@ -638,17 +637,17 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
                 
                     <span class="input-group">
                         <i class="fa fa-user"></i>
-                        <input type="text" name="contactName" id="contactName" class="lg" placeholder="Nom" />
+                        <input type="text" name="contactName" id="contactName" class="lg" placeholder="<%- __('form-nom') %>" />
                     </span><!-- .input-group -->
                     
                     <span class="input-group">
                         <i class="fa fa-envelope"></i>
-                        <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="Email" />
+                        <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="<%- __('form-email') %>" />
                     </span><!-- .input-group -->
                     
                     <span class="input-group">
                         <i class="fa fa-book"></i>
-                        <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="Objet" />
+                        <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="<%- __('form-objet') %>" />
                     </span><!-- .input-group -->
                     
                 </div><!-- .col-5 -->
@@ -656,11 +655,11 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
                 <div class="col-lg-7 anim fadeInRight">
                 
                     <span class="input-group">
-                        <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="Exprimez-vous"></textarea>
+                        <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="<%- __('form-message') %>"></textarea>
                     </span><!-- .input-group -->
                     
                     <span class="input-group">
-                        <button class="submit" id="submit_contact" data-loading-text="Envoi...">Envoyer</button>
+                        <button class="submit" id="submit_contact" data-loading-text="Envoi..."><%- __('Envoyer') %></button>
                     </span><!-- .input-group -->
                 </div>
             </form>
@@ -677,7 +676,7 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
         <div class="container">
             <h1>
             <!-- <i class="fa fa-pencil-square-o"></i> -->
-            <span>Partenaires</span></h1>
+            <span><%- __('Partenaires') %></span></h1>
             
 
             <div class="row">
@@ -696,7 +695,7 @@ Une simulation vous sera proposée pour vous donner un aperçu du travail possib
         <div class="container">
             <h1>
             <!-- <i class="fa fa-pencil-square-o"></i> -->
-            <span>References</span></h1>
+            <span><%- __('References') %></span></h1>
             <div class="row">
                 <div class="col-md-2 col-sm-3 col-xs-4"><img width="100%" src="/images/front/reference/4cb.jpg" alt="Référence 4cb"></div>
                 <div class="col-md-2 col-sm-3 col-xs-4"><img width="100%" src="/images/front/reference/amicale.jpg" alt="Référence amicale"></div>

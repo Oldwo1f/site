@@ -1,98 +1,175 @@
-
-        <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1><%= __('Blog') %></h1>
+<div class="container-wrapper navigation fixed">
+        <nav class="navbar navbar-default" role="navigation">
+        
+            <div class="container">
+            
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="images/front/logoline.png" style="height:50px; margin-top:0px" />
+                    </a>
+                    <ul class="mini"></ul><!-- mobile navigation -->
+                </div><!-- .navbar-header -->
                 
+                <div class="collapse navbar-collapse">
+                    <div class="right">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="/"><%= __('Home') %></a></li>
+                            <li class=""><a href="/portfolio"><%= __('Portfolio') %></a></li>
+                            <li class="active"><a href="/blog"><%= __('Blog') %></a></li>
+                            <li class=""><a href="/contact"><%= __('Contact') %></a></li>
+                        </ul>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+            <div class="container" style="position:relative;">
+                <div class="bottombordernavbar "></div>
             </div>
-            <header class="listCatProj major container 75%">
-                    <ul class="">
-                        <li class="active" rel="all"><%= __('Tous') %></li>
-                        <% for(var i=0; i<categories.length; i++) {%>
-                            <li rel="<%= categories[i].id %>" >
-                                <span><%= categories[i].name %></span>
-                            </li>
-                        <% } %>
-                    </ul>
-            </header>
-            <div id="main">
-
-
-                 <% for(var i=0; i<articles.length; i++) {%>
-                   
-                            
-                    <div class="box container collapse in  wow zoomInUp" rel="<% if(articles[i].category){ %><%= articles[i].category.id %><% } %>">
-                        <header>
-                            <h2><%= articles[i].title %></h2>
-                        </header>
-                        <div  class="col col-xs-12 ">
- 
-
-                                <% if(articles[i].publishVideo==true && articles[i].video){ %>
-
-                                         <!--  <div class="container2">
-                                            <div class="vendor">
-                                                <iframe src="https://player.vimeo.com/video/127909728?badge=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                              </div>
-                                              
-
-                                          </div>   -->
-                                            <div class="pretty-embed" data-pe-videoid="<%= articles[i].video %>"></div>
-                                <%}else if(articles[i].img) { %>
-                                    <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>"/>
-                                <% } %>
+        </nav>
+    </div>
+    <div id="nav-ends"></div>
+    
+    
+   
+    <section class="content-section low-rider margintop blog">
+        <div class="container">
+            <div class="row">
+            
+                <div class="col-lg-9">
+                    <% if(thiscategory && thiscategory.imgpath){%>
+                        <div style="margin-bottom:20px;">
+                            <img src="file/image/thumbs/<%= thiscategory.imgpath %>" width="100%" alt="<%= thiscategory.title %>">
                         </div>
-                        <div  class="col col-xs-12 text-center">
-                            <%- articles[i].content %>
+                    <%}%>    
+                    <% for(var i in articles){ %> 
+                        <div class="blog anim fadeInLeft">
+                           
+                                <span class="image">
                             
-                        </div><div  class="col col-xs-12 text-center">
-                            <% if(articles[i].rewriteurl){ %>
-                            <a href="article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>" class="button"><%= __('see_article_button') %></a>
-                            <% } else {%>
-                            <a href="article/<%= articles[i].id %>/" class="button"><%= __('see_article_button') %></a>
-                            <% } %>
+                                     <% if(articles[i].publishVideo==true && articles[i].video){ %>
+                                        <div class="pretty-embed" data-pe-videoid="<%= articles[i].video %>"></div>
+                                        <%}else if(articles[i].img) { %>
+                                            <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>"/>
+                                        <% } %>
+                                </span>
+
+             
+                            <div class="date" >
+                                <a  class="day" title="<%- moment(articles[i].date).fromNow() %>">
+                                    <%- moment(articles[i].date).format('D') %>
+                                </a>
+                                <a  class="month" title="<%- moment(articles[i].date).format('YYYY') %>" >
+                                    <%- moment(articles[i].date).format('MMM') %>
+                                </a>
+                            </div><!-- .date -->
+                            
+                            <span class="title-desc">
+                                <h3><%= articles[i].title %></h3>
+                                <ul class="meta">
+                                    <% if( articles[i].author ){%> 
+                                        <% if(articles[i].author.usename==true){%> 
+                                        <li><i class="fa fa-user"></i><%= articles[i].author.name %></li>
+                                        <% }else{ %>
+                                        <i class="fa fa-user"></i><%= articles[i].author.pseudo %></li>
+                                        <% } %>
+                                    <% } %>
+                                    <li><i class="fa fa-eye"></i><%= articles[i].nbView %></li>
+                                    <li>
+                                        <% for(var j in category){
+                                          if(articles[i].category && category[j].id==articles[i].category.id){%>
+                                                <a href="blog/category/<%= category[j].id  %>"><i class="fa fa-th-list"></i>
+                                                <%= category[j].name %>
+                                                </a></li>
+                                          <% } %>
+                                        <% } %>
+                                    
+                                    
+                                </ul><!-- .meta -->
+                            </span><!-- .title-desc -->
+                            
+                            <p>
+                                <%- articles[i].shortcontent %>
+                            </p>
+                            
+                            <a class="btn btn-sm btn-primary icon" data-wow-delay=".45s" role="button" href="blog/article/<%= articles[i].id %>/<%- articles[i].rewriteurl %>"><i class="fa fa-long-arrow-right"></i>Lire la suite</a>
+                            
+                            <div class="clearfix"></div>
+                            
+                        </div><!-- .blog -->
+                    <% } %>    
+                    
+                     <ul class="pagination anim fadeInLeft" data-wow-delay="0.2s">
+                        <li><a href="single.html">&laquo;</a></li>
+                        <% var url = 'blog/'
+                        if(thiscategory){
+                            url= 'blog/category/'+thiscategory.id+'/'
+                        }
+                        for(var i=1; i<= nbPage ; i++){ %>
+                          
+                                <li <%if(i == currentPage){ %> class="active" <% } %> ><a href="<%= url %><%= i %>"><%= i %></a></li>
+                        <% } %>
+                       
+                        <li><a href="single.html">&raquo;</a></li>
+                    </ul><!-- .pagination -->
+                    
+                </div><!-- .col-lg-9 -->
+                
+                <div class="col-lg-3 sidebar">
+                    
+                    
+                        <h4 class="anim fadeInRight">Catégories<i class="fa fa-th-list"></i></h4>
+                     
+                        <div class="anim fadeInRight">
+                            <ul class="posts" >
+                            <% for(var i in category){ %> 
+                                <a href="blog/category/<%= category[i].id %>"><li><h6><%= category[i].name %></h6></li></a>
+                            <% } %> 
+                            </ul>
+                        </div><!-- .text -->
+                        
+                        <h4 class="anim fadeInRight">
+                            Les plus vues<i class="fa fa-bomb"></i>
+                        </h4>
+                        
+                        <div class="anim fadeInRight">
+                                    <ul class="posts">
+                                         <% for(var i in mostseen){ %> 
+                                            <li>
+                                                <a href="blog/article/<%= mostseen[i].id %>/<%- mostseen[i].rewriteurl %>">
+                                                    
+                                                <h6>
+                                                    <%= mostseen[i].title %>
+                                                </h6>
+                                                <cite><i class="fa fa-date"></i><%= moment(mostseen[i].date).fromNow() %></cite>
+                                                <div class="clearfix"></div>
+                                                </a>
+
+                                            </li>
+                                        <% } %> 
+                                       
+                                        
+                                       
+                                    </ul><!-- .posts-wrapper -->
                         </div>
                     </div>
-                    <% } %>
-                
-
-            </div>
-            <div class="box container toto"> 
-                
-             
-
-
-            </div>
-        </div>
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
                     
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
-
-                </div>
-            </div>
- </div>
-<script type="text/javascript">
-
-var categories = <%- JSON.stringify(categories) %>;
-        console.log(categories);
-        // Custom selector and No-Double-Wrapping Prevention Test
+                </div><!-- .col-lg-4 .sidebar -->
+                
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section><!-- .content-section -->
+    
+<script>
+    var category = <%- JSON.stringify(category) %>
+    console.log(category);
+ 
+    var thiscategory = <%- JSON.stringify(thiscategory) %>
+    console.log(thiscategory);
+    var articles = <%- JSON.stringify(articles) %>
+    console.log(articles);
+    var thiscategory = <%- JSON.stringify(thiscategory) %>
+    console.log(thiscategory);
 
 </script>

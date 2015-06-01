@@ -905,7 +905,7 @@ h6 {
 	position:relative;
 	display:block;
 	margin-bottom:25px;
-	height:390px;	
+	
 }
 
 .blog .image img {
@@ -975,7 +975,7 @@ h6 {
 }
 
 .blog ul.meta li a {
-	color:#404040;
+	color:white;
 	font-weight:100;	
 }
 
@@ -983,7 +983,7 @@ h6 {
 	margin-right:5px;	
 }
 
-.blog ul.meta li a:hover i {
+.blog ul.meta li a:hover{
 	color:#1C9CD8;
 }
 
@@ -1115,9 +1115,12 @@ ul.pagination li a:hover {
 
 .single ul.comments {
 	padding:0;
-	margin:0 0 30px 0;
+	margin:50px 0 30px 0;
 	list-style:none;
 	position:relative;
+}
+.single ul.comments ul.comments {
+	margin:0px 0 0px 0;
 }
 
 .single ul.comments li {
@@ -1126,6 +1129,8 @@ ul.pagination li a:hover {
 	position:relative;
 	margin-bottom:25px;
 	padding:0;
+  	border: 1px solid white;
+ 	 padding: 10px;
 }
 
 .single ul.comments li .wrapper {
@@ -1153,15 +1158,12 @@ padding-bottom: 10px;
 	font-weight:300;
 	font-family:"Helvetica", Arial, sans-serif;
 	position:relative;
-	padding:20px 0 0 50px;
-	display:inline-block;
-	float:left;
+	display:block;
 }
 
 .single ul.comments li span {
-	display:inlin-block;
-	float:left;
-	margin:31px 0 0 35px;
+	display:inline-block;
+	margin:7px 0 0 0px;
 	font-family:"Helvetica", Arial, sans-serif;
 	color:#828282;
 	font-size:12px;
@@ -1170,14 +1172,14 @@ padding-bottom: 10px;
 }
 
 .single ul.comments li p {
-	font-size:16px;
+	font-size:14px;
 	font-weight:100;
-	clear:both;
 	font-family:"Helvetica", Arial, sans-serif;
 	text-align:left;
 	line-height:29px;
 	max-width:100%;
-	margin-left:50px;
+	margin-left:20px;
+	  float: none;
 }
 
 .single ul.comments li a {

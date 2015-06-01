@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keyword" content="<%- keyword %>">
 <meta name="description" content="<%- description %>">
-
+<base href="<%= baseurl %>" >
 <title><%- title %></title>
 
   <!-- Bootstrap core CSS -->
@@ -109,7 +109,7 @@
                         <center><img src="images/front/streetlogo.svg" style="width: 290px;" alt="Footer logo streetcolors." /></center>
                     </div><!-- .logo -->
                     
-                    <p class="liner anim fadeInUp">Painting together</p>
+                    <p class="liner anim fadeInUp"><%- __('Painting together') %></p>
                     
                     <ul class="social-media anim fadeInUp" data-wow-delay="0.25s">
                         <li><a href="http://wwww.facebook.com/street.colors.9" title="facebook" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
@@ -121,7 +121,7 @@
                     </ul><!-- .social-media -->
                     
                     <p class="copyright anim fadeIn" data-wow-delay="0.35s">
-                        Copyright 2014 - All Rights Reserved
+                        <%- __('Copyright') %> | site web <a href="http://momcreation.fr">MOMCREATION</a>
                     </p><!-- .copyright -->
                     
                 </div><!-- .col-lg-12 -->
@@ -158,6 +158,7 @@
     <script language="javascript" src="js/front/jquery.contact.min.js"></script>
     <!-- NiceScroll core Javascript -->
     <script language="javascript" src="js/front/jquery.nicescroll.min.js"></script>
+    <script language="javascript" src="js/dependencies/prettyembed.js"></script>
     <!-- Retina core JavaScript -->
     <script language="javascript" src="js/front/retina-1.1.0.min.js"></script>
     <!-- Nivo Slider JavaScript -->

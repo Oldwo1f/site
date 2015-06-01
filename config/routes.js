@@ -36,7 +36,10 @@ module.exports.routes = {
   'GET /portfolio': 'frontController.portfolio',
   'GET /projet/:id/*':'frontController.projet',
   'GET /blog': 'frontController.blog',
-  'GET /article/:id/*':'frontController.article',
+  'GET /blog/:page': 'frontController.blog',
+  'GET /blog/category/:thiscat': 'frontController.category',
+  'GET /blog/category/:thiscat/:page': 'frontController.category',
+  'GET /blog/article/:id/*':'frontController.article',
   'GET /contact':'frontController.contact',
   
   'POST /contactEmail':'frontController.contactEmail',

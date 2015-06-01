@@ -17,10 +17,10 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="/">Home</a></li>
-                            <li class=""><a href="/portfolio">Portfolio</a></li>
-                            <li class=""><a href="/blog">Blog</a></li>
-                            <li class="active"><a href="/contact">Contact</a> </li>
+                            <li class=""><a href="/"><%= __('Home') %></a></li>
+                            <li class=""><a href="/portfolio"><%= __('Portfolio') %></a></li>
+                            <li class=""><a href="/blog"><%= __('Blog') %></a></li>
+                            <li class="active"><a href="/contact"><%= __('Contact') %></a></li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
@@ -42,7 +42,7 @@
         	<div class="row">
        			<div class="col-lg-12 anim fadeInDown" data-wow-delay="0.25s">
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem dolor optio iste, cum sunt porro magni quod numquam repellendus minima maxime harum neque autem accusamus voluptas commodi vitae. Sit, quae?
+                        <%= __('Contact-text') %>
                     </p>
                 </div><!-- .col-lg-12 -->
             </div><!-- .row -->
@@ -64,27 +64,27 @@
                     
                         <span class="input-group tight">
                             <i class="fa fa-user"></i>
-                            <input type="text" name="contactName" id="contactName" class="lg" placeholder="Nom" />
+                            <input type="text" name="contactName" id="contactName" class="lg" placeholder="<%- __('form-nom') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group tight second">
                             <i class="fa fa-envelope"></i>
-                            <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="Email" />
+                            <input type="text" name="contactEmail" id="contactAddress" class="lg" placeholder="<%- __('form-email') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group">
                             <i class="fa fa-book"></i>
-                            <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="Objet" />
+                            <input type="text" name="contactSubject" id="contactSubject" class="lg" placeholder="<%- __('form-objet') %>" />
                         </span><!-- .input-group -->
                         
                         <span class="input-group">
-                            <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="Exprimez-vous"></textarea>
+                            <textarea name="contactMessage" id="contactMessage" class="lg" placeholder="<%- __('form-message') %>"></textarea>
                         </span><!-- .input-group -->
                         
                         <span id="message"></span>
                         
                         <span class="input-group">
-                            <a href="#" type="button" class="btn btn-primary" id="submit_contact" data-loading-text="ENVOI...">ENVOYER</a>
+                            <a href="#" type="button" class="btn btn-primary" id="submit_contact" data-loading-text="ENVOI..."><%- __('Envoyer') %></a>
                         </span><!-- .input-group -->
                         
                     </div><!-- .col-lg-8 -->
@@ -96,9 +96,7 @@
                             	<i class="fa fa-map-marker"></i>
                                 <span>
                                 	<p>
-                                        Street Colors<br />
-                                    	53 Rue Paul Doucet<br />
-                                    	02400 Château-Thierry<br />
+                                        <%- __('adresse') %>
                                     </p>
                                 </span>
                             </li>
@@ -107,8 +105,7 @@
                             	<i class="fa fa-phone"></i>
                                 <span>
                                     <p>
-                                    Tél : 03 23 69 12 88 <br />
-                                    Mobile : 06 47 60 79 57
+                                        <%- __('tel') %>
                                     </p>
                                 </span>
                             </li>

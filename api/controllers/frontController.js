@@ -60,6 +60,7 @@ module.exports={
 						description:req.__('SEO_HOME_description'),
 						scripturl:'script.js',
 						menu:'home',
+						baseurl:''
 					})
 				})
 			// }
@@ -172,6 +173,7 @@ module.exports={
 
 	},
 	projet:function(req,res,next) {
+
 		console.log(req.locale);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale)
@@ -383,11 +385,20 @@ module.exports={
 
 	},
 	blog:function(req,res,next) {
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		page = 1;
+		nbperpage = 2;
+		baseurl='/'
+		if(req.params.page){
+			baseurl='/../'
+			page = req.params.page;
+		}
 
 		console.log('blog');
 		async.parallel({
 			projs:function  (cb) {
-				Article.find({status:'actif'}).populateAll().sort('createdAt DESC').limit(20).exec(function (err,projects) {
+				Article.find({where:{status:'actif'},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
 							// console.log('---------------------------');
@@ -430,6 +441,55 @@ module.exports={
 					
 				})
 			},
+			mostseen:function  (cb) {
+				Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										project.img = datas
+										resolve(project)
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
+					
+				})
+			},
+			count:function(cb) {
+
+				Article.count({where:{status:'actif'}}).exec(function(err,data) {
+					console.log(data);
+					// console.log(datastogo);
+					return cb(null,data)
+			
+
+				})
+				
+			},
 			cats:function  (cb) {
 				CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
 			console.log(err);
@@ -448,10 +508,7 @@ module.exports={
 										if(trad.lang == req.locale){
 											console.log('local cool');
 											cat.name = (trad.name) ? trad.name : cat.name;
-											// project.content = (trad.content) ? trad.content : project.content;
-											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
-											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
-											// project.description = (trad.description) ? trad.description : project.description;
+											
 										}
 									})
 
@@ -472,19 +529,212 @@ module.exports={
 			console.log(err);
 			console.log('results');
 			console.log(results.cats);
+			var nbPage = Math.ceil(results.count / nbperpage)
 			// console.log(results);
 			res.status(200).view('blog',{
-				'articles':results.projs,
-				'categories':results.cats,
+				articles:results.projs,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'portfo.js',
 				menu:'blog',
-				marked:marked
+				marked:marked,
+				nbPage:nbPage,
+				thiscategory:null,
+				currentPage:page,
+				mostseen:results.mostseen,
+				category:results.cats,
+				moment: moment,
+				baseurl:baseurl
 			})
 		})
-		
+
+
+
+
+	},
+	category:function(req,res,next) {
+
+		console.log('CATEGORY',req.params.thiscat);
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		page = 1;
+		nbperpage = 2;
+		baseurl='/../'
+		if(req.params.page){
+			baseurl='/../../'
+			page = req.params.page;
+		}
+
+		async.parallel({
+			projs:function  (cb) {
+				Article.find({where:{status:'actif',category:req.params.thiscat},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
+					console.log(projects);
+						return Promise.map(projects,function  (project) {
+							// console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										// console.log('datas',datas);
+										project.img = datas
+
+										resolve(project)
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			catThis:function(cb) {
+				CategoryBlog.findOne(req.params.id).populateAll().exec(function(err,data) {
+				if(err)
+					cb(err)
+
+					
+					return new Promise(function(resolve,rej){
+								if(data.translations.length && req.locale!= 'fr'){
+									console.log('we got Trad');
+									_.map(data.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											data.name = (trad.name) ? trad.name : data.name;
+											
+										}
+									})
+
+									resolve(data)
+								}else
+								{
+									resolve(data)
+								}
+							}).then(function(category) {cb(null,category);})
+				})
+					
+			},
+			mostseen:function  (cb) {
+				Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										project.img = datas
+										resolve(project)
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
+					
+				})
+			},
+			count:function(cb) {
+
+				Article.count({where:{status:'actif',category:req.params.thiscat}}).exec(function(err,data) {
+					console.log(data);
+					// console.log(datastogo);
+					return cb(null,data)
+			
+
+				})
+				
+			},
+			cats:function  (cb) {
+				CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			 _.remove(cats,function (n) {
+				return n.nbArticles <=0;
+			})
+						return Promise.map(cats,function  (cat) {
+							return new Promise(function(resolve,rej){
+								if(cat.translations.length && req.locale!= 'fr'){
+									console.log('we got Trad');
+									_.map(cat.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											cat.name = (trad.name) ? trad.name : cat.name;
+											
+										}
+									})
+
+									resolve(cat)
+								}else
+								{
+									resolve(cat)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,cats)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			console.log('results');
+			var nbPage = Math.ceil(results.count / nbperpage)
+			// console.log(results);
+			res.status(200).view('blog',{
+				articles:results.projs,
+				title: results.catThis.name + req.__('SEO_BLOG_title'),
+				keyword: results.catThis.name + req.__('SEO_BLOG_keyword'),
+				description: req.__('SEO_BLOG_description'),
+				scripturl:'portfo.js',
+				menu:'blog',
+				marked:marked,
+				nbPage:nbPage,
+				thiscategory:results.catThis,
+				currentPage:page,
+				mostseen:results.mostseen,
+				category:results.cats,
+				moment: moment,
+				baseurl:baseurl
+			})
+		})
 
 
 
@@ -494,7 +744,13 @@ module.exports={
 		console.log(req.locale);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale)
-		console.log("FETCH ONE Article");
+
+		baseurl='/../'
+		if(req.params.page){
+			baseurl='/../../'
+			page = req.params.page;
+		}
+
 		
 				Article.find(req.params.id).populateAll().exec(function (err,items){
 						
@@ -594,6 +850,72 @@ module.exports={
 										// console.log('allcomments',allcomments);
 										cbparalelle(null,allcomments)
 									})
+								},
+								mostseen:function  (cb) {
+									Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+								
+											return Promise.map(projects,function  (project) {
+												return new Promise(function(resolve,rej){
+													if(project.translations.length && req.locale!= 'fr'){
+														_.map(project.translations,function  (trad) {
+															if(trad.lang == req.locale){
+																project.title = (trad.title) ? trad.title : project.title;
+																project.content = (trad.content) ? trad.content : project.content;
+																project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+																project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+																project.description = (trad.description) ? trad.description : project.description;
+															}
+														})
+													}
+													project.content = truncate(marked(project.content), 450)
+													if(project.images.length)
+													{
+														var img0 = _.find(project.images, function(chr) {
+														  return chr.rank == 0;
+														})
+														Image.findOne(img0.image).exec(function (err,datas) {
+															project.img = datas
+															resolve(project)
+														})
+													}else
+													{
+														resolve(project)
+													}
+												})
+												
+											}).then(function (projectss) {
+												cb(null,projects)
+											})
+										
+									})
+								},cats:function  (cb) {
+									CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+											 _.remove(cats,function (n) {
+												return n.nbArticles <=0;
+											})
+											return Promise.map(cats,function  (cat) {
+												return new Promise(function(resolve,rej){
+													if(cat.translations.length && req.locale!= 'fr'){
+														console.log('we got Trad');
+														_.map(cat.translations,function  (trad) {
+															if(trad.lang == req.locale){
+																cat.name = (trad.name) ? trad.name : cat.name;
+																
+															}
+														})
+
+														resolve(cat)
+													}else
+													{
+														resolve(cat)
+													}
+												})
+												
+											}).then(function (projectss) {
+												cb(null,cats)
+											})
+										
+									})
 								}
 							},function(err,ress) {
 
@@ -621,14 +943,17 @@ module.exports={
 									// res.status(200).send(projecttogo)
 									res.status(200).view('article',{
 										'article':projecttogo,
-										moment: moment,
 										pathtoshare:pathtoshare,
 										'title': projecttogo.title +' - BLOG - AAVO',
 										keyword: projecttogo.keyword,
 										description:projecttogo.description,
 										scripturl:'article.js',
 										menu:'blog',
-										marked:marked
+										marked:marked,
+										mostseen:ress.mostseen,
+										category:ress.cats,
+										moment: moment,
+										baseurl:baseurl
 									})
 								})
 							});		
@@ -754,9 +1079,6 @@ module.exports={
 		}
 	},
 	contact:function(req,res) {
-		var ua = req.headers['user-agent'].toLowerCase();
-
-		
 			return res.view('contact',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
 	},	
 }

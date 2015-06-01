@@ -40,7 +40,7 @@ jQuery(document).ready(function($) {
 	$logo = $('#logo')
 	$logo2 = $('.biglogo')
 
-
+	$().prettyEmbed();
 
 	// Setup WOW to only animate things below, uncomment/comment this line to fit your needs
 	$(".anim").waypoint(function() {$(this).removeClass("anim");},{triggerOnce:true, offset:"-95%"});
