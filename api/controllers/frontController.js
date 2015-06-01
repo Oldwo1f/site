@@ -970,15 +970,15 @@ module.exports={
 	},
 	addCommentArticle:function(req,res,next) {
 
-		console.log('addCommentProj');
+		console.log('addCommentARTICLE');
 		console.log(req.params.itemid);
 		
 
 		Article.findOne(req.params.itemid).exec(function (err,article) {
 			console.log(article);
-			Comment.create({author:req.body.name,
+			Comment.create({author:req.body.author,
 	  		email:req.body.email,
-	  		content:req.body.message,
+	  		content:req.body.content,
 	  		status:'new',
 	  		article:req.params.itemid
 	  		}).exec(function (err,coment){

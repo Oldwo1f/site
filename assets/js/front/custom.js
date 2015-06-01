@@ -1,3 +1,31 @@
+$('#twitter').sharrre({
+  share: {
+    twitter: true
+  },
+  enableHover: false,
+  enableTracking: (typeof(_gaq) != 'undefined') ? true : false,
+  // buttons: { twitter: {via: '_JulienH'}},
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('twitter');
+    return false;
+  }
+});
+$('#facebook').sharrre({
+  share: {
+    facebook: true
+  },
+  enableHover: false,
+  enableTracking: (typeof(_gaq) != 'undefined') ? true : false,
+  click: function(api, options){
+    api.simulateClick();
+    api.openPopup('facebook');
+    return false;
+  }
+});
+
+
+
 /**
 * Custom
 *
