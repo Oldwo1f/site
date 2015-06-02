@@ -1,73 +1,74 @@
- <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1><%= __('Portfolio') %></h1>
+ <div class="container-wrapper navigation fixed">
+        <nav class="navbar navbar-default" role="navigation">
+        
+            <div class="container">
+            
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="images/front/logoline.png" style="height:50px; margin-top:0px" />
+                    </a>
+                    <ul class="mini"></ul><!-- mobile navigation -->
+                </div><!-- .navbar-header -->
                 
+                <div class="collapse navbar-collapse">
+                    <div class="right">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="/"><%= __('Home') %></a></li>
+                            <li class="active"><a href="/portfolio"><%= __('Portfolio') %></a></li>
+                            <li class=""><a href="/blog"><%= __('Blog') %></a></li>
+                            <li class=""><a href="/contact"><%= __('Contact') %></a></li>
+                        </ul>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+            <div class="container" style="position:relative;">
+                <div class="bottombordernavbar "></div>
             </div>
-            <header class="listCatProj major container 75%">
-                    <ul class="">
-                        <li class="active" rel="all"><%= __('Tous') %></li>
-                        <% for(var i=0; i<categories.length; i++) {%>
-                            <li rel="<%= categories[i].id %>" >
-                                <span><%= categories[i].name %></span>
-                            </li>
-                        <% } %>
-                    </ul>
-            </header>
+        </nav>
+    </div>
+    <div id="nav-ends"></div>
+
+ <div class="content-section low-rider margintop portfo">
+           
             <div id="main">
+                    <div class="grid-sizer"> </div>      
 
-
+                <div class="box container grid">
+                    <% var url='' %>
                  <% for(var i=0; i<projects.length; i++) {%>
-                   
-                            
-                    <div class="box container collapse in  wow zoomInUp" rel="<% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
-                        <header>
-                            <h2><%= projects[i].title %></h2>
-                        </header>
-                        <div  class="col col-xs-12 ">
-                                <% if(projects[i].publishVideo==true && projects[i].video){ %>
-                                            <div class="pretty-embed" data-pe-videoid="<%= projects[i].video %>"></div>
-                                <%}else if(projects[i].img) { %>
-                                    <img src="/file/image/originalsize/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
+                    <% if(projects[i].rewriteurl){
+                            url = "projet/"+projects[i].id +"/"+ projects[i].rewriteurl;
+                            } else {
+                                url = "projet/"+projects[i].id +"/";
+                    
+                            } 
+                            var classtab = ['grid-item','grid-item','grid-item','grid-item2']
+                            var n = Math.ceil(Math.random()*4)-1
+                            var myclass = classtab[n]
+
+                            console.log(classtab);
+                            console.log(n);
+                            console.log(myclass);
+                    %>
+                    <div class="boximage <%= myclass %>" rel="<% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
+                    <a href="<%- url %>" class="">        
+                               
+                                <%if(projects[i].img) { %>
+                                    <img class="" src="/file/image/originalsize/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
                                 <% } %>
-                        </div>
-                        <div  class="col col-xs-12 text-center">
-                            <% if(projects[i].rewriteurl){ %>
-                            <a href="projet/<%= projects[i].id %>/<%= projects[i].rewriteurl %>" class="button"><%= __('see_project_button') %></a>
-                            <% } else {%>
-                            <a href="projet/<%= projects[i].id %>/" class="button"><%= __('see_project_button') %></a>
-                            <% } %>
-                        </div>
+                                <div class="cacheimage"><i class="fa-eye fa"></i></div>
+                    </a>
                     </div>
                     <% } %>
                 
+                </div> 
 
             </div>
 
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
-                    
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
-
-                </div>
-            </div>
+        
  </div>
 <script type="text/javascript">
 

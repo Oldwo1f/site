@@ -60,7 +60,8 @@ module.exports={
 						description:req.__('SEO_HOME_description'),
 						scripturl:'script.js',
 						menu:'home',
-						baseurl:''
+						baseurl:'',
+
 					})
 				})
 			// }
@@ -72,7 +73,9 @@ module.exports={
 
 	},	
 	portfolio:function(req,res,next) {
-
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		baseurl='/'
 		console.log('portfolio');
 		async.parallel({
 			projs:function  (cb) {
@@ -163,8 +166,26 @@ module.exports={
 				description:req.__('SEO_PORTFO_description'),
 				scripturl:'portfo.js',
 				menu:'portfo',
-				marked:marked
+				marked:marked,
+				domain : sails.config.COMPANY_DOMAIN,
+				baseurl:baseurl
 			})
+			// res.status(200).view('blog',{
+			// 	articles:results.projs,
+			// 	title: req.__('SEO_BLOG_title'),
+			// 	keyword: req.__('SEO_BLOG_keyword'),
+			// 	description:req.__('SEO_BLOG_description'),
+			// 	scripturl:'portfo.js',
+			// 	menu:'blog',
+			// 	marked:marked,
+			// 	nbPage:nbPage,
+			// 	thiscategory:null,
+			// 	currentPage:page,
+			// 	mostseen:results.mostseen,
+			// 	category:results.cats,
+			// 	moment: moment,
+			// 	baseurl:baseurl
+			// })
 		})
 		
 
@@ -177,10 +198,17 @@ module.exports={
 		console.log(req.locale);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale)
+		baseurl='/../'
+		if(req.params.page){
+			baseurl='/../../'
+			page = req.params.page;
+		}
 		console.log("FETCH ONE project");
 		
 				Project.find(req.params.id).populateAll().exec(function (err,items){
-					
+						
+
+						
 						if(err)
 							callback(err)
 
@@ -273,13 +301,80 @@ module.exports={
 										// console.log('allcomments',allcomments);
 										cbparalelle(null,allcomments)
 									})
-								}},function(err,ress) {
+								},
+								// mostseen:function  (cb) {
+								// 	Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+								
+								// 			return Promise.map(projects,function  (project) {
+								// 				return new Promise(function(resolve,rej){
+								// 					if(project.translations.length && req.locale!= 'fr'){
+								// 						_.map(project.translations,function  (trad) {
+								// 							if(trad.lang == req.locale){
+								// 								project.title = (trad.title) ? trad.title : project.title;
+								// 								project.content = (trad.content) ? trad.content : project.content;
+								// 								project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+								// 								project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+								// 								project.description = (trad.description) ? trad.description : project.description;
+								// 							}
+								// 						})
+								// 					}
+								// 					project.content = truncate(marked(project.content), 450)
+								// 					if(project.images.length)
+								// 					{
+								// 						var img0 = _.find(project.images, function(chr) {
+								// 						  return chr.rank == 0;
+								// 						})
+								// 						Image.findOne(img0.image).exec(function (err,datas) {
+								// 							project.img = datas
+								// 							resolve(project)
+								// 						})
+								// 					}else
+								// 					{
+								// 						resolve(project)
+								// 					}
+								// 				})
+												
+								// 			}).then(function (projectss) {
+								// 				cb(null,projects)
+								// 			})
+										
+								// 	})
+								// },
+								cats:function  (cb) {
+									CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
+											 _.remove(cats,function (n) {
+												return n.nbArticles <=0;
+											})
+											return Promise.map(cats,function  (cat) {
+												return new Promise(function(resolve,rej){
+													if(cat.translations.length && req.locale!= 'fr'){
+														console.log('we got Trad');
+														_.map(cat.translations,function  (trad) {
+															if(trad.lang == req.locale){
+																cat.name = (trad.name) ? trad.name : cat.name;
+																
+															}
+														})
+
+														resolve(cat)
+													}else
+													{
+														resolve(cat)
+													}
+												})
+												
+											}).then(function (projectss) {
+												cb(null,cats)
+											})
+										
+									})
+								}
+							},function(err,ress) {
 
  										console.log('DELETE');
 									if(project.category)
 										project.category=project.category.id;
-									if(project.author)
-										project.author=project.author.id;
+									
 
 									var projecttogo = _.clone(project)
 
@@ -288,22 +383,29 @@ module.exports={
 									// console.log(projecttogo.comments);
 									// console.log(projecttogo);
 									console.log('Final Data');
+
 									var pathtoshare ='';
 									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/';
 									if(projecttogo.urlrewrite)
 									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/'+projecttogo.urlrewrite;
+
+
+
 									// console.log('fetch ONE Project', projecttogo);
 									// res.status(200).send(projecttogo)
 									res.status(200).view('project',{
 										'project':projecttogo,
-										moment: moment,
-										pathtoshare: pathtoshare,
-										'title': projecttogo.title +' - AAVO',
+										pathtoshare:pathtoshare,
+										'title': projecttogo.title +' - Project - AAVO',
 										keyword: projecttogo.keyword,
 										description:projecttogo.description,
-										scripturl:'project.js',
-										menu:'portfo',
-										marked:marked
+										menu:'blog',
+										marked:marked,
+										// mostseen:ress.mostseen,
+										category:ress.cats,
+										moment: moment,
+										baseurl:baseurl,
+										domain : sails.config.URL_HOME
 									})
 								})
 							})
@@ -323,9 +425,9 @@ module.exports={
 
 		Project.findOne(req.params.itemid).exec(function (err,project) {
 			Comment.create({
-				author:req.body.name,
+				author:req.body.author,
 		  		email:req.body.email,
-		  		content:req.body.message,
+		  		content:req.body.content,
 		  		status:'new',
 		  		project:req.params.itemid
 	  		}).exec(function (err,coment){
@@ -953,7 +1055,8 @@ module.exports={
 										mostseen:ress.mostseen,
 										category:ress.cats,
 										moment: moment,
-										baseurl:baseurl
+										baseurl:baseurl,
+										domain : sails.config.URL_HOME
 									})
 								})
 							});		

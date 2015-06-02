@@ -24,6 +24,15 @@ $('#facebook').sharrre({
   }
 });
 
+if($('.grid').length){
+
+
+$('.grid').masonry({
+  // options
+  itemSelector: '.grid-item',
+  columnWidth: '.grid-sizer'
+});
+}
 
 
 /**

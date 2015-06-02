@@ -1,205 +1,197 @@
- <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1 class="wow flipInX"><%= __('Portfolio') %></h1>
+<style type="text/css">
+
+</style>
+<div class="container-wrapper navigation fixed">
+        <nav class="navbar navbar-default" role="navigation">
+        
+            <div class="container">
+            
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <img src="images/front/logoline.png" style="height:50px; margin-top:0px" />
+                    </a>
+                    <ul class="mini"></ul><!-- mobile navigation -->
+                </div><!-- .navbar-header -->
                 
+                <div class="collapse navbar-collapse">
+                    <div class="right">
+                        <ul class="nav navbar-nav">
+                            <li class=""><a href="/"><%= __('Home') %></a></li>
+                            <li class="active"><a href="/portfolio"><%= __('Portfolio') %></a></li>
+                            <li class=""><a href="/blog"><%= __('Blog') %></a></li>
+                            <li class=""><a href="/contact"><%= __('Contact') %></a></li>
+                        </ul>
+                    </div>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+            <div class="container" style="position:relative;">
+                <div class="bottombordernavbar "></div>
             </div>
-            <header class="listCatProj major container 75%">
-                 <h2 class="wow flipInX"><%= project.title %></h2>
-            </header>
-            <div id="main">
+        </nav>
+    </div>
+    <div id="nav-ends"></div>
 
+   	<section class="content-section low-rider margintop blog">
+    	<div class="container">
+        	<div class="row">
+            
+            	<div class="col-xs-12 single">
+                   	<div class="blog">
+                             <span class="image">
+                            
+                                     <% if(project.publishVideo==true && project.video){ %>
+                                        <div class="pretty-embed" data-pe-videoid="<%= project.video %>"></div>
+                                        <%}else if(project.images.length) { %>
+                                            <img src="/file/image/originalsize/<%= project.images[0].image.filename %>" alt="<%= project.images[0].image.alt %>"/>
+                                        <% } %>
+                                </span>
 
-                 	 <% if(project.publishVideo==true && project.video){ %>
-                 	<div class="box boximages container  wow zoomInUp">
-                        <div  class="col col-xs-12 ">
-                        	<div class="pretty-embed" data-pe-videoid="<%= project.video %>"></div>
-                        </div>
-                    </div> 
-                    <%}%>
-                   
-                    <% if(project.content) {%>        
-                    <div class="box container  wow zoomInUp">
+             
+                            <div class="date" >
+                                <a  class="day" title="<%- moment(project.date).fromNow() %>">
+                                    <%- moment(project.date).format('D') %>
+                                </a>
+                                <a  class="month" title="<%- moment(project.date).format('YYYY') %>" >
+                                    <%- moment(project.date).format('MMM') %>
+                                </a>
+                            </div><!-- .date -->
                         
-                        <div  class="col col-xs-12 ">
-                            <div class="mdcontent">
-                                <%- marked(project.content) %>
-                        	</div>
+                        <span class="title-desc anim fadeIn">
+                            <h1 ><%= project.title %></h1>
+                            <ul class="meta">
+                                    <% if( project.author ){%> 
+                                        <% if(project.author.usename==true){%> 
+                                        <li><i class="fa fa-user"></i><%= project.author.name %></li>
+                                        <% }else{ %>
+                                        <i class="fa fa-user"></i><%= project.author.pseudo %></li>
+                                        <% } %>
+                                    <% } %>
+                                    <li><i class="fa fa-eye"></i><%= project.nbView %></li>
+                                    <li>
+                                        <% for(var j in category){ %>
+                                           
+                                         <%  if(project.category && category[j].id==project.category){%>
+                                                <a href="blog/category/<%= category[j].id  %>"><i class="fa fa-th-list"></i>
+                                                <%= category[j].name %>
+                                                </a>
+                                          <% } %>
+                                        <% } %>
+                                    </li>
+                                    
+                            </ul>
+                        </span><!-- .title-desc -->
+                        
+                        <div class="contenu">
+                            
+                        <%- marked(project.content) %>
+
                         </div>
                         <% if(project.documents.length > 0) {%> 
-                        <div  class="col col-xs-12 ">
                             <div class="pj">
-                            	<label><%=  __('Pièces jointes') %></label>
-                               	<ul>
-                               		<% for(var i=0; i<project.documents.length; i++) {%>
-				                    <li><a href="/file/document/<%= project.documents[i].document.filename %>" target="_BLANK"><%= project.documents[i].document.filename %></a></li>
-				                    <% } %>  
-                               	</ul>
-                        	</div>
+                                <label><%=  __('Pièces jointes') %></label>
+                                <ul>
+                                    <% for(var i=0; i<project.documents.length; i++) {%>
+                                    <li><a href="/file/document/<%= project.documents[i].document.filename %>" target="_BLANK"><%= project.documents[i].document.filename %></a></li>
+                                    <% } %>  
+                                </ul>
+                            </div>
+                        <% } %>
+                        <div style="margin-bottom:50px"></div>
+                        <% 
+                        var i=1;
+                        if(project.publishVideo==true && typeof project.video !== 'undefined'){
+                            i=0;
+                        }
+                        for(i; i<project.images.length; i++) {%>
+                       
+                                
+                        <div class="image wow zoomInUp">
+                           
+                                <img  src="/file/image/originalsize/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"/>
                         </div>
                         <% } %>
-                        
-                    </div> 
-                    <% }%> 
-
-
-                   
-
-                    <% for(var i=0; i<project.images.length; i++) {%>
-                   
-                            
-                    <div class="box boximages container  wow zoomInUp">
-                       
-                        <div  class="col col-xs-12 ">
-                            <img class="wow fadeIn" src="/file/image/originalsize/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"/>
-                        </div>
+                    </div><!-- .blog -->
+                     <div id="socials">
+                     <div id="example1">
+                      <div id="twitter" data-url="<%= domain %>blog/project/<%= project.id %>/<%- project.rewriteurl %>" data-text="<%= project.title %>" data-title="Tweet"></div>
+                      <div id="facebook" data-url="<%= domain %>blog/project/<%= project.id %>/<%- project.rewriteurl %>" data-text="<%= project.title %>" data-title="Like"></div>
                     </div>
-                    <% } %>  
-                    <div id="socialscontainer" class="">
-	                    <div id="socials" class="">
-
-	                    	<div id="twitter" class="wow fadeInLeftBig" data-wow-duration="1s" data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div> 
-	                    	<div id="facebook" class="wow fadeInRightBig" data-wow-duration="1s"  data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div>  
-	                    </div>       
-                    </div>      
-                    <% if(project.activeComent == true) {%>
-	                    <div class="box comments container  wow zoomInUp">
-	                        <header>
-	                            <h2><%= __('Comments') %></h2>
-	                        </header>
-	                        <div class="text-center">
-		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%= __('Laisser un commantaire') %></button>
-	                        </div>
-	                        <div id="" class="box boxcomment collapse addCommentForm <%= project.id %>">
-	                        <form method="post" class="commentform" item="project" itemid="<%= project.id %>">
-		                        <div class="row">
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-		                            </div>
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u text-center">
-		                                <small><%= __('comment_form_message_end') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageRequired">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageError">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <ul class="actions">
-		                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-		                                </ul>
-		                            </div>
-		                        </div>
-		                        <div class="cache"><i class="fa fa-check"></i></div>
-		                    </form>
-	                        </div>
-	                        <ul>
-                				<% for(var j=0; j<project.comments.length; j++) {%>
-	                        	<li class="box boxcomment wow fadeInLeft">
-	                        		<div class="author"><strong><%= project.comments[j].author %></strong></div>
-	                        		<div class="date pull-right small"><%= moment(new Date(project.comments[j].createdAt)).fromNow() %></div>
-	                        		<p><%= project.comments[j].content %></p>
-
-	                        		<ul>
-		                				<% for(var k=0; k<project.comments[j].reponses.length; k++) {%>
-			                        	<li class="box boxcomment">
-			                        		<div class="author"><strong><%= project.comments[j].reponses[k].author %></strong></div>
-			                        		<div class="date pull-right small"><%= moment(new Date(project.comments[j].reponses[k].createdAt)).fromNow() %></div>
-			                        		<p><%= project.comments[j].reponses[k].content %></p>
-			                        		
-			                        	</li>
-		                				<% } %>
-			                        </ul>
-			                        <div class="<%= project.comments[j].id %> reply"  title="<%= __('reply') %>"> <i class="fa fa-reply" data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"></i></div>
-			                        <div id="" class="box boxcomment collapse addCommentForm <%= project.comments[j].id %>">
-			                        <form method="post" class="commentform" item="comment" projid="<%= project.id %>" itemid="<%= project.comments[j].id %>">
-				                        <div class="row">
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-				                            </div>
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageRequired">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageError">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <ul class="actions">
-				                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-				                                </ul>
-				                            </div>
-				                        </div>
-				                        <div class="cache"><i class="fa fa-check"></i></div>
-				                    </form>
-			                        </div>
-	                        	</li>
-                				<% } %>
-	                        </ul>
-	                    </div>
-                    <% } %>
-                
-
-            </div>
-
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
+                    </div>
+                    <div class="clearfix"></div>
                     
+                	<h4 class="anim fadeIn">
+                        <%= __('Commentaires') %> (<%= project.comments.length %>)
+                    </h4>
+                   
+                    <div>
+                        <h6 class="anim fadeIn" data-wow-delay="0.24s">
+                            <%= __('text-commentaire') %>
+                        </h6>
+                    </div>
+                    
+                	<div class="form contact postcoment style-2">
+                        <form target="#" name="contact">
+                            <span class="input-group anim fadeIn" data-wow-delay="0.1s">
+                                <i class="fa fa-user"></i>
+                                <input type="text" name="contactName" id="author" class="lg" placeholder="Nom" />
+                            </span><!-- .input-group -->
+                            
+                            <span class="input-group anim fadeIn" data-wow-delay="0.20s">
+                                <i class="fa fa-envelope"></i>
+                                <input type="text" name="contactEmail" id="email" class="lg" placeholder="Address email " />
+                            </span><!-- .input-group -->
+                            
+                            <span class="input-group anim fadeIn" data-wow-delay="0.30s">
+                                <textarea name="contactMessage" id="content" class="lg" placeholder="Exprimez-vous!"></textarea>
+                            </span><!-- .input-group -->
+                            
+                            <span id="message"></span>
+                            
+                           	<a class="btn btn-sm btn-primary icon anim fadeIn" id='comentADD' data-wow-delay=".45s" role="button"><i class="fa fa-long-arrow-right"></i><%= __('Poster mon commentaire') %></a>
+                            <span id="message_sent"><i class="fa-check fa"></i></span>
+                        </form>
+                    </div>
 
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
+                    <div id="" class="box boxcomment addCommentForm <%= project.id %>">
+                           
+                        
+                        <ul class="comments">
+                            <% for(var j=0; j<project.comments.length; j++) {%>
+                            <li class="box boxcomment">
+                                <h5><%= project.comments[j].author %>  <span class="date pull-right small"><%= moment(new Date(project.comments[j].createdAt)).fromNow() %></span></h5>
+                               
+                                <p><%= project.comments[j].content %></p>
 
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
+                                <ul class="comments" >
+                                    <% for(var k=0; k<project.comments[j].reponses.length; k++) {%>
+                                    <li class="box boxcomment">
+                                        <h5 ><%= project.comments[j].reponses[k].author %><span class="date pull-right small"><%= moment(new Date(project.comments[j].reponses[k].createdAt)).fromNow() %></span></h5>
+                                        
+                                        <p><%= project.comments[j].reponses[k].content %></p>
+                                        
+                                    </li>
+                                    <% } %>
+                                </ul>  
+                            </li>
+                            <% } %>
+                        </ul>
+                    
+                    </div>
+                </div><!-- .col-lg-9 -->
+                
+              	
+                
+            </div><!-- .row -->
+        </div><!-- .container -->
+    </section><!-- .content-section -->
+ <script>
 
-                </div>
-            </div>
- </div>
-<script type="text/javascript">
-
-var project = <%- JSON.stringify(project) %>;
-        console.log(project);
+   
+    var project = <%- JSON.stringify(project) %>
+    console.log(project);
+    
 
 </script>
