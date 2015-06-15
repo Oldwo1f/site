@@ -186,7 +186,8 @@ module.exports={
 						if(items.length>0)
 						{
 								items[0].nbView= Number(items[0].nbView) + 1;
-								items[0].save();
+								Article.update({id: items[0].id}, {nbView: items[0].nbView})
+								.exec(function(err, updatedProject){
 								var project= items[0];
 								// console.log('item',item);
 								async.series({
@@ -303,8 +304,9 @@ module.exports={
 										marked:marked
 									})
 								})
-								
-							}
+							})
+							
+						}
 							
 								
 								// callback(null,items);
@@ -504,7 +506,7 @@ module.exports={
 		console.log(req.locale);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale)
-		console.log("FETCH ONE project");
+		console.log("FETCH ONE Article");
 		
 				Article.find(req.params.id).populateAll().exec(function (err,items){
 						
@@ -516,8 +518,11 @@ module.exports={
 						// callback(null,items)
 						if(items.length>0)
 						{
-								items[0].nbView= Number(items[0].nbView) + 1;
-								items[0].save();
+								// items[0].nbView= Number(items[0].nbView) + 1;
+								items[0].nbView= Number(items[0].nbView) + 1
+
+								Article.update({id: items[0].id}, {nbView: items[0].nbView})
+								.exec(function(err, updatedProject){
 								var project= items[0];
 								// console.log('item',item);
 								async.series({
@@ -638,8 +643,8 @@ module.exports={
 										marked:marked
 									})
 								})
-								
-							}
+							});		
+						}
 							
 								
 								// callback(null,items);
