@@ -80,45 +80,45 @@
                     <% if(project.activeComent == true) {%>
 	                    <div class="box comments container">
 	                        <header>
-	                            <h2><%= __('Comments') %></h2>
+	                            <h2><%- __('Comments') %></h2>
 	                        </header>
 	                        <div class="text-center">
-		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%= __('Laisser un commantaire') %></button>
+		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%- __('Laisser un commantaire') %></button>
 	                        </div>
 	                        <div id="" class="box boxcomment collapse addCommentForm <%= project.id %>">
 	                        <form method="post" class="commentform" item="project" itemid="<%= project.id %>" >
 		                        
 		                        <p class="contact-name">
-				                <input id="contact_name" type="text" placeholder="<%= __('form-full_name') %>" value="" name="name" />
+				                <input id="contact_name" type="text" placeholder="<%- __('form-full_name') %>" value="" name="name" />
 				                </p>
 				                <p class="contact-email">
-				                  <input id="contact_email" type="text" placeholder="<%= __('form-email_adress') %>" value="" name="email" />
+				                  <input id="contact_email" type="text" placeholder="<%- __('form-email_adress') %>" value="" name="email" />
 				                </p>
 				                <p class="contact-message">
-				                  <textarea id="contact_message" placeholder="<%= __('form-message') %>" name="message" rows="15" cols="40"></textarea>
+				                  <textarea id="contact_message" placeholder="<%- __('form-message') %>" name="message" rows="15" cols="40"></textarea>
 				                </p>
 				                
 				                <div class="response">
 				                        <div class="row errorMessageRequired">
 				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('contact_all_required') %></small>
+				                                <small class=" label label-danger"><%- __('contact_all_required') %></small>
 				                            </div>
 				                        </div>
 				                        <div class="row errorMessageError">
 				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('contact_error_message') %></small>
+				                                <small class=" label label-danger"><%- __('contact_error_message') %></small>
 				                            </div>
 				                        </div>
 				                        <div class="row SuccessMessage">
 				                            <div class="12u text-center">
-				                                <small class=" label label-success"><%= __('contact_success_message') %></small>
+				                                <small class=" label label-success"><%- __('contact_success_message') %></small>
 				                            </div>
 				                        </div>
 				                </div>
 				                <p class="contact-submit">
-				                  <input id="contact-submit" type="submit" class="submit" value="<%= __('form-send-button') %>"></input>
+				                  <input id="contact-submit" type="submit" class="submit" value="<%- __('form-send-button') %>"></input>
 				                </p>
-		                        <div class="cache2"><%= __('comment-ok') %></div>
+		                        <div class="cache2"><%- __('comment-ok') %></div>
 		                    </form>
 	                        </div>
 	                        <ul>
@@ -138,41 +138,41 @@
 			                        	</li>
 		                				<% } %>
 			                        </ul>
-			                        <div class="reply <%= project.comments[j].id %>"  title="<%= __('reply') %>"> <a data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"><span class="font-icon-repeat"></span></a>
+			                        <div class="reply <%= project.comments[j].id %>"  title="<%- __('reply') %>"> <a data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"><span class="font-icon-repeat"></span></a>
 			                        </div>
 			                        <div id="" class="box boxcomment collapse addCommentForm <%= project.comments[j].id %>">
 			                        <form method="post" class="commentform" item="comment" projid="<%= project.id %>" itemid="<%= project.comments[j].id %>">
 				                        <p class="contact-name">
-						                <input id="contact_name" type="text" placeholder="<%= __('form-full_name') %>" value="" name="name" />
+						                <input id="contact_name" type="text" placeholder="<%- __('form-full_name') %>" value="" name="name" />
 						                </p>
 						                <p class="contact-email">
-						                  <input id="contact_email" type="text" placeholder="<%= __('form-email_adress') %>" value="" name="email" />
+						                  <input id="contact_email" type="text" placeholder="<%- __('form-email_adress') %>" value="" name="email" />
 						                </p>
 						                <p class="contact-message">
-						                  <textarea id="contact_message" placeholder="<%= __('form-message') %>" name="message" rows="15" cols="40"></textarea>
+						                  <textarea id="contact_message" placeholder="<%- __('form-message') %>" name="message" rows="15" cols="40"></textarea>
 						                </p>
 						                
 						                <div class="response">
 						                        <div class="row errorMessageRequired">
 						                            <div class="12u text-center">
-						                                <small class=" label label-danger"><%= __('contact_all_required') %></small>
+						                                <small class=" label label-danger"><%- __('contact_all_required') %></small>
 						                            </div>
 						                        </div>
 						                        <div class="row errorMessageError">
 						                            <div class="12u text-center">
-						                                <small class=" label label-danger"><%= __('contact_error_message') %></small>
+						                                <small class=" label label-danger"><%- __('contact_error_message') %></small>
 						                            </div>
 						                        </div>
 						                        <div class="row SuccessMessage">
 						                            <div class="12u text-center">
-						                                <small class=" label label-success"><%= __('contact_success_message') %></small>
+						                                <small class=" label label-success"><%- __('contact_success_message') %></small>
 						                            </div>
 						                        </div>
 						                </div>
 						                <p class="contact-submit">
-						                  <input id="contact-submit" type="submit" class="submit" value="<%= __('form-send-button') %>"></input>
+						                  <input id="contact-submit" type="submit" class="submit" value="<%- __('form-send-button') %>"></input>
 						                </p>
-				                        <div class="cache2"><%= __('comment-ok') %></div>
+				                        <div class="cache2"><%- __('comment-ok') %></div>
 				                    </form>
 			                        </div>
 	                        	</li>
