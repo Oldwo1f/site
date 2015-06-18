@@ -1,28 +1,56 @@
+
+
  <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1 class="wow flipInX"><%= __('Portfolio') %></h1>
-                
-            </div>
-            <header class="listCatProj major container 75%">
+            
+            <!-- <header class="listCatProj major container 75%">
                  <h2 class="wow flipInX"><%= project.title %></h2>
-            </header>
+            </header> -->
             <div id="main">
 
 
                  	 <% if(project.publishVideo==true && project.video){ %>
-                 	<div class="box boximages container  wow zoomInUp">
+                 	<div class="box boximages container">
                         <div  class="col col-xs-12 ">
                         	<div class="pretty-embed" data-pe-videoid="<%= project.video %>"></div>
                         </div>
                     </div> 
                     <%}%>
                    
-                    <% if(project.content) {%>        
-                    <div class="box container  wow zoomInUp">
+                   
+                    <div id="home-slider">  
+					    <div class="overlay"></div>
+
+					    <div class="slider-text">
+					      <div id="slidecaption"></div>
+					    </div>   
+					  
+					  <div class="control-nav">
+					        <a id="prevslide" class="load-item"><i class="font-icon-arrow-simple-left"></i></a>
+					        <a id="nextslide" class="load-item"><i class="font-icon-arrow-simple-right"></i></a>
+					        <ul id="slide-list"></ul>
+					        
+					        <a id="nextsection" href="#work"><i class="font-icon-arrow-simple-down"></i></a>
+					    </div>
+					</div>
+
+                   
+
+                    <% for(var i=0; i<project.images.length; i++) {%>
+                   
+                            
+                    <div class="box boximages container ">
+                       
+                        <div  class="col col-xs-12 ">
+                            <img  src="/file/image/originalsize/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"/>
+                        </div>
+                    </div>
+                    <% } %>  
+
+                     <% if(project.content) {%>        
+                    <div class="box container">
                         
                         <div  class="col col-xs-12 ">
-                            <div class="mdcontent">
+                                <div class="mdcontent">
                                 <%- marked(project.content) %>
                         	</div>
                         </div>
@@ -42,77 +70,60 @@
                     </div> 
                     <% }%> 
 
-
-                   
-
-                    <% for(var i=0; i<project.images.length; i++) {%>
-                   
-                            
-                    <div class="box boximages container  wow zoomInUp">
-                       
-                        <div  class="col col-xs-12 ">
-                            <img class="wow fadeIn" src="/file/image/originalsize/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"/>
-                        </div>
-                    </div>
-                    <% } %>  
                     <div id="socialscontainer" class="">
 	                    <div id="socials" class="">
 
-	                    	<div id="twitter" class="wow fadeInLeftBig" data-wow-duration="1s" data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div> 
-	                    	<div id="facebook" class="wow fadeInRightBig" data-wow-duration="1s"  data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div>  
+	                    	<div id="twitter"   data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div> 
+	                    	<div id="facebook"   data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div>  
 	                    </div>       
                     </div>      
                     <% if(project.activeComent == true) {%>
-	                    <div class="box comments container  wow zoomInUp">
+	                    <div class="box comments container">
 	                        <header>
-	                            <h2><%= __('Comments') %></h2>
+	                            <h2><%- __('Comments') %></h2>
 	                        </header>
 	                        <div class="text-center">
-		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%= __('Laisser un commantaire') %></button>
+		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%- __('Laisser un commantaire') %></button>
 	                        </div>
 	                        <div id="" class="box boxcomment collapse addCommentForm <%= project.id %>">
-	                        <form method="post" class="commentform" item="project" itemid="<%= project.id %>">
-		                        <div class="row">
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-		                            </div>
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u text-center">
-		                                <small><%= __('comment_form_message_end') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageRequired">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageError">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <ul class="actions">
-		                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-		                                </ul>
-		                            </div>
-		                        </div>
-		                        <div class="cache"><i class="fa fa-check"></i></div>
+	                        <form method="post" class="commentform" item="project" itemid="<%= project.id %>" >
+		                        
+		                        <p class="contact-name">
+				                <input id="contact_name" type="text" placeholder="<%- __('form-full_name') %>" value="" name="name" />
+				                </p>
+				                <p class="contact-email">
+				                  <input id="contact_email" type="text" placeholder="<%- __('form-email_adress') %>" value="" name="email" />
+				                </p>
+				                <p class="contact-message">
+				                  <textarea id="contact_message" placeholder="<%- __('form-message') %>" name="message" rows="15" cols="40"></textarea>
+				                </p>
+				                
+				                <div class="response">
+				                        <div class="row errorMessageRequired">
+				                            <div class="12u text-center">
+				                                <small class=" label label-danger"><%- __('contact_all_required') %></small>
+				                            </div>
+				                        </div>
+				                        <div class="row errorMessageError">
+				                            <div class="12u text-center">
+				                                <small class=" label label-danger"><%- __('contact_error_message') %></small>
+				                            </div>
+				                        </div>
+				                        <div class="row SuccessMessage">
+				                            <div class="12u text-center">
+				                                <small class=" label label-success"><%- __('contact_success_message') %></small>
+				                            </div>
+				                        </div>
+				                </div>
+				                <p class="contact-submit">
+				                  <input id="contact-submit" type="submit" class="submit" value="<%- __('form-send-button') %>"></input>
+				                </p>
+		                        <div class="cache2"><%- __('comment-ok') %></div>
 		                    </form>
 	                        </div>
 	                        <ul>
                 				<% for(var j=0; j<project.comments.length; j++) {%>
-	                        	<li class="box boxcomment wow fadeInLeft">
+	                        	<li class="box boxcomment">
 	                        		<div class="author"><strong><%= project.comments[j].author %></strong></div>
 	                        		<div class="date pull-right small"><%= moment(new Date(project.comments[j].createdAt)).fromNow() %></div>
 	                        		<p><%= project.comments[j].content %></p>
@@ -127,40 +138,41 @@
 			                        	</li>
 		                				<% } %>
 			                        </ul>
-			                        <div class="<%= project.comments[j].id %> reply"  title="<%= __('reply') %>"> <i class="fa fa-reply" data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"></i></div>
+			                        <div class="reply <%= project.comments[j].id %>"  title="<%- __('reply') %>"> <a data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"><span class="font-icon-repeat"></span></a>
+			                        </div>
 			                        <div id="" class="box boxcomment collapse addCommentForm <%= project.comments[j].id %>">
 			                        <form method="post" class="commentform" item="comment" projid="<%= project.id %>" itemid="<%= project.comments[j].id %>">
-				                        <div class="row">
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-				                            </div>
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageRequired">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageError">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <ul class="actions">
-				                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-				                                </ul>
-				                            </div>
-				                        </div>
-				                        <div class="cache"><i class="fa fa-check"></i></div>
+				                        <p class="contact-name">
+						                <input id="contact_name" type="text" placeholder="<%- __('form-full_name') %>" value="" name="name" />
+						                </p>
+						                <p class="contact-email">
+						                  <input id="contact_email" type="text" placeholder="<%- __('form-email_adress') %>" value="" name="email" />
+						                </p>
+						                <p class="contact-message">
+						                  <textarea id="contact_message" placeholder="<%- __('form-message') %>" name="message" rows="15" cols="40"></textarea>
+						                </p>
+						                
+						                <div class="response">
+						                        <div class="row errorMessageRequired">
+						                            <div class="12u text-center">
+						                                <small class=" label label-danger"><%- __('contact_all_required') %></small>
+						                            </div>
+						                        </div>
+						                        <div class="row errorMessageError">
+						                            <div class="12u text-center">
+						                                <small class=" label label-danger"><%- __('contact_error_message') %></small>
+						                            </div>
+						                        </div>
+						                        <div class="row SuccessMessage">
+						                            <div class="12u text-center">
+						                                <small class=" label label-success"><%- __('contact_success_message') %></small>
+						                            </div>
+						                        </div>
+						                </div>
+						                <p class="contact-submit">
+						                  <input id="contact-submit" type="submit" class="submit" value="<%- __('form-send-button') %>"></input>
+						                </p>
+				                        <div class="cache2"><%- __('comment-ok') %></div>
 				                    </form>
 			                        </div>
 	                        	</li>
@@ -172,34 +184,123 @@
 
             </div>
 
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
-                    
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
-
-                </div>
-            </div>
+          
  </div>
 <script type="text/javascript">
 
 var project = <%- JSON.stringify(project) %>;
         console.log(project);
+$().prettyEmbed();
 
+$('.fancybox-inner').niceScroll({
+	cursorcolor:'#EEC782',
+	cursorborderradius:'0px',
+	cursoropacitymin:0,
+	cursoropacitymax:0.75,
+	mousescrollstep: 80,
+	autohidemode:'leave',
+	scrollspeed:30
+});
+
+$('.commentform').submit(function (e) {
+	console.log('commentform');
+		e.preventDefault()
+		console.log($(this));
+		$this = $(this)
+		var item = $this.attr('item')
+		var rep = $this.attr('reponse')
+		var itemid = $this.attr('itemid')
+		var projid = $this.attr('projid')
+		var name = $this.find('input[name="name"]').val()
+		var email = $this.find('input[name="email"]').val()
+		var message = $this.find('textarea[name="message"]').val()
+		console.log(name);
+		console.log(email);
+		console.log(message);
+		console.log(item);
+		console.log(itemid);
+		var postData = $this.serialize();
+		$this.find('.errorMessageRequired').hide()
+		$this.find('.errorMessageError').hide()
+
+		console.log(postData);
+		if(item == 'project')
+		{
+			if(rep){
+
+			}else{
+
+				$.ajax(
+			    {
+			        url : '/project/'+itemid+'/addComment',
+			        type: "POST",
+			        data : postData,
+			        success:function(data, textStatus, jqXHR) 
+			        {
+			        	$this.find('.errorMessageRequired').hide()
+			        	$this.find('.errorMessageError').hide()
+			        	console.log('DATA',data);
+			            $this.find('.cache2').show()
+			            console.log($this.parent());
+			            setTimeout(function (argument) {
+				            $this.parent().collapse('hide');
+			            },2000)
+			        },
+			        error: function(jqXHR, textStatus, errorThrown) 
+			        {
+			            //if fails    
+			            console.log('errorThrown');  
+			            console.log(errorThrown);  
+			            console.log(textStatus);  
+			            console.log(JSON.parse(jqXHR.responseText).error);  
+			            if(JSON.parse(jqXHR.responseText).error=="E_VALIDATION"){
+			            	$this.find('.errorMessageRequired').fadeIn()
+			            }else{
+			            	$this.find('.errorMessageError').fadeIn()
+			            }
+			        }
+			    });
+
+			}
+		}
+		if(item == 'comment')
+		{
+			if(rep){
+
+			}else{
+
+				$.ajax(
+			    {
+			        url : '/project/addReponse/'+itemid+'/'+projid,
+			        type: "POST",
+			        data : postData,
+			        success:function(data, textStatus, jqXHR) 
+			        {
+			        	$this.find('.errorMessageRequired').hide()
+			        	$this.find('.errorMessageError').hide()
+			        	console.log('DATA',data);
+			            $this.find('.cache2').show()
+			            console.log($this.parent());
+			            setTimeout(function (argument) {
+				            $this.parent().collapse('hide');
+			            },2000)
+			        },
+			        error: function(jqXHR, textStatus, errorThrown) 
+			        {
+			            //if fails    
+			            console.log('errorThrown');  
+			            console.log(errorThrown);  
+			            console.log(textStatus);  
+			            console.log(JSON.parse(jqXHR.responseText).error);  
+			            if(JSON.parse(jqXHR.responseText).error=="E_VALIDATION"){
+			            	$this.find('.errorMessageRequired').fadeIn()
+			            }else{
+			            	$this.find('.errorMessageError').fadeIn()
+			            }
+			        }
+			    });
+
+			}
+		}
+	})
 </script>

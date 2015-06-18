@@ -3,9 +3,6 @@ $(document).ready(function () {
 
 		$().prettyEmbed();
 
-	        // $(".container2").fitVids();
-        // $(".container2").fitVids({ customSelector: "iframe[src^='http://socialcam.com']"});
-
 	$('.listCatProj li').click(function (e) {
 		$('.listCatProj li').removeClass('active')
 		var $this= $(this);

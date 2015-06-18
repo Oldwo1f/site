@@ -1,5 +1,6 @@
 {
-  "name": "site",
+
+  "name": "Hours",
   "private": true,
   "version": "1.0.1",
   "description": "A sample website to go with that CMS",
