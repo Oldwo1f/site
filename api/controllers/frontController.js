@@ -32,6 +32,7 @@ module.exports={
 								}
 							})
 						}
+						if(article.content)
 						article.content = truncate(marked(article.content), 450)
 						if(article.images.length)
 						{
@@ -93,6 +94,7 @@ module.exports={
 										}
 									})
 								}
+								if(project.content)
 								project.content = truncate(marked(project.content), 450)
 								if(project.images.length)
 								{
