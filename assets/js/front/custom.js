@@ -25,13 +25,12 @@ $('#facebook').sharrre({
 });
 
 if($('.grid').length){
-
-
-$('.grid').masonry({
-  // options
-  itemSelector: '.grid-item',
-  columnWidth: '.grid-sizer'
-});
+	console.log('masonry');
+	$('.grid').masonry({
+	  // options
+	  itemSelector: '.grid-item',
+	  columnWidth: '.grid-sizer'
+	});
 }
 
 
@@ -80,7 +79,7 @@ jQuery(document).ready(function($) {
 	$().prettyEmbed();
 
 	// Setup WOW to only animate things below, uncomment/comment this line to fit your needs
-	$(".anim").waypoint(function() {$(this).removeClass("anim");},{triggerOnce:true, offset:"-95%"});
+	// $(".anim").waypoint(function() {$(this).removeClass("anim");},{triggerOnce:true, offset:"-95%"});
 	
 	// Remove backstretch dependancy
 	if ( $.isFunction($.fn.backstretch) ) {
@@ -96,30 +95,30 @@ jQuery(document).ready(function($) {
 	}
 	
 	// Remove the master slider's dependancy
-	if ( typeof MasterSlider === 'function' ) {
-		// Laptop slider
+	// if ( typeof MasterSlider === 'function' ) {
+	// 	// Laptop slider
 	
-		var testimonials = new MasterSlider();
-		testimonials.setup('testimonials' , {
-			space:0,
-			fullwidth:true,
-			loop:true,
-			autoplay:true,
-			overPause:false,
-			speed:20,
-			width:500,
-			view:"fade",
-			height:500
-		});
+	// 	var testimonials = new MasterSlider();
+	// 	testimonials.setup('testimonials' , {
+	// 		space:0,
+	// 		fullwidth:true,
+	// 		loop:true,
+	// 		autoplay:true,
+	// 		overPause:false,
+	// 		speed:20,
+	// 		width:500,
+	// 		view:"fade",
+	// 		height:500
+	// 	});
 		
-		$(".ms-nav-next#tNext").click(function() {
-			testimonials.api.next();
-		});
+	// 	$(".ms-nav-next#tNext").click(function() {
+	// 		testimonials.api.next();
+	// 	});
 		
-		$(".ms-nav-prev#tPrev").click(function() {
-			testimonials.api.previous();
-		});
-	}
+	// 	$(".ms-nav-prev#tPrev").click(function() {
+	// 		testimonials.api.previous();
+	// 	});
+	// }
 	
 	// Create the homepage down pointer thing
 	var chevronDown = $(".slider-wrapper i.fa#go-down");
