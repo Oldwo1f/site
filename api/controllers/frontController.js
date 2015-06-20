@@ -149,8 +149,8 @@ module.exports={
 				marked:marked,
 				eli: req.__('Elisabeth HOURS'),
 				title: req.__('SEO_HOME_title'),
-						keyword: req.__('SEO_HOME_keyword'),
-						description:req.__('SEO_HOME_description'),
+				keyword: req.__('SEO_HOME_keyword'),
+				description:req.__('SEO_HOME_description'),
 			})
 		})
 		
