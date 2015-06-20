@@ -5,74 +5,8 @@ var marked = require('marked');
 var truncate = require('html-truncate');
 
 module.exports={
+	
 	home:function(req,res,next) {
-
-
-		console.log('home');
-		
-		Article.find({status:'actif'}).populate('translations').populate('images').sort('createdAt DESC').limit(3).exec(function (err,articles) {
-			// body...
-			console.log(err);
-			console.log(articles);
-			console.log(req.locale);
-			// if(req.locale!= 'fr')
-			// {
-				return Promise.map(articles,function  (article) {
-					console.log('---------------------------');
-					return new Promise(function(resolve,rej){
-						if(article.translations.length && req.locale!= 'fr'){
-							console.log('we got Trad');
-							_.map(article.translations,function  (trad) {
-								console.log('---------------------------');
-								if(trad.lang == req.locale){
-									article.title = (trad.title) ? trad.title : article.title;
-									article.content = (trad.content) ? trad.content : article.content;
-									article.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : article.rewriteurl;
-									article.keyword = (trad.keyword) ? trad.keyword : article.keyword;
-									article.description = (trad.description) ? trad.description : article.description;
-								}
-							})
-						}
-						if(article.content)
-						article.content = truncate(marked(article.content), 450)
-						if(article.images.length)
-						{
-							var img0 = _.find(article.images, function(chr) {
-							  return chr.rank == 0;
-							})
-							Image.findOne(img0.image).exec(function (err,datas) {
-								console.log('datas',datas);
-								article.img = datas
-
-								resolve(article)
-							})
-						}else
-						{
-							resolve(article)
-						}
-					})
-					
-				}).then(function (articless) {
-					console.log(articless);
-					res.status(200).render('index',{
-						articles:articles,
-						marked:marked,
-						title: req.__('SEO_HOME_title'),
-						keyword: req.__('SEO_HOME_keyword'),
-						description:req.__('SEO_HOME_description'),
-						scripturl:'script.js',
-						menu:'home',
-					})
-				})
-			// }
-			
-		})
-
-
-
-
-	},	
-	portfolio:function(req,res,next) {
 
 		console.log('portfolio');
 		async.parallel({
@@ -213,7 +147,10 @@ module.exports={
 				// menu:'portfo',
 				articles:results.articles,
 				marked:marked,
-				eli: req.__('Elisabeth HOURS')
+				eli: req.__('Elisabeth HOURS'),
+				title: req.__('SEO_HOME_title'),
+						keyword: req.__('SEO_HOME_keyword'),
+						description:req.__('SEO_HOME_description'),
 			})
 		})
 		
@@ -223,10 +160,10 @@ module.exports={
 
 
 	},	
-	portfolio:function(req,res,next) {
+	// portfolio:function(req,res,next) {
 
 
-	},
+	// },
 	projet:function(req,res,next) {
 		console.log(req.locale);
 		req.locale = req.locale || 'en'
