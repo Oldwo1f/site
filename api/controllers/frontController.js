@@ -54,7 +54,7 @@ module.exports={
 					
 				}).then(function (articless) {
 					console.log(articless);
-					res.status(200).view('homepage',{
+					res.status(200).render('index',{
 						articles:articles,
 						marked:marked,
 						title: req.__('SEO_HOME_title'),
