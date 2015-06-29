@@ -53,7 +53,7 @@ if($('.grid').length){
 if ( typeof WOW === 'function' && !(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ) {
 	// Initialize WOW
 	wow = new WOW({
-		boxClass:     'anim',
+		
 		animateClass: 'animated', // default
 		offset:       0          // default
 	});

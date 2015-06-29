@@ -18,10 +18,6 @@ var cssFilesToInject = [
   '/bower_components/bootstrap/dist/css/bootstrap.min.css',
   '/bower_components/font-awesome/css/font-awesome.min.css',
   '/bower_components/animate.css/animate.min.css',
-  'css/menu.css',
-  'css/skel.css',
-  'css/style.css',
-  'css/style-wide.css',
   // 'css/style-mobile.css',
   'styles/**/*.css'
 ];
