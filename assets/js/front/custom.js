@@ -195,10 +195,13 @@ jQuery(document).ready(function($) {
 	// Remove isotope dependancy
 	if ( $.isFunction($.fn.isotope) ) {
 		// cache container
-		var $container = $('.gallary ul');
+		var $container = $('.box');
 		// initialize isotope
 		$container.isotope({
 		  // options...
+		  masonry: {
+  columnWidth: 50
+},
 			easing:"easeOutCirc",
 			resizable:false // We will handle this
 		});
@@ -217,10 +220,10 @@ jQuery(document).ready(function($) {
 				filter: $(this).attr('data-filter')
 			});
 			console.log('change');
-			setTimeout(function() {
-				$('.gallary').height($('.gallary ul').height())
+			// setTimeout(function() {
+			// 	$('.gallary').height($('.gallary ul').height())
 				
-			},800);
+			// },800);
 		});
 		
 		// Remove _.debounce dependency (underscorejs)
