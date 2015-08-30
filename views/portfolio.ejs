@@ -32,7 +32,17 @@
     <div id="nav-ends"></div>
 
  <div class="content-section low-rider margintop portfo">
-           
+            <div class="container">
+            <div class="filter anim fadeInDown" data-wow-delay="0.55s">
+                <ul id="filters" style="  list-style: none;">
+                    <li style="display:inline;"><a class="btn btn-bordered hot btn-sm" role="button" data-filter="*">Tous</a></li>
+                    <% for(var i in categories){%>
+                        <li style="display:inline;"><a class="btn btn-bordered btn-sm" role="button" data-filter=".<%= categories[i].id %>"><%= categories[i].name %></a></li>
+                    <%}%>
+                </ul>
+            </div>
+            <!-- Standard button -->
+        </div>
             <div id="main">
                     <div class="grid-sizer"> </div>      
 
@@ -75,5 +85,8 @@
 var projects = <%- JSON.stringify(projects) %>;
         console.log(projects);
 
+
+var toto2 = <%- JSON.stringify(categories) %>;
+    console.log(toto2);
 
 </script>

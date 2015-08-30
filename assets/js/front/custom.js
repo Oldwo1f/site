@@ -24,14 +24,14 @@ $('#facebook').sharrre({
   }
 });
 
-if($('.grid').length){
-	console.log('masonry');
-	$('.grid').masonry({
-	  // options
-	  itemSelector: '.grid-item',
-	  columnWidth: '.grid-sizer'
-	});
-}
+// if($('.grid').length){
+// 	console.log('masonry');
+// 	$('.grid').masonry({
+// 	  // options
+// 	  itemSelector: '.grid-item',
+// 	  columnWidth: '.grid-sizer'
+// 	});
+// }
 
 
 /**
