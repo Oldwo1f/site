@@ -195,21 +195,24 @@ jQuery(document).ready(function($) {
 	// Remove isotope dependancy
 	if ( $.isFunction($.fn.isotope) ) {
 		// cache container
-		var $container = $('.box');
+		var $container = $('.grid');
 		// initialize isotope
-		$container.isotope({
-		  // options...
-		  masonry: {
-  columnWidth: 50
-},
-			easing:"easeOutCirc",
-			resizable:false // We will handle this
-		});
+		// $container.isotope({
+		//   // options...
+		//   	containerStyle: null,
+		//   	itemSelector: '.boximage',
+		//   	masonry: {
+		// 	  columnWidth: 20
+		// 	},
+		// 	easing:"easeOutCirc",
+		// 	resizable:false // We will handle this
+		// });
 		
 		// filter items when filter link is clicked
 		$('#filters a').click(function(e) {
 			e.preventDefault();
 			
+			console.log('change');
 			if ($(this).hasClass("hot") ) return;
 			
 			$("#filters a.hot").removeClass("hot");
@@ -219,7 +222,6 @@ jQuery(document).ready(function($) {
 			$container.isotope({
 				filter: $(this).attr('data-filter')
 			});
-			console.log('change');
 			// setTimeout(function() {
 			// 	$('.gallary').height($('.gallary ul').height())
 				
