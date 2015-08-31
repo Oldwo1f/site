@@ -37,7 +37,7 @@
                 <ul id="filters" style="  list-style: none;">
                     <li style="display:inline;"><a class="btn btn-bordered hot btn-sm" role="button" data-filter="*">Tous</a></li>
                     <% for(var i in categories){%>
-                        <li style="display:inline;"><a class="btn btn-bordered btn-sm" role="button" data-filter="<%= categories[i].id %>"><%= categories[i].name %></a></li>
+                        <li style="display:inline;"><a class="btn btn-bordered btn-sm" role="button" data-filter=".<%= categories[i].id %>"><%= categories[i].name %></a></li>
                     <%}%>
                 </ul>
             </div>
@@ -63,8 +63,8 @@
                             console.log(n);
                             console.log(myclass);
                     %>
-                    <div class="boximage <%= myclass %>" rel="<% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
-                    <a href="<%- url %>" class="">        
+                    <div class="boximage <%= myclass %> <% if(projects[i].category){ %><%= projects[i].category.id %><% } %>">
+                    <a href="<%- url %>" >        
                                
                                 <%if(projects[i].img) { %>
                                     <img class="" src="/file/image/originalsize/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
