@@ -37,7 +37,7 @@
                 <ul id="filters" style="  list-style: none;">
                     <li style="display:inline;"><a class="btn btn-bordered hot btn-sm" role="button" data-filter="*">Tous</a></li>
                     <% for(var i in categories){%>
-                        <li style="display:inline;"><a class="btn btn-bordered btn-sm" role="button" data-filter=".<%= categories[i].id %>"><%= categories[i].name %></a></li>
+                        <li style="display:inline;"><a class="btn btn-bordered btn-sm" role="button" data-filter="<%= categories[i].id %>"><%= categories[i].name %></a></li>
                     <%}%>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
                                 url = "projet/"+projects[i].id +"/";
                     
                             } 
-                            var classtab = ['grid-item','grid-item','grid-item','grid-item2']
+                            var classtab = ['grid-item','grid-item','grid-item','grid-item']
                             var n = Math.ceil(Math.random()*4)-1
                             var myclass = classtab[n]
 

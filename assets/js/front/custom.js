@@ -196,17 +196,13 @@ jQuery(document).ready(function($) {
 	if ( $.isFunction($.fn.isotope) ) {
 		// cache container
 		var $container = $('.grid');
+		console.log($container);
+		console.log($('.boximage'));
 		// initialize isotope
-		// $container.isotope({
-		//   // options...
-		//   	containerStyle: null,
-		//   	itemSelector: '.boximage',
-		//   	masonry: {
-		// 	  columnWidth: 20
-		// 	},
-		// 	easing:"easeOutCirc",
-		// 	resizable:false // We will handle this
-		// });
+		$container.isotope({
+			easing:"easeOutCirc",
+			resizable:false // We will handle this
+		});
 		
 		// filter items when filter link is clicked
 		$('#filters a').click(function(e) {
