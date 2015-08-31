@@ -218,10 +218,10 @@ jQuery(document).ready(function($) {
 			$container.isotope({
 				filter: $(this).attr('data-filter')
 			});
-			// setTimeout(function() {
-			// 	$('.gallary').height($('.gallary ul').height())
+			setTimeout(function() {
+				$('.gallary').height($('.gallary ul').height())
 				
-			// },800);
+			},800);
 		});
 		
 		// Remove _.debounce dependency (underscorejs)
