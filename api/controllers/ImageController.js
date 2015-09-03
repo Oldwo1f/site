@@ -8,10 +8,10 @@ module.exports={
 	serveImage:function  (req,res,next) {
 
 
-		console.log('SERVE IMG');
+		// console.log('SERVE IMG');
 		var filePath = sails.config.PATH_TO_ADMIN+'uploads/'+req.params.size+'/'+req.params.name;
 		// sails.log(filePath);
-		console.log(filePath);
+		// console.log(filePath);
 	    var stat = fs.statSync(filePath);
 	    // setTimeout(function (argument) {
 	    	res.writeHead(200, {

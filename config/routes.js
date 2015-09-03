@@ -34,6 +34,7 @@ module.exports.routes = {
 
   'GET /': 'frontController.home',
   'GET /portfolio': 'frontController.portfolio',
+  'GET /avendre': 'frontController.avendre',
   'GET /projet/:id/*':'frontController.projet',
   'GET /blog': 'frontController.blog',
   'GET /blog/:page': 'frontController.blog',

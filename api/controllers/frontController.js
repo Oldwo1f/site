@@ -192,6 +192,151 @@ module.exports={
 
 
 
+	},	
+	avendre:function(req,res,next) {
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		baseurl='/'
+		console.log('avendre');
+		async.parallel({
+			projs:function  (cb) {
+				Project.find({status:'actif'}).populateAll().sort('createdAt DESC').exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									console.log("IMG.LENGTH");
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										// console.log('datas',datas);
+										project.img = datas
+										// console.log(project);
+										resolve(project)
+									})
+								}else
+								{
+									console.log("IMG.NOT NOT");
+									// console.log(project);
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							var projects =[];
+							 // _.filter(projectss, function(n) {
+							// 	if(n.tags.length)
+							// 	{
+							// 		// if(_.includes(n.tags,'A-vendre'))
+							// 		return true;
+							// 	}
+							//   	return false;
+							// });
+
+							console.log(projects);
+							for(var i in projectss)
+							{
+								if(projectss[i].tags.length){
+										console.log('Tags.length');
+									for(var j in projectss[i].tags){
+
+										console.log(projectss[i].tags[j].text);
+										if(projectss[i].tags[j].text == 'A-vendre'){
+											projects.push(projectss[i])
+										}
+									}
+								}
+							}
+							console.log(projects);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			cats:function  (cb) {
+				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			 _.remove(cats,function (n) {
+				return n.nbProjects <=0;
+			})
+						return Promise.map(cats,function  (cat) {
+							return new Promise(function(resolve,rej){
+								if(cat.translations.length && req.locale!= 'fr'){
+									_.map(cat.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											cat.name = (trad.name) ? trad.name : cat.name;
+											// project.content = (trad.content) ? trad.content : project.content;
+											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											// project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+
+									resolve(cat)
+								}else
+								{
+									resolve(cat)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,cats)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			// res.send(JSON.stringify(results,null, 10));
+			res.status(200).view('avendre',{
+				'projects':results.projs,
+				'categories':results.cats,
+				title: req.__('SEO_AVENDRE_title'),
+				keyword: req.__('SEO_AVENDRE_keyword'),
+				description:req.__('SEO_AVENDRE_description'),
+				scripturl:'portfo.js',
+				menu:'portfo',
+				marked:marked,
+				domain : sails.config.COMPANY_DOMAIN,
+				baseurl:baseurl
+			})
+			// res.status(200).view('blog',{
+			// 	articles:results.projs,
+			// 	title: req.__('SEO_BLOG_title'),
+			// 	keyword: req.__('SEO_BLOG_keyword'),
+			// 	description:req.__('SEO_BLOG_description'),
+			// 	scripturl:'portfo.js',
+			// 	menu:'blog',
+			// 	marked:marked,
+			// 	nbPage:nbPage,
+			// 	thiscategory:null,
+			// 	currentPage:page,
+			// 	mostseen:results.mostseen,
+			// 	category:results.cats,
+			// 	moment: moment,
+			// 	baseurl:baseurl
+			// })
+		})
+		
+
+
+
+
 	},
 	projet:function(req,res,next) {
 
