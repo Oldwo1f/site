@@ -24,7 +24,46 @@ $('#facebook').sharrre({
   }
 });
 
-
+function resizeGallary(isFirst) {
+		var columns = 4;
+		if ( $(window).width() <= 1200 ) columns = 3;
+		if ( $(window).width() <= 870 )  columns = 2;
+		if ( $(window).width() <= 480 )  columns = 1;
+		
+		var widthScaleFactor = (columns*3)/4;
+		var imgWidth = Math.floor($(window).width()/columns);
+		var imgHeight = (imgWidth*widthScaleFactor)/columns;
+		var childIndex = 0;
+		
+		if ( isFirst ) $(".gallary .preview").fadeOut(400);
+		
+		$(".gallary li").each(function() {
+			// ratio is 4/3 (width/height)
+			$(this).css("width", imgWidth);
+			$(this).css("height", imgHeight);
+		});
+		
+		if ( isFirst ) {
+			$(".portfolio").waypoint(function() {
+				$(".gallary li img").each(function() {
+					$(this).css({
+						opacity:"0",
+						top:"-50px",
+						display:"block"
+					});
+					var el = this;
+					setTimeout(function() {
+						$(el).animate({
+							opacity:"1",
+							top:"0"
+						}, 1800, "easeOutExpo");
+					},190*childIndex++);
+				});
+			}, {offset: 500, triggerOnce:true});
+		}
+		
+		$('.gallary').height($('.gallary ul').height())
+	}
 // if($('.grid').length){
 // 	console.log('masonry');
 // 	$('.grid').masonry({
@@ -262,46 +301,11 @@ jQuery(document).ready(function($) {
 	* @param isFirst	- Set this to true if this is the first
 	*						time callibarting the image sizes
 	*/
-	function resizeGallary(isFirst) {
-		var columns = 4;
-		if ( $(window).width() <= 1200 ) columns = 3;
-		if ( $(window).width() <= 870 )  columns = 2;
-		if ( $(window).width() <= 480 )  columns = 1;
-		
-		var widthScaleFactor = (columns*3)/4;
-		var imgWidth = Math.floor($(window).width()/columns);
-		var imgHeight = (imgWidth*widthScaleFactor)/columns;
-		var childIndex = 0;
-		
-		if ( isFirst ) $(".gallary .preview").fadeOut(400);
-		
-		$(".gallary li").each(function() {
-			// ratio is 4/3 (width/height)
-			$(this).css("width", imgWidth);
-			$(this).css("height", imgHeight);
-		});
-		
-		if ( isFirst ) {
-			$(".portfolio").waypoint(function() {
-				$(".gallary li img").each(function() {
-					$(this).css({
-						opacity:"0",
-						top:"-50px",
-						display:"block"
-					});
-					var el = this;
-					setTimeout(function() {
-						$(el).animate({
-							opacity:"1",
-							top:"0"
-						}, 1800, "easeOutExpo");
-					},190*childIndex++);
-				});
-			}, {offset: 500, triggerOnce:true});
-		}
-		
-		$('.gallary').height($('.gallary ul').height())
-	}
+	function resgal(isFirst) {
+
+	 resizeGallary(isFirst);
+	};
+	
 	
 	function add_hover_effect(el) {
 		
