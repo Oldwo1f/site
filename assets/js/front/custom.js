@@ -24,10 +24,7 @@ $('#facebook').sharrre({
   }
 });
 
-	function loadimage (){
 
-		resizeGallary(false)
-	}
 // if($('.grid').length){
 // 	console.log('masonry');
 // 	$('.grid').masonry({
@@ -878,4 +875,9 @@ $.support.transition = (function(){
 	function loadlogo(){
 		console.log('LOADLOGO');
 		$logo.css({'margin-left':-($logo2.width()/2)+'px'})
+	}
+
+		function loadimage (){
+
+		resizeGallary(false)
 	}
