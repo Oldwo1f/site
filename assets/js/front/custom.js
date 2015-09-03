@@ -221,6 +221,10 @@ jQuery(document).ready(function($) {
 			setTimeout(function() {
 				$('.gallary').height($('.gallary ul').height())
 				
+				setTimeout(function() {
+					$('.gallary').height($('.gallary ul').height())
+					
+				},800);
 			},800);
 		});
 		
