@@ -220,9 +220,10 @@ jQuery(document).ready(function($) {
 			});
 			setTimeout(function() {
 				$('.gallary').height($('.gallary ul').height())
+					resizeGallary(false)
 				
 				setTimeout(function() {
-					$('.gallary').height($('.gallary ul').height())
+					resizeGallary(false)
 					
 				},800);
 			},800);
