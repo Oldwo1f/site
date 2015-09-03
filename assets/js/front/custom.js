@@ -870,9 +870,8 @@ $('img').imgLoad(function(){
     // do stuff
     console.log('imgloaded');
     setTimeout(function() {
-    	resizeGallary(false);
-
-    },1000)
+				$('.gallary').height($('.gallary ul').height())
+	},800);
 });
 
 
