@@ -872,7 +872,11 @@ $.support.transition = (function(){
 
 
 
-
+$('img').imgLoad(function(){
+    // do stuff
+    console.log('imgloaded');
+    resizeGallary(false);
+});
 
 
 }); // End of script
@@ -882,7 +886,24 @@ $.support.transition = (function(){
 		$logo.css({'margin-left':-($logo2.width()/2)+'px'})
 	}
 
-	function loadimage (){
-		$('img').height('auto')
-		resizeGallary(false)
-	}
+	// function loadimage (){
+	// 	$('img').height('auto')
+	// 	resizeGallary(false)
+	// }
+
+(function($){
+    $.fn.imgLoad = function(callback) {
+        return this.each(function() {
+            if (callback) {
+                if (this.complete || /*for IE 10-*/ $(this).height() > 0) {
+                    callback.apply(this);
+                }
+                else {
+                    $(this).on('load', function(){
+                        callback.apply(this);
+                    });
+                }
+            }
+        });
+    };
+})(jQuery);
