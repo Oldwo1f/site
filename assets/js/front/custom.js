@@ -25,6 +25,7 @@ $('#facebook').sharrre({
 });
 
 function resizeGallary(isFirst) {
+	console.log('RESIZEGALLARY');
 		var columns = 4;
 		if ( $(window).width() <= 1200 ) columns = 3;
 		if ( $(window).width() <= 870 )  columns = 2;
@@ -881,7 +882,7 @@ $.support.transition = (function(){
 		$logo.css({'margin-left':-($logo2.width()/2)+'px'})
 	}
 
-		function loadimage (){
-
+	function loadimage (){
+		console.log('LOADIMAGE');
 		resizeGallary(false)
 	}
