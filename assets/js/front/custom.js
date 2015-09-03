@@ -884,5 +884,7 @@ $.support.transition = (function(){
 
 	function loadimage (){
 		console.log('LOADIMAGE');
+		console.log(this);
+		this.attr.height = 'auto';
 		resizeGallary(false)
 	}
