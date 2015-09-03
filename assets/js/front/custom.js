@@ -256,17 +256,11 @@ jQuery(document).ready(function($) {
 			$(this).addClass("hot");
 			
 			e.preventDefault();
-			$container.isotope({
+			$container.fadeIn(1000).isotope({
 				filter: $(this).attr('data-filter')
 			});
 			setTimeout(function() {
 				$('.gallary').height($('.gallary ul').height())
-					resizeGallary(false)
-				
-				setTimeout(function() {
-					resizeGallary(false)
-					
-				},800);
 			},800);
 		});
 		
@@ -875,7 +869,10 @@ $.support.transition = (function(){
 $('img').imgLoad(function(){
     // do stuff
     console.log('imgloaded');
-    resizeGallary(false);
+    setTimeout(function() {
+    	resizeGallary(false);
+
+    },1000)
 });
 
 
