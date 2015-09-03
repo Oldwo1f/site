@@ -68,7 +68,7 @@
                     <a href="<%- url %>" >        
                                
                                 <%if(projects[i].img) { %>
-                                    <img class="" src="/file/image/adminThumbs/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
+                                    <img class="" onload="loadimage()" src="/file/image/adminThumbs/<%= projects[i].img.filename %>" alt="<%= projects[i].img.alt %>"/>
                                 <% } %>
                                 <div class="cacheimage"><i class="fa-eye fa"></i></div>
                     </a>

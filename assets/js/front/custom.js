@@ -253,6 +253,10 @@ jQuery(document).ready(function($) {
 		$(window).resize(menuLazyLayout);
 	}
 	
+	function loadimage (){
+
+		resizeGallary(false)
+	}
 	/**
 	* The resizeGallary function calculates the image dementions
 	* based off of the current browser window size.
