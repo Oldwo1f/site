@@ -1,167 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %>"</title>
+<html dir="ltr" lang="en-US">
+<head>
 
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="description" content="<%= description %>" />
-    <meta name="keywords" content="<%= keyword %>" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="SemiColonWeb" />
 
-   
-    <!--STYLES-->
-    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/bower_components/animate.css/animate.min.css">
-    <link rel="stylesheet" href="/css/menu.css">
-    <link rel="stylesheet" href="/css/skel.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/style-wide.css">
-    <link rel="stylesheet" href="/styles/front/animate.css">
-    <link rel="stylesheet" href="/styles/front/bootstrap.css">
-    <link rel="stylesheet" href="/styles/front/bootstrap.min.css">
-    <link rel="stylesheet" href="/styles/front/font-awesome.min.css">
-    <link rel="stylesheet" href="/styles/front/isotope.css">
-    <link rel="stylesheet" href="/styles/front/lightbox.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/masterslider.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/black-1/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/black-2/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/contrast/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/default/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/light-2/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/light-3/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/light-4/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/light-5/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/light-6/style.css">
-    <link rel="stylesheet" href="/styles/front/masterslider/skins/metro/style.css">
-    <link rel="stylesheet" href="/styles/front/nivo-slider.css">
-    <link rel="stylesheet" href="/styles/front/owl.carousel.css">
-    <link rel="stylesheet" href="/styles/front/owl.transitions.css">
-    <link rel="stylesheet" href="/styles/front/settings.css">
-    <link rel="stylesheet" href="/styles/front/style.css">
-    <link rel="stylesheet" href="/styles/importer.css">
-    <!--STYLES END-->
-  </head>
+    <!-- Stylesheets
+    ============================================= -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
 
-  <body>
-    <div class="openMenuBtn"><i class="fa fa-bars"></i></div>
-    <div class="sidemenu ">
-    <div class="closeMenuBtn"><i class="fa fa-times"></i></div>
-        
-        <nav id="menu1" class=" container active">
-          <a  href="/" <% if(menu=="home"){ %>class="active"<% } %>>
-            <span class="subtitle">Atelier architecture Van Oost</span>
-            HOME
-          </a>
-          <a  href="/portfolio" <% if(menu=="portfo"){ %> class="active"<% } %>>
-            <span class="subtitle">Vennez découvrir nos dernier projets</span>
-            PORFOLIO
-          </a>
-          <a  href="/blog" <% if(menu=="blog"){ %>class="active"<% } %>>
-            <span class="subtitle">Suivez notre actualité et celle de l'architecture</span>
-            BLOG
-          </a>
-        </nav>
-    </div>
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--[if lt IE 9]>
+        <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <![endif]-->
 
+    <!-- External JavaScripts
+    ============================================= -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+
+    <!-- Document Title
+    ============================================= -->
+    <title>Home - Corporate Layout 2 | Canvas</title>
+
+</head>
+<body class="stretched">
 
     <%- body %>
 
 
+    <script type="text/javascript" src="js/functions.js"></script>
 
-    <!--
-        Client-side Templates
-        ========================
-
-        HTML templates are important prerequisites of modern, rich client applications.
-        To work their magic, frameworks like Backbone, Angular, Ember, and Knockout require
-        that you load these templates client-side.
-
-        By default, your Gruntfile is configured to automatically load and precompile
-        client-side JST templates in your `assets/templates` folder, then
-        include them here automatically (between TEMPLATES and TEMPLATES END).
-        
-        To customize this behavior to fit your needs, just edit `tasks/pipeline.js`.
-        For example, here are a few things you could do:
-
-            + Import templates from other directories
-            + Use a different template engine (handlebars, jade, dust, etc.)
-            + Internationalize your client-side templates using a server-side
-              stringfile before they're served.
-    -->
-
-    <!--TEMPLATES-->
-    <script type="text/javascript" src="/jst.js"></script>
-    <!--TEMPLATES END-->
-
-
-    <!--
-
-      Client-side Javascript
-      ========================
-
-      You can always bring in JS files manually with `script` tags, or asynchronously
-      on the client using a solution like AMD (RequireJS).  Or, if you like, you can 
-      take advantage of Sails' conventional asset pipeline (boilerplate Gruntfile).
-
-      By default, files in your `assets/js` folder are included here
-      automatically (between SCRIPTS and SCRIPTS END).  Both JavaScript (.js) and
-      CoffeeScript (.coffee) are supported. In production, your scripts will be minified
-      and concatenated into a single file.
-      
-      To customize any part of the built-in behavior, just edit `tasks/pipeline.js`.
-      For example, here are a few things you could do:
-          
-          + Change the order of your scripts
-          + Import scripts from other directories
-          + Use a different preprocessor, like TypeScript
-
-    -->
-
-    <!--SCRIPTS-->
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <script src="/bower_components/wow/dist/wow.min.js"></script>
-    <script src="/bower_components/sharrre/jquery.sharrre.min.js"></script>
-    <script src="/bower_components/fitvids/jquery.fitvids.js"></script>
-    <script src="/js/dependencies/backstretch.js"></script>
-    <script src="/js/dependencies/jquery-ui-custom.js"></script>
-    <script src="/js/dependencies/lodash.js"></script>
-    <script src="/js/dependencies/myfunctionsTools.js"></script>
-    <script src="/js/dependencies/prettyembed.js"></script>
-    <script src="/js/dependencies/sails.io.js"></script>
-    <script src="/js/dependencies/skel.min.js"></script>
-    <script src="/js/menu.js"></script>
-    <!--SCRIPTS END-->
-    <script src="/js/<%= scripturl %>"></script>
-    <script type="text/javascript">
-    $(document).ready(function() {
-            var height = 0;
-            var heightMenu = 0;
-            var width = 0;
-        $(window).resize(function() {
-
-            height = $(window).height()
-            heightMenu = $('#menu1').height()
-            margeMenu = (height-heightMenu)/2
-            $('#menu1').css('margin-top',margeMenu+'px')
-
-            
-        }).resize()
-
-        new WOW().init();
-        //menu
-        console.log($('.openMenuBtn'));
-
-        $('.openMenuBtn').click(function() {
-            console.log('click');
-            $('.sidemenu').addClass('show')
-        })
-        $('.closeMenuBtn').click(function() {
-            console.log('click');
-            $('.sidemenu').removeClass('show')
-        })
-    })
-    </script>
-  </body>
+</body>
 </html>
