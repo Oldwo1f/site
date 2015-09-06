@@ -12,11 +12,11 @@ module.exports={
 		
 					res.status(200).view('homepage',{
 						// articles:articles,
-						marked:marked,
-						title: req.__('SEO_HOME_title'),
-						keyword: req.__('SEO_HOME_keyword'),
-						description:req.__('SEO_HOME_description'),
-						scripturl:'script.js',
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
 						menu:'home',
 					})
 			
@@ -25,6 +25,97 @@ module.exports={
 
 
 	},	
+	blog:function(req,res,next) {
+
+		console.log('blog');
+					res.status(200).view('blog',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'blog',
+					})
+	},	
+	article:function(req,res,next) {
+
+		console.log('article');
+					res.status(200).view('article',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'blog',
+					})
+	},
+	contact:function(req,res,next) {
+
+		console.log('contact');
+					res.status(200).view('contact',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'contact',
+					})
+	},
+	forum:function(req,res,next) {
+
+		console.log('forum');
+					res.status(200).view('comingsoon',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'forum',
+					})
+	},	
+	photo:function(req,res,next) {
+
+		console.log('photo');
+					res.status(200).view('photo',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'photo',
+					})
+	},	
+	about:function(req,res,next) {
+
+		console.log('about');
+					res.status(200).view('about',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'about',
+					})
+	}	,	
+	service:function(req,res,next) {
+
+		console.log('service');
+					res.status(200).view('service',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'service',
+					})
+	}	
 	// portfolio:function(req,res,next) {
 
 	// 	console.log('portfolio');

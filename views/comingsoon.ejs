@@ -1,0 +1,55 @@
+<div id="wrapper" class="clearfix">
+
+        <%- include menu.ejs %>
+
+        <section id="slider" class="full-screen dark" style="background: url(images/parallax/home/2.jpg) center;">
+
+            <div class="container clearfix vertical-middle">
+
+                <div class="heading-block title-center nobottomborder">
+                    <h1>We are currently Under Construction</h1>
+                    <span>Please check back again within Some Days as We're Pretty Close</span>
+                </div>
+
+                <div id="countdown-ex1" class="countdown countdown-large coming-soon divcenter bottommargin" style="max-width:700px;"></div>
+
+                <div class="divider divider-center divider-short divider-margin"><i class="icon-time"></i></div>
+
+                <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+               <!--  <form id="widget-subscribe-form" action="include/subscribe.php" role="form" method="post" class="nobottommargin">
+                    <div class="input-group input-group-lg divcenter" style="max-width:600px;">
+                        <span class="input-group-addon"><i class="icon-email2"></i></span>
+                        <input type="email" name="widget-subscribe-form-email" class="form-control required email" placeholder="Enter your Email">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="submit">Subscribe Now</button>
+                        </span>
+                    </div>
+                </form>
+ -->
+                <script>
+                    jQuery(document).ready( function($){
+                        var newDate = new Date(2015, 10, 5);
+                        $('#countdown-ex1').countdown({until: newDate});
+                    });
+                    // $("#widget-subscribe-form").validate({
+                    //     submitHandler: function(form) {
+                    //         $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
+                    //         $(form).ajaxSubmit({
+                    //             target: '#widget-subscribe-form-result',
+                    //             success: function() {
+                    //                 $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
+                    //                 $('#widget-subscribe-form').find('.form-control').val('');
+                    //                 $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
+                    //                 SEMICOLON.widget.notifications($('#widget-subscribe-form-result'));
+                    //             }
+                    //         });
+                    //     }
+                    // });
+                </script>
+
+            </div>
+
+        </section>
+
+
+    </div><!-- #wrapper end -->

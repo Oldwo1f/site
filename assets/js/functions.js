@@ -456,6 +456,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		resizeVideos: function(){
+			console.log('RESIZE VIDEO');
 			if ( $().fitVids ) {
 				$("#content,#footer,#slider:not(.revslider-wrap),.landing-offer-media,.portfolio-ajax-modal").fitVids({
 					customSelector: "iframe[src^='http://www.dailymotion.com/embed']",
