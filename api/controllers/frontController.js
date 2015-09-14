@@ -102,18 +102,44 @@ module.exports={
 						// scripturl:'script.js',
 						menu:'about',
 					})
-	}	,	
-	service:function(req,res,next) {
+	},	
+	rando:function(req,res,next) {
 
-		console.log('service');
-					res.status(200).view('service',{
+		console.log('rando');
+					res.status(200).view('rando',{
 						// articles:articles,
 						// marked:marked,
 						// title: req.__('SEO_HOME_title'),
 						// keyword: req.__('SEO_HOME_keyword'),
 						// description:req.__('SEO_HOME_description'),
 						// scripturl:'script.js',
-						menu:'service',
+						menu:'rando',
+					})
+	},	
+	balade:function(req,res,next) {
+
+		console.log('rando');
+					res.status(200).view('balade',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'balade',
+					})
+	}	,	
+	cours:function(req,res,next) {
+
+		console.log('cour');
+					res.status(200).view('cours',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'cours',
 					})
 	}	
 	// portfolio:function(req,res,next) {

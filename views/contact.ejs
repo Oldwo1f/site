@@ -11,11 +11,12 @@
 
             <div class="container clearfix">
                 <h1>Contact</h1>
-                <span>Get in Touch with Us</span>
-                <ol class="breadcrumb">
+                <span>Nous sommes ouvert tout les jours de toute l'année</span>
+                <span>Contactez moi par téléphone : <strong> 06 84 41 14 94</strong></span>
+                <!-- <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">Contact</li>
-                </ol>
+                </ol> -->
             </div>
 
         </section><!-- #page-title end -->
@@ -30,8 +31,8 @@
                 ============================================= -->
                 <div id="contact-form-overlay-mini" class="clearfix">
 
-                    <div class="fancy-title title-dotted-border">
-                        <h3>Send us an Email</h3>
+                    <div class="fancy-title">
+                        <h3>Envoyez moi un email</h3>
                     </div>
 
                     <div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
@@ -40,10 +41,7 @@
                     ============================================= -->
                     <form class="nobottommargin" id="template-contactform" name="template-contactform" action="include/sendemail.php" method="post">
 
-                        <div class="col_full">
-                            <label for="template-contactform-name">Societé / Organisme <small>*</small></label>
-                            <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control" />
-                        </div>
+                        
                         <div class="col_full">
                             <label for="template-contactform-name">Nom complet <small>*</small></label>
                             <input type="text" id="template-contactform-name" name="template-contactform-name" value="" class="sm-form-control required" />
@@ -57,11 +55,11 @@
                         <div class="clear"></div>
 
                         <div class="col_full">
-                            <label for="template-contactform-phone">Phone</label>
+                            <label for="template-contactform-phone">Téléphone</label>
                             <input type="text" id="template-contactform-phone" name="template-contactform-phone" value="" class=" required sm-form-control" />
                         </div>
 
-                        <div class="col_full">
+                        <!-- <div class="col_full">
                             <label for="template-contactform-service">Comment m'avez vous connu?</label>
                             <select id="template-contactform-service" name="template-contactform-service" class="required sm-form-control">
                                 <option value="">-- Choisir dans la liste --</option>
@@ -71,12 +69,12 @@
                                 <option value="Association professionnelle">Association professionnelle</option>
                                 <option value="Autre">Autre</option>
                             </select>
-                        </div>
+                        </div> -->
 
                         <div class="clear"></div>
 
                         <div class="col_full">
-                            <label for="template-contactform-subject">Subject <small>*</small></label>
+                            <label for="template-contactform-subject">Objet <small>*</small></label>
                             <input type="text" id="template-contactform-subject" name="template-contactform-subject" value="" class="required sm-form-control" />
                         </div>
 
@@ -125,33 +123,96 @@
 
             <script type="text/javascript">
 
-                $('#google-map').gMap({
+                jQuery('#google-map').gMap({
+                                
+                                address: '10 Lacarrière, 15290 Pers, France',
+                                maptype: 'ROADMAP',
+                                zoom: 11,
+                                markers: [
+                                    {
+                                        address: "10 Lacarrière, 15290 Pers, France",
+                                        html: '<div style="width: 300px;background:#fb9158; padding: 5px;"><h4 style="margin-bottom: 8px;"><span>Le Paradis des Chevaux</span></h4><p >Nous organisons de nombreuses balades et randonnées à cheval</p><p class="nobottommargin">Contact :  06 84 41 14 94</p></div>'
+                                    }
+                                ],
+                                styles:[
+  {
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape.natural.terrain",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "landscape.man_made",
+    "stylers": [
+      { "visibility": "on"},
+      {"color":"#fb9158" }
+    ]
+  },{
+    "featureType": "administrative.country",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "administrative.locality",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "landscape.natural",
+    "stylers": [
+      { "visibility": "on" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "color": "#f9600d" },
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#f9d60d" }
+    ]
+  },{
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      { "color": "#f9d60d" },
+      { "visibility": "simplified" }
+    ]
+  },{
+    "featureType": "road.local",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "simplified" },
+      { "color": "#f9d60d" }
+    ]
+  },{
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      { "visibility": "on" },
+      { "color": "#0da6f9" }
+    ]
+  },{
+  }
+],
+                                doubleclickzoom: false,
+                                controls: {
+                                    panControl: true,
+                                    zoomControl: true,
+                                    mapTypeControl: true,
+                                    scaleControl: false,
+                                    streetViewControl: false,
+                                    overviewMapControl: false
+                                }
 
-                    address: 'Paris, France',
-                    maptype: 'ROADMAP',
-                    zoom: 14,
-                    markers: [
-                        {
-                            address: "Paris, France",
-                            html: '<div style="width: 300px;"><h4 style="margin-bottom: 8px;">Hi, we\'re <span>Andre Dan</span></h4><p class="nobottommargin">Our mission is to help people to <strong>earn</strong> and to <strong>learn</strong> online. We operate <strong>marketplaces</strong> where hundreds of thousands of people buy and sell digital goods every day, and a network of educational blogs where millions learn <strong>creative skills</strong>.</p></div>',
-                            icon: {
-                                image: "images/icons/map-icon-red.png",
-                                iconsize: [32, 39],
-                                iconanchor: [32,39]
-                            }
-                        }
-                    ],
-                    doubleclickzoom: false,
-                    controls: {
-                        panControl: true,
-                        zoomControl: true,
-                        mapTypeControl: true,
-                        scaleControl: false,
-                        streetViewControl: false,
-                        overviewMapControl: false
-                    }
-
-                });
+                            });
 
             </script><!-- Google Map End -->
 

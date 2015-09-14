@@ -42,7 +42,9 @@ module.exports.routes = {
   'GET /about':'frontController.about',
   'GET /forum':'frontController.forum',
   'GET /photo':'frontController.photo',
-  'GET /service':'frontController.service',
+  'GET /rando':'frontController.rando',
+  'GET /balade':'frontController.balade',
+  'GET /cours':'frontController.cours',
   
   'POST /contactEmail':'frontController.contactEmail',
   'POST /project/:itemid/addComment':'frontController.addCommentProj',
