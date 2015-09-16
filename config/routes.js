@@ -45,6 +45,7 @@ module.exports.routes = {
   'GET /rando':'frontController.rando',
   'GET /balade':'frontController.balade',
   'GET /cours':'frontController.cours',
+  'GET /infos':'frontController.infos',
   
   'POST /contactEmail':'frontController.contactEmail',
   'POST /project/:itemid/addComment':'frontController.addCommentProj',

@@ -1,3 +1,7 @@
+
+
+<body class="stretched HOME">
+
 <!-- Document Wrapper
     ============================================= -->
     <div id="wrapper" class="clearfix">
@@ -11,8 +15,9 @@
 
             <div class="container clearfix">
                 <h1>Contact</h1>
-                <span>Nous sommes ouvert tout les jours de toute l'année</span>
-                <span>Contactez moi par téléphone : <strong> 06 84 41 14 94</strong></span>
+                <span>Le meilleur moyen de nous contacter est encore de passer nous voir au gymnase le mercredi ou le vendredi de 18 à 22H</span>
+                <span>Vous pouvez aussi joindre Françoise au  : <strong> 06 84 41 14 94</strong></span>
+                <span>Ou encore utiliser le formulaire ci dessou</span>
                 <!-- <ol class="breadcrumb">
                     <li><a href="#">Home</a></li>
                     <li class="active">Contact</li>
@@ -32,7 +37,7 @@
                 <div id="contact-form-overlay-mini" class="clearfix">
 
                     <div class="fancy-title">
-                        <h3>Envoyez moi un email</h3>
+                        <h3>Envoyez nous un email</h3>
                     </div>
 
                     <div id="contact-form-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
@@ -124,95 +129,189 @@
             <script type="text/javascript">
 
                 jQuery('#google-map').gMap({
-                                
-                                address: '10 Lacarrière, 15290 Pers, France',
+                                address: "28 Rue du Buisson, 02400 Château-Thierry, France",
                                 maptype: 'ROADMAP',
-                                zoom: 11,
+                                zoom: 14,
                                 markers: [
                                     {
-                                        address: "10 Lacarrière, 15290 Pers, France",
-                                        html: '<div style="width: 300px;background:#fb9158; padding: 5px;"><h4 style="margin-bottom: 8px;"><span>Le Paradis des Chevaux</span></h4><p >Nous organisons de nombreuses balades et randonnées à cheval</p><p class="nobottommargin">Contact :  06 84 41 14 94</p></div>'
+                                        address: "28 Rue du Buisson, 02400 Château-Thierry, France",
+                                        html: "Brise Bêche",
+                                        icon: {
+                                            image: "images/icons/map-icon-red.png",
+                                            iconsize: [32, 39],
+                                            iconanchor: [14,44]
+                                        }
                                     }
                                 ],
-                                styles:[
-  {
-    "stylers": [
-      { "visibility": "off" }
-    ]
-  },{
-    "featureType": "landscape.natural.terrain",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "landscape.man_made",
-    "stylers": [
-      { "visibility": "on"},
-      {"color":"#fb9158" }
-    ]
-  },{
-    "featureType": "administrative.country",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "administrative.locality",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "landscape.natural",
-    "stylers": [
-      { "visibility": "on" }
-    ]
-  },{
-    "featureType": "landscape",
-    "stylers": [
-      { "color": "#f9600d" },
-      { "visibility": "simplified" }
-    ]
-  },{
-    "featureType": "road.highway",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#f9d60d" }
-    ]
-  },{
-    "featureType": "road.arterial",
-    "elementType": "geometry",
-    "stylers": [
-      { "color": "#f9d60d" },
-      { "visibility": "simplified" }
-    ]
-  },{
-    "featureType": "road.local",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "simplified" },
-      { "color": "#f9d60d" }
-    ]
-  },{
-    "featureType": "water",
-    "elementType": "geometry",
-    "stylers": [
-      { "visibility": "on" },
-      { "color": "#0da6f9" }
-    ]
-  },{
-  }
-],
                                 doubleclickzoom: false,
                                 controls: {
+                                    disableDoubleClickZoom: false,
                                     panControl: true,
                                     zoomControl: true,
-                                    mapTypeControl: true,
+                                    mapTypeControl: false,
                                     scaleControl: false,
                                     streetViewControl: false,
                                     overviewMapControl: false
-                                }
+                                },
+                                styles: [
+                                {
+                                    "featureType":"all",
+                                    "elementType":"labels.text.fill",
+                                    "stylers":[{"saturation":36},{"color":"#6497b1"},{"lightness":40}]
+                                },
+                                {
+                                    "featureType":"all",
+                                    "elementType":"labels.text.stroke",
+                                    "stylers":[
+                                        {"visibility":"off"},
+                                       
+                                    ]
+                                },
+                                {
+                                    "featureType":"all",
+                                    "elementType":"labels.icon",
+                                    "stylers":[{"visibility":"off"}]
+                                },
 
-                            });
+                               {
+                                    "featureType":"administrative",
+                                    "elementType":"geometry.fill",
+                                    "stylers":[   {
+                                    "color":"#6497b1"},   {
+                                    "lightness":20}]},
+                               {
+                                    "featureType":"administrative",
+                                    "elementType":"geometry.stroke",
+                                    "stylers":[   {
+                                    "color":"#005b96"},
+                                       {"lightness":17},
+                                       {"weight":1.2}]},
+                                {
+                                    "featureType":"administrative",
+                                    "elementType":"labels",
+                                    "stylers":[   {
+                                    "visibility":"off"}]},
+                                {
+                                    "featureType":"administrative.country",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"simplified"}]},
+                                {
+                                    "featureType":"administrative.country",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "visibility":"simplified"}]},
+                                {
+                                    "featureType":"administrative.country",
+                                    "elementType":"labels.text",
+                                    "stylers":[   {
+                                    "visibility":"simplified"}]},
+                                {
+                                    "featureType":"administrative.province",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"off"}]},
+                                {
+                                    "featureType":"administrative.locality",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"simplified"},
+                                {
+                                    "saturation":"-100"},
+                                {
+                                    "lightness":"30"}]},
+                                {
+                                    "featureType":"administrative.neighborhood",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"off"}]},
+                                {
+                                    "featureType":"administrative.land_parcel",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"off"}]},
+                                {
+                                    "featureType":"landscape",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"simplified"},
+                                    {"gamma":"1.00"},
+                                    {"lightness":"0"}]
+                                },
+                                {
+                                    "featureType":"landscape",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#005b96"},
+                                {
+                                    "lightness":20}]},
+                                       {
+                                    "featureType":"landscape.man_made",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "lightness":"0"}]},
+                                       {
+                                    "featureType":"poi",
+                                    "elementType":"all",
+                                    "stylers":[   {
+                                    "visibility":"off"}]},
+                                       {
+                                    "            featureType":"poi",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":21}]},
+                                       {
+                                    "featureType":"road",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "visibility":"simplified"}]},
+                                       {
+                                    "featureType":"road.highway",
+                                    "elementType":"geometry.fill",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":17}]},
+                                       {
+                                    "featureType":"road.highway",
+                                    "elementType":"geometry.stroke",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":29},
+                                       {
+                                    "weight":0.2}]},
+                                       {
+                                    "featureType":"road.arterial",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":18}]},
+                                       {
+                                    "featureType":"road.local",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":16}]},
+                                       {
+                                    "featureType":"transit",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#011f4b"},
+                                       {
+                                    "lightness":19}]},
+                                       {
+                                    "featureType":"water",
+                                    "elementType":"geometry",
+                                    "stylers":[   {
+                                    "color":"#009686"},
+                                       {
+                                    "lightness":17}]}]
+                        });
 
             </script><!-- Google Map End -->
 

@@ -1,71 +1,103 @@
-
-        <!-- Footer
+<!-- Footer
         ============================================= -->
-        <footer id="footer" class="dark">
+        <footer id="footer" class=" noborder">
 
-           
+            <div class="container center">
+                <div class="footer-widgets-wrap">
 
-            <!-- Copyrights
-            ============================================= -->
-            <div id="copyrights">
+                    <div class="row divcenter clearfix">
 
-                <div class="container clearfix">
+                        <div class="col-md-4">
 
-                    <div class="col_half col_last" style="">
-                        Copyrights &copy; 2015 Lydie <span class="middot">&middot;</span> Site web : <a href="http://momcreation.fr">Momcreation</a>
-                        <!-- <div class="copyright-links"><a href="#">Terms of Use</a> / <a href="#">Privacy Policy</a></div> -->
-                    </div>
+                            <div class="widget clearfix">
+                                <h4>Site Links</h4>
 
-                    <div class="col_half col_last tright">
-                        <div class="fright clearfix">
-                          <!--   <a href="#" class="social-icon si-small si-borderless si-facebook">
-                                <i class="icon-facebook"></i>
-                                <i class="icon-facebook"></i>
-                            </a>
+                                <ul class="list-unstyled footer-site-links nobottommargin colorwhite">
+                                    <li><a href="#" data-scrollto="#wrapper" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Top</a></li>
+                                    <li><a href="#" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">About</a></li>
+                                    <li><a href="#" data-scrollto="#section-works" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Works</a></li>
+                                    <li><a href="#" data-scrollto="#section-services" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Services</a></li>
+                                    <li><a href="#" data-scrollto="#section-blog" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Blog</a></li>
+                                    <li><a href="#" data-scrollto="#section-contact" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Contact</a></li>
+                                </ul>
+                            </div>
 
-                            <a href="#" class="social-icon si-small si-borderless si-twitter">
-                                <i class="icon-twitter"></i>
-                                <i class="icon-twitter"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-gplus">
-                                <i class="icon-gplus"></i>
-                                <i class="icon-gplus"></i>
-                            </a> -->
-<!-- 
-                            <a href="#" class="social-icon si-small si-borderless si-pinterest">
-                                <i class="icon-pinterest"></i>
-                                <i class="icon-pinterest"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-vimeo">
-                                <i class="icon-vimeo"></i>
-                                <i class="icon-vimeo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-github">
-                                <i class="icon-github"></i>
-                                <i class="icon-github"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-yahoo">
-                                <i class="icon-yahoo"></i>
-                                <i class="icon-yahoo"></i>
-                            </a>
-
-                            <a href="#" class="social-icon si-small si-borderless si-linkedin">
-                                <i class="icon-linkedin"></i>
-                                <i class="icon-linkedin"></i>
-                            </a> -->
                         </div>
 
-                        <div class="clear"></div>
+                        <div class="col-md-4">
 
-                        <i class="icon-envelope2"></i> <a href="mailTo:info@paradisdeschevaux.com">info@paradisdeschevaux.com </a><span class="middot">&middot;</span> <i class="icon-phone"></i> <a href="tel:0684411494">06 84 41 14 94</a>  
+                            <div class="widget clearfix">
+                                <h4>Subscribe</h4>
+
+                                <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+                                <form id="widget-subscribe-form" action="../include/subscribe.php" role="form" method="post" class="nobottommargin">
+                                    <input type="email" id="widget-subscribe-form-email" name="widget-subscribe-form-email" class="form-control input-lg not-dark required email" placeholder="Your Email Address">
+                                    <button class="button button-border button-circle button-light topmargin-sm" type="submit">Subscribe Now</button>
+                                </form>
+                                <script type="text/javascript">
+                                    $("#widget-subscribe-form").validate({
+                                        submitHandler: function(form) {
+                                            $(form).find('.input-group-addon').find('.icon-email2').removeClass('icon-email2').addClass('icon-line-loader icon-spin');
+                                            $(form).ajaxSubmit({
+                                                target: '#widget-subscribe-form-result',
+                                                success: function() {
+                                                    $(form).find('.input-group-addon').find('.icon-line-loader').removeClass('icon-line-loader icon-spin').addClass('icon-email2');
+                                                    $('#widget-subscribe-form').find('.form-control').val('');
+                                                    $('#widget-subscribe-form-result').attr('data-notify-msg', $('#widget-subscribe-form-result').html()).html('');
+                                                    SEMICOLON.widget.notifications($('#widget-subscribe-form-result'));
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <div class="widget clearfix">
+                                <h4>Contact</h4>
+
+                                <p class="lead colorwhite">Brise Bêche </strong><br>
+                                            28 Rue du Buisson<br>
+                                            02400 CHÂTEAU THIERRY</p>
+
+                                <div class="center topmargin-sm">
+                                    <a href="#" class="social-icon inline-block noborder si-small si-facebook colorwhite" title="Facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon inline-block noborder si-small si-twitter colorwhite" title="Twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon inline-block noborder si-small si-github colorwhite" title="Github">
+                                        <i class="icon-github"></i>
+                                        <i class="icon-github"></i>
+                                    </a>
+                                    <a href="#" class="social-icon inline-block noborder si-small si-pinterest colorwhite" title="Pinterest">
+                                        <i class="icon-pinterest"></i>
+                                        <i class="icon-pinterest"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
 
                 </div>
+            </div>
 
-            </div><!-- #copyrights end -->
+            <div id="copyrights">
+                <div class="container center clearfix colorwhite">
+                    Copyright Canvas 2015 | All Rights Reserved
+                </div>
+            </div>
 
         </footer><!-- #footer end -->
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <script type="text/javascript" src="../js/functions.js"></script>

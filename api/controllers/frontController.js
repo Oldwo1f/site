@@ -64,6 +64,19 @@ module.exports={
 						menu:'contact',
 					})
 	},
+	infos:function(req,res,next) {
+
+		console.log('infos');
+					res.status(200).view('infos',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'infos',
+					})
+	},
 	forum:function(req,res,next) {
 
 		console.log('forum');
