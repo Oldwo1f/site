@@ -1,0 +1,70 @@
+ <div class="modal fade newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content envoiSerie">
+    	<h2>Envoi d'email en série</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="Envoi()" enctype="multipart/form-data">
+            <div class="form-group col-xs-12">
+            
+                <input type="text" name="title" class="form-control input-lg" ng-model="newEnvoi.title" placeholder="Nom de l'envoi">
+          	</div>
+          	
+          	<div class="form-group col-xs-12">
+          	<hr>
+            	<label for="">Destinataires</label>
+          	</div>
+          	<div class="form-group col-xs-12">
+            	<div class="destinataire" ng-repeat="list in mailingLists">
+            		<input type="checkbox" ng-model="list.checked" >
+            		<span >{{list.title}}</span>
+            	</div>
+            	<div class="destinataire" >
+            		<input type="checkbox" ng-model="client.checked" >
+            		<span >clients</span>
+            	</div>
+          	</div>
+
+
+          	<div class="form-group col-xs-12">
+          		<hr>
+            	<label for="">Contenu</label>
+                <!-- <input type="text" name="title" class="form-control input-lg" ng-model="newEnvoi.title" placeholder="Nom de l'envoi"> -->
+          	</div>
+          	<div class="form-group col-xs-12">
+          		<input type="text" name="objet" class="form-control input-lg" ng-model="newEnvoi.objet" placeholder="Objet">
+          	</div>
+            <markdownpreview ng-model="newEnvoi.content" handleerror="'content'" minheight="300" placehold="'Contenu en markdown'" />
+			
+          	<div class="form-group col-xs-12 fileinput-button">
+          		<div class="btn-info btn-xs btn">
+          			<div class="fileinput-button" ng-click="clickAddPj($event)">
+	          			<span class="glyphicon glyphicon-plus"></span><span style="margin-left:5px">Ajouter une Pièce jointe</span>
+	          			<!-- <input type="file" name="pj" =""> -->
+	          			<input type="file" list="pjs" filelist="filelist" accept="" piecesjointes />
+	          		</div>
+	          	</div>
+	          	<div class="btn btn-xs btn-danger" ng-click="removePj()">Supprimer</div>
+
+	          	<small>
+	          	Attention au poid de vos pièces jointes, la plupart des messageries n'acceptent que les fichiers dont le poid est inférieur à 10Mo
+	          	</small>
+          	</div>
+          	<div class="form-group col-xs-12 pièces jointes">
+          		<ol>
+	          		<li ng-repeat="pj in pjs" class="pj"> {{pj.filename}} - {{pj.size | bytes}}</li>
+          		</ol>
+          	</div>
+
+
+
+
+
+           	<div class="rowbutton form-group col-xs-12">
+			    	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitNew()" data-toggle="modal" data-target=".newModal" value="Annuler">Annuler</div>
+			    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Envoyer">
+			</div>
+            <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

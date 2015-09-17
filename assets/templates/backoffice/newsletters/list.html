@@ -1,0 +1,54 @@
+<div class="row gestionlist">
+	<div class="col-xs-12">
+	<select name="" id="" ng-model="currentList" ng-change="changeList()">
+		<option value="">Choisir une liste</option>
+		<option  ng-repeat="list in mailingLists" ng-selected="currentList==list.id" value="{{list.id}}"> {{list.title}}</option>
+	</select>
+	<removeremove action="removeList" class="pull-right"></removeremove>
+	<button type="button" class="btn btn-info btn-xs pull-right" ng-click="linkaddList();"><span class="glyphicon glyphicon-plus"></span>Créer une nouvelle liste</button>
+
+	</div>
+</div>
+<hr>
+<div class="row" ng-show="currentList">
+	<div class="col-xs-9">
+		<button type="button" class="btn btn-info btn-xs" ng-click="linkadd();"><span class="glyphicon glyphicon-plus"></span>Ajouter</button>
+		<csv content="csv.content"
+	    result="csv.result"></csv>
+		<removeremove action="removeselected" ng-show="totalChecked()"></removeremove>
+		<div  class="nbselected ">
+			<ng-pluralize class="small"  count="totalChecked()"  when="{'0': 'Aucun project séléctionné','1': '{{totalChecked()}} project séléctionné','other': '{{totalChecked()}} projects séléctionnés'}" </ng-pluralize>
+		</div>
+	</div>
+	<div class="col-xs-3 pull-right">
+		<input type="search" class=" form-control input-sm" ng-model="slug" placeholder="Recherche . . ." />
+	</div>
+</div>
+
+
+<table class="table table-striped " ng-show="currentList">
+	<thead>
+		<tr>
+	    	<th class="thsbox"><input type="checkbox" ng-model="allChecked" ng-click="toggleAllcheck()"></th>
+	    	<th class="thtitle" ng-click="order ='email';reverse=!reverse; " style="cursor:pointer">Email<span ng-show="order==='email' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='email' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thdate" ng-click="order ='createdAt';reverse=!reverse; " style="cursor:pointer">Date<span ng-show="order==='createdAt' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='createdAt' && reverse===true" class=" caret"></span></span></th>
+		</tr>
+	</thead>
+	<tbody >
+		
+	    <tr ng-repeat="abonne in abonnes | filter:listfilter |  orderBy:sortFunction:reverse track by $index" class="animate-repeat ligne" rel="{{abonne.id}}"  >
+	    		<td >
+	    			<input type="checkbox" ng-model="abonne.checked" >
+	    		</td>
+		    	<td class='pointer'>{{abonne.email}}</td>
+		    	<td class='pointer'>{{abonne.createdAt | date:'dd MMMM'}}</td>
+	    	
+	    </tr>
+	    
+	</tbody>
+</table>
+<!---->
+<div ui-view="addmailinglistView"></div>
+<div ui-view="addaddabonneView"></div>
+<!-- <div ui-view="addprojectView"></div> -->
+

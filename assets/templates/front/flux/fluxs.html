@@ -1,0 +1,29 @@
+<div class="row">
+	<div class="col-xs-3 pull-right">
+		<input type="search" class=" form-control input-sm" ng-model="slug" placeholder="Recherche . . ." />
+		
+	</div>
+</div>
+
+<ul class="allFlux">
+	
+		
+	    <li  ng-repeat="flux in fluxs | filter:fluxfilter | filter:getCat | orderBy:sortFunction:reverse " class="animate-repeat " rel="{{flux.id}}" ng-dblclick="linkFlux(flux.id)" >
+	    		<div class="acceder btn btn-default pull-right" ng-click="linkFlux(flux.id)"><span class="icon-eye"></span> Accéder</div>
+		    	<h2 ng-click="flux.opened= !flux.opened" class="pointer">
+		    		<span ng-show="!flux.opened" class="icon-angle-right"></span>
+		    		<span ng-show="flux.opened" class="icon-angle-down"></span>
+		    		{{flux.title}}
+		    		
+		    	</h2>
+
+		    	<div class="description" ng-show="flux.opened" ng-bind-html="'{{flux.htmldescription}}'"></div>
+		    	
+	    </li>
+</ul>
+
+<!---->
+<div ui-view="editfluxsView"></div>
+<div ui-view="editimagesfluxsView"></div>
+<div ui-view="addfluxsView"></div>
+

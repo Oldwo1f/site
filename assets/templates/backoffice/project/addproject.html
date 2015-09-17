@@ -1,0 +1,56 @@
+ <div class="modal fade newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content">
+    	<h2>Création d'un nouveau projet</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="submitNew()">
+            <div class="form-group col-xs-12">
+            
+                <input type="text" name="title" class="form-control input-lg" ng-model="translation.title" placeholder="Titre">
+          <!-- <input type="date" name="date" class="form-control input-lg  col-xs-2" ng-model="newProject.date" > -->
+            </div>
+            <div class="form-group col-xs-6">
+                <div name="date" class="form-control input-lg"  ng-click="openDatepicker=true"><span class="placedate" ng-show="newProject.date">{{newProject.date | date : 'EEEE d MMMM yyyy - HH:mm' }}</span> <span class="placeholder" ng-hide="newProject.date">Date</span>
+                    <div class="openDatepicker" ng-show="openDatepicker">
+                            <datetimepicker  data-on-set-time="timeSet" data-ng-model="newProject.date" data-datetimepicker-config="{ dropdownSelector: '.my-toggle-select' }"></datetimepicker>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-6">
+                  <span name="category" class="placeholderabsolute" ng-hide="newProject.category" >Choisir une catégorie</span>
+                <select class="form-control input-lg" ng-model="newProject.category">
+                  <option value=""></option>
+                  <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.translations[0].title}}</option>
+                  
+                </select>
+            </div>
+            <markdownpreview ng-model="translation.content" handleerror="'content'" minheight="300" placehold="'Contenu en markdown'" />
+            <!-- <markdownpreview ng-model="translation.shortcontent" handleerror="'shortcontent'"  minheight="100" placehold="'Accroche en markdown'" /> -->
+            
+            
+           <!--  <wrap class="form-group col-xs-12" mytitle="'les options de référencement'">
+                <div class="form-group col-xs-12 nopadding">
+                
+                    <input type="text" inputcount="255" name="keyword" class="form-control input-lg" ng-model="translation.keyword" placeholder="Mots clefs, Mots, clefs, clef, Mot clef, Mot">
+                </div>
+                <div class="form-group col-xs-12 nopadding">
+                
+                    <input inputcount="1000" urlprefixerwidth="230px" urlprefixer="http://monsite.com/blog/project/" model="translation.rewriteurl" type="text" name="rewriteurl" class="form-control input-lg" ng-model="translation.rewriteurl" placeholder="Réécriture de l'url">
+                </div>
+                <div class="form-group col-xs-12 nopadding">
+                    <input inputcount="160" model="translation.description" type="text" name="description" class="form-control input-lg" ng-model="translation.description" placeholder="Description pour les moteurs de recherche">
+                </div>
+                <auditref model="translation"></auditref>
+
+            </wrap> -->
+            
+			 <div class="rowbutton form-group col-xs-12">
+			    	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitNew()" data-toggle="modal" data-target=".newModal" value="Annuler">Annuler</div>
+			    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+			 </div>
+            
+             <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,37 @@
+ <div class="modal fade newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content">
+    	<h2>Création d'un nouveau fabrican</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="submitNew()">
+            <div class="form-group col-xs-12">
+                <input type="text" name="name" class="form-control input-lg" ng-model="newFabrican.name" placeholder="Nom">
+            </div>
+            <div class="form-group col-xs-12">
+                <input type="text" name="email" class="form-control input-lg" ng-model="newFabrican.email" placeholder="Email">
+            </div>
+            <div class="form-group col-xs-6">
+                <input type="text" name="phone" class="form-control input-lg" ng-model="newFabrican.phone" placeholder="Téléphone">
+                <select style="margin-top:15px" name="country" class="form-control input-lg" ng-model="newFabrican.country">
+                  <option value="">Pays</option>
+                  <option ng-repeat="(key, val) in countries" value="{{val}}">{{val}}</option>
+                  
+                </select>
+                <input style="margin-top:15px" type="text" name="fax" class="form-control input-lg" ng-model="newFabrican.fax" placeholder="Fax">
+            </div>
+            <div class="form-group col-xs-12">
+                <input type="text" name="adress" class="form-control input-lg" ng-model="newFabrican.adress" placeholder="Adresse postale complete">
+            </div>
+            
+           
+            
+			 <div class="rowbutton form-group col-xs-12">
+			    	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitNew()" data-toggle="modal" data-target=".newModal" value="Annuler">Annuler</div>
+			    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+			 </div>
+            
+             <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

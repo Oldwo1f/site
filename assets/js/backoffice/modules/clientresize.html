@@ -1,0 +1,142 @@
+<style>
+    #myModal{z-index:2000;}
+    .cl-container{
+        position:fixed;
+        width:100%;
+        height:100%;
+        background:black;
+    }
+    .mymodaldialog{ position:absolute;left : 5%; top : 5%;width:90%;height:90%; margin-top: 0%;margin-bottom: 0%; }
+    .slider{width:300px;}
+    .fileinput-button{position:relative;}
+    .fileinput-button span{cursor:pointer;pointer-events: none;}
+    .fileinput-button i{cursor:pointer;pointer-events: none;}
+    .fileinput-button input{
+
+      pointer-events: none;
+        display: none;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        -ms-filter: 'alpha(opacity=0)';
+        position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          cursor:pointer;
+    }
+
+
+    .cl-controls{
+  width: 100%;
+  padding-right:10px;
+  height : 40px;
+  position:absolute;
+  bottom:0px;
+  right:0;z-index:110;text-align:right;
+  }
+    .cl-whiteBox{background:white;}
+    .cl-header{background:black;height:50px}
+    .cl-header>*{display:inline-block;margin:10px;color:white;}
+    .allStep{}
+    .allStep li{ display:inline-block;}
+    .allStep li.active{ font-weight:bold;}
+    .cl-borderBox{
+      width:500px;
+      height:350px;
+      left:50%;
+      margin-left:-250px;
+      top:50%;
+      margin-top:-175px;
+      right:0px;
+      position:absolute;
+      z-index:100;
+      border: 3px solid red;
+      user-select : none;
+      background:transparent;
+      pointer-events: none;
+      }
+    .cl-imgContainer{
+      width:100%;
+      top:56px;
+      z-index:100;
+      user-select : none;
+      background:white;
+      position: absolute;
+      bottom: 0px;
+      overflow: hidden;
+      
+    }
+.drop-box{ text-align:center;color: rgb(92, 184, 92);  border : dashed rgb(92, 184, 92) 2px;  position : absolute;  display : inline-block;  right : 10px; height:34px;  border-radius : 4px;  padding : 8px;  left : 200px;line-height: 17px;}
+
+</style>
+<div >
+<form enctype="multipart/form-data">
+    <div class="fileinput-button btn btn-success" ng-click="clickAddImg($event)">
+        <div ng-switch="multiple">
+     
+        <input ng-switch-when="true" type="file" name="imgs" ng-file-select="onFileSelect($files)" multiple>
+        <input ng-switch-default type="file" name="imgs" ng-file-select="onFileSelect($files)" >
+        <i class="glyphicon glyphicon-plus"></i>
+        <span ng-switch-when="true">Ajouter des images</span>
+        <span ng-switch-default>Ajouter une image</span>
+        </div>
+    </div> 
+    <div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files);" ng-file-drop-available="dropSupported=true">Déposer des images ici</div>
+
+
+
+</form>
+<div>
+<table id="uploadTable" ng-show="selectedFiles != null">
+            <tr class="uploadRow" ng-repeat="f in selectedFiles" ng-hide="f.hide">
+                <td>
+                    <img ng-show="dataUrls[$index]" ng-src="{{dataUrls[$index]}}" height="50">
+                </td>
+                <td>
+                    <!-- {{f.name | wrap}}  -->
+                </td>
+                <td>
+                    <!-- {{f.size | bytes}} -->
+                </td>
+                <td>
+                    <div ng-hide="f.error"class="progress progress-striped" ng-class="{active:hasUploader($index) && progress[$index] < 100}">
+                        <div ng-show="progress[$index] >= 0" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:{{progress[$index]}}%">
+                            <span class="sr-only">{{progress[$index]}}%</span> {{progress[$index]}}%
+                        </div>
+                    </div>
+                    <div ng-show="f.error" class="label label-danger">{{ f.error }}</div>
+                </td>
+                <td>
+                   <!--  <button class="button" ng-click="abort($index)" ng-show="hasUploader($index) && progress[$index] < 100">Abort</button> -->
+                    <span ng-hide="hasUploader($index) && progress[$index] < 100">Terminé</span>
+                </td>       
+                
+                
+            </tr>
+        </table>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog mymodaldialog">
+        <div class="cl-whiteBox" >
+            <div class="cl-header">
+                <div class="imgCount ">Images {{currentImg}}/ {{countImg}}</div>
+                <li ng-repeat="step in steps" ng-class="{ active : currentstep == $index }">{{step.title}}</li>
+            </div>
+            <div class="cl-imgContainer">
+
+                <img ng-show="true" ng-src="{{currentSrc}}" originalWidth="{{originalWidth}}" my-ondragstart>
+                <div class="cl-borderBox" width="{{borderBoxWidth}}" height="{{borderBoxHeight}}">
+                    
+                </div>
+            </div>
+            <div class="cl-controls">
+                <input type="text" class="slider" id="slider">
+                <button type="button" class="btn btn-primary" ng-click="validateStep()">valider</button>
+            </div>
+        </div>
+  </div>
+</div>
+
+</div>
+

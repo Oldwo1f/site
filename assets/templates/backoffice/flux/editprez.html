@@ -1,0 +1,23 @@
+ <div class="modal fade editModalPrez" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content">
+    	<h2>Editer cette présentation</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="submitEdit()">
+            <div class="form-group col-xs-12">
+            
+                <input type="text" name="title" class="form-control input-lg" ng-model="prez.title" placeholder="Titre">
+            </div>
+            <markdownpreview ng-model="prez.description" handleerror="'description'" minheight="300" placehold="'Déscription en markdown'" />
+            
+            
+            <div class="rowbutton form-group col-xs-12">
+              	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitEdit()" data-toggle="modal" data-target=".editModalPrez" value="Annuler">Annuler</div>
+              	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+            </div>
+            
+             <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,175 @@
+
+<div class="row normalmargin" >
+	<div class="row">
+		<div class="col col-xs-12">
+			<button style="margin-top:15px" class="retour btn btn-lg btn-default pull-right" ng-click="linkForum()"><span class="icon-angle-left"></span>Retour</button>
+			<h1 class="fluxh1">{{flux.title}}</h1>
+			
+		</div>
+		
+	</div>
+	<div class="row normalmargin" id="fluxs" style="padding-bottom: 100px;margin-top:20px">
+		
+	<div class="timelinewrapper fakecol ">
+		<span class="icon-angle-up"></span>
+		<div class="timeline"></div>
+	</div>
+
+	<div class="flux " ng-repeat="content in flux.contents | orderBy:'createdAt':true">
+	
+		<div class="row normalmargin">
+			
+			<div class="timelinelinker">
+				<div class="icon-dot-circled"></div>
+				<div class="hr"></div>
+				<div class="date">{{content.createdAt|date:'dd MMMM'}}</div>
+				
+			</div>
+			<div class="fluxcontent">
+				<div  class="fluxcontentlogo" ng-switch="content.type">
+					<div ng-switch-when="link" class="icon-link"></div>
+					<div ng-switch-when="prez" class="icon-video"></div>
+					<div ng-switch-when="privatearticle" >
+						<div class="icon-edit" ng-show="!blague(content.privatearticle.title)"></div>
+						<div class="icon-emo-happy" ng-show="blague(content.privatearticle.title)"></div>
+					</div>
+					<div ng-switch-when="ingredient" class="icon-beaker"></div>
+					<div ng-switch-when="fichier" >
+						<div ng-if="content.fichier.extention | regex:'video':false" class="icon-file-video"></div>
+						<div ng-if="content.fichier.extention | regex:'image':false" class="icon-file-image"></div>
+						<div ng-if="content.fichier.extention | regex:'pdf':false" class="icon-file-pdf"></div>
+						<div ng-if="content.fichier.extention | regex:'zip':false" class="icon-file-archive"></div>
+						<div ng-if="content.fichier.extention | regex:'rar':false" class="icon-file-archive"></div>
+						<div ng-if="content.fichier.extention | regex:'audio':false" class="icon-file-audio"></div>
+						<div ng-if="(content.fichier.extention | regex:'text':false) && (content.fichier.extention | regex:'csv':true)" class="icon-doc-text"></div>
+						<div ng-if="content.fichier.extention | regex:'csv':false" class="icon-file-excel"></div>
+
+						<div ng-if="(content.fichier.extention | regex:'image':true)
+						&&          (content.fichier.extention | regex:'video':true)
+						&&          (content.fichier.extention | regex:'pdf':true)
+						&&          (content.fichier.extention | regex:'zip':true)
+						&&          (content.fichier.extention | regex:'rar':true)
+						&&          (content.fichier.extention | regex:'audio':true)
+						&&          (content.fichier.extention | regex:'text':true)
+						         
+						" class="icon-doc"></div>
+						<!-- <div ng-switch-when="" class="icon-doc"></div> -->
+
+					</div>
+					
+				</div>
+				<div class="btnscontent">
+					<div ng-hide="content.favoris" ng-click="addFavoris(content.id)" class="icon-star-empty pointer" title="Ajouté au favoris"></div>
+					<div ng-show="content.favoris" class="icon-star" ></div>
+				</div>
+				<div ng-switch="content.type">
+				
+				<div ng-switch-when="link" class="link">
+
+					
+					<h3 class="mainTitle pull-left" >{{content.link.title}}<a href="{{content.link.url}}" class="acceder btn btn-default pull-right" target="_BLANK"><span class="icon-eye"></span> Accéder</a></h3>
+					<hr ng-if="content.link.htmldescription">
+					
+					<div class="" ng-bind-html="content.link.htmldescription | to_trusted"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div ng-switch-when="prez" class="prez">
+					<h3 class="mainTitle" >{{content.prez.title}}</h3>
+					<hr>
+					<div class="" ng-bind-html="content.prez.htmldescription | to_trusted"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div ng-switch-when="privatearticle" class="privatearticle">
+					<h3 class="mainTitle" >{{content.privatearticle.title}}</h3>
+					<hr >
+					<div class="" ng-bind-html="content.privatearticle.htmldescription | to_trusted"></div>
+
+					<div class="author">
+						<span ng-if="content.owner.name">{{content.owner.name}}</span>
+			    		<span ng-if="!content.owner.name">Anonyme</span>
+		    		</div>
+					<div class="clearfix"></div>
+				</div>
+				<div ng-switch-when="ingredient" class="ingredient">
+					<h3 class="mainTitle" >{{content.ingredient.name}}</h3>
+					<hr>
+					<img ng-src="file/image/ingredients/{{content.ingredient.urlimage }}" alt="">
+					<div class="" ng-bind-html="content.ingredient.htmldescription | to_trusted"></div>
+					<hr ng-if="content.ingredient.htmlcomposition">
+					<div class="" ng-bind-html="content.ingredient.htmlcomposition | to_trusted"></div>
+					<div class="clearfix"></div>
+				</div>
+				<div ng-switch-when="fichier" class="fichier">
+					
+					<h3 class="mainTitle" >{{content.fichier.title}} <a href="/file/fichier/{{content.fichier.path}}" class="acceder btn btn-default " target="_BLANK"><span class="icon-download-cloud"></span> Télécharger {{content.fichier.size | bytes}}</a></h3>
+
+
+					<div ng-if="content.fichier.extention | regex:'image':false" >
+						<img ng-src="/file/fichier/{{content.fichier.path}}" style="max-width:100%" alt="">
+					</div>
+
+					<div class="clearfix"></div>
+				</div>
+
+			</div>
+			</div>
+
+			
+			
+		</div>
+	
+		<div class="clearfix"></div>
+	</div>
+	</div>	
+	<div ng-show="fetching" class="loader animate-spin icon-spin1"></div>
+	<div ng-if="asec" class="asec">Flux à sec</div>
+	<div class="backtotop" ng-show="backtop" style="display: block;"><div class="icon-angle-up"></div></div>
+</div>
+
+<script>
+$(document).ready(function () {
+    
+// 	$(window).resize(function() {
+
+// 		console.log('resize');
+// 		console.log($('#fluxs'));
+// 		console.log($('#fluxs').width());
+// 		// var oSource = document.getElemntById('sizedefault')
+// 		// var sWidth  = document.defaultView.getComputedStyle(oSource, null).width;
+// 		// console.log(sWidth);
+// 	})
+
+// 	// setTimeout(function() {
+
+// 	// $(window).resize()
+// 	// },1000)
+
+
+// 	$('#fluxs').load(function() {
+// 		console.log($('#fluxs').width());
+
+// 	})
+
+    // console.log($('.flux'));
+    // $('.flux').waypoint(function(direction) {
+            
+    //         if(direction==='up')
+    //         {
+    //             console.log('up');
+    //         }else if(direction==='down')
+    //         {
+    //             console.log('down');
+    //             // if(currentArticle>99)
+    //             // {
+    //             //     $('.articles').waypoint('disable')
+    //             // }else
+    //             //     fetchONEarticle();
+                
+
+    //         }
+    //     },{offset:'bottom-in-view'});
+});
+
+
+
+</script>

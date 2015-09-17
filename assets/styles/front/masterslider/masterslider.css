@@ -266,7 +266,7 @@
 }
 
 .ms-bullets.ms-dir-h {
-	display:inline-block;
+	display:none;
 	text-align:center;
 	position:absolute;
 	top:97%;

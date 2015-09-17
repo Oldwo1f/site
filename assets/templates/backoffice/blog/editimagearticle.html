@@ -1,0 +1,19 @@
+<div class="modal fade editimageModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content" >
+	<h2>Gestion des images <small>{{article.title}}</small></h2>
+	<hr>
+	<ul class="listbigimages" ui-sortable="sortableOptions" ng-model="article.images">
+		<li ng-repeat="image in article.images  | orderBy:'index':false">
+			<img ng-src="file/image/adminThumbs/{{image.filename}}" alt="{{image.filename}}" width="200" height="200" >
+			<!-- <button type="button" ng-click="removeimage(image)" class="btn btn-danger btn-xs btnremoveimg"><span class="glyphicon glyphicon-trash"></span>Supprimer </button> -->
+      <removeremove class="btnremoveimg " action="removeimage" image="image"></removeremove>
+		</li>
+	</ul>
+	<hr>
+	<clientresize  callback="recupImage" multiple="true" boxsize="500" itemid="article.id" itemtype="'article'" steps="resizeStep"  class="cl-wrapper"></clientresize>
+
+    </div>
+
+  </div>
+</div>

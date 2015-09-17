@@ -1,0 +1,27 @@
+ <div class="modal fade newModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content">
+    	<h2>Création d'un nouvel user</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="submitNew()">
+            <div class="form-group col-xs-12">
+            
+                <input type="text" name="email" class="form-control input-lg" ng-model="newUser.email" placeholder="Email">
+          <!-- <input type="date" name="date" class="form-control input-lg  col-xs-2" ng-model="newUser.date" > -->
+            </div>
+            <div class="form-group col-xs-12">
+                <input type="text" name="password" class="form-control input-lg" ng-disabled="true" placeholder="Le mot de passe sera envoyé par email">
+            </div>
+                <input type="hidden" name="pass" class="form-control input-lg" ng-disabled="true" value="d">
+           
+            
+			 <div class="rowbutton form-group col-xs-12">
+			    	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitNew()" data-toggle="modal" data-target=".newModal" value="Annuler">Annuler</div>
+			    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+			 </div>
+            
+             <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

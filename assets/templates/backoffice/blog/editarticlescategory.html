@@ -1,0 +1,19 @@
+<div class="modal fade editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content" >
+	<h2>Editer cette catégorie </h2>
+	<select name="lang" class="form-control langselector" ng-model="lang" ng-change="changeLanguage()" required>
+                  <option ng-repeat="langage in languages" value="{{langage}}" ng-selected="langage == 'fr'">{{langage}}</option>
+     </select>
+	<hr>
+	<form class="form" role="form" ng-submit="submitEdit()">
+		    <input type="text" name="title" class="form-control input-lg  col-xs-6" ng-model="category.translations[currenttranslation].title" placeholder="Titre">
+		 <div class="rowbutton">
+		    	<div class=" input-lg btn btn-danger btn-lg" data-toggle="modal" data-target=".editModal" value="Annuler">Annuler</div>
+		    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+		 </div>
+	</form>
+
+    </div>
+  </div>
+</div>

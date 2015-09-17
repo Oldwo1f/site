@@ -52,7 +52,7 @@ module.exports={
 					
 				}).then(function (articless) {
 					console.log(articless);
-					res.status(200).render('index',{
+					res.status(200).view('front/index',{
 						articles:articles,
 						marked:marked,
 						title: req.__('SEO_HOME_title'),
@@ -1199,6 +1199,7 @@ module.exports={
 										marked:marked,
 										mostseen:ress.mostseen,
 										category:ress.cats,
+										coments:ress.comment,
 										moment: moment,
 										baseurl:baseurl,
 										domain : sails.config.URL_HOME
@@ -1328,5 +1329,8 @@ module.exports={
 	},
 	contact:function(req,res) {
 			return res.view('contact',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
+	},	
+	presta:function(req,res) {
+			return res.view('presta',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
 	},	
 }

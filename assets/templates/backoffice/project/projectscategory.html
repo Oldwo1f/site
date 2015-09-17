@@ -1,0 +1,49 @@
+
+
+<div class="row">
+	<div class="col-xs-9">
+		<button type="button" class="btn btn-info btn-xs" ng-click="linkadd();"><span class="glyphicon glyphicon-plus"></span>Ajouter</button>
+
+		<button  type="button" class="btn btn-primary btn-xs" ng-show="totalChecked() === 1" ng-click="linkedit();" ><span class="glyphicon glyphicon-edit"></span>Editer</button>
+		<button  type="button" class="btn btn-primary btn-xs"  ng-show="totalChecked() === 1" ng-click="linkeditimages();" ><span class="glyphicon glyphicon-picture"></span>Gerer les images</button>
+		<removeremove action="removeselected" ng-show="totalChecked()"></removeremove>
+		<div  class="nbselected ">
+			<ng-pluralize class="small"  count="totalChecked()"  when="{'0': 'Aucune catégorie séléctionnée','1': '{{totalChecked()}} catégorie séléctionnée','other': '{{totalChecked()}} catégories séléctionnées'}" </ng-pluralize>
+		</div>
+	</div>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+	    	<th class="thsbox"><input type="checkbox" ng-model="allChecked" ng-click="toggleAllcheck()"></th>
+	    	<th class="thtitle" ng-click="order ='title';reverse=!reverse; " style="cursor:pointer">Titre<span ng-show="order==='title' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='title' && reverse===true" class=" caret"></span></span></th>
+	    	<th  class="thimgs">Images</th>
+		</tr>
+	</thead>
+	<tbody >
+		
+	    <tr ng-repeat="category in categories | orderBy:order:reverse " class="animate-repeat ligne" rel="{{category.id}}"  >
+	    		<td >
+	    			<input type="checkbox" ng-model="category.checked" ng-change="filterMainArray()">
+	    		</td>
+		    	<td ng-dblClick="linkedit(category.id)" class='pointer'>{{category.translations[0].title}}</td>
+		    	<td ng-dblClick="linkeditimages(category.id)" class='pointer'>
+		    		<ul class="listimages">
+		    			<li ng-repeat="image in category.images | limitTo:4 | orderBy:'index':false">
+		    				<img ng-src="file/image/adminThumbs/{{image.filename}}" alt="{{image.filename}}" width="30px" height="30px">
+		    			</li>
+		    			<li ng-show="category.images.length-4 > 0" ><small class="badge">+{{ category.images.length - 4}}</small></li>
+		    			<li ng-click="linkeditimages(category.id)" ng-hide="category.images.length" class='pointer'><span class="link">Ajouter des images</span></li>
+		    		</ul>
+		    	</td>
+	    	
+	    </tr>
+	    
+	</tbody>
+</table>
+<div ui-view="editprojectscategoryView"></div>
+<div ui-view="editimageprojectscategoryView"></div>
+<div ui-view="addprojectscategoryView"></div>
+

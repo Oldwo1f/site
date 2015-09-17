@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-xs-9">
+		<button type="button" class="btn btn-info btn-xs" ng-click="linkadd();"><span class="glyphicon glyphicon-plus"></span>Ajouter</button>
+
+		<!-- <button  type="button" class="btn btn-primary btn-xs" ng-show="totalChecked() === 1" ng-click="linkedit();" ><span class="glyphicon glyphicon-edit"></span>Editer</button> -->
+		<!-- <button  type="button" class="btn btn-primary btn-xs"  ng-show="totalChecked() === 1" ng-click="linkeditimages();" ><span class="glyphicon glyphicon-picture"></span>Gerer les images</button>
+		<button ng-show="totalChecked()" ng-click="changestatus('actif')" type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-save"></span>Publier</button>
+		<button ng-show="totalChecked()" ng-click="changestatus('inactif')" type="button" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-open"></span>Dépublier</button> -->
+		<removeremove action="removeselected" ng-show="totalChecked()"></removeremove>
+		<div  class="nbselected ">
+			<ng-pluralize class="small"  count="totalChecked()"  when="{'0': 'Aucun utilisateur séléctionné','1': '{{totalChecked()}} utilisateur séléctionné','other': '{{totalChecked()}} utilisateurs séléctionnés'}" </ng-pluralize>
+		</div>
+	</div>
+	<div class="col-xs-3 pull-right">
+		<input type="search" class=" form-control input-sm" ng-model="slug" placeholder="Recherche . . ." />
+		<!-- <div class="FilterBox">
+			<span class="label label-success" ><input type="checkbox" ng-model="filterActif" ng-change="filterMainArray()"><label for="">actif</label></span>
+			<span class="label label-warning" ><input type="checkbox" ng-model="filterInactif" ng-change="filterMainArray()"><label for="">inactif</label></span>
+			<span class="label label-info" ><input type="checkbox" ng-model="filterNew" ng-change="filterMainArray()"><label for="">new</label></span>
+		</div> -->
+	</div>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+	    	<th class="thsbox"><input type="checkbox" ng-model="allChecked" ng-click="toggleAllcheck()"></th>
+	    	<th  class="email" style="cursor:pointer"ng-click="order ='name';reverse=!reverse; ">Nom<span ng-show="order==='name' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='name' && reverse===true" class=" caret"></span></span></th>
+	    	<th  class="name" style="cursor:pointer"ng-click="order ='email';reverse=!reverse; ">Email<span ng-show="order==='email' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='email' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thdate" ng-click="order ='createdAt';reverse=!reverse; " style="cursor:pointer">Créé le<span ng-show="order==='createdAt' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='createdAt' && reverse===true" class=" caret"></span></span></th>
+		</tr>
+	</thead>
+	<tbody >
+		
+	    <tr ng-repeat="user in users | filter:userfilter | filter:getCat | orderBy:sortFunction:reverse " class="animate-repeat ligne" rel="{{user.id}}"  >
+	    		<td >
+	    			<input type="checkbox" ng-model="user.checked" >
+	    		</td>
+		    	<td ng-dblClick="linkedit(user.id)" class='pointer'>{{user.name}}</td>
+		    	<td ng-dblClick="linkedit(user.id)" class='pointer'>{{user.email}}</td>
+		    	<td ng-dblClick="linkedit(user.id)" class='pointer'>{{user.createdAt | date:'dd/MM/yy'}}</td>
+		    	
+	    	
+	    </tr>
+	    
+	</tbody>
+</table>
+<!---->
+<div ui-view="editclientView"></div>
+<div ui-view="editimagesusersView"></div>
+<div ui-view="addclientView"></div>
+

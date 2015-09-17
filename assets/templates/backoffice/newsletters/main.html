@@ -1,0 +1,7 @@
+<div>
+<tabset>
+<tab  ng-repeat="tab in newsletterstabs" active="tab.active" index="{{$index}}" heading="{{tab.title}}" ui-sref="/.newsletters.{{tab.name}}">
+    <div ui-view="{{tab.name}}View"></div>
+</tab>
+</tabset>
+</div>

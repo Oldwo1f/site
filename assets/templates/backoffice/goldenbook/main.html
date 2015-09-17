@@ -1,0 +1,53 @@
+<div class="row">
+	<div class="col-xs-9">
+		<!-- <button type="button" class="btn btn-info btn-xs" ng-click="linkadd();"><span class="glyphicon glyphicon-plus"></span>Ajouter</button> -->
+
+		<!-- <button  type="button" class="btn btn-primary btn-xs" ng-show="totalChecked() === 1" ng-click="linkedit();" ><span class="glyphicon glyphicon-edit"></span>Editer</button> -->
+		<!-- <button  type="button" class="btn btn-primary btn-xs"  ng-show="totalChecked() === 1" ng-click="linkeditimages();" ><span class="glyphicon glyphicon-picture"></span>Gerer les images</button> -->
+		<button ng-show="totalChecked()" ng-click="changestatus('actif')" type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-save"></span>Publier</button>
+		<button ng-show="totalChecked()" ng-click="changestatus('inactif')" type="button" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-open"></span>Dépublier</button>
+		<removeremove action="removeselected" ng-show="totalChecked()"></removeremove>
+		<div  class="nbselected ">
+			<ng-pluralize class="small"  count="totalChecked()"  when="{'0': 'Aucun commentaire séléctionné','1': '{{totalChecked()}} commentaire séléctionné','other': '{{totalChecked()}} commentaires séléctionnés'}" </ng-pluralize>
+		</div>
+	</div>
+	<div class="col-xs-3 pull-right">
+		<input type="search" class=" form-control input-sm" ng-model="slug" placeholder="Recherche . . ." />
+		<div class="FilterBox">
+			<span class="label label-success" ><input type="checkbox" ng-model="filterActif" ng-change="filterMainArray()"><label for="">actif</label></span>
+			<span class="label label-warning" ><input type="checkbox" ng-model="filterInactif" ng-change="filterMainArray()"><label for="">inactif</label></span>
+			<span class="label label-info" ><input type="checkbox" ng-model="filterNew" ng-change="filterMainArray()"><label for="">new</label></span>
+		</div>
+	</div>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+	    	<th class="thsbox"><input type="checkbox" ng-model="allChecked" ng-click="toggleAllcheck()"></th>
+	    	<th class="thauthor" ng-click="order ='author';reverse=!reverse; " style="cursor:pointer">Auteur<span ng-show="order==='author' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='author' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thtitle" ng-click="order ='content';reverse=!reverse; " style="cursor:pointer">Contenu<span ng-show="order==='content' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='content' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thdate" ng-click="order ='date';reverse=!reverse; " style="cursor:pointer">Date<span ng-show="order==='date' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='date' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thstatus" ng-click="order ='status';reverse=!reverse; " style="cursor:pointer">Status<span ng-show="order==='statud' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='status' && reverse===true" class=" caret"></span></span></th>
+		</tr>
+	</thead>
+	<tbody >
+		
+	    <tr ng-repeat="goldenbook in goldenbooks | filter:goldenbookfilter | filter:getCat | orderBy:sortFunction:reverse " class="animate-repeat ligne" rel="{{goldenbook.id}}"  >
+	    		<td >
+	    			<input type="checkbox" ng-model="goldenbook.checked" >
+	    		</td>
+		    	<td  class='pointer'>{{goldenbook.author}}</td>
+		    	<td  class='pointer'>{{goldenbook.content}}</td>
+		    	<td  class='pointer'>{{goldenbook.createdAt | date:'dd MMMM'}}</td>
+		    	<td  class='pointer' >
+		    		<span class="label" ng-class="{'label-success': goldenbook.status==='actif','label-warning': goldenbook.status==='inactif','label-info': goldenbook.status==='new'}"><label >{{goldenbook.status}}</label></span>
+		    	</td>
+	    	
+	    </tr>
+	    
+	</tbody>
+</table>
+
+

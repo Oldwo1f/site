@@ -6,10 +6,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="keyword" content="<%- keyword %>">
 <meta name="description" content="<%- description %>">
-<base href="<%= baseurl %>" >
-<title><%- title %></title>
 
-  <!-- Bootstrap core CSS -->
+<title><%- title %></title>
+<base href="<%= baseurl %>" >
+
+    <!-- Bootstrap core CSS -->
     <link href="styles/front/bootstrap.css" rel="stylesheet" />
     <!-- Primary CSS styles -->
     <link href="styles/front/style.css" rel="stylesheet" />
@@ -29,7 +30,8 @@
     <link href="styles/front/owl.transitions.css" rel="stylesheet" />
     <!-- Lightbox CSS Styles -->
     <link href="styles/front/lightbox.css" rel="stylesheet" />
-    
+
+        <!-- ****** favicons générés par faviconit.com ****** -->
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
     <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196.png">
@@ -48,45 +50,54 @@
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/favicon-144.png">
     <meta name="msapplication-config" content="/browserconfig.xml">
+    <!-- ****** favicons générés par faviconit.com ****** -->
+    
 </head>
   
 <body>
-    <!-- // <script language="javascript" src="js/front/jquery-1.11.0.min.js"></script> -->
-        <script language="javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script language="javascript" src="js/front/jquery-1.11.0.min.js"></script>
+ 
     <%- body %>
 
  <footer>
+    <section class="content-section parallax-bg-3" data-stellar-background-ratio=".15" data-stellar-vertical-offset="-100">
          <!-- <div class="overlay"> -->
         <!-- .foot-wrapper -->
-
-
-  </head>
-
-
-    <section class="content-section">
-
+        <div class="container">
+        
+            <div  class="bg-height2">
+                    <!-- <h1 class="anim fadeInDown">Convinced?</h1> -->
+                 <!-- <div class="center-buttons"> -->
+                   <!--  <p style="color:white">
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cupiditate numquam et aperiam eius nihil consequatur laboriosam, ex corporis, officia, aliquam nostrum veritatis quod provident magni pariatur blanditiis asperiores accusantium.
+                    </p> -->
+              
+                
+                <!-- </div>.center-buttons -->
+            </div>
+            
+        </div><!-- .container -->
         
         <div class="foot-wrapper">
             <div class="container">
                 <div class="col-lg-12">
                 
                     <div class="logo anim fadeInDown">
-                        <center><img src="images/front/streetlogo.svg" style="width: 290px;" alt="Footer logo streetcolors." /></center>
+                        <center><img src="images/front/arbatou.svg" style="width: 290px;" alt="Footer logo arbatou." /></center>
                     </div><!-- .logo -->
                     
-                    <p class="liner anim fadeInUp"><%- __('Painting together') %></p>
+                    <p class="liner anim fadeInUp">L'arbre à tout faire</p>
                     
                     <ul class="social-media anim fadeInUp" data-wow-delay="0.25s">
-                        <li><a href="http://wwww.facebook.com/street.colors.9" title="facebook" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="http://instagram.com/streetcolors" title="instagram" target="_BLANK"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="mailTo:associationstreetcolors@gmail.com" title="email" ><i class="fa fa-envelope"></i></a></li>
+                        <li><a href="http://wwww.facebook.com/street.colors.9" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="mailTo:associationstreetcolors@gmail.com"><i class="fa fa-envelope"></i></a></li>
                         <!-- <li><a href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
                         <li><a href="#github"><i class="fa fa-github"></i></a></li>
                         <li><a href="#pintrest"><i class="fa fa-pinterest"></i></a></li> -->
                     </ul><!-- .social-media -->
                     
                     <p class="copyright anim fadeIn" data-wow-delay="0.35s">
-                        <%- __('Copyright') %> | site web <a href="http://momcreation.fr">MOMCREATION</a>
+                        Copyright 2014 - All Rights Reserved
                     </p><!-- .copyright -->
                     
                 </div><!-- .col-lg-12 -->
@@ -123,7 +134,6 @@
     <script language="javascript" src="js/front/jquery.contact.min.js"></script>
     <!-- NiceScroll core Javascript -->
     <script language="javascript" src="js/front/jquery.nicescroll.min.js"></script>
-    <script language="javascript" src="js/dependencies/prettyembed.js"></script>
     <!-- Retina core JavaScript -->
     <script language="javascript" src="js/front/retina-1.1.0.min.js"></script>
     <!-- Nivo Slider JavaScript -->
@@ -136,9 +146,6 @@
     <!-- // <script language="javascript" src="js/front/jquery.twitterfeed.js"></script> -->
     <!-- Lightbox core JavaScript -->
     <script language="javascript" src="js/front/lightbox.min.js"></script>
-    <script language="javascript" src="bower_components/sharrre/jquery.sharrre.min.js"></script>
-    <!-- // <script language="javascript" src="bower_components/masonry/masonry.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
     <!-- Everything else -->
     <script language="javascript" src="js/front/custom.js"></script>
 
@@ -146,9 +153,6 @@
     <!--
     jQuery(document).ready(function($) {
         
-
-
-
         /************************
         ****** MasterSlider *****
         *************************/
@@ -169,7 +173,9 @@
         slider.setup('masterslider', {
             space:0,
             fullwidth:true,
-            autoplay:true,
+            autoplay:false,
+            // centerControls:false,
+            // overVideo:false,
             overPause:false,
             width:sliderwidth,
             height:sliderHeight,
@@ -180,13 +186,14 @@
             heightLimit:true
         });
         // adds Arrows navigation control to the slider.
-        slider.control('bullets',{autohide:false  , dir:"h"});
+        slider.control('bullets',{autohide:false, dir:"h"});
+        slider.control('thumblist',{autohide:true});
         
         var teamslider = new MasterSlider();
         teamslider.setup('teamslider' , {
             loop:true,
-            width:200,
-            height:200,
+            width:300,
+            height:290,
             speed:20,
             view:'stffade',
             grabCursor:false,

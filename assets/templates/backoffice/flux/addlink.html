@@ -1,0 +1,26 @@
+ <div class="modal fade newModalLink" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-vertical-centered">
+    <div class="modal-content">
+    	<h2>Ajouter un lien au flux</h2>
+    	<hr>
+     	<form class="form" role="form" ng-submit="submitNew()">
+            <div class="form-group col-xs-12">
+            
+                <input type="text" name="title" class="form-control input-lg" ng-model="newContent.title" placeholder="Titre">
+            </div>
+            <div class="form-group col-xs-12">
+                <input type="text" name="url" class="form-control input-lg" ng-model="newContent.url" placeholder="Url du lien:  http://">
+            </div>
+            <markdownpreview ng-model="newContent.description" handleerror="'description'" minheight="300" placehold="'Déscription en markdown (facultatif)'" />
+            
+            
+			 <div class="rowbutton form-group col-xs-12">
+			    	<div class=" input-lg btn btn-danger btn-lg"  ng-click="exitNew()" data-toggle="modal" data-target=".newModal" value="Annuler">Annuler</div>
+			    	<input type="submit"  class="form-control input-lg btn btn-success btn-lg"   value="Ajouter">
+			 </div>
+            
+             <div class="clearfix"></div>
+		</form>	
+    </div>
+  </div>
+</div> 

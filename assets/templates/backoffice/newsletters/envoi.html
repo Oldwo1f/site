@@ -1,0 +1,50 @@
+<div class="row" >
+	<div class="col-xs-9">
+		<button type="button" class="btn btn-info btn-xs" ng-click="linkenvoi();"><span class="glyphicon glyphicon-plus"></span>Envoyer une séries de mails</button>
+		<removeremove action="removeselected" ng-show="totalChecked()"></removeremove>
+		<div  class="nbselected ">
+			<ng-pluralize class="small"  count="totalChecked()"  when="{'0': 'Aucun project séléctionné','1': '{{totalChecked()}} project séléctionné','other': '{{totalChecked()}} projects séléctionnés'}" </ng-pluralize>
+		</div>
+	</div>
+	<div class="col-xs-3 pull-right">
+		<input type="search" class=" form-control input-sm" ng-model="slug" placeholder="Recherche . . ." />
+	</div>
+</div>
+
+
+<table class="table table-striped ">
+	<thead>
+		<tr>
+	    	<th class="thsbox"><input type="checkbox" ng-model="allChecked" ng-click="toggleAllcheck()"></th>
+	    	<th class="" ng-click="order ='name';reverse=!reverse; " style="cursor:pointer">Nom de la campagne<span ng-show="order==='name' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='name' && reverse===true" class=" caret"></span></span></th>
+	    	<th class="thStats" >Total</th>
+	    	<th class="thStats" >Echec</th>
+	    	<th class="thSeparation thStats" >Transmis</th>
+	    	<th class="thStats" >Ouverts</th>
+	    	<th class="thStats" >désinscription</th>
+	    	<th class="thdate" ng-click="order ='createdAt';reverse=!reverse; " style="cursor:pointer">Date<span ng-show="order==='createdAt' && reverse===false" class="caret"></span><span class="dropup"><span ng-show="order==='createdAt' && reverse===true" class=" caret"></span></span></th>
+		</tr>
+	</thead>
+	<tbody >
+		
+	    <tr ng-repeat="envoi in envois| filter:envoifilter | orderBy:sortFunction:reverse" class="animate-repeat ligne" rel="{{envoi.id}}"  >
+	    		<td >
+	    			<input type="checkbox" ng-model="envoi.checked" >
+	    		</td>
+		    	<td class='pointer'>{{envoi.name}}</td>
+		    	<td class='pointer tdStats'>{{envoi.submitted_count}}</td>
+		    	<td class='pointer tdStats has-error'><span ng-show="envoi.dropped_count">{{envoi.dropped_count}} ({{ Math.round(envoi.dropped_count*100/envoi.submitted_count,2) }}%)</span></td>
+		    	<td class='pointer tdStats has-success tdSeparation'><span ng-show="envoi.delivered_count">{{envoi.delivered_count}} ({{ Math.round(envoi.delivered_count*100/envoi.submitted_count,2) }}%)</span></td>
+		    	<td class='pointer  tdStats has-success'><span ng-show="envoi.delivered_count">{{envoi.opened_count}} ({{ Math.round(envoi.opened_count*100/envoi.delivered_count,2) }}%)</span></td>
+		    	<td class='pointer tdStats has-error'><span ng-show="envoi.unsubscribed_count">{{envoi.unsubscribed_count}} ({{ Math.round(envoi.unsubscribed_count*100/envoi.delivered_count,2) }}%)</span></td>
+		    	<td class='pointer'>{{envoi.createdAt | date:'dd MMMM'}}</td>
+	    	
+	    </tr>
+	    
+	</tbody>
+</table>
+<!---->
+<div ui-view="envoiserieView"></div>
+<!-- <div ui-view="addaddabonneView"></div> -->
+<!-- <div ui-view="addprojectView"></div> -->
+

@@ -1,4 +1,4 @@
-<div class="container-wrapper navigation fixed">
+<div class="container-wrapper navigation">
         <nav class="navbar navbar-default" role="navigation">
         
             <div class="container">
@@ -8,7 +8,7 @@
                         <i class="fa fa-bars"></i>
                     </button>
                     <a class="navbar-brand" href="/">
-                        <img src="images/front/logoline.png" style="height:50px; margin-top:0px" />
+                        <img src="images/front/arbatouligne.svg"  />
                     </a>
                     <ul class="mini"></ul><!-- mobile navigation -->
                 </div><!-- .navbar-header -->
@@ -16,76 +16,75 @@
                 <div class="collapse navbar-collapse">
                     <div class="right">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="/"><%= __('Home') %></a></li>
-                            <li class=""><a href="/portfolio"><%= __('Portfolio') %></a></li>
-                            <li class=""><a href="/avendre"><%= __('Toile à vendre') %></a></li>
-                            <li class="active"><a href="/blog"><%= __('Blog') %></a></li>
-                            <li class=""><a href="/contact"><%= __('Contact') %></a></li>
+                            <li class=""><a href="/">Home</a></li>
+                            <li class=""><a href="/presta">Prestations</a></li>
+                            <li class=""><a href="/grimpes">Grimpes</a></li>
+                            <li class="active"><a href="/blog">Blog</a></li>
+                            <li class=""><a href="/contact">Contact</a> </li>
                         </ul>
                     </div>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
-            <div class="container" style="position:relative;">
-                <div class="bottombordernavbar "></div>
-            </div>
+            
         </nav>
     </div>
-    <div id="nav-ends"></div>
-    
-    
+    <section class="slug parallax-slug-3" data-stellar-background-ratio="0">
+        <div class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="anim fadeInDown">Blog</h1>
+                        <p class="anim fadeInDown" data-wow-delay=".32s"><% if(thiscategory){%>
+                        
+                        <%= thiscategory.title %>
+                    <%}%>  </p>
+                        
+                    </div><!-- .col-lg-12 -->
+                </div><!-- .row -->
+            </div>
+        </div><!-- .overlay -->
+    </section>
    
-    <section class="content-section low-rider margintop blog">
+    <section class="content-section low-rider">
         <div class="container">
             <div class="row">
             
                 <div class="col-lg-9">
                     <% if(thiscategory && thiscategory.imgpath){%>
                         <div style="margin-bottom:20px;">
-                            <img src="file/image/thumbs/<%= thiscategory.imgpath %>" width="100%" alt="<%= thiscategory.title %>">
+                            <img src="file/image/thumbs/<%= thiscategory.imgpath %>" alt="<%= thiscategory.title %>">
                         </div>
                     <%}%>    
                     <% for(var i in articles){ %> 
                         <div class="blog anim fadeInLeft">
+                            <% if(typeof(articles[i].img)!='undefined'){ %>
                            
-                                <span class="image">
-                            
-                                     <% if(articles[i].publishVideo==true && articles[i].video){ %>
-                                        <div class="pretty-embed" data-pe-videoid="<%= articles[i].video %>"></div>
-                                        <%}else if(articles[i].img) { %>
-                                            <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>"/>
-                                        <% } %>
-                                </span>
+                                    <span class="image">
+                                
+                                        <a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>" id="desc" data-icon="fa-link">
+                                            <img src="file/image/thumbs/<%= articles[i].img.filename %>" alt="<%= articles[i].img.filename %>" />
+                                        </a>
+                                    </span><!-- .image -->
 
+                            <% } %>
              
-                            <div class="date" >
-                                <a  class="day" title="<%- moment(articles[i].date).fromNow() %>">
-                                    <%- moment(articles[i].date).format('D') %>
+                            <div class="date">
+                                <a href="#" class="day">
+                                    <%= moment(articles[i].date).format('D') %>
                                 </a>
-                                <a  class="month" title="<%- moment(articles[i].date).format('YYYY') %>" >
-                                    <%- moment(articles[i].date).format('MMM') %>
+                                <a href="#" class="month">
+                                    <%= moment(articles[i].date).format('MMM') %>
                                 </a>
                             </div><!-- .date -->
                             
                             <span class="title-desc">
                                 <h3><%= articles[i].title %></h3>
                                 <ul class="meta">
-                                    <% if( articles[i].author ){%> 
-                                        <% if(articles[i].author.usename==true){%> 
-                                        <li><i class="fa fa-user"></i><%= articles[i].author.name %></li>
-                                        <% }else{ %>
-                                        <i class="fa fa-user"></i><%= articles[i].author.pseudo %></li>
-                                        <% } %>
-                                    <% } %>
-                                    <li><i class="fa fa-eye"></i><%= articles[i].nbView %></li>
-                                    <li>
-                                        <% for(var j in category){
-                                          if(articles[i].category && category[j].id==articles[i].category.id){%>
-                                                <a href="blog/category/<%= category[j].id  %>"><i class="fa fa-th-list"></i>
-                                                <%= category[j].name %>
-                                                </a></li>
-                                          <% } %>
-                                        <% } %>
-                                    
+                                    <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-user"></i><%= articles[i].author.pseudo %></a></li>
+                                    <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-eye"></i><%= articles[i].nbView %></a></li>
+                                    <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-th-list"></i>
+                                        <%= articles[i].category.name %>
+                                    </a></li>
                                     
                                 </ul><!-- .meta -->
                             </span><!-- .title-desc -->
@@ -94,7 +93,7 @@
                                 <%- articles[i].shortcontent %>
                             </p>
                             
-                            <a class="btn btn-sm btn-primary icon" data-wow-delay=".45s" role="button" href="blog/article/<%= articles[i].id %>/<%- articles[i].rewriteurl %>"><i class="fa fa-long-arrow-right"></i>Lire la suite</a>
+                            <a class="btn btn-sm btn-primary icon" data-wow-delay=".45s" role="button" href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-long-arrow-right"></i>Lire la suite</a>
                             
                             <div class="clearfix"></div>
                             
@@ -103,13 +102,9 @@
                     
                      <ul class="pagination anim fadeInLeft" data-wow-delay="0.2s">
                         <li><a href="single.html">&laquo;</a></li>
-                        <% var url = 'blog/'
-                        if(thiscategory){
-                            url= 'blog/category/'+thiscategory.id+'/'
-                        }
-                        for(var i=1; i<= nbPage ; i++){ %>
+                        <% for(var i=1; i<= nbPage ; i++){ %>
                           
-                                <li <%if(i == currentPage){ %> class="active" <% } %> ><a href="<%= url %><%= i %>"><%= i %></a></li>
+                                <li <%if(i == currentPage){ %> class="active" <% } %> ><a href="blog/<%= i %>"><%= i %></a></li>
                         <% } %>
                        
                         <li><a href="single.html">&raquo;</a></li>
@@ -136,9 +131,10 @@
                         
                         <div class="anim fadeInRight">
                                     <ul class="posts">
-                                         <% for(var i in mostseen){ %> 
+
+                                        <% for(var i in mostseen){ %> 
                                             <li>
-                                                <a href="blog/article/<%= mostseen[i].id %>/<%- mostseen[i].rewriteurl %>">
+                                                <a href="blog/article/<%= mostseen[i].id %>/<%= mostseen[i].rewriteurl %>">
                                                     
                                                 <h6>
                                                     <%= mostseen[i].title %>
@@ -149,7 +145,6 @@
 
                                             </li>
                                         <% } %> 
-                                       
                                         
                                        
                                     </ul><!-- .posts-wrapper -->
@@ -165,9 +160,8 @@
 <script>
     var category = <%- JSON.stringify(category) %>
     console.log(category);
- 
-    var thiscategory = <%- JSON.stringify(thiscategory) %>
-    console.log(thiscategory);
+    var mostseen = <%- JSON.stringify(mostseen) %>
+    console.log(mostseen);
     var articles = <%- JSON.stringify(articles) %>
     console.log(articles);
     var thiscategory = <%- JSON.stringify(thiscategory) %>
