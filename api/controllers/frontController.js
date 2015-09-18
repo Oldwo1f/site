@@ -802,7 +802,7 @@ module.exports={
 	},
 	category:function(req,res,next) {
 
-		console.log('CATEGORY',req.params.thiscat);
+		console.log('CATEGORY====>',req.params.thiscat);
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
 		page = 1;
@@ -859,11 +859,12 @@ module.exports={
 				})
 			},
 			catThis:function(cb) {
-				CategoryBlog.findOne(req.params.id).populateAll().exec(function(err,data) {
+				CategoryBlog.findOne(req.params.thiscat).populateAll().exec(function(err,data) {
 				if(err)
 					cb(err)
 
-					
+					console.log(data);
+					console.log("datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata");
 					return new Promise(function(resolve,rej){
 								if(data.translations.length && req.locale!= 'fr'){
 									console.log('we got Trad');
@@ -964,12 +965,28 @@ module.exports={
 		},function  (err,results) {
 			console.log('results');
 			var nbPage = Math.ceil(results.count / nbperpage)
-			// console.log(results);
+			console.log(results);
+			// res.status(200).view('blog',{
+			// 	articles:results.projs,
+			// 	title: results.catThis.name + req.__('SEO_BLOG_title'),
+			// 	keyword: results.catThis.name + req.__('SEO_BLOG_keyword'),
+			// 	description: req.__('SEO_BLOG_description'),
+			// 	scripturl:'portfo.js',
+			// 	menu:'blog',
+			// 	marked:marked,
+			// 	nbPage:nbPage,
+			// 	thiscategory:results.catThis,
+			// 	currentPage:page,
+			// 	mostseen:results.mostseen,
+			// 	category:results.cats,
+			// 	moment: moment,
+			// 	baseurl:baseurl
+			// })
 			res.status(200).view('blog',{
 				articles:results.projs,
-				title: results.catThis.name + req.__('SEO_BLOG_title'),
-				keyword: results.catThis.name + req.__('SEO_BLOG_keyword'),
-				description: req.__('SEO_BLOG_description'),
+				title: req.__('SEO_BLOG_title'),
+				keyword: req.__('SEO_BLOG_keyword'),
+				description:req.__('SEO_BLOG_description'),
 				scripturl:'portfo.js',
 				menu:'blog',
 				marked:marked,

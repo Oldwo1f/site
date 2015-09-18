@@ -171,7 +171,7 @@ jQuery(document).ready(function($) {
 			
 			$("#filters a.hot").removeClass("hot");
 			$(this).addClass("hot");
-			
+			console.log( $(this).attr('data-filter') );
 			e.preventDefault();
 			$container.isotope({
 				filter: $(this).attr('data-filter')

@@ -36,7 +36,7 @@
                         <h1 class="anim fadeInDown">Blog</h1>
                         <p class="anim fadeInDown" data-wow-delay=".32s"><% if(thiscategory){%>
                         
-                        <%= thiscategory.title %>
+                        <%= thiscategory.name %>
                     <%}%>  </p>
                         
                     </div><!-- .col-lg-12 -->
@@ -52,7 +52,7 @@
                 <div class="col-lg-9">
                     <% if(thiscategory && thiscategory.imgpath){%>
                         <div style="margin-bottom:20px;">
-                            <img src="file/image/thumbs/<%= thiscategory.imgpath %>" alt="<%= thiscategory.title %>">
+                            <img src="file/image/originalsize/<%= thiscategory.imgpath %>" alt="<%= thiscategory.title %>">
                         </div>
                     <%}%>    
                     <% for(var i in articles){ %> 
@@ -62,7 +62,7 @@
                                     <span class="image">
                                 
                                         <a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>" id="desc" data-icon="fa-link">
-                                            <img src="file/image/thumbs/<%= articles[i].img.filename %>" alt="<%= articles[i].img.filename %>" />
+                                            <img src="file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.filename %>" />
                                         </a>
                                     </span><!-- .image -->
 
@@ -80,7 +80,9 @@
                             <span class="title-desc">
                                 <h3><%= articles[i].title %></h3>
                                 <ul class="meta">
+                                    <% if(typeof(articles[i].author)!='undefined'){ %>
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-user"></i><%= articles[i].author.pseudo %></a></li>
+                                    <% } %>
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-eye"></i><%= articles[i].nbView %></a></li>
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-th-list"></i>
                                         <%= articles[i].category.name %>
