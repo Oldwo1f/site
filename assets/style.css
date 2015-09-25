@@ -12941,3 +12941,9 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
 .gmnoprint div {
     background:none !important;
 }
+#header.home #primary-menu ul li a{color:white;}
+#header.home.sticky-header #header-wrap{background-color:#011f4b;border-bottom:1px solid #011f4b !important;}
+#header.transparent-header.full-header.home #logo{ display:none;}
+#header.transparent-header.full-heade.home.sticky-header #logo{ display:block;}
+/*#header.home.sticky-header #primary-menu ul li a{color:#005b96;}*/
+div#logobig {pointer-events:none;position: absolute;z-index: 12;width: 50%;height: 50%;left: 25%;top: 25%;text-align: center;margin-top:-60px;}
