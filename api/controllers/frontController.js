@@ -1345,7 +1345,14 @@ module.exports={
 		}
 	},
 	contact:function(req,res) {
-			return res.view('contact',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
+			return res.status(200).view('contact',{
+				title: req.__('SEO_CONTACT_title'),
+				keyword: req.__('SEO_CONTACT_keyword'),
+				description:req.__('SEO_CONTACT_description'),
+				scripturl:'portfo.js',
+				menu:'contact',
+				baseurl:''
+			})
 	},	
 	presta:function(req,res) {
 			return res.view('presta',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});

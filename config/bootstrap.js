@@ -12,13 +12,13 @@
 module.exports.bootstrap = function(cb) {
 
 
-	Notification.create({type:'siterestart',status:'ok'}).exec(function (err,notif){
-		if(err)
-			console.log(err);
+	// Notification.create({type:'siterestart',status:'ok'}).exec(function (err,notif){
+	// 	if(err)
+	// 		console.log(err);
 		
-		console.log('notif Bootstrap',notif);
-		Notification.publishCreate(notif)
-	})
+	// 	console.log('notif Bootstrap',notif);
+	// 	Notification.publishCreate(notif)
+	// })
 
 
   // It's very important to trigger this callback method when you are finished

@@ -50,14 +50,14 @@
             <div class="row">
             
                 <div class="col-lg-9">
-                    <% if(thiscategory && thiscategory.imgpath){%>
+                    <% if(thiscategory && thiscategory.imgpath ){%>
                         <div style="margin-bottom:20px;">
                             <img src="file/image/originalsize/<%= thiscategory.imgpath %>" alt="<%= thiscategory.title %>">
                         </div>
                     <%}%>    
                     <% for(var i in articles){ %> 
                         <div class="blog anim fadeInLeft">
-                            <% if(typeof(articles[i].img)!='undefined'){ %>
+                            <% if(typeof(articles[i].img)!='undefined' && !articles[i].publishVideo){ %>
                            
                                     <span class="image">
                                 
@@ -66,7 +66,10 @@
                                         </a>
                                     </span><!-- .image -->
 
-                            <% } %>
+                            <% }else if(articles[i].video && articles[i].publishVideo){%>
+
+                                <div class="pretty-embed" data-pe-videoid="<%- articles[i].video %>" data-pe-fitvids="true"></div>
+                            <%} %>
              
                             <div class="date">
                                 <a href="#" class="day">

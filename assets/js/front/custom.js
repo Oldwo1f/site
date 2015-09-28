@@ -884,7 +884,18 @@ $('img').imgLoad(function(){
 		console.log('LOADLOGO');
 		$logo.css({'margin-left':-($logo2.width()/2)+'px'})
 	}
+	 $(".imagesblog").owlCarousel({
+	 	 navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem:true,
+      autoHeight : true,
+      stopOnHover : true,
+      navigationText : ["<<",">>"],
+	 });
 
+
+	 $().prettyEmbed({ useFitVids: true });
 	// function loadimage (){
 	// 	$('img').height('auto')
 	// 	resizeGallary(false)

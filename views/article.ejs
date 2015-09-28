@@ -39,28 +39,16 @@
                 <div class="col-lg-9 single">
                     <div class="blog">
                         <div class="imagesblog">
-                          <% for(var j =0; j < article.images.length; j++) { %>
-                                <% if(article.images[j] && article.images[j].rank == 0){ %>
-                                 <span class="image anim fadeIn">
-                                    <a  href="file/image/originalsize/<%= article.images[j].image.filename %>" id="desc" data-icon="fa-eye" data-lightbox="<%= article.id %>">
-                                        <img src="file/image/originalsize/<%= article.images[j].image.filename %>" alt="<%=article.title %> - <%=article.rewriteurl %>" />
-                                    </a>
-                                </span>
-                                <% } %>
-                                
+                            <% if(article.video && article.publishVideo){%>
 
-                              
-                            <% } %>
-                            <div class="thumbslist">
+                                <div class="pretty-embed" data-pe-videoid="<%- article.video %>" data-pe-fitvids="true"></div>
+                            <%} %>
                             <% for(var j =0; j < article.images.length; j++) { %>
-                                <% if(article.images[j] && article.images[j].index !== 0){ %>
-                                    <a href="file/image/originalsize/<%= article.images[j].image.filename %>" id="asc" data-icon="fa-search" data-lightbox="<%= article.id %>">
-                                    <img class="thumbs" src="file/image/adminThumbs/<%= article.images[j].image.filename %>" alt="<%=article.title %> - <%=article.rewriteurl %>" />
-                                    </a>
-                                <% } 
-                            } %>
-                           
-                            </div>
+                                    <div class="image2">
+                                        <img src="/file/image/originalsize/<%= article.images[j].image.filename %>" alt="<%= article.images[j].image.alt %>"/>
+                                    </div>
+                            <% } %>
+                            
                         <!-- .image -->    
                         </div>  
          
