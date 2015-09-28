@@ -87,9 +87,11 @@
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-user"></i><%= articles[i].author.pseudo %></a></li>
                                     <% } %>
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-eye"></i><%= articles[i].nbView %></a></li>
+                                    <% if(typeof(articles[i].category)!='undefined'){ %> 
                                     <li><a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>"><i class="fa fa-th-list"></i>
                                         <%= articles[i].category.name %>
                                     </a></li>
+                                    <%} %>
                                     
                                 </ul><!-- .meta -->
                             </span><!-- .title-desc -->
