@@ -138,7 +138,7 @@ a:hover {
 	border-top:4px solid #89BE37;
 	border-bottom:1px solid #e0e0e0;
 	position:relative;
-	z-index:99999999999;
+	z-index:99998;
 }
 
 .navigation .navbar-brand img {
@@ -4168,5 +4168,9 @@ text-align: left;
   .boximage:hover .cacheimage{ display:block;}
   .boximage:hover .cacheimage i.fa{font-size:3em;width: 100%;text-align: center;top: 50%;height: 40px;margin-top: -20px;position: relative;}
 
-  .imagesblog {width:100%; height : auto;overflow:hidden;}
-  .imagesblog img{width:100%;}
+  .imagesblog {width:100%;overflow:hidden;}
+  .imagesblog img{max-width:100%;max-height : 400px;}
+  .imagesblog .image2{text-align:center;}
+  .footerpartenaire{padding-left:0px; text-align:center;}
+  .footerpartenaire li { list-style:none;display:inline-block; margin: 0 10px;}
+  .footerpartenaire li:hover {text-decoration: underline;}

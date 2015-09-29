@@ -215,9 +215,12 @@ jQuery(document).ready(function($) {
     // Remove NiceScroll dependacny
     if ( $.isFunction($.fn.niceScroll) ) {
        	$("html").niceScroll({ // The document page (body)
-            cursorcolor:"#1C9CD8", 
+            cursorcolor:"#89BE37", 
             cursorborder:"0",
-			zindex:999999999
+			zindex:999999999,
+			autohidemode:false,
+			cursorwidth: "10px"
+
         });
 		$(".navbar ul.mini").niceScroll({
 			cursoropacitymax:0,
@@ -889,7 +892,7 @@ $('img').imgLoad(function(){
       slideSpeed : 300,
       paginationSpeed : 400,
       singleItem:true,
-      autoHeight : true,
+      autoHeight : false,
       stopOnHover : true,
       navigationText : ["<<",">>"],
 	 });
