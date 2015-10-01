@@ -82,6 +82,18 @@
                         </p>
                     </div><!-- .blog -->
                     
+
+                    <div class="clearfix"></div>
+                     <% if(article.documents.length > 0) {%> 
+                            <div class="pj">
+                                <label><%=  __('Pièces jointes') %></label>
+                                <ul>
+                                    <% for(var i=0; i<article.documents.length; i++) {%>
+                                    <li><a href="/file/document/<%= article.documents[i].document.filename %>" target="_BLANK"><%= article.documents[i].document.filename %></a></li>
+                                    <% } %>  
+                                </ul>
+                            </div>
+                        <% } %>
                     <div class="clearfix"></div>
                     
                     

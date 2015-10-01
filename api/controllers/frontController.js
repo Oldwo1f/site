@@ -1372,6 +1372,6 @@ module.exports={
 			})
 	},	
 	presta:function(req,res) {
-			return res.view('presta',{baseurl:'',title:'Contact - Street Colors',keyword:'Street Colors, street, colors, couleurs, grafitis,grafiti,tag,graff,graf,blog, Associationstreetcolor, Associations Chateau Thierry',description:'Contact Street colors'});
+			return res.view('presta',{baseurl:'',title:'Prestations - Arbatou ',keyword:'Arbatou, prestations, grimpe, grimpe d\'arbre',description:'Vennez découvrire nos prestations et les plus belles grimpe du moment.'});
 	},	
 }
