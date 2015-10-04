@@ -1,0 +1,70 @@
+// Initialize
+@import "less/variables.less";
+@import "less/mixins.less";
+
+
+// Core CSS
+@import "less/typography.less";
+@import "less/helpers.less";
+@import "less/layouts.less";
+
+
+// Content Blocks
+@import "less/topbar.less";
+@import "less/header.less";
+@import "less/sliders.less";
+@import "less/pagetitle.less";
+@import "less/content.less";
+@import "less/portfolio.less";
+@import "less/blog.less";
+@import "less/shop.less";
+@import "less/events.less";
+
+
+// Shortcodes
+@import "less/shortcodes.less";
+
+
+// Footer
+@import "less/footer.less";
+
+
+// Widgets
+@import "less/widgets.less";
+
+
+// Extras
+@import "less/extras.less";
+
+
+.section {background-color : @theme-color;}
+.section.dark {background-color : @theme-color;color : @body-color;}
+.section.dark p{color : @body-color;}
+#footer.dark, .dark #footer {background-color : @theme-color;}
+#content {background-color: @body-color;}
+#header #header-wrap,#header.sticky-header #header-wrap{background-color: @primary-color}
+.fancy-title h1, .fancy-title h2, .fancy-title h3, .fancy-title h4, .fancy-title h5, .fancy-title h6 {background:none; color:@primary-color;}
+h1, h2,h3, h4,h5,h6 {background:none; color:@primary-color;}
+#primary-menu ul li a{color: @body-color}
+#posts {color:black;}
+ul.tab-nav li a{background:@body-color; }
+ul.tab-nav li.ui-tabs-active a{background:@primary-color;color:@body-color;}
+.post-timeline .entry:hover .entry-timeline, .post-timeline .entry:hover .timeline-divider {background:@primary-color;color:@body-color;}
+body p {color : @theme-color;}
+.divider{color : @primary-color;}
+.divider:after, .divider.divider-center:before, .divider.divider-center.divider-short:before{border-top-color : @primary-color;}
+.piecejointes{padding-left:  30px;padding-top : 10px;}
+.comment-wrap{border-color : @theme-color;}
+.comment-wrap:hover{border-color : @primary-color;}
+#primary-menu ul li.active a{color: @theme-color;}
+.contentMarked ul {padding-left: 20px;}
+.contentMarked ul li {color :@theme-color;}
+.flex-control-nav li a {border-color:@primary-color;}
+.flex-control-nav li:hover a, .flex-control-nav li a.flex-active{background-color:@primary-color;}
+.presentation{margin:100px 0px;}
+
+.successmessageemail{color:black;display:none; padding:8px 25px;margin-left : 20px; border: 1px solid green;color:green;}
+.errormessageemail{color:black;display:none; padding:8px 25px;margin-left : 20px; border: 1px solid red;color:red;}
+.respond{display:none;padding: 10px 0px 0px 100px;}
+#footer a{color:@primary-color;}
+#footer a:hover{color:@body-color;}

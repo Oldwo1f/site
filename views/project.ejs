@@ -1,205 +1,217 @@
- <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1 class="wow flipInX"><%= __('Portfolio') %></h1>
-                
-            </div>
-            <header class="listCatProj major container 75%">
-                 <h2 class="wow flipInX"><%= project.title %></h2>
-            </header>
-            <div id="main">
+<!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+<% include header.ejs %>
 
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
 
-                 	 <% if(project.publishVideo==true && project.video){ %>
-                 	<div class="box boximages container  wow zoomInUp">
-                        <div  class="col col-xs-12 ">
-                        	<div class="pretty-embed" data-pe-videoid="<%= project.video %>"></div>
-                        </div>
-                    </div> 
-                    <%}%>
-                   
-                    <% if(project.content) {%>        
-                    <div class="box container  wow zoomInUp">
-                        
-                        <div  class="col col-xs-12 ">
-                            <div class="mdcontent">
-                                <%- marked(project.content) %>
-                        	</div>
-                        </div>
-                        <% if(project.documents.length > 0) {%> 
-                        <div  class="col col-xs-12 ">
-                            <div class="pj">
-                            	<label><%=  __('Pièces jointes') %></label>
-                               	<ul>
-                               		<% for(var i=0; i<project.documents.length; i++) {%>
-				                    <li><a href="/file/document/<%= project.documents[i].document.filename %>" target="_BLANK"><%= project.documents[i].document.filename %></a></li>
-				                    <% } %>  
-                               	</ul>
-                        	</div>
-                        </div>
-                        <% } %>
-                        
-                    </div> 
-                    <% }%> 
-
-
-                   
-
-                    <% for(var i=0; i<project.images.length; i++) {%>
-                   
-                            
-                    <div class="box boximages container  wow zoomInUp">
-                       
-                        <div  class="col col-xs-12 ">
-                            <img class="wow fadeIn" src="/file/image/originalsize/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"/>
-                        </div>
-                    </div>
-                    <% } %>  
-                    <div id="socialscontainer" class="">
-	                    <div id="socials" class="">
-
-	                    	<div id="twitter" class="wow fadeInLeftBig" data-wow-duration="1s" data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div> 
-	                    	<div id="facebook" class="wow fadeInRightBig" data-wow-duration="1s"  data-url="<%= pathtoshare %>" data-text="<%= project.title %>"></div>  
-	                    </div>       
-                    </div>      
-                    <% if(project.activeComent == true) {%>
-	                    <div class="box comments container  wow zoomInUp">
-	                        <header>
-	                            <h2><%= __('Comments') %></h2>
-	                        </header>
-	                        <div class="text-center">
-		                        <button class="button toggleform addCommentForm <%= project.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= project.id %>" ><%= __('Laisser un commantaire') %></button>
-	                        </div>
-	                        <div id="" class="box boxcomment collapse addCommentForm <%= project.id %>">
-	                        <form method="post" class="commentform" item="project" itemid="<%= project.id %>">
-		                        <div class="row">
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-		                            </div>
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u text-center">
-		                                <small><%= __('comment_form_message_end') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageRequired">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageError">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <ul class="actions">
-		                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-		                                </ul>
-		                            </div>
-		                        </div>
-		                        <div class="cache"><i class="fa fa-check"></i></div>
-		                    </form>
-	                        </div>
-	                        <ul>
-                				<% for(var j=0; j<project.comments.length; j++) {%>
-	                        	<li class="box boxcomment wow fadeInLeft">
-	                        		<div class="author"><strong><%= project.comments[j].author %></strong></div>
-	                        		<div class="date pull-right small"><%= moment(new Date(project.comments[j].createdAt)).fromNow() %></div>
-	                        		<p><%= project.comments[j].content %></p>
-
-	                        		<ul>
-		                				<% for(var k=0; k<project.comments[j].reponses.length; k++) {%>
-			                        	<li class="box boxcomment">
-			                        		<div class="author"><strong><%= project.comments[j].reponses[k].author %></strong></div>
-			                        		<div class="date pull-right small"><%= moment(new Date(project.comments[j].reponses[k].createdAt)).fromNow() %></div>
-			                        		<p><%= project.comments[j].reponses[k].content %></p>
-			                        		
-			                        	</li>
-		                				<% } %>
-			                        </ul>
-			                        <div class="<%= project.comments[j].id %> reply"  title="<%= __('reply') %>"> <i class="fa fa-reply" data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= project.comments[j].id %>"></i></div>
-			                        <div id="" class="box boxcomment collapse addCommentForm <%= project.comments[j].id %>">
-			                        <form method="post" class="commentform" item="comment" projid="<%= project.id %>" itemid="<%= project.comments[j].id %>">
-				                        <div class="row">
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-				                            </div>
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageRequired">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageError">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <ul class="actions">
-				                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-				                                </ul>
-				                            </div>
-				                        </div>
-				                        <div class="cache"><i class="fa fa-check"></i></div>
-				                    </form>
-			                        </div>
-	                        	</li>
-                				<% } %>
-	                        </ul>
-	                    </div>
-                    <% } %>
-                
-
-            </div>
-
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
-                    
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
-
+            <div class="container clearfix">
+                <h1><%- project.title %></h1>
+                <div id="portfolio-navigation">
+            	 	<% if(prev){%>
+                    	<a href="<%- prev %>"><i class="icon-angle-left"></i></a>
+                	 
+            	 	<%}%>
+                    <a href="/portfolio"><i class="icon-line-grid"></i></a>
+             		<% if(next){%>
+                      	<a href="<%- next %>"><i class="icon-angle-right"></i></a>
+                  	<%}%> 
                 </div>
             </div>
- </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap toppaddingsmall">
+
+                <div class="container clearfix">
+
+                    <!-- Portfolio Single Gallery
+                    ============================================= -->
+                    <div class="col_full portfolio-single-image">
+                        	 <% if(project.images.length==1){%>
+                        	 	 <div class="portfolio-image">
+									<img src="file/image/originalsize/<%- project.images[0].image.filename %>" alt=""></a>
+                        	 	 </div>
+                        	 <%}else if(project.images.length>1){%>
+                        		<div class="fslider" data-arrows="true" data-animation="slide" data-pause="20000">
+	                            <div class="flexslider">
+		                                <div class="slider-wrap">
+		                                	
+		                                	<% for(var i=0; i< project.images.length; i++){ %> 
+		                                    	<div class="slide" style="text-align:center"><img style="max-height:768px;max-width:100%;width:auto;display: inline-block;"src="file/image/originalsize/<%- project.images[i].image.filename %>" alt="<%- project.images[i].image.alt %>"></div>
+		                                	<%}%>
+                                   
+		                                </div>
+	                            </div>
+	                            </div>
+                            <%}%>
+                    </div><!-- .portfolio-single-image end -->
+
+                    <div class="col_one_third nobottommargin">
+
+                        <!-- Portfolio Single - Meta
+                        ============================================= -->
+                        <div class="panel panel-default events-meta">
+                            <div class="panel-body">
+                                <ul class="portfolio-meta nobottommargin">
+                                    <!-- <li><span><i class="icon-user"></i>Created by:</span> John Doe</li> -->
+                                    <li><span><i class="icon-calendar3"></i><%- __('Terminé en') %>:</span>  <%- moment(project.date).format('MMMM YYYY') %>  </li>
+                                    <% if(project.tags.length){%>
+                                    <li><span><i class="icon-tags"></i><%- __('Tags') %>:</span> 
+                                    	<% for(var i=0; i< project.tags.length ; i++){%>
+                                     	<%- project.tags[i].text %>
+                                     	 <% if(i+1 != project.tags.length){%>
+                                     	 		,
+                                     	 <%}%>
+                                     <%}%> 
+                                 	</li>
+                                    <%}%>
+                                    <% if(project.documents.length){%>
+                                    <li><span><i class="icon-paperclip"></i><%- __('Pièces jointes') %>:</span> 
+                                    	<ul class="piecejointes">
+                                    		 <% for(var i=0; i< project.documents.length ; i++){%>
+                                    		<li><a href="file/document/<%- project.documents[i].document.filename %>" target="_BLANK"><%- project.documents[i].document.name %></a> </li>
+                                    		 <%}%>
+                                    	</ul>
+                                    </li>
+                        			<%}%>
+                                    <!-- <li><span><i class="icon-link"></i>Client:</span> <a href="#">Google</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Portfolio Single - Meta End -->
+
+                        <!-- Portfolio Single - Share
+                        ============================================= -->
+                       <!--  <div class="si-share noborder clearfix">
+                            <span>Share:</span>
+                            <div>
+                                <a href="#" class="social-icon si-borderless si-facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a href="#" class="social-icon si-borderless si-twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a href="#" class="social-icon si-borderless si-pinterest">
+                                    <i class="icon-pinterest"></i>
+                                    <i class="icon-pinterest"></i>
+                                </a>
+                                <a href="#" class="social-icon si-borderless si-gplus">
+                                    <i class="icon-gplus"></i>
+                                    <i class="icon-gplus"></i>
+                                </a>
+                                <a href="#" class="social-icon si-borderless si-rss">
+                                    <i class="icon-rss"></i>
+                                    <i class="icon-rss"></i>
+                                </a>
+                                <a href="#" class="social-icon si-borderless si-email3">
+                                    <i class="icon-email3"></i>
+                                    <i class="icon-email3"></i>
+                                </a>
+                            </div>
+                        </div> -->
+                        <!-- Portfolio Single - Share End -->
+
+                    </div>
+
+                    <!-- Portfolio Single Content
+                    ============================================= -->
+                    <div class="col_two_third portfolio-single-content col_last nobottommargin">
+
+                        <!-- Portfolio Single - Description
+                        ============================================= -->
+                        <div class="fancy-title title-dotted-border">
+                            <h2><%- __('Project Info') %>:</h2>
+                        </div>
+                        <div class="contentMarked">
+                         <%- marked(project.content) %>  
+                        </div>
+                        <!-- Portfolio Single - Description End -->
+
+                    </div><!-- .portfolio-single-content end -->
+
+                    <div class="clear"></div>
+                    <% if(related){%>
+                    <% if(related.length>0){%>
+                    <div class="divider divider-center"><i class="icon-circle"></i></div>
+
+                    <!-- Related Portfolio Items
+                    ============================================= -->
+                     
+                     
+                    <h4><%- __('Related Projects') %>:</h4>
+
+                    <div id="related-portfolio" class="owl-carousel portfolio-carousel">
+                    	 <% for(var i=0; i < related.length ; i++){%>
+                    	 	
+                        <div class="oc-item">
+                            <div class="iportfolio">
+                                <div class="portfolio-image">
+                                    <a href="portfolio-single.html">
+                                        <img src="file/image/adminThumbs/<%- related[i].img.filename %>" alt="<%- related[i].img.alt %>">
+                                    </a>
+                                    <div class="portfolio-overlay">
+                                        <a href="projet/<%- related[i].id %>/<%- related[i].rewriteurl %>" class="center-icon"><i class="icon-line-ellipsis"></i></a>
+                                    </div>
+                                </div>
+                                <div class="portfolio-desc">
+                                    <h3><a href="projet/<%- related[i].id %>/<%- related[i].rewriteurl %>"><%- related[i].title %></a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    	<%}%>
+                        
+
+                    </div><!-- .portfolio-carousel end -->
+
+                    <script type="text/javascript">
+
+                        jQuery(document).ready(function($) {
+
+                            var relatedPortfolio = $("#related-portfolio");
+
+                            relatedPortfolio.owlCarousel({
+                                margin: 30,
+                                nav: false,
+                                dots:true,
+                                autoplay: true,
+                                autoplayHoverPause: true,
+                                responsive:{
+                                    0:{ items:1 },
+                                    480:{ items:2 },
+                                    768:{ items:3 },
+                                    992:{ items:4 }
+                                }
+                            });
+
+                        });
+
+                    </script>
+                     <%}%>
+                     <%}%>
+
+                </div>
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
 <script type="text/javascript">
 
 var project = <%- JSON.stringify(project) %>;
         console.log(project);
+var related = <%- JSON.stringify(related) %>;
+        console.log(related);
 
 </script>

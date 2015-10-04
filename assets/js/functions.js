@@ -1640,8 +1640,9 @@ var SEMICOLON = SEMICOLON || {};
 							SEMICOLON.portfolio.portfolioDescMargin();
 						},
 						after: function(){
+							var t = setTimeout( function(){ $('#portfolio.portfolio-masonry,#portfolio.portfolio-full,#posts.post-masonry').isotope('layout'); }, 1000 )
 							if( $portfolio.has('portfolio-full') ) {
-								$('#portfolio.portfolio-full').isotope('layout');
+								$('#portfolio').isotope('layout');
 								SEMICOLON.portfolio.portfolioDescMargin();
 							}
 						}

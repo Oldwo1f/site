@@ -8,17 +8,862 @@ module.exports={
 	home:function(req,res,next) {
 
 		console.log('home');
-		
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale)
+			
 		
 					res.status(200).view('homepage',{
-						// articles:articles,
+						baseurl : '',
 						marked:marked,
+						moment:moment,
 						title: req.__('SEO_HOME_title'),
 						keyword: req.__('SEO_HOME_keyword'),
 						description:req.__('SEO_HOME_description'),
-						scripturl:'script.js',
 						menu:'home',
 					})
+	
+					// cb(null,projects)
+				
+
+
+
+
+	},	
+	contact:function(req,res,next) {
+
+		console.log('contact');
+		
+		
+					res.status(200).view('contact',{
+						baseurl : '',
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_CONTACT_title'),
+						keyword: req.__('SEO_CONTACT_keyword'),
+						description:req.__('SEO_CONTACT_description'),
+						menu:'contact',
+					})
+			
+
+
+
+
+	},		
+	blog:function(req,res,next) {
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale)
+		var query = {status:'actif'};
+		var baseurl = "";
+		if(req.params.catid){
+			baseurl = '../';	
+			query = {status:'actif',category : req.params.catid}
+		}
+
+		console.log(query);
+		console.log('blog');
+		async.parallel({
+			projs:function  (cb) {
+				Article.find(query).populateAll().sort('date DESC').limit(20).exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							// console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									return Promise.map(project.images,function(image) {
+
+										return Image.findOne(image.image).exec(function (err,datas) {
+											// console.log('datas',datas);
+											image.img = datas
+											console.log(project);
+											// return image;
+											resolve(project)
+										})
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			recent:function  (cb) {
+				Article.find({status:'actif'}).populateAll().sort('date DESC').limit(3).exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							// console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									return Promise.map(project.images,function(image) {
+
+										return Image.findOne(image.image).exec(function (err,datas) {
+											// console.log('datas',datas);
+											image.img = datas
+											console.log(project);
+											// return image;
+											resolve(project)
+										})
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			popular:function  (cb) {
+				Article.find({status:'actif'}).populateAll().sort('nbView DESC').limit(3).exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							// console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									return Promise.map(project.images,function(image) {
+
+										return Image.findOne(image.image).exec(function (err,datas) {
+											// console.log('datas',datas);
+											image.img = datas
+											console.log(project);
+											// return image;
+											resolve(project)
+										})
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			cats:function  (cb) {
+				CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			console.log(err);
+			console.log(cats);
+			 _.remove(cats,function (n) {
+				return n.nbArticles <=0;
+			})
+						return Promise.map(cats,function  (cat) {
+							console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								console.log(cat.translations.length);
+								if(cat.translations.length && req.locale!= 'fr'){
+									console.log('we got Trad');
+									_.map(cat.translations,function  (trad) {
+										console.log('---------------------------');
+										if(trad.lang == req.locale){
+											console.log('local cool');
+											cat.name = (trad.name) ? trad.name : cat.name;
+											// project.content = (trad.content) ? trad.content : project.content;
+											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											// project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+
+									resolve(cat)
+								}else
+								{
+									resolve(cat)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,cats)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			console.log(err);
+			console.log('results');
+			console.log(results.cats);
+			// console.log(results);
+			res.status(200).view('blog',{
+				baseurl : baseurl,
+				articles:results.projs,
+				categories:results.cats,
+				popular:results.popular,
+				recent:results.recent,
+				title: req.__('SEO_BLOG_title'),
+				keyword: req.__('SEO_BLOG_keyword'),
+				description:req.__('SEO_BLOG_description'),
+				menu:'blog',
+				marked:marked,
+				moment:moment
+			})
+		})
+		
+					
+			
+
+
+
+
+	},		
+	portfolio:function(req,res,next) {
+
+		
+
+
+
+							
+					    
+			console.log('portfolio');
+		async.parallel({
+			projs:function  (cb) {
+				Project.find({status:'actif'}).populateAll().sort('createdAt DESC').exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									console.log("IMG.LENGTH");
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									return Promise.map(project.images,function(image) {
+
+										return Image.findOne(image.image).exec(function (err,datas) {
+											// console.log('datas',datas);
+											image.img = datas
+											console.log(project);
+											// return image;
+											resolve(project)
+										})
+									})
+								}else
+								{
+									console.log("IMG.NOT NOT");
+									console.log(project);
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			cats:function  (cb) {
+				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			 _.remove(cats,function (n) {
+				return n.nbProjects <=0;
+			})
+						return Promise.map(cats,function  (cat) {
+							return new Promise(function(resolve,rej){
+								if(cat.translations.length && req.locale!= 'fr'){
+									_.map(cat.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											cat.name = (trad.name) ? trad.name : cat.name;
+											// project.content = (trad.content) ? trad.content : project.content;
+											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											// project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+
+									resolve(cat)
+								}else
+								{
+									resolve(cat)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,cats)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			// res.send(JSON.stringify(results,null, 10));
+			res.status(200).view('portfolio',{
+				baseurl:'',
+				'projects':results.projs,
+				'categories':results.cats,
+				title: req.__('SEO_PORTFOLIO_title'),
+				keyword: req.__('SEO_PORTFOLIO_keyword'),
+				description:req.__('SEO_PORTFOLIO_description'),
+				menu:'portfolio',
+				marked:marked
+			})
+		})
+		
+							// res.status(200).view('portfolio',{
+							// 	baseurl : '',
+							// 	projects:projects,
+							// 	marked:marked,
+							// 	title: req.__('SEO_PORTFOLIO_title'),
+							// 	keyword: req.__('SEO_PORTFOLIO_keyword'),
+							// 	description:req.__('SEO_PORTFOLIO_description'),
+							// 	menu:'portfolio',
+							// })
+
+
+
+
+	},			
+	project:function(req,res,next) {
+
+		console.log('project');
+
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale)
+		console.log("FETCH ONE project");
+		
+		Project.find(req.params.id).populateAll().exec(function (err,items){
+			
+				if(err)
+					callback(err)
+
+				// callback(null,items)
+				if(items.length>0)
+				{
+						items[0].nbView= Number(items[0].nbView) + 1;
+						Article.update({id: items[0].id}, {nbView: items[0].nbView})
+						.exec(function(err, updatedProject){
+						var project= items[0];
+						// console.log('item',item);
+						async.series({
+						image:function(cbparalelle) {
+							async.map(project.images,
+							function(item1,cb1) {
+								// console.log('item1',item1);
+								Image.findOne(item1.image).exec(function(err,data) {
+									item1.image=data
+									cb1(null,item1)
+								})
+
+							},function(err, results) {
+								// console.log('results',results);
+								cbparalelle(null,results)
+							})
+						},
+						document:function(cbparalelle) {
+							async.map(project.documents,
+							function(item1,cb1) {
+								// console.log('item1',item1);
+								Document.findOne(item1.document).exec(function(err,data) {
+									item1.document=data
+									cb1(null,item1)
+								})
+
+							},function(err, results) {
+								// console.log('results',results);
+								cbparalelle(null,results)
+							})
+						},
+						translations:function(cbparalelle) {
+							async.map(project.translations,
+							function(trad,cb1) {
+								console.log(trad);
+								if(trad.lang == req.locale){
+									console.log('locale');
+									project.title = (trad.title) ? trad.title : project.title;
+									project.content = (trad.content) ? trad.content : project.content;
+									project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+									project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+									project.description = (trad.description) ? trad.description : project.description;
+								}
+								cb1(null,project)
+
+							},function(err, results) {
+								// console.log('results',results);
+								cbparalelle(null,results)
+							})
+						},
+						prev:function(cbparalelle) {
+							
+							Project.find({date:{'lt':project.date}}).sort('date DESC').limit(1).exec(function(err, results) {
+								if(results.length == 0 ){
+									cbparalelle(err,null)
+								}
+								else{
+								urltowrite=""
+								if(results[0].rewriteurl)
+									urltowrite = results[0].rewriteurl;
+								cbparalelle(err,'projet/'+results[0].id+'/'+urltowrite)
+								}
+							})
+						},
+						next:function(cbparalelle) {
+							
+							Project.find({date:{'gt':project.date}}).sort('date ASC').limit(1).exec(function(err, results) {
+								if(results.length == 0 ){
+
+									cbparalelle(err,null)
+								}
+								else{
+
+								urltowrite=""
+								if(results[0].rewriteurl)
+									urltowrite = results[0].rewriteurl;
+								cbparalelle(err,'projet/'+results[0].id+'/'+urltowrite)
+								}
+							})
+						},
+						related:function(cbparalelle) {
+							console.log(project.category);
+							if(project.category)
+							{
+
+								Project.find({ where: {category:project.category.id, id:{'!':project.id}}}).sort('date DESC').populate('images').exec(function(err, results) {
+
+									async.map(results,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Image.findOne(item1.images[0].image).exec(function(err,data) {
+											item1.img=data
+											cb1(null,item1)
+										})
+
+									},function(err, resultss) {
+										// console.log('results',results);
+										cbparalelle(null,resultss)
+									})
+								})
+							}else{
+								cbparalelle(null,null)
+							}
+						},
+						comment:function(cbparalelle) {
+									console.log('------------------------------');
+									// console.log(project.comments);
+									_.remove(project.comments,function (n) {
+										return n.status != 'success'
+									})
+									var allcomments = [];
+								// _.sortBy(project.comments,function (n) {
+								// 	return new Date(n.createdAt)
+								// })
+									project.comments = project.comments.reverse()
+
+							async.mapSeries(project.comments,
+							function(item1,cb1) {
+								// console.log('item1',item1);
+								Comment.find(item1.id).populate('reponses',{ where:{status:'success'}}).exec(function(err,data) {
+									// item1.comment=data
+									// console.log(data);
+									console.log('------------------------------');
+									// console.log(project.comments.indexOf(item1));
+									// item1=data
+									// project.comments.splice(project.comments.indexOf(item1),1,data[0])
+									allcomments.push(data[0])
+									// console.log(data);
+									cb1(null,item1)
+								})
+
+							},function(err, results) {
+								
+								project.comments=allcomments;
+								// console.log('allcomments',allcomments);
+								cbparalelle(null,allcomments)
+							})
+						}},function(err,ress) {
+
+									console.log('DELETE');
+							if(project.category)
+								project.category=project.category.id;
+							if(project.author)
+								project.author=project.author.id;
+
+							var projecttogo = _.clone(project)
+
+							delete projecttogo.comments
+							projecttogo.comments=ress.comment
+							// console.log(projecttogo.comments);
+							// console.log(projecttogo);
+							console.log('Final Data');
+							var pathtoshare ='';
+							pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/';
+							if(projecttogo.urlrewrite)
+							pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/'+projecttogo.urlrewrite;
+							// console.log('fetch ONE Project', projecttogo);
+							// res.status(200).send(projecttogo)
+							res.status(200).view('project',{
+								baseurl : '../../',
+								project:projecttogo,
+								related:ress.related,
+								prev:ress.prev,
+								next:ress.next,
+								moment: moment,
+								pathtoshare: pathtoshare,
+								title: projecttogo.title +' - '+sails.config.COMPANY_NAME,
+								keyword: projecttogo.keyword,
+								description:projecttogo.description,
+								menu:'portfolio',
+								marked:marked
+							})
+						})
+					})
+				}
+		})
+
+
+	},				
+	article:function(req,res,next) {
+
+		console.log('article');
+		
+				console.log(req.locale);
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale)
+		console.log("FETCH ONE Article");
+		
+				Article.find(req.params.id).populateAll().exec(function (err,items){
+						
+				
+						
+						if(err)
+							callback(err)
+
+						// callback(null,items)
+						if(items.length>0)
+						{
+								// items[0].nbView= Number(items[0].nbView) + 1;
+								items[0].nbView= Number(items[0].nbView) + 1
+
+								Article.update({id: items[0].id}, {nbView: items[0].nbView})
+								.exec(function(err, updatedProject){
+								var project= items[0];
+								// console.log('item',item);
+								async.series({
+								image:function(cbparalelle) {
+									async.map(project.images,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Image.findOne(item1.image).exec(function(err,data) {
+											item1.img=data
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								document:function(cbparalelle) {
+									async.map(project.documents,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Document.findOne(item1.document).exec(function(err,data) {
+											item1.document=data
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								translations:function(cbparalelle) {
+									async.map(project.translations,
+									function(trad,cb1) {
+										console.log(trad);
+										if(trad.lang == req.locale){
+											console.log('locale');
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+										cb1(null,project)
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								comment:function(cbparalelle) {
+											console.log('------------------------------');
+											// console.log(project.comments);
+											_.remove(project.comments,function (n) {
+												return n.status != 'success'
+											})
+											var allcomments = [];
+										// _.sortBy(project.comments,function (n) {
+										// 	return new Date(n.createdAt)
+										// })
+											project.comments = project.comments.reverse()
+
+									async.mapSeries(project.comments,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Comment.find(item1.id).populate('reponses',{ where:{status:'success'}}).exec(function(err,data) {
+											// item1.comment=data
+											// console.log(data);
+											console.log('------------------------------');
+											// console.log(project.comments.indexOf(item1));
+											// item1=data
+											// project.comments.splice(project.comments.indexOf(item1),1,data[0])
+											allcomments.push(data[0])
+											// console.log(data);
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										
+										project.comments=allcomments;
+										// console.log('allcomments',allcomments);
+										cbparalelle(null,allcomments)
+									})
+								},
+								popular:function  (cb) {
+									Article.find({status:'actif'}).populateAll().sort('nbView DESC').limit(6).exec(function (err,projects) {
+								
+											return Promise.map(projects,function  (project) {
+												// console.log('---------------------------');
+												return new Promise(function(resolve,rej){
+													if(project.translations.length && req.locale!= 'fr'){
+														// console.log('we got Trad');
+														_.map(project.translations,function  (trad) {
+															// console.log('---------------------------');
+															if(trad.lang == req.locale){
+																project.title = (trad.title) ? trad.title : project.title;
+																project.content = (trad.content) ? trad.content : project.content;
+																project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+																project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+																project.description = (trad.description) ? trad.description : project.description;
+															}
+														})
+													}
+													project.content = truncate(marked(project.content), 450)
+													if(project.images.length)
+													{
+														var img0 = _.find(project.images, function(chr) {
+														  return chr.rank == 0;
+														})
+														return Promise.map(project.images,function(image) {
+
+															return Image.findOne(image.image).exec(function (err,datas) {
+																// console.log('datas',datas);
+																image.img = datas
+																console.log(project);
+																// return image;
+																resolve(project)
+															})
+														})
+													}else
+													{
+														resolve(project)
+													}
+												})
+												
+											}).then(function (projectss) {
+												// console.log(projectss);
+												cb(null,projects)
+											})
+										
+									})
+								
+								},
+								prev:function(cbparalelle) {
+									
+									Article.find({date:{'lt':project.date}}).sort('date DESC').limit(1).exec(function(err, results) {
+										if(results.length == 0 ){
+											cbparalelle(err,null)
+										}
+										else{
+										urltowrite=""
+										if(results[0].rewriteurl)
+											urltowrite = results[0].rewriteurl;
+										cbparalelle(err,{url:'article/'+results[0].id+'/'+urltowrite,title:results[0].title})
+										}
+									})
+								},
+								next:function(cbparalelle) {
+									
+									Article.find({date:{'gt':project.date}}).sort('date ASC').limit(1).exec(function(err, results) {
+										if(results.length == 0 ){
+
+											cbparalelle(err,null)
+										}
+										else{
+
+										urltowrite=""
+										if(results[0].rewriteurl)
+											urltowrite = results[0].rewriteurl;
+										cbparalelle(err,{url:'article/'+results[0].id+'/'+urltowrite,title:results[0].title})
+										}
+									})
+								},
+								cats:function  (cb) {
+								CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+									console.log(err);
+									console.log(cats);
+								 	_.remove(cats,function (n) {
+										return n.nbArticles <=0;
+									})
+									return Promise.map(cats,function  (cat) {
+										console.log('---------------------------');
+										return new Promise(function(resolve,rej){
+											console.log(cat.translations.length);
+											if(cat.translations.length && req.locale!= 'fr'){
+												console.log('we got Trad');
+												_.map(cat.translations,function  (trad) {
+													console.log('---------------------------');
+													if(trad.lang == req.locale){
+														console.log('local cool');
+														cat.name = (trad.name) ? trad.name : cat.name;
+														// project.content = (trad.content) ? trad.content : project.content;
+														// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+														// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+														// project.description = (trad.description) ? trad.description : project.description;
+													}
+												})
+
+												resolve(cat)
+											}else
+											{
+												resolve(cat)
+											}
+										})
+										
+									}).then(function (projectss) {
+										cb(null,cats)
+									})
+										
+								})
+								}
+							},function(err,ress) {
+
+ 										console.log('DELETE');
+									if(project.category)
+										project.category=project.category.id;
+									
+
+									var projecttogo = _.clone(project)
+
+									delete projecttogo.comments
+									projecttogo.comments=ress.comment
+									// console.log(projecttogo.comments);
+									// console.log(projecttogo);
+									console.log('Final Data');
+
+									var pathtoshare ='';
+									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/';
+									if(projecttogo.urlrewrite)
+									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/'+projecttogo.urlrewrite;
+
+
+
+									// console.log('fetch ONE Project', projecttogo);
+									// res.status(200).send(projecttogo)
+									res.status(200).view('article',{
+										baseurl : '../../',
+										categories:ress.cats,
+										next:ress.next,
+										prev:ress.prev,
+										popular:ress.popular,
+										article:projecttogo,
+										moment: moment,
+										pathtoshare:pathtoshare,
+										title: projecttogo.title +' - BLOG - '+ sails.config.COMPANY_NAME,
+										keyword: projecttogo.keyword,
+										description:projecttogo.description,
+										menu:'blog',
+										marked:marked
+									})
+								})
+							});		
+						}
+							
+								
+								// callback(null,items);
+
+	
+						
+				});			
+					
 			
 
 
@@ -610,115 +1455,115 @@ module.exports={
 		
 		   
 	// },
-	// addCommentArticle:function(req,res,next) {
+	addCommentArticle:function(req,res,next) {
 
-	// 	console.log('addCommentProj');
-	// 	console.log(req.params.itemid);
+		console.log('addCommentProj');
+		console.log(req.params.itemid);
 		
 
-	// 	Article.findOne(req.params.itemid).exec(function (err,article) {
-	// 		console.log(article);
-	// 		Comment.create({author:req.body.name,
-	//   		email:req.body.email,
-	//   		content:req.body.message,
-	//   		status:'new',
-	//   		article:req.params.itemid
-	//   		}).exec(function (err,coment){
-	// 								console.log(err)
-	// 			if(err)
-	// 				res.status(400).send(err)
-	// 			else{
+		Article.findOne(req.params.itemid).exec(function (err,article) {
+			console.log(article);
+			Comment.create({author:req.body.name,
+	  		email:req.body.email,
+	  		content:req.body.message,
+	  		status:'new',
+	  		article:req.params.itemid
+	  		}).exec(function (err,coment){
+									console.log(err)
+				if(err)
+					res.status(400).send(err)
+				else{
 
-	// 			Notification.create({type:'articlecomment',status:'todo',info1:article.title,info2:'par '+coment.author,item:'article',itemid:req.params.itemid}).exec(function (err,notif){
-	// 					console.log(err)
-	// 					console.log(notif)
-	// 					 Notification.publishCreate(notif);
-	// 		    		// res.status(200).send(created);
-	// 		    	res.status(200).send(coment)
-	// 			});
-	// 			}
-	// 		});
-	// 	})
-		
-		
-
-	// },
-	// addReponseArticle:function(req,res,next) {
-
-	// 	console.log('addCommentProj');
-	// 	console.log(req.params.itemid);
-	// 	console.log('projid',req.params.projid);
-		
-
-	// 	Article.findOne(req.params.projid).exec(function (err,article) {
-	// 		Comment.findOne(req.params.itemid).exec(function (err,comment) {
-	// 			console.log(comment);
-	// 			Reponse.create({author:req.body.name,
-	// 	  		email:req.body.email,
-	// 	  		content:req.body.message,
-	// 	  		status:'new',
-	// 	  		comment:req.params.itemid
-	// 	  		}).exec(function (err,coment){
-	// 									console.log(err)
-	// 				if(err)
-	// 					res.status(400).send(err)
-	// 				else{
-
-	// 				Notification.create({type:'articlecomment',status:'todo',info1:article.title,info2:'par '+coment.author,item:'article',itemid:req.params.projid}).exec(function (err,notif){
-	// 						console.log(err)
-	// 						console.log(notif)
-	// 						 Notification.publishCreate(notif);
-	// 			    		// res.status(200).send(created);
-	// 			    	res.status(200).send(coment)
-	// 				});
-	// 				}
-	// 			});
-	// 		})
-	// 	})
+				Notification.create({type:'articlecomment',status:'todo',info1:article.title,info2:'par '+coment.author,item:'article',itemid:req.params.itemid}).exec(function (err,notif){
+						console.log(err)
+						console.log(notif)
+						 Notification.publishCreate(notif);
+			    		// res.status(200).send(created);
+			    	res.status(200).send(coment)
+				});
+				}
+			});
+		})
 		
 		
 
-	// },
-	// contactEmail:function(req,res,next) {
+	},
+	addReponseArticle:function(req,res,next) {
 
-	// 	console.log('contactEmailcontactEmailcontactEmailcontactEmailcontactEmailcontactEmail');
-	// 	console.log(req.body.message);
-	// 	console.log(req.body.name);
-	// 	console.log(req.body.email);
-	// 	if(req.body.message && req.body.name && req.body.email)
-	// 	{
-	// 		console.log('contactEmail ----> true');
-	// 		var transporter = nodemailer.createTransport({
-	// 			    service: 'Gmail',
-	// 			    auth: {
-	// 			        user: sails.config.MAIN_EMAIL_GOOGLE,
-	// 					pass: sails.config.MAIN_EMAIL_GOOGLE_PWD
-	// 			    }
-	// 			})
+		console.log('addCommentProj');
+		console.log(req.params.itemid);
+		console.log('projid',req.params.projid);
+		
+
+		Article.findOne(req.params.projid).exec(function (err,article) {
+			Comment.findOne(req.params.itemid).exec(function (err,comment) {
+				console.log(comment);
+				Reponse.create({author:req.body.name,
+		  		email:req.body.email,
+		  		content:req.body.message,
+		  		status:'new',
+		  		comment:req.params.itemid
+		  		}).exec(function (err,coment){
+										console.log(err)
+					if(err)
+						res.status(400).send(err)
+					else{
+
+					Notification.create({type:'articlecomment',status:'todo',info1:article.title,info2:'par '+coment.author,item:'article',itemid:req.params.projid}).exec(function (err,notif){
+							console.log(err)
+							console.log(notif)
+							 Notification.publishCreate(notif);
+				    		// res.status(200).send(created);
+				    	res.status(200).send(coment)
+					});
+					}
+				});
+			})
+		})
+		
+		
+
+	},
+	contactEmail:function(req,res,next) {
+
+		console.log('contactEmailcontactEmailcontactEmailcontactEmailcontactEmailcontactEmail');
+		console.log(req.body.message);
+		console.log(req.body.name);
+		console.log(req.body.email);
+		if(req.body.message && req.body.name && req.body.email)
+		{
+			console.log('contactEmail ----> true');
+			var transporter = nodemailer.createTransport({
+				    service: 'Gmail',
+				    auth: {
+				        user: sails.config.MAIN_EMAIL_GOOGLE,
+						pass: sails.config.MAIN_EMAIL_GOOGLE_PWD
+				    }
+				})
 			
-	// 		var mailOptions = {
-	// 		    from: req.body.name+' <'+req.body.email+'>', // sender address
-	// 		    to: sails.config.MAIN_EMAIL, // list of receivers
-	// 		    subject: 'Site - '+ sails.config.COMPANY_NAME +' - contact : '+ req.body.name, // Subject line
-	// 		    text: req.body.message // html body
-	// 		};
-	// 		// send mail with defined transport object
-	// 		transporter.sendMail(mailOptions, function(error, info){
+			var mailOptions = {
+			    from: req.body.name+' <'+req.body.email+'>', // sender address
+			    to: sails.config.MAIN_EMAIL, // list of receivers
+			    subject: 'Site - '+ sails.config.COMPANY_NAME +' - contact : '+ req.body.name, // Subject line
+			    text: req.body.message // html body
+			};
+			// send mail with defined transport object
+			transporter.sendMail(mailOptions, function(error, info){
 
-	// 			console.log('here');
-	// 			console.log(error);
-	// 			console.log(info);
-	// 		    if(error){
-	// 		        res.status(400).send('mail error');
-	// 		    }else{
+				console.log('here');
+				console.log(error);
+				console.log(info);
+			    if(error){
+			        res.status(400).send('Une erreur est survenu');
+			    }else{
 
-	// 				res.status(200).send('mail sended');
+					res.status(200).send('Votre email a été envoyé.');
 
-	// 		    }
-	// 		});
-	// 	}else{
-	// 		res.status(400).send('field error');
-	// 	}
-	// }
+			    }
+			});
+		}else{
+			res.status(400).send('Une erreur est survenu');
+		}
+	}
 	
 }

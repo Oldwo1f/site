@@ -1,230 +1,442 @@
- <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1 class="wow flipInX" ><%= __('Blog') %></h1>
-                
+ <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+        <% include header.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1><%- article.title %></h1>
+               <!--  <ol class="breadcrumb">
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Catégorie</a></li>
+                    <li class="active">Blog Single</li>
+                </ol> -->
             </div>
-            <header class="listCatProj major container 75%">
-                 <h2 class="wow flipInX" ><%= article.title %></h2>
-            </header>
-            <div id="main">
 
+        </section><!-- #page-title end -->
 
-                    <% if(typeof(article.images[0])=='object' && article.publishVideo==false){ %>
-                 	<div class="box boximages container  wow zoomInUp">
-                        <div  class="col col-xs-12 ">
-                            <img src="/file/image/originalsize/<%= article.images[0].image.filename %>" alt="<%= article.images[0].image.alt %>"/>
-                        </div>
-                    </div>
-                    <%}%>
+        <!-- Content
+        ============================================= -->
+        <section id="content">
 
-                    <% if(article.publishVideo==true && typeof article.video !== 'undefined'){ %>
-                 	<div class="box boximages container  wow zoomInUp">
-                        <div  class="col col-xs-12 ">
-                        	<div class="pretty-embed" data-pe-videoid="<%= article.video %>"></div>
-                        </div>
-                    </div>
-                    <%}%>
-                   
-                            
-                    <div class="box container  wow zoomInUp">
-                        
-                        <div  class="col col-xs-12 ">
-                        	<div class="mdcontent">
-                                <%- marked(article.content) %>
-                        	</div>
-                            <div class="author text-right">
-                            	<% if(typeof article.author !=='undefined' && article.author.usename){ %>
-                                <%= article.author.name %>
-                                <%}else if(typeof article.author !=='undefined' && article.author.pseudo){%>
-                                <%= article.author.pseudo %>
+            <div class="content-wrap toppaddingsmall">
+
+                <div class="container clearfix">
+
+                    <div class="single-post nobottommargin">
+
+                        <!-- Post Content
+                    ============================================= -->
+                    <div class="postcontent nobottommargin clearfix">
+
+                        <div class="single-post nobottommargin">
+
+                            <!-- Single Post
+                            ============================================= -->
+                            <div class="entry clearfix">
+
+                                
+
+                                <!-- Entry Meta
+                                ============================================= -->
+                                <ul class="entry-meta clearfix">
+                                    <li><i class="icon-calendar3"></i> <%- moment(article.date).format('DD MMMM YYYY') %></li>
+                                    <!-- <li><a href="#"><i class="icon-user"></i> admin</a></li> -->
+                                   
+                                    <% if(article.comments.length){%>
+                                        <li><i class="icon-comments"></i> <%-article.comments.length %> <%- __('comment') %><% if(article.comments.length>1){%>s<%}%></li>
+                                    <%}%>
+                                    <% if(article.nbView){%>
+                                        <li><i class="icon-line-eye"></i> <%-article.nbView %> <%- __('view') %><% if(article.nbView>1){%>s<%}%></li>
+                                    <%}%>
+                                </ul><!-- .entry-meta end -->
+
+                                <!-- Entry Image
+                                ============================================= -->
+                                <div class="entry-image">
+                                    <% if(article.video && article.publishVideo){%>
+                                        <%- article.video  %> 
+                                        <% }else if(article.images.length == 1){%>
+                                                <a href="article/<%- article.id %>/<%- article.rewriteurl%>" data-lightbox="image"><img class="image_fade" src="file/image/originalsize/<%-article.images[0].img.filename %>" alt="file/image/originalsize/<%-article.images[0].img.alt %>"></a>
+                                            
+
+                                         <%} else if(article.images.length > 1){%>
+                                                <div class="fslider" data-arrows="true" data-animation="slide" data-slideshow="false">
+                                                <div class="flexslider">
+                                                    <div class="slider-wrap">
+                                                         <% for(var j=0; j< article.images.length ; j++){%>
+                                                            <% if(article.images[j].img){%>
+                                                              
+                                                                <div class="slide" ><a href="projet/<%- article.id %>/<%- article.rewriteurl %>"><img src="file/image/originalsize/<%- article.images[j].img.filename%>" alt=""></a></div>
+                                                            <%}%>
+                                                         <%}%>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <%} %>
+                                </div><!-- .entry-image end -->
+
+                                <!-- Entry Content
+                                ============================================= -->
+                                <div class="entry-content notopmargin">
+
+                                    <%- marked(article.content) %>
+
+                                    <!-- Tag Cloud
+                                    ============================================= -->
+                                    <div class="tagcloud clearfix bottommargin">
+                                         <% for(var i=0; i< article.tags.length ; i++){%>
+                                             
+                                            <a href="#"><%- article.tags[i].text %></a>
+                                         <%}%>
+                                        
+                                    </div><!-- .tagcloud end -->
+
+                                    <div class="clear"></div>
+
+                                    <!-- Post Single - Share
+                                    ============================================= -->
+                                    <!-- <div class="si-share noborder clearfix">
+                                        <span>Share this Post:</span>
+                                        <div>
+                                            <a href="#" class="social-icon si-borderless si-facebook">
+                                                <i class="icon-facebook"></i>
+                                                <i class="icon-facebook"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-twitter">
+                                                <i class="icon-twitter"></i>
+                                                <i class="icon-twitter"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-pinterest">
+                                                <i class="icon-pinterest"></i>
+                                                <i class="icon-pinterest"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-gplus">
+                                                <i class="icon-gplus"></i>
+                                                <i class="icon-gplus"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-rss">
+                                                <i class="icon-rss"></i>
+                                                <i class="icon-rss"></i>
+                                            </a>
+                                            <a href="#" class="social-icon si-borderless si-email3">
+                                                <i class="icon-email3"></i>
+                                                <i class="icon-email3"></i>
+                                            </a>
+                                        </div>
+                                    </div> --><!-- Post Single - Share End -->
+
+                                </div>
+                            </div><!-- .entry end -->
+
+                            <!-- Post Navigation
+                            ============================================= -->
+                            <div class="post-navigation clearfix">
+                               
+                                 
+                                <div class="col_half nobottommargin">
+                                <% if(prev){%>
+                                    <a href="<%- prev.url %>">&lArr; <%- prev.title %></a>
                                 <%}%>
-                            </div>
-                            <div class="date text-right">
-                            	<%= moment(new Date(article.createdAt)).fromNow() %>
-                            </div>
-                            <% if(article.documents.length > 0) {%> 
-	                        <div  class="col col-xs-12 ">
-	                            <div class="pj">
-	                            	<label><%=  __('Pièces jointes') %></label>
-	                               	<ul>
-	                               		<% for(var i=0; i<article.documents.length; i++) {%>
-					                    <li><a href="/file/document/<%= article.documents[i].document.filename %>" target="_BLANK"><%= article.documents[i].document.filename %></a></li>
-					                    <% } %>  
-	                               	</ul>
-	                        	</div>
-	                        </div>
-	                        <% } %>
+                                    &nbps;
+                                </div>
+                                 
+                                <div class="col_half col_last tright nobottommargin">
+                                    &nbps;
+                                 <% if(next){%>
+
+                                    <a href="<%- next.url %>"><%- next.title %> &rArr;</a>
+                                 <%}%>
+                                </div>
+
+                            </div><!-- .post-navigation end -->
+
+
+
+                            <!-- Comments
+                            ============================================= -->
+                            <div id="comments" class="clearfix">
+                                 <% if(article.comments.length){%>
+                                 
+                                <h3 id="comments-title"><span><%- article.comments.length %></span> <%- __('Comment') %><% if(article.comments.length){%>s<% } %></h3>
+
+                                <!-- Comments List
+                                ============================================= -->
+                                <ol class="commentlist clearfix">
+                                    <% for(var i=0; i< article.comments.length ; i++){%>
+                                         
+                                    <li class="comment even thread-even depth-1" >
+
+                                        <div  class="comment-wrap clearfix">
+
+                                            <div class="comment-content clearfix">
+
+                                                <div class="comment-author"><%- article.comments[i].author %><span><%- moment(article.comments[i].createdAt).fromNow() %></span></div>
+
+                                                <p><%- article.comments[i].content %></p>
+
+                                                <a class='comment-reply-link' href='#' title="<%- __('reply') %>"><i class="icon-reply"></i></a>
+
+                                            </div>
+
+                                            <div class="clear"></div>
+
+                                        </div>
+
+
+                                        <ul class='children'>
+                                            <% for(var j=0; j< article.comments[i].reponses.length ; j++){%>
+                                                 
+                                            <li class="comment byuser comment-author-_smcl_admin odd alt depth-2" >
+
+                                                <div  class="comment-wrap clearfix">
+
+
+                                                    <div class="comment-content clearfix">
+
+                                                        <div class="comment-author"><%- article.comments[i].reponses[j].author %><span><%- moment(article.comments[i].reponses[j].createdAt).fromNow() %></span></div>
+
+                                                        <p><%- article.comments[i].reponses[j].content %></p>
+                                                                                                        <a class='comment-reply-link' href='#'><i class="icon-reply"></i></a>
+
+
+                                                    </div>
+
+                                                    <div class="clear"></div>
+
+                                                </div>
+
+                                            </li>
+                                            <%}%>
+
+                                        </ul>
+                                         <div class="respond" class="clearfix">
+                                            <div id="commentform-rep-<%- article.comments[i].id %>" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+                                            <h3><%- __('leave-response') %></h3>
+
+                                            <form class="clearfix formtovalidate" action="article/addReponse/<%- article.comments[i].id %>/<%- article.id %>" method="post" id="commentform-<%- article.comments[i].id %>">
+
+                                                <div class="col_one_third">
+                                                    <label for="author"><%- __('Name') %></label>
+                                                    <input type="text" name="name" id="author" required value="" size="22" tabindex="1" class="sm-form-control" />
+                                                </div>
+
+                                                <div class="col_two_third col_last">
+                                                    <label for="email"><%- __('Email') %></label>
+                                                    <input type="email" name="email" id="email" required value="" size="22" tabindex="2" class="sm-form-control" />
+                                                </div>
+
+                                                <div class="clear"></div>
+
+                                                <div class="col_full">
+                                                    <label for="comment"><%- __('Message') %></label>
+                                                    <textarea name="message" cols="58" rows="7" required tabindex="3" class="sm-form-control"></textarea>
+                                                </div>
+
+                                                <div class="col_full nobottommargin">
+                                                    <button name="submit" type="submit" id="submit-button" tabindex="4" value="Submit" class="button button-3d nomargin"><%- __('Submit') %></button>
+                                                    <div class="errormessageemail"><%- __('Une erreur s\'est produite') %></div>
+                                                    <div class="successmessageemail"><%- __('Votre commentaire à été envoyé.') %></div>
+                                                </div>
+
+                                            </form>
+
+                                        </div>
+                                    </li>
+                                    <%}%>
+
+                                    
+                                </ol><!-- .commentlist end -->
+
+                                <div class="clear"></div>
+                                 <%}%>
+
+                                <!-- Comment Form
+                                ============================================= -->
+                                <div id="respond" class="clearfix">
+                                    <div id="commentform-result" data-notify-type="success" data-notify-msg="<i class=icon-ok-sign></i> Message Sent Successfully!"></div>
+                                    <h3><%- __('leave-comment') %></h3>
+
+                                    <form class="clearfix" action="article/<%- article.id %>/addComment" method="post" id="commentform">
+
+                                        <div class="col_one_third">
+                                            <label for="author"><%- __('Name') %></label>
+                                            <input type="text" name="name" id="author" required value="" size="22" tabindex="1" class="sm-form-control" />
+                                        </div>
+
+                                        <div class="col_two_third col_last">
+                                            <label for="email"><%- __('Email') %></label>
+                                            <input type="email" name="email" id="email" required value="" size="22" tabindex="2" class="sm-form-control" />
+                                        </div>
+
+                                        <div class="clear"></div>
+
+                                        <div class="col_full">
+                                            <label for="comment"><%- __('Message') %></label>
+                                            <textarea name="message" cols="58" rows="7" required tabindex="3" class="sm-form-control"></textarea>
+                                        </div>
+
+                                        <div class="col_full nobottommargin">
+                                            <button name="submit" type="submit" id="submit-button" tabindex="4" value="Submit" class="button button-3d nomargin"><%- __('Submit') %></button>
+                                            <div class="errormessageemail"><%- __('Une erreur s\'est produite') %></div>
+                                            <div class="successmessageemail"><%- __('Votre commentaire à été envoyé.') %></div>
+                                        </div>
+
+                                    </form>
+
+                                </div><!-- #respond end -->
+                                 <script type="text/javascript">
+
+                                    $('.comment-reply-link').click(function(e) {
+                                        e.preventDefault()
+                                        $(e.currentTarget).parents('.comment').siblings('.comment').find('.respond').fadeOut()
+                                        console.log(e);
+                                        console.log(e.currentTarget);
+                                        console.log($(e.currentTarget).parents('.comment'));
+                                        console.log($(e.currentTarget).parents('.comment').find('.respond'));
+                                        $(e.currentTarget).parents('.comment').find('.respond').fadeIn()
+                                        // $(e.currentTarget).parent().parent().parent().('.respond').fadeIn()
+                                    })
+
+                                    $(".formtovalidate").validate({
+                                        submitHandler: function(form) {
+                                            $('.successmessageemail').css({'display':'none'});
+                                            $('.errormessageemail').css({'display':'none'});
+                                            $('.form-process').fadeIn();
+                                            $(form).ajaxSubmit({
+                                                success: function() {
+                                                    $('.form-process').fadeOut();
+                                                    $(form).find('.successmessageemail').css({'display':'inline-block'});
+                                                },
+                                                error: function(e) {
+                                                    console.log('e=', e);
+                                                   $(form).find('.errormessageemail').css({'display':'inline-block'});
+                                                }
+                                            });
+                                        }
+                                    });
+                                    $("#commentform").validate({
+                                        submitHandler: function(form) {
+                                            $('.form-process').fadeIn();
+                                            $('.successmessageemail').css({'display':'none'});
+                                            $('.errormessageemail').css({'display':'none'});
+                                            $(form).ajaxSubmit({
+                                                success: function() {
+                                                    $('.form-process').fadeOut();
+                                                    $('.successmessageemail').css({'display':'inline-block'});
+                                                },
+                                                error: function(e) {
+                                                    console.log('e=', e);
+                                                    $('.errormessageemail').css({'display':'inline-block'});
+                                                    // SEMICOLON.widget.notifications($('#contact-form-result-err'));
+                                                }
+                                            });
+                                        }
+                                    });
+                                </script>
+
+                            </div><!-- #comments end -->
+
                         </div>
-                        
-                    </div> 
 
-                    
+                    </div><!-- .postcontent end -->
+                     <!-- Sidebar
+                    ============================================= -->
+                    <div class="sidebar nobottommargin col_last clearfix">
+                        <div class="sidebar-widgets-wrap">
 
-                    <% 
-                    var i=1;
-                    if(article.publishVideo==true && typeof article.video !== 'undefined'){
-                    	i=0;
-                    }
-                    for(i; i<article.images.length; i++) {%>
-                   
+                            <div class="widget clearfix">
+
+                                <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+
+                                    <ul class="tab-nav clearfix">
+                                        <li><a ><%- __('popular') %></a></li>
+                                    </ul>
+
+                                    <div class="tab-container">
+
+                                        <div class="tab-content clearfix" id="tabs-1">
+                                            <div id="popular-post-list-sidebar">
+                                                 <% if(popular.length){%>
+                                                     <% for(var i=0; i< popular.length ; i++){%>
+                                                         <div class="spost clearfix">
+                                                            <div class="entry-image">
+                                                                 <% if(popular[i].images.length){%>
+                                                                    <a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>" class="nobg"><img class="img-square" src="file/image/adminThumbs/<%- popular[i].images[0].img.filename %>" alt=""></a>
+                                                                 <%}else{%>
+                                                                    <a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>" class="nobg"><img class="img-square" src="images/magazine/small/2.jpg" alt=""></a>
+                                                                 <%}%>
+                                                            </div>
+                                                            <div class="entry-c">
+                                                                <div class="entry-title">
+                                                                    <h4><a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>"><%- popular[i].title %></a></h4>
+                                                                </div>
+                                                                <ul class="entry-meta">
+                                                                     <% if(popular[i].comments.length){%>
+                                                                        <li title="Nombre de commentaires"><i class="icon-comments-alt"></i>
+                                                                            <%- popular[i].comments.length %>
+                                                                        </li>
+                                                                     <%}%>
+                                                                    <li title="Nombre de vues"><i class="icon-line-eye"></i> <%- popular[i].nbView %></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                     <%}%>
+                                                 
+                                                 <%}%>
+                                            </div>
+                                        </div>
+
+                                        
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
                             
-                    <div class="box boximages container wow zoomInUp">
-                       
-                        <div  class="col col-xs-12">
-                            <img class="wow fadeIn" src="/file/image/originalsize/<%= article.images[i].image.filename %>" alt="<%= article.images[i].image.alt %>"/>
+
+                            <div class="widget clearfix">
+
+                                <h4><%- __('category') %></h4>
+                                <div class="tagcloud">
+                                     <% if(categories){%>
+                                         <% for(var i=0; i< categories.length ; i++){%>
+                                             
+                                    <a href="#"><%- categories[i].name %></a>
+                                         <%}%>
+                                     <%}%>
+                                    
+                                </div>
+
+                            </div>
+
                         </div>
+
+                    </div><!-- .sidebar end -->
+                       
                     </div>
-                    <% } %>  
-                    
-                    <div id="socialscontainer" >
-	                    <div id="socials" class="">
-
-	                    	<div id="twitter" class="wow fadeInLeftBig" data-url="<%= pathtoshare %>" data-text="<%= article.title %>"></div> 
-	                    	<div id="facebook" class="wow fadeInRightBig" data-url="<%= pathtoshare %>" data-text="<%= article.title %>"></div>  
-	                    </div>       
-                    </div>       
-                    <% if(article.activeComent == true) {%>
-	                    <div class="box comments container  wow zoomInUp">
-	                        <header>
-	                            <h2><%= __('Comments') %></h2>
-	                        </header>
-	                        <div class="text-center">
-		                        <button class="button toggleform addCommentForm <%= article.id %>"  aria-expanded="false" data-toggle="collapse" data-target=".<%= article.id %>" ><%= __('Laisser un commantaire') %></button>
-	                        </div>
-	                        <div id="" class="box boxcomment collapse addCommentForm <%= article.id %>">
-	                        <form method="post" class="commentform" item="article" itemid="<%= article.id %>">
-		                        <div class="row">
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-		                            </div>
-		                            <div class="6u 12u(mobilep)">
-		                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u text-center">
-		                                <small><%= __('comment_form_message_end') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageRequired">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row errorMessageError">
-		                            <div class="12u text-center">
-		                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-		                            </div>
-		                        </div>
-		                        <div class="row">
-		                            <div class="12u">
-		                                <ul class="actions">
-		                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-		                                </ul>
-		                            </div>
-		                        </div>
-		                        <div class="cache"><i class="fa fa-check"></i></div>
-		                    </form>
-	                        </div>
-	                        <ul>
-                				<% for(var j=0; j<article.comments.length; j++) {%>
-	                        	<li class="box boxcomment wow fadeInLeft">
-	                        		<div class="author"><strong><%= article.comments[j].author %></strong></div>
-	                        		<div class="date pull-right small"><%= moment(new Date(article.comments[j].createdAt)).fromNow() %></div>
-	                        		<p><%= article.comments[j].content %></p>
-
-	                        		<ul>
-		                				<% for(var k=0; k<article.comments[j].reponses.length; k++) {%>
-			                        	<li class="box boxcomment">
-			                        		<div class="author"><strong><%= article.comments[j].reponses[k].author %></strong></div>
-			                        		<div class="date pull-right small"><%= moment(new Date(article.comments[j].reponses[k].createdAt)).fromNow() %></div>
-			                        		<p><%= article.comments[j].reponses[k].content %></p>
-			                        		
-			                        	</li>
-		                				<% } %>
-			                        </ul>
-			                        <div class="<%= article.comments[j].id %> reply"  title="<%= __('reply') %>"> <i class="fa fa-reply" data-toggle="collapse" aria-expanded="false" data-parent=".comments" data-target=".<%= article.comments[j].id %>"></i></div>
-			                        <div id="" class="box boxcomment collapse addCommentForm <%= article.comments[j].id %>">
-			                        <form method="post" class="commentform" item="comment" projid="<%= article.id %>" itemid="<%= article.comments[j].id %>">
-				                        <div class="row">
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="text" name="name" placeholder="<%= __('comment_form_name') %>" />
-				                            </div>
-				                            <div class="6u 12u(mobilep)">
-				                                <input type="email" name="email" placeholder="<%= __('comment_form_email') %>" />
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <textarea name="message" placeholder="<%= __('comment_form_message') %>" rows="6"></textarea>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageRequired">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_all_required') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row errorMessageError">
-				                            <div class="12u text-center">
-				                                <small class=" label label-danger"><%= __('comment_error_message') %></small>
-				                            </div>
-				                        </div>
-				                        <div class="row">
-				                            <div class="12u">
-				                                <ul class="actions">
-				                                    <li><input type="submit" value="<%= __('comment_form_button') %>" /></li>
-				                                </ul>
-				                            </div>
-				                        </div>
-				                        <div class="cache"><i class="fa fa-check"></i></div>
-				                    </form>
-			                        </div>
-	                        	</li>
-                				<% } %>
-	                        </ul>
-	                    </div>
-                    <% } %>
-                
-
-            </div>
-
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
-                    
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
 
                 </div>
+
             </div>
- </div>
+
+        </section><!-- #content end -->
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
 <script type="text/javascript">
 
 var article = <%- JSON.stringify(article) %>;
         console.log(article);
 
-
-
-
+var popular = <%- JSON.stringify(popular) %>;
+        console.log(popular);
+var categories = <%- JSON.stringify(categories) %>;
+        console.log(categories);
 </script>

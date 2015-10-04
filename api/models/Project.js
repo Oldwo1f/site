@@ -17,7 +17,7 @@ module.exports = {
       rewriteurl : {type:'string',defaultsTo:null},
       keyword : {type:'string',defaultsTo:null},
   		date : {type:'datetime',required:true},
-  		nbView : {type:'int',defaultsTo:0},
+  		nbView : {type:'integer',defaultsTo:0},
   		status : {type:'string',required:true},
   		tags:{collection:'tag'},
       publishVideo:{type:'boolean',defaultsTo:false},

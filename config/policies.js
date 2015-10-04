@@ -26,7 +26,7 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  '*': ['modernBrowser','isAdmin'],
+  '*': false,
 
   
   frontController: {

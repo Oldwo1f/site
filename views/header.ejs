@@ -1,0 +1,35 @@
+<!-- Header
+        ============================================= -->
+        <header id="header" class="full-header static-sticky" data-sticky-class="not-dark" data-sticky-offset="0">
+
+            <div id="header-wrap">
+
+                <div class="container clearfix">
+
+                    <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+
+                    <!-- Logo
+                    ============================================= -->
+                    <div id="logo">
+                        <a href="/" class="standard-logo" data-dark-logo="images/logo-Elisabethhours-white.png"><img src="images/logo-Elisabethhours-white.png" alt="Canvas Logo"></a>
+                        <a href="/" class="retina-logo" data-dark-logo="images/logo-Elisabethhours-white.png"><img src="images/logo-Elisabethhours-white.png" alt="Canvas Logo"></a>
+                    </div><!-- #logo end -->
+
+                    <!-- Primary Navigation
+                    ============================================= -->
+                    <nav id="primary-menu">
+
+                        <ul class="one-page-menu" data-easing="easeInOutExpo" data-speed="1250" data-offset="65">
+                            <li <% if(menu=="home"){%> class="active" <% } %> ><a href="/" data-href="#section-about"><div><%- __('About') %></div></a></li>
+                            <li <% if(menu=="portfolio"){%> class="active" <% } %> ><a href="portfolio" data-href="#section-works"><div><%- __('Works') %></div></a></li>
+                            <li <% if(menu=="blog"){%> class="active" <% } %> ><a href="blog" data-href="#section-blog"><div><%- __('News') %></div></a></li>
+                            <li <% if(menu=="contact"){%> class="active" <% } %> ><a href="contact" data-href="#section-contact"><div><%- __('Contact') %></div></a></li>
+                        </ul>
+
+                    </nav><!-- #primary-menu end -->
+
+                </div>
+
+            </div>
+
+        </header><!-- #header end -->

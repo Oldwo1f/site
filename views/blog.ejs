@@ -1,98 +1,122 @@
+<div id="wrapper" class="clearfix">
 
-        <div class="portfo">
-            <div id="header">
-                <a href="/"><span class="logo"><img src="/images/logo-aavo.jpg"></span></a>
-                <h1><%= __('Blog') %></h1>
-                
+        
+
+            <% include header.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title" class="page-title-nobg">
+
+            <div class="container clearfix">
+                <h1><%- __('blog-title') %></h1>
+                <span><%- __('blog-subtitle') %></span>
+                <!-- <ol class="breadcrumb"> -->
+                    <!-- <li><a href="#">Home</a></li> -->
+                    <!-- <li class="active">Blog</li> -->
+                <!-- </ol> -->
             </div>
-            <header class="listCatProj major container 75%">
-                    <ul class="">
-                        <li class="active" rel="all"><%= __('Tous') %></li>
-                        <% for(var i=0; i<categories.length; i++) {%>
-                            <li rel="<%= categories[i].id %>" >
-                                <span><%= categories[i].name %></span>
-                            </li>
-                        <% } %>
-                    </ul>
-            </header>
-            <div id="main">
+
+        </section><!-- #page-title end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <!-- Post Content
+                    ============================================= -->
+                    <div class="postcontent nobottommargin clearfix">
+
+                        <!-- Posts
+                        ============================================= -->
+                        <div id="posts" class="post-timeline clearfix">
+
+                            <div class="timeline-border"></div>
 
 
-                 <% for(var i=0; i<articles.length; i++) {%>
-                   
+                            <% for(var i=0; i< articles.length ; i++){%>
+                                  
+                                 
+                            <div class="entry clearfix">
+                                <div class="entry-timeline">
+                                     <%- moment(articles[i].date).format('DD')  %><span><%- moment(articles[i].date).format('MMM')  %></span>
+                                    <div class="timeline-divider"></div>
+                                </div>
+                                <div class="entry-image">
+                                <% if(articles[i].video && articles[i].publishVideo){%>
+                                     <%- articles[i].video  %> 
+                                <% }else if(articles[i].images.length == 1){%>
+                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" data-lightbox="image"><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="file/image/originalsize/<%-articles[i].images[0].img.alt %>"></a>
+                                    
+
+                                 <%} else if(articles[i].images.length > 1){%>
+                                        <div class="fslider" data-arrows="false" data-animation="slide" data-slideshow="false">
+                                        <div class="flexslider">
+                                            <div class="slider-wrap">
+                                                 <% for(var j=0; j< articles[i].images.length ; j++){%>
+                                                    <% if(articles[i].images[j].img){%>
+                                                      
+                                                        <div class="slide" ><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl %>"><img src="file/image/originalsize/<%- articles[i].images[j].img.filename%>" alt=""></a></div>
+                                                    <%}%>
+                                                 <%}%>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <%} %>
+                                </div>
+
+
+                                
+                                
+                                <div class="entry-title">
+                                    <h2><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><%- articles[i].title  %></a></h2>
+                                </div>
+                                <ul class="entry-meta clearfix">
+                                    
+                                    <% if(articles[i].category){%>
+                                        <li><i class="icon-folder-open"></i> <a href="#"> <%- articles[i].category.name %> </a></li>
+                                    <%}%>
+                                    <% if(articles[i].comments.length){%>
+                                        <li><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><i class="icon-comments"></i> <%-articles[i].comments.length %> <%- __('comment') %><% if(articles[i].comments.length>1){%>s<%}%></a></li>
+                                    <%}%>
+                                </ul>
+                                <div class="entry-content">
+                                    <%- marked(articles[i].content) %>
+                                    <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"class="more-link"><%- __('readmore') %></a>
+                                </div>
+                            </div>
+
+                            <%}%>
+
+
                             
-                    <div class="box container collapse in  wow zoomInUp" rel="<% if(articles[i].category){ %><%= articles[i].category.id %><% } %>">
-                        <header>
-                            <h2><%= articles[i].title %></h2>
-                        </header>
-                        <div  class="col col-xs-12 ">
- 
 
-                                <% if(articles[i].publishVideo==true && articles[i].video){ %>
+                        </div><!-- #posts end -->
 
-                                         <!--  <div class="container2">
-                                            <div class="vendor">
-                                                <iframe src="https://player.vimeo.com/video/127909728?badge=0" width="500" height="281" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                                              </div>
-                                              
+                    </div><!-- .postcontent end -->
 
-                                          </div>   -->
-                                            <div class="pretty-embed" data-pe-videoid="<%= articles[i].video %>"></div>
-                                <%}else if(articles[i].img) { %>
-                                    <img src="/file/image/originalsize/<%= articles[i].img.filename %>" alt="<%= articles[i].img.alt %>"/>
-                                <% } %>
-                        </div>
-                        <div  class="col col-xs-12 text-center">
-                            <%- articles[i].content %>
-                            
-                        </div><div  class="col col-xs-12 text-center">
-                            <% if(articles[i].rewriteurl){ %>
-                            <a href="article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>" class="button"><%= __('see_article_button') %></a>
-                            <% } else {%>
-                            <a href="article/<%= articles[i].id %>/" class="button"><%= __('see_article_button') %></a>
-                            <% } %>
-                        </div>
-                    </div>
-                    <% } %>
-                
-
-            </div>
-            <div class="box container toto"> 
-                
-             
-
-
-            </div>
-        </div>
-        <!-- Footer -->
-            <div id="footer">
-                <div class="container 75%">
-
-                    <header class="major last">
-                    </header>
-
-
-                    
-
-                    <ul class="icons">
-                        <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-                        <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-                        <!-- <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-                        <li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-                        <li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li> -->
-                    </ul>
-
-                    <ul class="copyright">
-                        <li>&copy; <%= __('All rights reserved') %></li><li>Site: <a href="http://momcreation.fr">momcreation</a></li>
-                    </ul>
+                   <% include sidebar.ejs %>
 
                 </div>
+
             </div>
- </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+
 <script type="text/javascript">
 
-var categories = <%- JSON.stringify(categories) %>;
-        console.log(categories);
-        // Custom selector and No-Double-Wrapping Prevention Test
-
+var articles = <%- JSON.stringify(articles) %>;
+        console.log(articles);
+var recent = <%- JSON.stringify(recent) %>;
+        console.log(recent);
+var popular = <%- JSON.stringify(popular) %>;
+        console.log(popular);
 </script>
