@@ -408,7 +408,7 @@ module.exports={
 				if(items.length>0)
 				{
 						items[0].nbView= Number(items[0].nbView) + 1;
-						Article.update({id: items[0].id}, {nbView: items[0].nbView})
+						Project.update({id: items[0].id}, {nbView: items[0].nbView})
 						.exec(function(err, updatedProject){
 						var project= items[0];
 						// console.log('item',item);

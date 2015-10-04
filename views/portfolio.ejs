@@ -57,25 +57,13 @@
                             <div class="portfolio-image">
 
                                 
-                                 <% if(projects[i].images.length == 1){%>
+                                 <% if(projects[i].images.length){%>
                                  
                                     <a href="projet/<%- projects[i].id %>/<%- projects[i].rewriteurl %>">
                                         <img src="file/image/originalsize/<%-projects[i].images[0].img.filename %>" alt="file/image/originalsize/<%- projects[i].images[0].img.alt %>">
                                     </a>
 
-                                 <%} else if(projects[i].images.length > 1){%>
-                                    <div class="fslider" data-arrows="false" data-animation="slide" data-slideshow="false">
-                                    <div class="flexslider">
-                                        <div class="slider-wrap">
-                                             <% for(var j=0; j< projects[i].images.length ; j++){%>
-                                                <% if(projects[i].images[j].img){%>
-                                                  
-                                                    <div class="slide" ><a href="projet/<%- projects[i].id %>/<%- projects[i].rewriteurl %>"><img src="file/image/originalsize/<%- projects[i].images[j].img.filename%>" alt=""></a></div>
-                                                <%}%>
-                                             <%}%>
-                                        </div>
-                                    </div>
-                                </div>
+                                 
                                 <%} %>
 
                                 <div class="portfolio-overlay">

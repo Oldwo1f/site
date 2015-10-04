@@ -49,7 +49,7 @@
                                 <% if(articles[i].video && articles[i].publishVideo){%>
                                      <%- articles[i].video  %> 
                                 <% }else if(articles[i].images.length == 1){%>
-                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" data-lightbox="image"><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="file/image/originalsize/<%-articles[i].images[0].img.alt %>"></a>
+                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="file/image/originalsize/<%-articles[i].images[0].img.alt %>"></a>
                                     
 
                                  <%} else if(articles[i].images.length > 1){%>

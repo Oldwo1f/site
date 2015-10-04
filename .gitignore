@@ -41,7 +41,7 @@
 
 config/locales
 config/config.js
-
+deploy.sh
 
 
 ################################################
