@@ -84,9 +84,8 @@ module.exports={
 								project.content = truncate(marked(project.content), 450)
 								if(project.images.length)
 								{
-									var img0 = _.find(project.images, function(chr) {
-									  return chr.rank == 0;
-									})
+									project.images = _.sortBy(project.images, 'rank')
+									
 									return Promise.map(project.images,function(image) {
 
 										return Image.findOne(image.image).exec(function (err,datas) {
@@ -132,9 +131,8 @@ module.exports={
 								project.content = truncate(marked(project.content), 450)
 								if(project.images.length)
 								{
-									var img0 = _.find(project.images, function(chr) {
-									  return chr.rank == 0;
-									})
+									project.images = _.sortBy(project.images, 'rank')
+									
 									return Promise.map(project.images,function(image) {
 
 										return Image.findOne(image.image).exec(function (err,datas) {
@@ -180,9 +178,8 @@ module.exports={
 								project.content = truncate(marked(project.content), 450)
 								if(project.images.length)
 								{
-									var img0 = _.find(project.images, function(chr) {
-									  return chr.rank == 0;
-									})
+									project.images = _.sortBy(project.images, 'rank')
+									
 									return Promise.map(project.images,function(image) {
 
 										return Image.findOne(image.image).exec(function (err,datas) {
@@ -304,19 +301,20 @@ module.exports={
 								if(project.images.length)
 								{
 									console.log("IMG.LENGTH");
-									var img0 = _.find(project.images, function(chr) {
-									  return chr.rank == 0;
-									})
-									return Promise.map(project.images,function(image) {
+									console.log(project.images);
+									
+									project.images = _.sortBy(project.images, 'rank')
+									// return Promise.map(project.images,function(image) {
+									console.log(project.images);
 
-										return Image.findOne(image.image).exec(function (err,datas) {
+										return Image.findOne(project.images[0].image).exec(function (err,datas) {
 											// console.log('datas',datas);
-											image.img = datas
+											project.images[0].img = datas
 											console.log(project);
 											// return image;
 											resolve(project)
 										})
-									})
+									// })
 								}else
 								{
 									console.log("IMG.NOT NOT");
@@ -414,6 +412,8 @@ module.exports={
 						// console.log('item',item);
 						async.series({
 						image:function(cbparalelle) {
+							project.images = _.sortBy(project.images, 'rank')
+
 							async.map(project.images,
 							function(item1,cb1) {
 								// console.log('item1',item1);
@@ -500,6 +500,8 @@ module.exports={
 									async.map(results,
 									function(item1,cb1) {
 										// console.log('item1',item1);
+										item1.images = _.sortBy(item1.images, 'rank')
+
 										Image.findOne(item1.images[0].image).exec(function(err,data) {
 											item1.img=data
 											cb1(null,item1)
@@ -617,9 +619,12 @@ module.exports={
 								// console.log('item',item);
 								async.series({
 								image:function(cbparalelle) {
+									project.images = _.sortBy(project.images, 'rank')
+									
 									async.map(project.images,
 									function(item1,cb1) {
 										// console.log('item1',item1);
+
 										Image.findOne(item1.image).exec(function(err,data) {
 											item1.img=data
 											cb1(null,item1)
@@ -719,9 +724,8 @@ module.exports={
 													project.content = truncate(marked(project.content), 450)
 													if(project.images.length)
 													{
-														var img0 = _.find(project.images, function(chr) {
-														  return chr.rank == 0;
-														})
+														project.images = _.sortBy(project.images, 'rank')
+														
 														return Promise.map(project.images,function(image) {
 
 															return Image.findOne(image.image).exec(function (err,datas) {
