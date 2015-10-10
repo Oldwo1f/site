@@ -28,6 +28,29 @@ module.exports={
 
 
 
+	},	about:function(req,res,next) {
+
+		console.log('about');
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale)
+			
+		
+					res.status(200).view('about',{
+						baseurl : '',
+						marked:marked,
+						moment:moment,
+						title: req.__('SEO_ABOUT_title'),
+						keyword: req.__('SEO_ABOUT_keyword'),
+						description:req.__('SEO_ABOUT_description'),
+						menu:'about',
+					})
+	
+					// cb(null,projects)
+				
+
+
+
+
 	},	
 	contact:function(req,res,next) {
 
@@ -620,7 +643,7 @@ module.exports={
 								async.series({
 								image:function(cbparalelle) {
 									project.images = _.sortBy(project.images, 'rank')
-									
+
 									async.map(project.images,
 									function(item1,cb1) {
 										// console.log('item1',item1);

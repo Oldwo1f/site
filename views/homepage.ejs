@@ -4,12 +4,41 @@
 
         <% include header.ejs %>
 
+
+        <!-- Slider
+        ============================================= -->
+        
         <!-- Content
         ============================================= -->
         <section id="content">
 
             <div class="content-wrap nopadding">
+                <div class="container bottommargin topmargin common-height ">
+                <div class="fluid-width-video-wrapper" style="">
+                    <div class="video-wrap">
+                    <video poster="images/aavo.jpg" preload="auto"  autoplay loop control="true">
+                        <source src='aavo.webm' type='video/webm' />
+                        <source src='aavo.mp4' type='video/mp4' />
+                    </video>
+                    <div class="video-overlay" style="background-color: rgba(0,0,0,0.2);"></div>
+                </div>
+                </div>
+                </div>
+                <script type="text/javascript">
 
+                
+                    jQuery(window).load(function(){
+
+
+                        $('.video-wrap').click(function() {
+                            console.log('click');
+                                $(this).find('video').get(0).paused ? $(this).find('video').get(0).play() : $(this).find('video').get(0).pause();
+                        });
+
+
+                    });
+
+                </script>
                 <!-- Portfolio Items
                 ============================================= -->
                 <div id="portfolio" class="portfolio-nomargin portfolio-full portfolio-masonry mixed-masonry clearfix">
@@ -21,7 +50,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Crocodile Marin') %></a></h3>
+                                    <h3><a href="#"><%- __('Inconnu') %></a></h3>
                                     <!-- <span><a href="#">Media</a>, <a href="#">Icons</a></span> -->
                                 </div>
                             </div>
@@ -36,7 +65,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Baby red Dragon') %></a></h3>
+                                    <h3><a href="#"><%- __('Caméléon') %></a></h3>
                                     <!-- <span><a href="#">Illustrations</a></span> -->
                                 </div>
                             </div>
@@ -50,7 +79,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Portrait d\'Asie') %></a></h3>
+                                    <h3><a href="#"><%- __('Mydibel') %></a></h3>
                                     <!-- <span><a href="#">Graphics</a>, <a href="#">UI Elements</a></span> -->
                                 </div>
                             </div>
@@ -63,7 +92,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Portrait d\'Afrique') %></a></h3>
+                                    <h3><a href="#"><%- __('Parc Dauphin') %></a></h3>
                                     <!-- <span><a href="#">Media</a>, <a href="#">Icons</a></span> -->
                                 </div>
                             </div>
@@ -77,7 +106,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Maman Rhino') %></a></h3>
+                                    <h3><a href="#"><%- __('Caméléon') %></a></h3>
                                     <!-- <span><a href="#">UI Elements</a>, <a href="#">Icons</a></span> -->
                                 </div>
                             </div>
@@ -90,7 +119,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('Hatila le gorille') %></a></h3>
+                                    <h3><a href="#"><%- __('CHM') %></a></h3>
                                     <!-- <span><a href="#">Media</a>, <a href="#">Icons</a></span> -->
                                 </div>
                             </div>
@@ -103,7 +132,7 @@
                             </a>
                             <div class="portfolio-overlay">
                                 <div class="portfolio-desc">
-                                    <h3><a href="#"><%- __('La famille') %></a></h3>
+                                    <h3><a href="#"><%- __('Schietse') %></a></h3>
                                     <!-- <span><a href="#">UI Elements</a>, <a href="#">Media</a></span> -->
                                 </div>
                             </div>
@@ -149,7 +178,7 @@
 
                 </script><!-- Portfolio Script End -->
 
-                <div class="section notopmargin dark">
+                <div class="section notopmargin dark nobottommargin">
                     <div class="container col-padding center clearfix">
 
                         <div class="emphasis-title">
@@ -162,91 +191,122 @@
                     </div>
                 </div>
 
-                
 
+                <div class="container clearfix topmargin-lg toppaddingsmall">
 
-                <div class="row common-height clearfix presentation">
+                    <div class="col_two_fifth nobottommargin">
+                        <img src="images/10.jpg">
+                    </div>
 
-                    <div class="col-sm-5 col-padding" style="height: 549px; background: url(images/portrait.jpg) 50% 50% / cover no-repeat;"></div>
+                    <div class="col_three_fifth nobottommargin col_last">
 
-                    <div class="col-sm-7 col-padding" style="height: 549px;">
-                        <div>
-                            <div class="heading-block">
-                                <span class="before-heading color"><%- __('Artiste & Sculpteur') %></span>
-                                <h3>Elisabeth Hours</h3>
+                        <div class="heading-block">
+                            <h3>Spécialisé dans la construction d'hopitaux</h3>
+                            <span>En effet, for de 10 ans d'expérience et 850.203.325 Euros de bugdget...</span>
+                        </div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
+
+                        <a href="#">Learn more &rarr;</a>
+
+                    </div>
+
+                    <div class="clear"></div><div class="line"></div>
+
+                    <div class="col_three_fifth">
+
+                        <div class="heading-block">
+                            <h3>Stockage à froid</h3>
+                            <span>Une expérience grandissante dans la construction de frigo géants.</span>
+                        </div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
+
+                        <a href="#">Learn more &rarr;</a>
+
+                    </div>
+
+                    <div class="col_two_fifth col_last">
+                        <img src="images/main-bg.jpg">
+                    </div> 
+
+                    <div class="clear"></div><div class="line"></div>
+
+                    <div class="col_two_fifth">
+                        <img src="images/main-bg.jpg">
+                    </div>
+
+                    <div class="col_three_fifth  col_last">
+
+                        <div class="heading-block">
+                            <h3>Un savoir faire Multigénérationel</h3>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam</span>
+                        </div>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quod consequuntur quibusdam, enim expedita sed quia nesciunt incidunt accusamus necessitatibus modi adipisci officia libero accusantium esse hic, obcaecati, ullam, laboriosam!</p>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti vero, animi suscipit id facere officia. Aspernatur, quo, quos nisi dolorum aperiam fugiat deserunt velit rerum laudantium cum magnam excepturi quod, fuga architecto provident, cupiditate delectus voluptate eaque! Sit neque ut eum, voluptatibus odit cum dolorum ipsa voluptates inventore cumque a.</p>
+
+                        <a href="#">Learn more &rarr;</a>
+
+                    </div>
+
+                    
+                </div>
+
+                <div class="divider"></div>
+
+                <div class="container clearfix topmargin" style="z-index: 4;">
+                    <div class="heading-block center">
+                        <h2>Last news</h2>
+                        <!-- <span>We believe in Flexible Costing.</span> -->
+                    </div>
+                    <div class="col_one_third nobottommargin">
+                        <div class="feature-box media-box">
+                            <div class="fbox-media">
+                                <img src="images/services/1.jpg" alt="Why choose Us?">
                             </div>
-
-                            <div class="row clearfix">
-
-                                <div class="col-md-6">
-                                    <p><%- __('text-prez-p1') %></p>
-                                    <p><%- __('text-prez-p2') %></p>
-                                   <!--  <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a> -->
-                                </div>
-
-                                <div class="col-md-6">
-                                    <ul class="skills">
-                                        <li data-percent="<%- __('skill1-value') %>">
-                                            <span><%- __('skill1') %></span>
-                                            <div class="progress skills-animated" style="width: <%- __('skill1-value') %>%;">
-                                                <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="<%- __('skill1-value') %>" data-refresh-interval="30" data-speed="1100"><%- __('skill1-value') %></span>%</div></div>
-                                            </div>
-                                        </li>
-                                        <li data-percent="<%- __('skill2-value') %>">
-                                            <span><%- __('skill2') %></span>
-                                            <div class="progress skills-animated" style="width: <%- __('skill2-value') %>%;">
-                                                <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="<%- __('skill2-value') %>" data-refresh-interval="30" data-speed="1100"><%- __('skill2-value') %></span>%</div></div>
-                                            </div>
-                                        </li>
-                                        <li data-percent="<%- __('skill3-value') %>">
-                                            <span><%- __('skill3') %></span>
-                                            <div class="progress skills-animated" style="width: <%- __('skill3-value') %>%;">
-                                                <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="<%- __('skill3-value') %>" data-refresh-interval="30" data-speed="1100"><%- __('skill3-value') %></span>%</div></div>
-                                            </div>
-                                        </li>
-                                        <li data-percent="<%- __('skill4-value') %>">
-                                            <span><%- __('skill4') %></span>
-                                            <div class="progress skills-animated" style="width: <%- __('skill4-value') %>%;">
-                                                <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="<%- __('skill4-value') %>" data-refresh-interval="30" data-speed="1100"><%- __('skill4-value') %></span>%</div></div>
-                                            </div>
-                                        </li>
-                                        <li data-percent="<%- __('skill5-value') %>">
-                                            <span><%- __('skill5') %></span>
-                                            <div class="progress skills-animated" style="width: <%- __('skill5-value') %>%;">
-                                                <div class="progress-percent"><div class="counter counter-inherit counter-instant"><span data-from="0" data-to="<%- __('skill5-value') %>" data-refresh-interval="30" data-speed="1100"><%- __('skill5-value') %></span>%</div></div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
-
+                            <div class="fbox-desc">
+                                <h3>Why choose Us.<span class="subtitle">Because we are Reliable.</span></h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi rem, facilis nobis voluptatum est voluptatem accusamus molestiae eaque perspiciatis mollitia.</p>
                             </div>
+                        </div>
+                    </div>
 
+                    <div class="col_one_third nobottommargin">
+                        <div class="feature-box media-box">
+                            <div class="fbox-media">
+                                <img src="images/services/2.jpg" alt="Why choose Us?">
+                            </div>
+                            <div class="fbox-desc">
+                                <h3>Our Mission.<span class="subtitle">To Redefine your Brand.</span></h3>
+                                <p>Quos, non, esse eligendi ab accusantium voluptatem. Maxime eligendi beatae, atque tempora ullam. Vitae delectus quia, consequuntur rerum molestias quo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third nobottommargin col_last">
+                        <div class="feature-box media-box">
+                            <div class="fbox-media">
+                                <img src="images/services/3.jpg" alt="Why choose Us?">
+                            </div>
+                            <div class="fbox-desc">
+                                <h3>What we Do.<span class="subtitle">Make our Customers Happy.</span></h3>
+                                <p>Porro repellat vero sapiente amet vitae quibusdam necessitatibus consectetur, labore totam. Accusamus perspiciatis asperiores labore esse ab accusantium ea modi ut.</p>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-
-                <div class="container divcenter clearfix">
-
-                    <div class="heading-block center">
-                        <h2><%- __('home_animaux_title') %></h2>
-                        <span><%- __('home_animaux_subtitle') %></span>
-                    </div>
+                <div class="container divcenter clearfix" style="z-index: 1;margin-top:-600px">
 
                     <div style="position: relative;" data-height-lg="624" data-height-md="518" data-height-sm="397" data-height-xs="242" data-height-xxs="154">
-                        <img src="images/ele.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="0" alt="Chrome">
-                        <img src="images/rino.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="200" alt="iPad">
+                        <img src="images/01.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="0" alt="Chrome">
+                        <img src="images/02.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeInUp" data-delay="200" alt="iPad">
                         <!-- <img src="images/services/fbrowser2.png" style="position: absolute; top: 0; left: 0;" data-animate="fadeIn" data-delay="1200" alt="iPad"> -->
                     </div>
                 </div>
