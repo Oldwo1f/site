@@ -68,7 +68,10 @@
                                 <%if(projects[i].img) { %>
                                     <img class=""  src="/file/image/adminThumbs/<%= projects[i].img.filename %>" style="max-width:100%" alt="<%= projects[i].img.alt %>"/>
                                 <% } %>
-                                <div class="cacheimage"><i class="fa-eye fa"></i></div>
+                                <%if(projects[i].publishVideo) { %>
+                                    <i class="fa-video-camera fa" style="position:absolute;right:0px; bottom:0px; font-size : 2em;margin: 0px 10px 10px 0px;"></i>
+                                <% } %>
+                                <div class="cacheimage"></div>
                     </a>
                     </div>
                     <% } %>
