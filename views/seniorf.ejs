@@ -1,0 +1,163 @@
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+       <% include menu.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>Senior <i class="icon-line2-symbol-female"></i> Pre-Nationale</h1>
+                <!-- <div id="portfolio-navigation">
+                    <a href="#"><i class="icon-angle-left"></i></a>
+                    <a href="#"><i class="icon-line-grid"></i></a>
+                    <a href="#"><i class="icon-angle-right"></i></a>
+                </div> -->
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Portfolio Single Gallery
+        ============================================= -->
+        <section id="slider" class="slider-parallax swiper_wrapper clearfix" style="height: 600px;">
+
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/3.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/1.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/4.jpg');"></div>
+                </div>
+                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+            </div>
+
+            <script>
+                jQuery(document).ready(function($){
+                    var swiperSlider = new Swiper('.swiper-parent',{
+                        paginationClickable: false,
+                        slidesPerView: 1
+                    });
+
+                    $('#slider-arrow-left').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipePrev();
+                    });
+
+                    $('#slider-arrow-right').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipeNext();
+                    });
+                });
+            </script>
+
+        </section><!-- .portfolio-single-image end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+                <div class="container">
+                <div class="promo promo-dark promo-flat bottommargin">
+                        <h3>Les <span>résultats</span> ainsi que le <span>calendrier des matchs à venirs</span></h3>
+                        <span>Sont disponibles sur le site de la ffvb</span>
+                        <a href="http://www.ffvbbeach.org/ffvbapp/resu/vbspo_calendrier.php?saison=2015/2016&codent=LIPI&poule=2PF" target="_BLANK" class="button button-dark button-xlarge button-rounded">Voir les résultats</a>
+                    </div>
+                </div>
+                
+                <a class="button button-primary button-full center tright" href="/contact">
+                    <div class="container clearfix">
+                        On à besoins de toi pour <strong>renforcer nos équipes</strong><i class="icon-caret-right" style="top:4px;"></i> Viens essayer <strong>Gratuitement</strong>
+                    </div>
+                </a>
+                    <div class="clear"></div>
+
+                
+
+                <div class="col-md-12 nopadding common-height ohidden">
+                    <div class="col-md-6 col-padding" style="background: url('images/portfolio/extended/thumbs/big.jpg') center center no-repeat; background-size: cover;">
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="col-md-6 col-padding">
+
+                        <div class="clearfix">
+                            <h3>Coach : Manu</h3>
+
+                            <div class="col-sm-9 nopadding topmargin-sm clearfix">
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect" data-animate="fadeIn">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-opentable"></i></a>
+                                    </div>
+                                    <h3>Tactitien</h3>
+                                    <p>Si je ne perd pas de temps. Je jouerais plus de ballon pour un maximum de progression.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="200">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-cube"></i></a>
+                                    </div>
+                                    <h3>Solidité</h3>
+                                    <p>2 ou 3 jours de stage pendant les vacances scolaire. Rien de mieux pour progresser vitesse grand V.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="400">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-line-target"></i></a>
+                                    </div>
+                                    <h3>Présision</h3>
+                                    <p>Demander à votre coach des exercices à la maison, qui vont faire de vous des champions.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>Quelques photos</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                </div>
+
+
+                
+
+                
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <!-- // <script type="text/javascript" src="js/functions.js"></script> -->
+
+</body>

@@ -1,0 +1,322 @@
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+       <% include menu.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>L'école de Volley: Poussins & Pupilles</h1>
+                <!-- <div id="portfolio-navigation">
+                    <a href="#"><i class="icon-angle-left"></i></a>
+                    <a href="#"><i class="icon-line-grid"></i></a>
+                    <a href="#"><i class="icon-angle-right"></i></a>
+                </div> -->
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Portfolio Single Gallery
+        ============================================= -->
+        <section id="slider" class="slider-parallax swiper_wrapper clearfix" style="height: 600px;">
+
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/3.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/1.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/4.jpg');"></div>
+                </div>
+                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+            </div>
+
+            <script>
+                jQuery(document).ready(function($){
+                    var swiperSlider = new Swiper('.swiper-parent',{
+                        paginationClickable: false,
+                        slidesPerView: 1
+                    });
+
+                    $('#slider-arrow-left').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipePrev();
+                    });
+
+                    $('#slider-arrow-right').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipeNext();
+                    });
+                });
+            </script>
+
+        </section><!-- .portfolio-single-image end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+
+                <div class="container clearfix">
+
+                    <div class="col_half">
+
+                        <h3>Pré-requis</h3>
+
+                        <p>Nous acceptons tout le monde, même les plus petits sont les bienvenues. <br>
+                            La seul condition est de pouvoir ratraper un ballon <br>
+                           
+                         Il faut aussi venir avec de la bonne hummeur.</p>
+
+                    </div>
+
+                    <div class="col_half col_last">
+
+                        <h3>Notre politique</h3>
+
+                        <p>Tout le monde s'amuse<br>
+                            Le fun avant tout <br>
+                            La compétition n'est pas obligatoire
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+                <div class="container clearfix bottommargin">
+
+                    <h3 class="bottommargin">Voila se que l'on fait à l'école du volley</h3>
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-th"></i></a>
+                            </div>
+                            <h3>de la Coordination</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="200">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-params"></i></a>
+                            </div>
+                            <h3>des Sauts</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="400">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-screenshot"></i></a>
+                            </div>
+                            <h3>de la Présisions</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="600">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-dribbble"></i></a>
+                            </div>
+                            <h3>du Controle de balle</h3>
+                        </div>
+                    </div>
+
+                    
+                    <div class="col_one_third nobottommargin">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1200">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-bolt2"></i></a>
+                            </div>
+                            <h3>de la Vitesse</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third nobottommargin col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1400">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-double-angle-down"></i></a>
+                            </div>
+                            <h3>des Plongeons</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                    <div class="col_one_third">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="800">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-study"></i></a>
+                            </div>
+                            <h3>Apprentissage volley</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third ">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1000">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-trophy"></i></a>
+                            </div>
+                            <h3>Volley Compétition</h3>
+                        </div>
+                    </div>
+
+                    <div class="col_one_third col_last">
+                        <div class="feature-box fbox-small fbox-plain fadeIn animated" data-animate="fadeIn" data-delay="1600">
+                            <div class="fbox-icon">
+                                <a href="#"><i class="icon-stethoscope"></i></a>
+                            </div>
+                            <h3>et On ne se blesse pas</h3>
+                        </div>
+                    </div>
+
+                    <div class="clear"></div>
+
+                </div>
+                    <div class="clear"></div>
+
+                <a class="button button-primary button-full center tright" href="/contact">
+                    <div class="container clearfix">
+                        On à besoins de toi pour <strong>renforcer nos équipes</strong><i class="icon-caret-right" style="top:4px;"></i> Viens essayer <strong>Gratuitement</strong>
+                    </div>
+                </a>
+                    <div class="clear"></div>
+
+                <div class="section dark nomargin noborder" style="height: 550px;">
+                    <div class="container vertical-middle center clearfix">
+                        <i class="i-plain i-large icon-line-video divcenter" data-animate="fadeInDown"></i>
+                        <div class="emphasis-title nomargin" data-animate="fadeInUp">
+                            <h2 style="font-size: 56px;">Un Entrainement <br><span><small>17h30 - 19h</small></span></h2>
+                        </div>
+                    </div>
+                    <div class="video-wrap">
+                        <video poster="images/videos/explore-poster.jpg" preload="auto" loop autoplay muted>
+                            <source src='images/videos/explore.mp4' type='video/mp4' />
+                            <source src='images/videos/explore.webm' type='video/webm' />
+                        </video>
+                        <div class="video-overlay"></div>
+                    </div>
+                </div>
+
+                <div class="section dark notopmargin nobottommargin noborder" style="padding: 60px 0;background-color: #222;">
+                    <div class="container-fluid clearfix">
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn">
+                            <div class="counter counter-large" style="color: #1abc9c;"><span data-from="0" data-to="8" data-refresh-interval="20" data-speed="2000"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Match gagné</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="200">
+                            <div class="counter counter-large" style="color: #e74c3c;"><span data-from="0" data-to="4" data-refresh-interval="10" data-speed="2000"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Match perdu</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="400">
+                            <div class="counter counter-large" style="color: #e67e22;"><span data-from="0" data-to="19" data-refresh-interval="13" data-speed="3000"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Joueurs</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center" data-animate="bounceIn" data-delay="600">
+                            <div class="counter counter-large" style="color: #3498db;"><span data-from="0" data-to="4" data-refresh-interval="25" data-speed="2500"></span></div>
+                            <h5 title="saisons 2015/2016" style="cursor:pointer">Équipes en compétions</h5>
+                        </div>
+
+                        <div class="col_one_fifth nobottommargin center col_last" data-animate="bounceIn" data-delay="800">
+                            <div class="counter counter-large" style="color: #9b59b6;"><span data-from="0" data-to="49985" data-refresh-interval="30" data-speed="2700"></span></div>
+                            <h5 title="Chiffre aproximatif" style="cursor:pointer">Bombecs avalés</h5>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-12 nopadding common-height ohidden">
+                    <div class="col-md-6 col-padding" style="background: url('images/portfolio/extended/thumbs/big.jpg') center center no-repeat; background-size: cover;">
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="col-md-6 col-padding">
+
+                        <div class="clearfix">
+                            <h3>Pour progresser plus vite</h3>
+
+                            <div class="col-sm-9 nopadding topmargin-sm clearfix">
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect" data-animate="fadeIn">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-line-clock"></i></a>
+                                    </div>
+                                    <h3>Le sérieux à l'entrainement</h3>
+                                    <p>Si je ne perd pas de temps. Je jouerais plus de ballon pour un maximum de progression.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="200">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-graph"></i></a>
+                                    </div>
+                                    <h3>Les Stages</h3>
+                                    <p>2 ou 3 jours de stage pendant les vacances scolaire. Rien de mieux pour progresser vitesse grand V.</p>
+                                </div>
+
+                                <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="400">
+                                    <div class="fbox-icon">
+                                        <a href="#"><i class="icon-home"></i></a>
+                                    </div>
+                                    <h3>Les exercices à la maison</h3>
+                                    <p>Demander à votre coach des exercices à la maison, qui vont faire de vous des champions.</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>Quelques photos</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                </div>
+
+
+                
+
+                
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <!-- // <script type="text/javascript" src="js/functions.js"></script> -->
+
+</body>

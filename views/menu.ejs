@@ -1,6 +1,6 @@
 <!-- Header
         ============================================= -->
-        <header id="header" class="full-header transparent-header  <% if(menu !='home'){%>dark static-sticky sticky-header<% }else{%>home<%} %>" >
+        <header id="header" class="toto dark full-header transparent-header  <% if(menu !='home'){%> static-sticky sticky-header<% }else{%>home<%} %>" >
 
             <div id="header-wrap">
 
@@ -33,8 +33,20 @@
 
                             </li> -->
                             <li><a href="/infos" data-href="#section-services"><div>Infos pratiques</div></a></li>
+                            <li class="submenu">
+                                <a href="#" data-href="#section-team"><div>Équipes</div></a>
+                                <ul class="col-4 clearfix nobottommargin colorwhite" style="display:none;">
+                                    <li><a href="poussin" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Poussin/Pupille <i class="icon-line2-symbol-male"></i><i class="icon-line2-symbol-female"></i></a></li>
+                                    <li><a href="minimef" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Benjamine <i class="icon-line2-symbol-female"></i></a></li>
+                                    <li><a href="minimeg" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Minimes <i class="icon-line2-symbol-male"></i></a></li>
+                                    <li><a href="juniorf" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Junior <i class="icon-line2-symbol-female"></i></a></li>
+                                    <li><a href="seniorm" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Départemental <i class="icon-line2-symbol-male"></i></a></li>
+                                    <li><a href="seniorf" data-scrollto="#section-about" data-easing="easeInOutExpo" class="colorwhite" data-speed="1250" data-offset="70">Pre-national <i class="icon-line2-symbol-female"></i></a></li>
+                                    
+                                </ul>
+                            </li>
                             <li><a href="/contact" data-href="#section-contact"><div>Contact</div></a></li>
-                            <li><a href="#" data-href="#section-about"><div>About</div></a></li>
+                            <li><a href="/about" data-href="#section-about"><div>About</div></a></li>
                         </ul>
 
                         <!-- <div id="side-panel-trigger" class="side-panel-trigger"><a href="#"><i class="icon-reorder"></i></a></div> -->

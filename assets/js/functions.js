@@ -1092,6 +1092,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		darkLogo: function(){
+			console.log("darkLogo");
 			if( ( $header.hasClass('dark') || $body.hasClass('dark') ) && !$headerWrap.hasClass('not-dark') ) {
 				if( defaultDarkLogo ){ defaultLogo.find('img').attr('src', defaultDarkLogo); }
 				if( retinaDarkLogo ){ retinaLogo.find('img').attr('src', retinaDarkLogo); }
@@ -1102,6 +1103,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		stickyMenuClass: function(){
+			console.log("stickyMenuClass");
 			if( stickyMenuClasses ) { var newClassesArray = stickyMenuClasses.split(/ +/); } else { var newClassesArray = ''; }
 			var noOfNewClasses = newClassesArray.length;
 
@@ -1124,6 +1126,7 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		responsiveMenuClass: function(){
+			console.log("responsiveMenuClass");
 			if( $body.hasClass('device-xs') || $body.hasClass('device-xxs') || $body.hasClass('device-sm') ){
 				if( responsiveMenuClasses ) { var newClassesArray = responsiveMenuClasses.split(/ +/); } else { var newClassesArray = ''; }
 				var noOfNewClasses = newClassesArray.length;
@@ -1329,20 +1332,21 @@ var SEMICOLON = SEMICOLON || {};
 		},
 
 		headerSchemeChanger: function( activeSlide ){
+			console.log("headerSchemeChanger");
 			if( activeSlide.length > 0 ) {
 				if( activeSlide.hasClass('dark') ){
 					$('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)').addClass('dark');
 					$('#header.transparent-header.sticky-header,#header.transparent-header.semi-transparent.sticky-header,#header.transparent-header.floating-header.sticky-header').removeClass('dark');
 					$headerWrap.removeClass('not-dark');
 				} else {
-					if( $body.hasClass('dark') ) {
-						activeSlide.addClass('not-dark');
-						$('#header.transparent-header:not(.semi-transparent,.floating-header)').removeClass('dark');
-						$('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)').find('#header-wrap').addClass('not-dark');
-					} else {
-						$('#header.transparent-header:not(.semi-transparent,.floating-header)').removeClass('dark');
-						$headerWrap.removeClass('not-dark');
-					}
+					// if( $body.hasClass('dark') ) {
+					// 	activeSlide.addClass('not-dark');
+					// 	$('#header.transparent-header:not(.semi-transparent,.floating-header)').removeClass('dark');
+					// 	$('#header.transparent-header:not(.sticky-header,.semi-transparent,.floating-header)').find('#header-wrap').addClass('not-dark');
+					// } else {
+					// 	$('#header.transparent-header:not(.semi-transparent,.floating-header)').removeClass('dark');
+					// 	$headerWrap.removeClass('not-dark');
+					// }
 				}
 				SEMICOLON.header.darkLogo();
 			}

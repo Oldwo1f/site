@@ -12942,8 +12942,17 @@ a[href^="https://maps.google.com/maps"]{display:none !important}
     background:none !important;
 }
 #header.home #primary-menu ul li a{color:white;}
+#header.transparent-header:not(.sticky-header) #header-wrap .sub-menu ul{
+    display:none !important;}
+#header.home #primary-menu .sub-menu ul{color:white;display:none;top:70px; background-color: #011f4b;border-color: #3F3F3F;   border-top-color: #005b96;}
+#header.home #primary-menu .sub-menu ul li a{color:#999 !important;}
 #header.home.sticky-header #header-wrap{background-color:#011f4b;border-bottom:1px solid #011f4b !important;}
 #header.transparent-header.full-header.home #logo{ display:none;}
 #header.transparent-header.full-heade.home.sticky-header #logo{ display:block;}
 /*#header.home.sticky-header #primary-menu ul li a{color:#005b96;}*/
 div#logobig {pointer-events:none;position: absolute;z-index: 12;width: 50%;height: 50%;left: 25%;top: 25%;text-align: center;margin-top:-60px;}
+
+#primary-menu .sub-menu ul{display:none;top:70px;}
+/*#primary-menu ul ul li:hover > a {
+	background-color:#23527c;
+}*/

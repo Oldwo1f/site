@@ -116,6 +116,19 @@ module.exports={
 						menu:'about',
 					})
 	},	
+	icons:function(req,res,next) {
+
+		console.log('icons');
+					res.status(200).view('icon',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'icons',
+					})
+	},	
 	rando:function(req,res,next) {
 
 		console.log('rando');
@@ -153,6 +166,71 @@ module.exports={
 						// description:req.__('SEO_HOME_description'),
 						// scripturl:'script.js',
 						menu:'cours',
+					})
+	},	
+	poussin:function(req,res,next) {
+
+		console.log('poussin');
+					res.status(200).view('poussin',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'poussin',
+					})
+	}	,	
+	seniorf:function(req,res,next) {
+
+		console.log('poussin');
+					res.status(200).view('seniorf',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'seniorf',
+					})
+	}	,	
+	seniorm:function(req,res,next) {
+
+		console.log('seniorm');
+					res.status(200).view('seniorm',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'seniorm',
+					})
+	}	,	
+	poussin:function(req,res,next) {
+
+		console.log('poussin');
+					res.status(200).view('poussin',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'poussin',
+					})
+	}	,	
+	poussin:function(req,res,next) {
+
+		console.log('poussin');
+					res.status(200).view('poussin',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'poussin',
 					})
 	}	
 	// portfolio:function(req,res,next) {
