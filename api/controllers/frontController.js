@@ -207,17 +207,43 @@ module.exports={
 						menu:'seniorm',
 					})
 	}	,	
-	poussin:function(req,res,next) {
+	juniorf:function(req,res,next) {
 
-		console.log('poussin');
-					res.status(200).view('poussin',{
+		console.log('juniorf');
+					res.status(200).view('juniorf',{
 						// articles:articles,
 						// marked:marked,
 						// title: req.__('SEO_HOME_title'),
 						// keyword: req.__('SEO_HOME_keyword'),
 						// description:req.__('SEO_HOME_description'),
 						// scripturl:'script.js',
-						menu:'poussin',
+						menu:'juniorf',
+					})
+	}	,	
+	minimef:function(req,res,next) {
+
+		console.log('minimef');
+					res.status(200).view('minimef',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'minimef',
+					})
+	}	,	
+	minimem:function(req,res,next) {
+
+		console.log('minimem');
+					res.status(200).view('minimem',{
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'minimem',
 					})
 	}	,	
 	poussin:function(req,res,next) {

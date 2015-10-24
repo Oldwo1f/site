@@ -1,0 +1,327 @@
+<body class="stretched">
+
+    <!-- Document Wrapper
+    ============================================= -->
+    <div id="wrapper" class="clearfix">
+
+       <% include menu.ejs %>
+        <!-- Page Title
+        ============================================= -->
+        <section id="page-title">
+
+            <div class="container clearfix">
+                <h1>Senior <i class="icon-line2-symbol-male"></i> Loisir</h1>
+                <!-- <div id="portfolio-navigation">
+                    <a href="#"><i class="icon-angle-left"></i></a>
+                    <a href="#"><i class="icon-line-grid"></i></a>
+                    <a href="#"><i class="icon-angle-right"></i></a>
+                </div> -->
+            </div>
+
+        </section><!-- #page-title end -->
+
+        <!-- Portfolio Single Gallery
+        ============================================= -->
+        <section id="slider" class="slider-parallax swiper_wrapper clearfix" style="height: 600px;">
+
+            <div class="swiper-container swiper-parent">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/3.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/1.jpg');"></div>
+                    <div class="swiper-slide" style="background-image: url('images/portfolio/extended/4.jpg');"></div>
+                </div>
+                <div id="slider-arrow-left"><i class="icon-angle-left"></i></div>
+                <div id="slider-arrow-right"><i class="icon-angle-right"></i></div>
+            </div>
+
+            <script>
+                jQuery(document).ready(function($){
+                    var swiperSlider = new Swiper('.swiper-parent',{
+                        paginationClickable: false,
+                        slidesPerView: 1
+                    });
+
+                    $('#slider-arrow-left').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipePrev();
+                    });
+
+                    $('#slider-arrow-right').on('click', function(e){
+                        e.preventDefault();
+                        swiperSlider.swipeNext();
+                    });
+                });
+            </script>
+
+        </section><!-- .portfolio-single-image end -->
+
+        <!-- Content
+        ============================================= -->
+        <section id="content">
+
+            <div class="content-wrap">
+                <div class="container">
+                <div class="promo promo-dark promo-flat bottommargin">
+                        <h3>Pas de <span>compétition,</span> mais beaucoup de <span>matchs à l'entrainement</span></h3>
+                        <span>Que du fun, du plaisir et du volley ball ! Passe nous voir le mercredi de 20h à 22h.(avec une tennue de sport)</span>
+                        <a href="/contact" target="_BLANK" class="button button-dark button-xlarge button-rounded">Je participe</a>
+                </div>
+                </div>
+                <div class="container">
+                <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Christophe</h4><span>Passeur</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Valentin</h4><span>Central</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Patoche</h4><span>Récep/4</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Laurent</h4><span>Récep/4</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Alexis</h4><span>Central</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Gérome</h4><span>Récep/4</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Viencent</h4><span>Passeur</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 bottommargin">
+                            <div class="team team-list clearfix">
+                                <div class="team-image">
+                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                                </div>
+                                <div class="team-desc">
+                                    <div class="team-title"><h4>Alban</h4><span>Récep/4</span></div>
+                                    <div class="team-content">
+                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+                                    </div>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
+                                        <i class="icon-facebook"></i>
+                                        <i class="icon-facebook"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
+                                        <i class="icon-twitter"></i>
+                                        <i class="icon-twitter"></i>
+                                    </a>
+                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
+                                        <i class="icon-gplus"></i>
+                                        <i class="icon-gplus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                
+                
+
+
+                
+
+                
+
+                <div class="clear"></div>
+
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>Quelques photos</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
+                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
+                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
+                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                </div>
+
+
+                
+
+                
+
+            </div>
+
+        </section><!-- #content end -->
+
+        <% include footer.ejs %>
+
+    </div><!-- #wrapper end -->
+
+    <!-- Go To Top
+    ============================================= -->
+    <div id="gotoTop" class="icon-angle-up"></div>
+
+    <!-- Footer Scripts
+    ============================================= -->
+    <!-- // <script type="text/javascript" src="js/functions.js"></script> -->
+
+</body>

@@ -43,7 +43,7 @@ module.exports.routes = {
   'GET /poussin':'frontController.poussin',
   'GET /seniorf':'frontController.seniorf',
   'GET /seniorm':'frontController.seniorm',
-  'GET /minimeg':'frontController.minimeg',
+  'GET /minimem':'frontController.minimem',
   'GET /minimef':'frontController.minimef',
   'GET /juniorf':'frontController.juniorf',
   'GET /icons':'frontController.icons',
