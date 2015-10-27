@@ -1,0 +1,111 @@
+ <!-- Sidebar
+                    ============================================= -->
+                    <div class="sidebar nobottommargin col_last clearfix">
+                        <div class="sidebar-widgets-wrap">
+
+                            <div class="widget clearfix">
+
+                                <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+
+                                    <ul class="tab-nav clearfix">
+                                        <li><a ><%- __('popular') %></a></li>
+                                    </ul>
+
+                                    <div class="tab-container">
+
+                                        <div class="tab-content clearfix" id="tabs-1">
+                                            <div id="popular-post-list-sidebar">
+                                                 <% if(popular.length){%>
+                                                     <% for(var i=0; i< popular.length ; i++){%>
+                                                         <div class="spost clearfix">
+                                                            <div class="entry-image">
+                                                                 <% if(popular[i].images.length){%>
+                                                                    <a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>" class="nobg"><img class="img-square" src="file/image/adminThumbs/<%- popular[i].images[0].img.filename %>" alt=""></a>
+                                                                 <%}else{%>
+                                                                    <a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>" class="nobg"><img class="img-square" src="images/magazine/small/2.jpg" alt=""></a>
+                                                                 <%}%>
+                                                            </div>
+                                                            <div class="entry-c">
+                                                                <div class="entry-title">
+                                                                    <h4><a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>"><%- popular[i].title %></a></h4>
+                                                                </div>
+                                                                <ul class="entry-meta">
+                                                                     <% if(popular[i].comments.length){%>
+                                                                        <li title="Nombre de commentaires"><i class="icon-comments-alt"></i>
+                                                                            <%- popular[i].comments.length %>
+                                                                        </li>
+                                                                     <%}%>
+                                                                    <li title="Nombre de vues"><i class="icon-line-eye"></i> <%- popular[i].nbView %></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                     <%}%>
+                                                 
+                                                 <%}%>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+
+                                </div>
+
+                            </div><div class="widget clearfix">
+
+                                <div class="tabs nobottommargin clearfix" id="sidebar-tabs">
+
+                                    <ul class="tab-nav clearfix">
+                                            <li><a><%- __('Recent') %></a></li>
+                                        </ul>
+                                    <div class="tab-container">
+                                        <div class="tab-content clearfix" id="tabs-2">
+                                                <% if(recent.length){%>
+                                                     <% for(var i=0; i< recent.length ; i++){%>
+                                                         <div class="spost clearfix">
+                                                            <div class="entry-image">
+                                                                 <% if(recent[i].images.length){%>
+                                                                    <a href="article/<%- recent[i].id %>/<%- recent[i].rewriteurl %>" class="nobg"><img class="img-square" src="file/image/adminThumbs/<%- recent[i].images[0].img.filename %>" alt=""></a>
+                                                                 <%}else{%>
+                                                                    <a href="article/<%- popular[i].id %>/<%- popular[i].rewriteurl %>" class="nobg"><img class="img-square" src="images/magazine/small/2.jpg" alt=""></a>
+                                                                 <%}%>
+                                                            </div>
+                                                            <div class="entry-c">
+                                                                <div class="entry-title">
+                                                                    <h4><a href="article/<%- recent[i].id %>/<%- recent[i].rewriteurl %>"><%- recent[i].title %></a></h4>
+                                                                </div>
+                                                                <ul class="entry-meta">
+                                                                     
+                                                                    <li > <%- moment(recent[i].date).fromNow() %></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                     <%}%>
+                                                 
+                                                 <%}%>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            
+
+                            <div class="widget clearfix">
+
+                                <h4><%- __('category') %></h4>
+                                <div class="tagcloud">
+                                     <% if(categories){%>
+                                         <% for(var i=0; i< categories.length ; i++){%>
+                                             
+                                    <a href="blog/<%- categories[i].id %>"><%- categories[i].name %></a>
+                                         <%}%>
+                                     <%}%>
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div><!-- .sidebar end -->
