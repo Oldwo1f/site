@@ -1303,10 +1303,10 @@ module.exports={
 				})
 			
 			var mailOptions = {
-			    from: req.body.name+' <'+req.body.email+'>', // sender address
+			    from: +req.body.email, // sender address
 			    to: sails.config.MAIN_EMAIL, // list of receivers
 			    subject: 'Site - '+ sails.config.COMPANY_NAME +' - contact : '+ req.body.name +' - '+req.body.subject, // Subject line
-			    text: req.body.message // html body
+			    text:"email client :"+req.body.email+ " \n " +   req.body.message // html body
 			};
 			// send mail with defined transport object
 			transporter.sendMail(mailOptions, function(error, info){
