@@ -1,5 +1,7 @@
 <body class="stretched">
-
+    <script>
+        var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0};
+    </script>
     <!-- Document Wrapper
     ============================================= -->
     <div id="wrapper" class="clearfix">
@@ -71,13 +73,13 @@
                 <div class="container">
                     <div class="row common-height clearfix">
 
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
 
                         <div class="col-sm-5 col-padding">
                             <div>
                                 <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Caroline</h3>
+                                    <!-- <span class="before-heading color">Passeuse</span> -->
+                                    <h3>Margaux</h3>
                                 </div>
 
                                 <div class="row clearfix ">
@@ -89,7 +91,7 @@
                                     </div>
                                     <div class="col-md-12 topmargin">
                                         
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                        <a href="https://www.facebook.com/margaux.delahaye?fref=ts" class="social-icon inline-block si-small si-light si-rounded si-facebook">
                                             <i class="icon-facebook"></i>
                                             <i class="icon-facebook"></i>
                                         </a>
@@ -120,14 +122,13 @@
                                             strokeColor : "rgba(220,220,220,1)",
                                             pointColor : "rgba(220,220,220,1)",
                                             pointStrokeColor : "#fff",
-                                            data : [90,90,70,30,56,55,20,50,100,30]
+                                            data : [63,20,45,40,50,50,50,40,50,30]
                                         }
                                     ]
 
                                 };
 
 
-                                var globalGraphSettings = {animation : Modernizr.canvas};
 
                                 function showRadarChart(){
                                     var ctx = document.getElementById("radarChartCanvas").getContext("2d");
@@ -143,35 +144,35 @@
                         </div>
 
                     </div>
-
                     <div class="row common-height clearfix">
 
                         <div class="col-sm-5 col-padding noleftpadding">
                             <div>
-                                <div class="heading-block"><span class="before-heading color">Central & Capitaine</span>
-                                    <h3>Océane</h3>
+                                <div class="heading-block">
+                                    <!-- <span class="before-heading color">Central & Capitaine</span> -->
+                                    <h3>Emilie</h3>
                                 </div>
 
                                 <div class="row clearfix">
                                     <div class="col-md-12">
-                                        <div class="" id="radarChart2" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas2" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        <div class="" id="radarChart6" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
                                         </div>
                                     </div>
                                     <div class="col-md-12 topmargin">
                                         
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                        <a href="https://www.facebook.com/madelinsh?fref=ts" class="social-icon inline-block si-small si-light si-rounded si-facebook">
                                             <i class="icon-facebook"></i>
                                             <i class="icon-facebook"></i>
                                         </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                        <!-- <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
                                             <i class="icon-twitter"></i>
                                             <i class="icon-twitter"></i>
                                         </a>
                                         <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
                                             <i class="icon-gplus"></i>
                                             <i class="icon-gplus"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
 
                                     
@@ -181,7 +182,7 @@
                                     jQuery(window).load( function(){
                                     //------------------------------------------------------
 
-                                    var radarChartData2 = {
+                                    var radarChartData6 = {
                                         labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
                                         datasets : [
                                             {
@@ -189,23 +190,22 @@
                                                 strokeColor : "rgba(220,220,220,1)",
                                                 pointColor : "rgba(220,220,220,1)",
                                                 pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
+                                                data : [56,40,40,30,60,50,60,10,50,50]
                                             }
                                         ]
 
                                     };
 
 
-                                    var globalGraphSettings = {animation : Modernizr.canvas};
 
-                                    function showRadarChart2(){
-                                        var ctx = document.getElementById("radarChartCanvas2").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData2,globalGraphSettings);
+                                    function showRadarChart6(){
+                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
+                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
                                     }
 
 
 
-                                    $('#radarChart2').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart2,300); },{accX: 0, accY: -155},'easeInCubic');
+                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
 
                                 });
 
@@ -214,41 +214,41 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
+                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/emilie.jpg') center center no-repeat; background-size: cover;"></div>
 
                     </div>
                     <div class="row common-height clearfix">
 
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
 
                         <div class="col-sm-5 col-padding">
                             <div>
                                 <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Manon</h3>
+                                    <!-- <span class="before-heading color">Passeuse</span> -->
+                                    <h3>Emilie</h3>
                                 </div>
 
                                 <div class="row clearfix ">
 
                                     <div class="col-md-12">
-                                        <div class="" id="radarChart3" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        <div class="" id="radarChart2" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas2" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
                                         </div>
                                     </div>
                                     <div class="col-md-12 topmargin">
                                         
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                        <a href="https://www.facebook.com/emilie.bellet.94?fref=ts" class="social-icon inline-block si-small si-light si-rounded si-facebook">
                                             <i class="icon-facebook"></i>
                                             <i class="icon-facebook"></i>
                                         </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                        <!-- <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
                                             <i class="icon-twitter"></i>
                                             <i class="icon-twitter"></i>
                                         </a>
                                         <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
                                             <i class="icon-gplus"></i>
                                             <i class="icon-gplus"></i>
-                                        </a>
+                                        </a> -->
                                     </div>
 
 
@@ -260,7 +260,7 @@
                             jQuery(window).load( function(){
                                 
 
-                                var radarChartData3 = {
+                                var radarChartData2 = {
                                     labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
                                     datasets : [
                                         {
@@ -268,36 +268,37 @@
                                             strokeColor : "rgba(220,220,220,1)",
                                             pointColor : "rgba(220,220,220,1)",
                                             pointStrokeColor : "#fff",
-                                            data : [90,90,70,30,56,55,20,50,100,30]
+                                            data : [57,30,40,30,50,45,50,40,50,30]
                                         }
                                     ]
 
                                 };
 
 
-                                var globalGraphSettings = {animation : Modernizr.canvas};
 
-                                function showRadarChart3(){
-                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
+                                function showRadarChart2(){
+                                    var ctx = document.getElementById("radarChartCanvas2").getContext("2d");
+                                    new Chart(ctx).Radar(radarChartData2,globalGraphSettings);
                                 }
 
 
 
-                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
+                                $('#radarChart2').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart2,300); },{accX: 0, accY: -155},'easeInCubic');
                                 
                                 });
                                 </script>
                         </div>
 
                     </div>
+                   
 
                     <div class="row common-height clearfix">
 
                         <div class="col-sm-5 col-padding noleftpadding">
                             <div>
-                                <div class="heading-block"><span class="before-heading color">Libéro</span>
-                                    <h3>Colianne</h3>
+                                <div class="heading-block">
+                                    <!-- <span class="before-heading color">Libéro</span> -->
+                                    <h3>Tatiana</h3>
                                 </div>
 
                                 <div class="row clearfix">
@@ -344,7 +345,6 @@
                                     };
 
 
-                                    var globalGraphSettings = {animation : Modernizr.canvas};
 
                                     function showRadarChart4(){
                                         var ctx = document.getElementById("radarChartCanvas4").getContext("2d");
@@ -362,305 +362,10 @@
                             </div>
                         </div>
 
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
+                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
 
                     </div>
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Alexia</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart5" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas5" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <script type="text/javascript">
-
-                            jQuery(window).load( function(){
-                                
-
-                                var radarChartData5 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [90,90,70,30,56,55,20,50,100,30]
-                                        }
-                                    ]
-
-                                };
-
-
-                                var globalGraphSettings = {animation : Modernizr.canvas};
-
-                                function showRadarChart5(){
-                                    var ctx = document.getElementById("radarChartCanvas5").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData5,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart5').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart5,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
-                    </div>
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Central & Capitaine</span>
-                                    <h3>Suzane</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart6" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData6 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
-                                            }
-                                        ]
-
-                                    };
-
-
-                                    var globalGraphSettings = {animation : Modernizr.canvas};
-
-                                    function showRadarChart6(){
-                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
-
-                        <div class="col-sm-5 col-padding">
-                            <div>
-                                <div class="heading-block">
-                                    <span class="before-heading color">Passeuse</span>
-                                    <h3>Gamsei</h3>
-                                </div>
-
-                                <div class="row clearfix ">
-
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart7" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas7" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-
-                                </div>
-
-                            </div>
-                            <script type="text/javascript">
-
-                            jQuery(window).load( function(){
-                                
-
-                                var radarChartData7 = {
-                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                    datasets : [
-                                        {
-                                            fillColor : "rgba(220,220,220,0.5)",
-                                            strokeColor : "rgba(220,220,220,1)",
-                                            pointColor : "rgba(220,220,220,1)",
-                                            pointStrokeColor : "#fff",
-                                            data : [90,90,70,30,56,55,20,50,100,30]
-                                        }
-                                    ]
-
-                                };
-
-
-                                var globalGraphSettings = {animation : Modernizr.canvas};
-
-                                function showRadarChart7(){
-                                    var ctx = document.getElementById("radarChartCanvas7").getContext("2d");
-                                    new Chart(ctx).Radar(radarChartData7,globalGraphSettings);
-                                }
-
-
-
-                                $('#radarChart7').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart7,300); },{accX: 0, accY: -155},'easeInCubic');
-                                
-                                });
-                                </script>
-                        </div>
-
-                    </div>
-
-                    <div class="row common-height clearfix">
-
-                        <div class="col-sm-5 col-padding noleftpadding">
-                            <div>
-                                <div class="heading-block"><span class="before-heading color">Central & Capitaine</span>
-                                    <h3>Aline Couvreur</h3>
-                                </div>
-
-                                <div class="row clearfix">
-                                    <div class="col-md-12">
-                                        <div class="" id="radarChart8" style="opacity: 1;">
-                                            <canvas id="radarChartCanvas8" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 topmargin">
-                                        
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
-                                            <i class="icon-facebook"></i>
-                                            <i class="icon-facebook"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
-                                            <i class="icon-twitter"></i>
-                                            <i class="icon-twitter"></i>
-                                        </a>
-                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
-                                            <i class="icon-gplus"></i>
-                                            <i class="icon-gplus"></i>
-                                        </a>
-                                    </div>
-
-                                    
-
-                                </div>
-                                <script type="text/javascript">
-                                    jQuery(window).load( function(){
-                                    //------------------------------------------------------
-
-                                    var radarChartData8 = {
-                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
-                                        datasets : [
-                                            {
-                                                fillColor : "rgba(220,220,220,0.5)",
-                                                strokeColor : "rgba(220,220,220,1)",
-                                                pointColor : "rgba(220,220,220,1)",
-                                                pointStrokeColor : "#fff",
-                                                data : [90,90,70,80,56,55,40,50,80,30]
-                                            }
-                                        ]
-
-                                    };
-
-
-                                    var globalGraphSettings = {animation : Modernizr.canvas};
-
-                                    function showRadarChart8(){
-                                        var ctx = document.getElementById("radarChartCanvas8").getContext("2d");
-                                        new Chart(ctx).Radar(radarChartData8,globalGraphSettings);
-                                    }
-
-
-
-                                    $('#radarChart8').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart8,300); },{accX: 0, accY: -155},'easeInCubic');
-
-                                });
-
-                                </script>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
-
-                    </div>
+                    
                 </div><!-- conteiner-end -->
 
                         
@@ -687,25 +392,25 @@
 
                                 <div class="feature-box fbox-outline fbox-light fbox-effect" data-animate="fadeIn">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-cube"></i></a>
+                                        <a href="#"><i class="icon-line-clock"></i></a>
                                     </div>
-                                    <h3>Rigueur</h3>
+                                    <h3>Le sérieux à l'entrainement</h3>
                                     <p>Si je ne perd pas de temps. Je jouerais plus de ballon pour un maximum de progression.</p>
                                 </div>
 
                                 <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="200">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-cube"></i></a>
+                                        <a href="#"><i class="icon-graph"></i></a>
                                     </div>
-                                    <h3>Solidité</h3>
+                                    <h3>Les Stages</h3>
                                     <p>2 ou 3 jours de stage pendant les vacances scolaire. Rien de mieux pour progresser vitesse grand V.</p>
                                 </div>
 
                                 <div class="feature-box fbox-outline fbox-light fbox-effect topmargin" data-animate="fadeIn" data-delay="400">
                                     <div class="fbox-icon">
-                                        <a href="#"><i class="icon-line-target"></i></a>
+                                        <a href="#"><i class="icon-home"></i></a>
                                     </div>
-                                    <h3>Présision</h3>
+                                    <h3>Les exercices à la maison</h3>
                                     <p>Demander à votre coach des exercices à la maison, qui vont faire de vous des champions.</p>
                                 </div>
 

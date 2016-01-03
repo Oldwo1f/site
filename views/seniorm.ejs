@@ -1,5 +1,7 @@
 <body class="stretched">
-
+    <script>
+        var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0};
+    </script>
     <!-- Document Wrapper
     ============================================= -->
     <div id="wrapper" class="clearfix">
@@ -10,7 +12,7 @@
         <section id="page-title">
 
             <div class="container clearfix">
-                <h1>Senior <i class="icon-line2-symbol-male"></i> Loisir</h1>
+                <h1>Senior <i class="icon-line2-symbol-male"></i> Departemental (mais on va remonter)</h1>
                 <!-- <div id="portfolio-navigation">
                     <a href="#"><i class="icon-angle-left"></i></a>
                     <a href="#"><i class="icon-line-grid"></i></a>
@@ -62,225 +64,462 @@
             <div class="content-wrap">
                 <div class="container">
                 <div class="promo promo-dark promo-flat bottommargin">
-                        <h3>Pas de <span>compétition,</span> mais beaucoup de <span>matchs à l'entrainement</span></h3>
-                        <span>Que du fun, du plaisir et du volley ball ! Passe nous voir le mercredi de 20h à 22h.(avec une tennue de sport)</span>
-                        <a href="/contact" target="_BLANK" class="button button-dark button-xlarge button-rounded">Je participe</a>
+                        <h3>Les <span>résultats</span> ainsi que le <span>calendrier des matchs à venirs</span></h3>
+                        <span>Sont disponibles sur le site de la ffvb</span>
+                        <a href="http://www.ffvbbeach.org/ffvbapp/resu/vbspo_calendrier.php?saison=2015/2016&codent=LIPI&poule=2PF" target="_BLANK" class="button button-dark button-xlarge button-rounded">Voir les résultats</a>
                 </div>
                 </div>
+                
                 <div class="container">
-                <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                    
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
+
+                        <div class="col-sm-5 col-padding">
+                            <div>
+                                <div class="heading-block">
+                                    <span class="before-heading color">Récep / 4</span>
+                                    <h3>Yannick</h3>
                                 </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Christophe</h4><span>Passeur</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+
+                                <div class="row clearfix ">
+
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart3" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas3" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
                                     </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-gplus"></i>
+                                            <i class="icon-gplus"></i>
+                                        </a>
+                                    </div>
+
+
                                 </div>
+
+                            </div>
+                            <script type="text/javascript">
+
+                            jQuery(window).load( function(){
+                                
+
+                                var radarChartData3 = {
+                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                    datasets : [
+                                        {
+                                            fillColor : "rgba(220,220,220,0.5)",
+                                            strokeColor : "rgba(220,220,220,1)",
+                                            pointColor : "rgba(220,220,220,1)",
+                                            pointStrokeColor : "#fff",
+                                            data : [88,80,90,80,80,75,60,50,80,80]
+                                        }
+                                    ]
+
+                                };
+
+
+
+                                function showRadarChart3(){
+                                    var ctx = document.getElementById("radarChartCanvas3").getContext("2d");
+                                    new Chart(ctx).Radar(radarChartData3,globalGraphSettings);
+                                }
+
+
+
+                                $('#radarChart3').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart3,300); },{accX: 0, accY: -155},'easeInCubic');
+                                
+                                });
+                                </script>
+                        </div>
+
+                    </div>
+
+                   
+
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-5 col-padding noleftpadding">
+                            <div>
+                                <div class="heading-block"><span class="before-heading color">Récep / 4</span>
+                                    <h3>Oliv</h3>
+                                </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart6" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas6" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-gplus"></i>
+                                            <i class="icon-gplus"></i>
+                                        </a>
+                                    </div>
+
+                                    
+
+                                </div>
+                                <script type="text/javascript">
+                                    jQuery(window).load( function(){
+                                    //------------------------------------------------------
+
+                                    var radarChartData6 = {
+                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                        datasets : [
+                                            {
+                                                fillColor : "rgba(220,220,220,0.5)",
+                                                strokeColor : "rgba(220,220,220,1)",
+                                                pointColor : "rgba(220,220,220,1)",
+                                                pointStrokeColor : "#fff",
+                                                data : [75,50,50,50,40,55,60,30,80,50]
+                                            }
+                                        ]
+
+                                    };
+
+
+
+                                    function showRadarChart6(){
+                                        var ctx = document.getElementById("radarChartCanvas6").getContext("2d");
+                                        new Chart(ctx).Radar(radarChartData6,globalGraphSettings);
+                                    }
+
+
+
+                                    $('#radarChart6').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart6,300); },{accX: 0, accY: -155},'easeInCubic');
+
+                                });
+
+                                </script>
+
                             </div>
                         </div>
 
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
+                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
+
+                    </div>
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/ballon.jpg') center center no-repeat; background-size: cover;"></div>
+
+                        <div class="col-sm-5 col-padding">
+                            <div>
+                                <div class="heading-block">
+                                    <span class="before-heading color">Central</span>
+                                    <h3>Thierry</h3>
                                 </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Valentin</h4><span>Central</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+
+                                <div class="row clearfix ">
+
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart2" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas2" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
                                     </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-gplus"></i>
+                                            <i class="icon-gplus"></i>
+                                        </a>
+                                    </div>
+
+
                                 </div>
+
+                            </div>
+                            <script type="text/javascript">
+
+                            jQuery(window).load( function(){
+                                
+
+                                var radarChartData2 = {
+                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                    datasets : [
+                                        {
+                                            fillColor : "rgba(220,220,220,0.5)",
+                                            strokeColor : "rgba(220,220,220,1)",
+                                            pointColor : "rgba(220,220,220,1)",
+                                            pointStrokeColor : "#fff",
+                                            data : [90,60,70,90,40,45,60,10,80,70]
+                                        }
+                                    ]
+
+                                };
+
+
+
+                                function showRadarChart2(){
+                                    var ctx = document.getElementById("radarChartCanvas2").getContext("2d");
+                                    new Chart(ctx).Radar(radarChartData2,globalGraphSettings);
+                                }
+
+
+
+                                $('#radarChart2').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart2,300); },{accX: 0, accY: -155},'easeInCubic');
+                                
+                                });
+                                </script>
+                        </div>
+
+                    </div>
+
+                   
+
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-5 col-padding noleftpadding">
+                            <div>
+                                <div class="heading-block"><span class="before-heading color">Central</span>
+                                    <h3>Alexis</h3>
+                                </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart1" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas1" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-gplus"></i>
+                                            <i class="icon-gplus"></i>
+                                        </a>
+                                    </div>
+
+                                    
+
+                                </div>
+                                <script type="text/javascript">
+                                    jQuery(window).load( function(){
+                                    //------------------------------------------------------
+
+                                    var radarChartData1 = {
+                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                        datasets : [
+                                            {
+                                                fillColor : "rgba(220,220,220,0.5)",
+                                                strokeColor : "rgba(220,220,220,1)",
+                                                pointColor : "rgba(220,220,220,1)",
+                                                pointStrokeColor : "#fff",
+                                                data : [85,110,80,85,60,40,60,60,70,80]
+                                            }
+                                        ]
+
+                                    };
+
+
+
+                                    function showRadarChart1(){
+                                        var ctx = document.getElementById("radarChartCanvas1").getContext("2d");
+                                        new Chart(ctx).Radar(radarChartData1,globalGraphSettings);
+                                    }
+
+
+
+                                    $('#radarChart1').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart1,300); },{accX: 0, accY: -155},'easeInCubic');
+
+                                });
+
+                                </script>
+
                             </div>
                         </div>
 
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/portrait.jpg') center center no-repeat; background-size: cover;"></div>
+
+                    </div>
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-7 col-padding borderl-green" style="background: url('images/volley/keke.jpg') center center no-repeat; background-size: cover;"></div>
+
+                        <div class="col-sm-5 col-padding">
+                            <div>
+                                <div class="heading-block">
+                                    <span class="before-heading color">Passeur</span>
+                                    <h3>Keke</h3>
                                 </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Patoche</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
+
+                                <div class="row clearfix ">
+
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart8" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas8" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
                                     </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a>
+                                        <a href="#" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-gplus"></i>
+                                            <i class="icon-gplus"></i>
+                                        </a>
+                                    </div>
+
+
                                 </div>
+
+                            </div>
+                            <script type="text/javascript">
+
+                            jQuery(window).load( function(){
+                                
+
+                                var radarChartData8 = {
+                                    labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                    datasets : [
+                                        {
+                                            fillColor : "rgba(220,220,220,0.5)",
+                                            strokeColor : "rgba(220,220,220,1)",
+                                            pointColor : "rgba(220,220,220,1)",
+                                            pointStrokeColor : "#fff",
+                                            data : [89,70,80,95,85,90,90,70,75,88]
+                                        }
+                                    ]
+
+                                };
+
+
+
+                                function showRadarChart8(){
+                                    var ctx = document.getElementById("radarChartCanvas8").getContext("2d");
+                                    new Chart(ctx).Radar(radarChartData8,globalGraphSettings);
+                                }
+
+
+
+                                $('#radarChart8').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart8,300); },{accX: 0, accY: -155},'easeInCubic');
+                                
+                                });
+                                </script>
+                        </div>
+
+                    </div>
+
+                    
+
+                    <div class="row common-height clearfix">
+
+                        <div class="col-sm-5 col-padding noleftpadding">
+                            <div>
+                                <div class="heading-block"><span class="before-heading color">Central</span>
+                                    <h3>Quentin</h3>
+                                </div>
+
+                                <div class="row clearfix">
+                                    <div class="col-md-12">
+                                        <div class="" id="radarChart9" style="opacity: 1;">
+                                            <canvas id="radarChartCanvas9" width="430" height="300" style="width: 430px; height: 300px;"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 topmargin">
+                                        
+                                        <a href="https://www.facebook.com/quentin.girard.399" class="social-icon inline-block si-small si-light si-rounded si-facebook">
+                                            <i class="icon-facebook"></i>
+                                            <i class="icon-facebook"></i>
+                                        </a>
+                                       <!--  <a href="#" class="social-icon inline-block si-small si-light si-rounded si-twitter">
+                                            <i class="icon-twitter"></i>
+                                            <i class="icon-twitter"></i>
+                                        </a> -->
+                                        <a href="mailto:quenting99@hotmail.fr" class="social-icon inline-block si-small si-light si-rounded si-gplus">
+                                            <i class="icon-mail"></i>
+                                            <i class="icon-mail"></i>
+                                        </a>
+                                    </div>
+
+                                    
+
+                                </div>
+                                <script type="text/javascript">
+                                    jQuery(window).load( function(){
+                                    //------------------------------------------------------
+
+                                    var radarChartData9 = {
+                                        labels : ["Taille","Détente","Attaque","contre","Défence","Récéption","Passe","Plongeon","Service","Vision de jeux"],
+                                        datasets : [
+                                            {
+                                                fillColor : "rgba(220,220,220,0.5)",
+                                                strokeColor : "rgba(220,220,220,1)",
+                                                pointColor : "rgba(220,220,220,1)",
+                                                pointStrokeColor : "#fff",
+                                                data : [90,60,60,60,55,65,60,40,55,40]
+                                            }
+                                        ]
+
+                                    };
+
+
+
+                                    function showRadarChart9(){
+                                        var ctx = document.getElementById("radarChartCanvas9").getContext("2d");
+                                        new Chart(ctx).Radar(radarChartData9,globalGraphSettings);
+                                    }
+
+
+
+                                    $('#radarChart9').appear( function(){ $(this).css({ opacity: 1 }); setTimeout(showRadarChart9,300); },{accX: 0, accY: -155},'easeInCubic');
+
+                                });
+
+                                </script>
+
                             </div>
                         </div>
 
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Laurent</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alexis</h4><span>Central</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <div class="col-sm-7 col-padding borderr-red" style="background: url('images/volley/quentin.jpg') center center no-repeat; background-size: cover;"></div>
 
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Gérome</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/8.jpg" alt="Mary Jane">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Viencent</h4><span>Passeur</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
 
-                        <div class="col-md-6 bottommargin">
-                            <div class="team team-list clearfix">
-                                <div class="team-image">
-                                    <img src="images/team/4.jpg" alt="Nix Maxwell">
-                                </div>
-                                <div class="team-desc">
-                                    <div class="team-title"><h4>Alban</h4><span>Récep/4</span></div>
-                                    <div class="team-content">
-                                        <p>Carbon emissions reductions giving, legitimize amplify non-partisan Aga Khan. Policy dialogue assessment expert free-speech cornerstone disruptor freedom. Cesar Chavez empower.</p>
-                                    </div>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-facebook">
-                                        <i class="icon-facebook"></i>
-                                        <i class="icon-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-twitter">
-                                        <i class="icon-twitter"></i>
-                                        <i class="icon-twitter"></i>
-                                    </a>
-                                    <a href="#" class="social-icon si-rounded si-small si-light si-gplus">
-                                        <i class="icon-gplus"></i>
-                                        <i class="icon-gplus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+
                 </div>
-                
-                
-
-
-                
-
-                
+                    
 
                 <div class="clear"></div>
 
@@ -293,14 +532,12 @@
                 </div>
 
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
-                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
-                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
-                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
-                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                    <a href="images/volley/seniorf-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-1.jpg" alt="CTVB - senior fille"></a>
+                    <a href="images/volley/seniorf-4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-4.jpg" alt="CTVB - senior fille"></a>
+                    <a href="images/volley/seniorf-5.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-5.jpg" alt="CTVB - senior fille"></a>
+                    <a href="images/volley/seniorf-3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-3.jpg" alt="CTVB - senior fille"></a>
+                    <!-- <a href="images/volley/seniorf-5.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-5.jpg" alt="CTVB - senior fille"></a> -->
+                   
                 </div>
 
 

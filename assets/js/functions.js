@@ -863,7 +863,7 @@ var SEMICOLON = SEMICOLON || {};
 
 			if ( $().superfish ) {
 				if( $body.hasClass('device-lg') || $body.hasClass('device-md') ) {
-					$('#primary-menu ul ul, #primary-menu ul .mega-menu-content').css('display', 'block');
+					// $('#primary-menu ul ul, #primary-menu ul .mega-menu-content').css('display', 'block');
 					SEMICOLON.header.menuInvert();
 				}
 

@@ -44,6 +44,7 @@ module.exports.routes = {
   'GET /seniorf':'frontController.seniorf',
   'GET /seniorm':'frontController.seniorm',
   'GET /minimem':'frontController.minimem',
+  'GET /loisir':'frontController.loisir',
   'GET /minimef':'frontController.minimef',
   'GET /juniorf':'frontController.juniorf',
   'GET /icons':'frontController.icons',

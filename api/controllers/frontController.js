@@ -621,6 +621,20 @@ module.exports={
 						// scripturl:'script.js',
 						menu:'seniorm',
 					})
+	}	,		
+	loisir:function(req,res,next) {
+
+		console.log('loisir');
+					res.status(200).view('loisir',{
+						baseurl : '/',
+						// articles:articles,
+						// marked:marked,
+						// title: req.__('SEO_HOME_title'),
+						// keyword: req.__('SEO_HOME_keyword'),
+						// description:req.__('SEO_HOME_description'),
+						// scripturl:'script.js',
+						menu:'loisir',
+					})
 	}	,	
 	juniorf:function(req,res,next) {
 
