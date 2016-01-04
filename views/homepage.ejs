@@ -206,50 +206,42 @@
 
                     <div class="section nobottommargin notopmargin">
                         <div class="container clearfix">
+                            <script>
 
+var articles = <%- JSON.stringify(articles) %>;
+        // console.log(articles);
+                            </script>
                             <div class="row  clearfix">
                                 <h2 class="center uppercase t300 ls3 font-body colorwhite">À la Une</h2>
-
+                                
+                                 <% for(var i=0; i< articles.length ; i++){%>
                                 <div class="ipost col-sm-6 bottommargin clearfix">
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="entry-image nobottommargin">
-                                                <a href="#"><img src="images/blog/1.jpg" alt="Paris"></a>
+                                                
+                                                <% if(articles[i].images.length >= 1){%>
+                                                <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><img src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" class="image_fade"alt="<%-articles[i].images[0].img.alt %>"></a>
+
+                                                <%} %>
                                             </div>
                                         </div>
                                         <div class="col-md-6" style="margin-top: 20px;">
-                                            <span class="before-heading colorwhite" style="font-style: normal;">Press &amp; Media</span>
+                                             <% if(articles[i].category){%>
+                                        
+                                            <span class="before-heading colorwhite" style="font-style: normal;"><%- articles[i].category.name %> </span>
+                                            <%}%>
                                             <div class="entry-title">
-                                                <h3 class="t400 colorwhite2" style="font-size: 22px;"><a href="#">Global Meetup Program is Launching!</a></h3>
+                                                <h3 class="t400 colorwhite2" style="font-size: 22px;"><a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>"><%- articles[i].title %></a></h3>
                                             </div>
                                             <div class="entry-content">
-                                                <a href="#" class="more-link colorwhite2">En savoir plus <i class="icon-angle-right"></i></a>
+                                                <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" class="more-link colorwhite2">En savoir plus <i class="icon-angle-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <%} %>
 
-
-                                <div class="ipost col-sm-6 bottommargin clearfix">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="entry-image nobottommargin">
-                                                <a href="#"><img src="images/blog/3.jpg" alt="Paris"></a>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6" style="margin-top: 20px;">
-                                            <span class="before-heading colorwhite" style="font-style: normal;">Video Blog</span>
-                                            <div class="entry-title">
-                                                <h3 class="t400 colorwhite2" style="font-size: 22px;"><a href="#">Kicking Off Design Party in Style</a></h3>
-                                            </div>
-                                            <div class="entry-content">
-                                                <a href="#" class="more-link colorwhite2">Read more <i class="icon-angle-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                               
 
                             </div>
 

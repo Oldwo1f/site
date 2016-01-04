@@ -12962,3 +12962,6 @@ div#logobig {pointer-events:none;position: absolute;z-index: 12;width: 50%;heigh
 }
 .poussinText > h3{ text-align:center;}
 .poussinText > .col_one_third .feature-box{ margin:0 auto;display:inline-block;position:relative;}
+
+.respond, .errormessageemail, .successmessageemail {display:none;}
+ul.entry-meta {padding-left: 0px;}

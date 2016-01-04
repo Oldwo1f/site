@@ -18,7 +18,17 @@
             </div>
 
         </section><!-- #page-title end -->
+        
 
+<script type="text/javascript">
+
+var articles = <%- JSON.stringify(articles) %>;
+        console.log(articles);
+var recent = <%- JSON.stringify(recent) %>;
+        console.log(recent);
+var popular = <%- JSON.stringify(popular) %>;
+        console.log(popular);
+</script>
         <!-- Content
         ============================================= -->
         <section id="content">
@@ -50,7 +60,7 @@
                                 <% if(articles[i].video && articles[i].publishVideo){%>
                                      <%- articles[i].video  %> 
                                 <% }else if(articles[i].images.length == 1){%>
-                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="file/image/originalsize/<%-articles[i].images[0].img.alt %>"></a>
+                                        <a href="article/<%- articles[i].id %>/<%- articles[i].rewriteurl%>" ><img class="image_fade" src="file/image/originalsize/<%-articles[i].images[0].img.filename %>" alt="<%-articles[i].images[0].img.alt %>"></a>
                                     
 
                                  <%} else if(articles[i].images.length > 1){%>
@@ -111,14 +121,4 @@
 
     </div><!-- #wrapper end -->
 
-
-<script type="text/javascript">
-
-var articles = <%- JSON.stringify(articles) %>;
-        console.log(articles);
-var recent = <%- JSON.stringify(recent) %>;
-        console.log(recent);
-var popular = <%- JSON.stringify(popular) %>;
-        console.log(popular);
-</script>
 </body>

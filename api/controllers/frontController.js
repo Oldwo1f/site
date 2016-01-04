@@ -9,17 +9,66 @@ module.exports={
 
 		console.log('home');
 		
-		
-					res.status(200).view('homepage',{
-						baseurl : '/',
-						// articles:articles,
-						// marked:marked,
-						// title: req.__('SEO_HOME_title'),
-						// keyword: req.__('SEO_HOME_keyword'),
-						// description:req.__('SEO_HOME_description'),
-						// scripturl:'script.js',
-						menu:'home',
-					})
+			var query = {status:'actif'};
+				Article.find(query).populateAll().sort('date DESC').limit(2).exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							// console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									project.images = _.sortBy(project.images, 'rank')
+									
+									return Promise.map(project.images,function(image) {
+
+										return Image.findOne(image.image).exec(function (err,datas) {
+											// console.log('datas',datas);
+											image.img = datas
+											console.log(project);
+											// return image;
+											resolve(project)
+										})
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+
+							res.status(200).view('homepage',{
+								baseurl : '/',
+								articles: projectss,
+								// articles:articles,
+								// marked:marked,
+								// title: req.__('SEO_HOME_title'),
+								// keyword: req.__('SEO_HOME_keyword'),
+								// description:req.__('SEO_HOME_description'),
+								// scripturl:'script.js',
+								menu:'home',
+							})
+						})
+					
+				})
+
+
+
+					
 			
 
 

@@ -17,7 +17,16 @@
             </div>
 
         </section><!-- #page-title end -->
+        <script type="text/javascript">
 
+var article = <%- JSON.stringify(article) %>;
+        console.log(article);
+
+var popular = <%- JSON.stringify(popular) %>;
+        console.log(popular);
+var categories = <%- JSON.stringify(categories) %>;
+        console.log(categories);
+</script>
         <!-- Content
         ============================================= -->
         <section id="content">
@@ -428,14 +437,5 @@
 
     </div><!-- #wrapper end -->
 
-<script type="text/javascript">
 
-var article = <%- JSON.stringify(article) %>;
-        console.log(article);
-
-var popular = <%- JSON.stringify(popular) %>;
-        console.log(popular);
-var categories = <%- JSON.stringify(categories) %>;
-        console.log(categories);
-</script>
 </body>
