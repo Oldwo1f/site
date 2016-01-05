@@ -420,8 +420,7 @@
                     </div>
                 </div>
 
-                <div class="clear"></div>
-
+               <div class="clear"></div>
                 <div class="section nomargin">
                     <div class="container clearfix">
                         <div class="heading-block center nomargin">
@@ -432,11 +431,12 @@
 
                 <div class=""  style="margin: 20px 0px">
                     <div class="container clearfix">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique aperiam, fugiat nam necessitatibus voluptate architecto explicabo pariatur quod. Deserunt, eius, veritatis! A accusantium ex possimus tempore praesentium eius dicta, unde!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique aperiam, fugiat nam necessitatibus voluptate architecto explicabo pariatur quod. Deserunt, eius, veritatis! A accusantium ex possimus tempore praesentium eius dicta, unde!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique aperiam, fugiat nam necessitatibus voluptate architecto explicabo pariatur quod. Deserunt, eius, veritatis! A accusantium ex possimus tempore praesentium eius dicta, unde!</p>
+                        <% if( project.content && project.content){%>
+                                <%- marked(project.content) %>                        
+                        <% } %>  
                     </div>
-                </div><div class="clear"></div>
+                </div>
+                <div class="clear"></div>
 
                 <div class="section nomargin">
                     <div class="container clearfix">
@@ -445,20 +445,13 @@
                         </div>
                     </div>
                 </div>
-
+                <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
-                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
-                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
-                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
-                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
+                    <% for(var i=0; i<project.images.length; i++) {%>
+                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <% } %>  
                 </div>
-
-
-                
+                <% } %> 
 
                 
 

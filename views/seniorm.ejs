@@ -522,6 +522,22 @@
                     
 
                 <div class="clear"></div>
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>À propos de l'équipe</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=""  style="margin: 20px 0px">
+                    <div class="container clearfix">
+                        <% if( project.content && project.content){%>
+                                <%- marked(project.content) %>                        
+                        <% } %>  
+                    </div>
+                </div>
+                <div class="clear"></div>
 
                 <div class="section nomargin">
                     <div class="container clearfix">
@@ -530,15 +546,13 @@
                         </div>
                     </div>
                 </div>
-
+                <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
-                    <a href="images/volley/seniorf-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-1.jpg" alt="CTVB - senior fille"></a>
-                    <a href="images/volley/seniorf-4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-4.jpg" alt="CTVB - senior fille"></a>
-                    <a href="images/volley/seniorf-5.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-5.jpg" alt="CTVB - senior fille"></a>
-                    <a href="images/volley/seniorf-3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-3.jpg" alt="CTVB - senior fille"></a>
-                    <!-- <a href="images/volley/seniorf-5.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/seniorf-5.jpg" alt="CTVB - senior fille"></a> -->
-                   
+                    <% for(var i=0; i<project.images.length; i++) {%>
+                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <% } %>  
                 </div>
+                <% } %> 
 
 
                 
