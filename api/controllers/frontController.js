@@ -806,8 +806,8 @@ module.exports={
 									// res.status(200).send(projecttogo)
 									res.status(200).view('juniorf',{
 										baseurl : '/',
-										// articles:articles,
-										// marked:marked,
+										project:projecttogo,
+										marked:marked,
 										// title: req.__('SEO_HOME_title'),
 										// keyword: req.__('SEO_HOME_keyword'),
 										// description:req.__('SEO_HOME_description'),
