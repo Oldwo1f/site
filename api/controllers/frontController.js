@@ -688,16 +688,145 @@ module.exports={
 	juniorf:function(req,res,next) {
 
 		console.log('juniorf');
-					res.status(200).view('juniorf',{
-						baseurl : '/',
-						// articles:articles,
-						// marked:marked,
-						// title: req.__('SEO_HOME_title'),
-						// keyword: req.__('SEO_HOME_keyword'),
-						// description:req.__('SEO_HOME_description'),
-						// scripturl:'script.js',
-						menu:'juniorf',
-					})
+		//56893c6ff4af8d5a551ce5ba
+		Project.find('56893c6ff4af8d5a551ce5ba').populateAll().exec(function (err,items){
+					
+						if(err)
+							callback(err)
+
+						// callback(null,items)
+						if(items.length>0)
+						{
+								items[0].nbView= Number(items[0].nbView) + 1;
+								Article.update({id: items[0].id}, {nbView: items[0].nbView})
+								.exec(function(err, updatedProject){
+								var project= items[0];
+								// console.log('item',item);
+								async.series({
+								image:function(cbparalelle) {
+									async.map(project.images,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Image.findOne(item1.image).exec(function(err,data) {
+											item1.image=data
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								document:function(cbparalelle) {
+									async.map(project.documents,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Document.findOne(item1.document).exec(function(err,data) {
+											item1.document=data
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								translations:function(cbparalelle) {
+									async.map(project.translations,
+									function(trad,cb1) {
+										console.log(trad);
+										if(trad.lang == req.locale){
+											console.log('locale');
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+										cb1(null,project)
+
+									},function(err, results) {
+										// console.log('results',results);
+										cbparalelle(null,results)
+									})
+								},
+								comment:function(cbparalelle) {
+											console.log('------------------------------');
+											// console.log(project.comments);
+											_.remove(project.comments,function (n) {
+												return n.status != 'success'
+											})
+											var allcomments = [];
+										// _.sortBy(project.comments,function (n) {
+										// 	return new Date(n.createdAt)
+										// })
+											project.comments = project.comments.reverse()
+
+									async.mapSeries(project.comments,
+									function(item1,cb1) {
+										// console.log('item1',item1);
+										Comment.find(item1.id).populate('reponses',{ where:{status:'success'}}).exec(function(err,data) {
+											// item1.comment=data
+											// console.log(data);
+											console.log('------------------------------');
+											// console.log(project.comments.indexOf(item1));
+											// item1=data
+											// project.comments.splice(project.comments.indexOf(item1),1,data[0])
+											allcomments.push(data[0])
+											// console.log(data);
+											cb1(null,item1)
+										})
+
+									},function(err, results) {
+										
+										project.comments=allcomments;
+										// console.log('allcomments',allcomments);
+										cbparalelle(null,allcomments)
+									})
+								}},function(err,ress) {
+
+ 										console.log('DELETE');
+									if(project.category)
+										project.category=project.category.id;
+									if(project.author)
+										project.author=project.author.id;
+
+									var projecttogo = _.clone(project)
+
+									delete projecttogo.comments
+									projecttogo.comments=ress.comment
+									// console.log(projecttogo.comments);
+									// console.log(projecttogo);
+									console.log('Final Data');
+									var pathtoshare ='';
+									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/';
+									if(projecttogo.urlrewrite)
+									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/'+projecttogo.urlrewrite;
+									// console.log('fetch ONE Project', projecttogo);
+									// res.status(200).send(projecttogo)
+									res.status(200).view('juniorf',{
+										baseurl : '/',
+										// articles:articles,
+										// marked:marked,
+										// title: req.__('SEO_HOME_title'),
+										// keyword: req.__('SEO_HOME_keyword'),
+										// description:req.__('SEO_HOME_description'),
+										// scripturl:'script.js',
+										menu:'juniorf',
+									})
+								})
+							})
+							
+						}
+							
+								
+
+	
+						
+				});
+
+
+					
 	}	,	
 	minimef:function(req,res,next) {
 

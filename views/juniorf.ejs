@@ -1,6 +1,11 @@
 <body class="stretched">
-    <script>
+    <script type="text/javascript">
+
         var globalGraphSettings = {animation : Modernizr.canvas,scaleOverride: true,scaleSteps: 10,scaleStepWidth: 10,scaleStartValue: 0};
+
+        var project = <%- JSON.stringify(project) %>;
+        console.log(project);
+
     </script>
     <!-- Document Wrapper
     ============================================= -->
@@ -662,9 +667,12 @@
                         </div>
                     </div>
                 </div>
-
+                <% if( project.images && project.images.length){%>  
                 <div class="nomargin masonry-thumbs col-4" data-lightbox="gallery" style="margin-bottom:-80px !important">
-                    <!-- <a href="images/volley/jf-1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-1.jpg" alt="CTVB - junior fille - 1"></a>
+                    <% for(var i=0; i<project.images.length; i++) {%>
+                    <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
+                    <% } %>  
+                    <!-- 
                     <a href="images/volley/jf-2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-2.jpg" alt="CTVB - junior fille - 2"></a>
                     <a href="images/volley/jf-3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-3.jpg" alt="CTVB - junior fille - 3"></a>
                     <a href="images/volley/jf-4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-4.jpg" alt="CTVB - junior fille - 4"></a>
@@ -677,6 +685,7 @@
                     <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
                     <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a> -->
                 </div>
+                <% } %>  
 
 
                 
