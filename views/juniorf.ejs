@@ -657,7 +657,23 @@
 
                     </div>
                 </div>
+                
+                <div class="clear"></div>
+                <div class="section nomargin">
+                    <div class="container clearfix">
+                        <div class="heading-block center nomargin">
+                            <h3>À propos de l'équipe</h3>
+                        </div>
+                    </div>
+                </div>
 
+                <div class=""  style="margin: 20px 0px">
+                    <div class="container clearfix">
+                        <% if( project.content && project.content){%>
+                                <%- marked(project.content) %>                        
+                        <% } %>  
+                    </div>
+                </div>
                 <div class="clear"></div>
 
                 <div class="section nomargin">
@@ -672,18 +688,6 @@
                     <% for(var i=0; i<project.images.length; i++) {%>
                     <a href="/file/image/originalsize/<%= project.images[i].image.filename %>" data-lightbox="gallery-item"><img class="image_fade" src="/file/image/adminThumbs/<%= project.images[i].image.filename %>" alt="<%= project.images[i].image.alt %>"></a>
                     <% } %>  
-                    <!-- 
-                    <a href="images/volley/jf-2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-2.jpg" alt="CTVB - junior fille - 2"></a>
-                    <a href="images/volley/jf-3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-3.jpg" alt="CTVB - junior fille - 3"></a>
-                    <a href="images/volley/jf-4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-4.jpg" alt="CTVB - junior fille - 4"></a>
-                    <a href="images/volley/jf-5.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/volley/jf-5.jpg" alt="CTVB - junior fille - 5"></a> -->
-                    <!-- <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a>
-                    <a href="images/portfolio/extended/thumbs/1.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/1.jpg" alt="Gallery Thumb 1"></a>
-                    <a href="images/portfolio/extended/thumbs/2.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/2.jpg" alt="Gallery Thumb 2"></a>
-                    <a href="images/portfolio/extended/thumbs/3.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/6.jpg" alt="Gallery Thumb 3"></a>
-                    <a href="images/portfolio/extended/thumbs/4.jpg" data-lightbox="gallery-item"><img class="image_fade" src="images/portfolio/extended/thumbs/7.jpg" alt="Gallery Thumb 4"></a> -->
                 </div>
                 <% } %>  
 
