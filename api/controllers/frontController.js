@@ -1225,7 +1225,7 @@ module.exports={
 									res.status(200).view('article',{
 										'article':projecttogo,
 										pathtoshare:pathtoshare,
-										'title': projecttogo.title +' - BLOG - AAVO',
+										'title': projecttogo.title +' - BLOG - ARBATOU',
 										keyword: projecttogo.keyword,
 										description:projecttogo.description,
 										scripturl:'article.js',
@@ -1341,7 +1341,7 @@ module.exports={
 			    from: req.body.name+' <'+req.body.email+'>', // sender address
 			    to: sails.config.MAIN_EMAIL, // list of receivers
 			    subject: 'Site - '+ sails.config.COMPANY_NAME +' - contact : '+ req.body.name +' - '+req.body.subject, // Subject line
-			    text: req.body.message // html body
+			    text: 'Cet email a été envoyé par : '+ req.body.name+' <' +req.body.email+ '>' + req.body.message // html body
 			};
 			// send mail with defined transport object
 			transporter.sendMail(mailOptions, function(error, info){
@@ -1372,6 +1372,6 @@ module.exports={
 			})
 	},	
 	presta:function(req,res) {
-			return res.view('presta',{baseurl:'',title:'Prestations - Arbatou ',keyword:'Arbatou, prestations, grimpe, grimpe d\'arbre',description:'Vennez découvrire nos prestations et les plus belles grimpe du moment.'});
+			return res.view('presta',{baseurl:'',title:req.__('SEO_PRESTA_title'),keyword:req.__('SEO_PRESTA_KEYWORD'),description:req.__('SEO_PRESTA_DESCRIPTION')});
 	},	
 }
