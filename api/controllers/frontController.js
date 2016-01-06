@@ -1341,8 +1341,10 @@ module.exports={
 			    from: req.body.name+' <'+req.body.email+'>', // sender address
 			    to: sails.config.MAIN_EMAIL, // list of receivers
 			    subject: 'Site - '+ sails.config.COMPANY_NAME +' - contact : '+ req.body.name +' - '+req.body.subject, // Subject line
-			    text: 'Cet email a été envoyé par : '+ req.body.name+' <' +req.body.email+ '>' + req.body.message // html body
+			    text: 'Cet email a été envoyé par : ' + req.body.name + ' - ' + req.body.email+ ' - ' + req.body.message // html body
 			};
+
+			console.log('Cet email a été envoyé par : ' + req.body.name + ' - ' + req.body.email+ ' - ' + req.body.message);
 			// send mail with defined transport object
 			transporter.sendMail(mailOptions, function(error, info){
 
@@ -1372,6 +1374,13 @@ module.exports={
 			})
 	},	
 	presta:function(req,res) {
-			return res.view('presta',{baseurl:'',title:req.__('SEO_PRESTA_title'),keyword:req.__('SEO_PRESTA_KEYWORD'),description:req.__('SEO_PRESTA_DESCRIPTION')});
+			return res.view('presta',{
+				menu:'presta',
+				scripturl:'portfo.js',
+				baseurl:'',
+				title:req.__('SEO_PRESTA_title'),
+				keyword:req.__('SEO_PRESTA_KEYWORD'),
+				description:req.__('SEO_PRESTA_DESCRIPTION')
+			});
 	},	
 }
