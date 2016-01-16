@@ -1,201 +1,135 @@
 
-    <div class="slider-wrapper">
-        
-        <!-- masterslider -->
-        <div class="master-slider" id="masterslider" data-height="fullscreen" data-fill-mode="fill">
-            
-         
-            <!-- end of slide -->
-            
-            <!-- slide 2 -->
-             <div class="ms-slide slide-video" style="z-index: 9" data-delay="8">
-                
-                <div class="visible-xs logomobile anim fadeInDown">
-                        <center><img src="images/front/arbatou.svg" style="width: 290px;" alt="Footer logo arbatou." /></center>
-                    </div>
-
-                <img src="images/design/transparent.png" data-src="images/slider/laptopglasses.png" style="display:none" alt="lorem ipsum dolor sit"/>  
-                
-                <video id="video1" class="video-js vjs-default-skin hidden-xs" poster="videos/CameraLens/CameraLens.jpg"  muted="" autoplay="" loop="" preload="">
-                    <source src="videos/Film_arbatou.mp4" type='video/mp4' />
-                    <source src="videos/Film_arbatou.webm" type='video/webm' />
-                    <!-- <source src="videos/Film_arbatou.ogv" type='video/ogg' /> -->
-                </video>
-                    
-                
-                
+<!-- NAV2 -->
+    <nav class="navSecondaire">
+        <div class="container">
+            <div class="row">
+                <div class="col col-xs-6 col-md-3" >
+                    <a href="chercheur.html"><div class="item item1" >
+                        <div class="img"><img src="images/img1.jpg" alt=""></div>       
+                        <div class="label"><h2>Chercheur d'emploi</h2></div>        
+                    </div></a>
+                </div>
+                <div class="col col-xs-6 col-md-3">
+                    <a href="salarie.html"><div class="item item2">
+                        <div class="img"><img src="images/img2.jpg" alt=""></div>       
+                        <div class="label"><h2>Salariés</h2></div>                  
+                    </div></a>
+                </div>
+                <div class="col col-xs-6 col-md-3" >
+                    <a href="entreprises.html"><div class="item item3" >
+                            <div class="img"><img src="images/img3.jpg" alt=""></div>       
+                            <div class="label"><h2>Entreprises</h2></div>   
+                    </div></a>                      
+                </div>
+                <div class="col col-xs-6 col-md-3">
+                    <a href="partenaires.html"><div class="item item4 ">
+                            <div class="img"><img src="images/img4.jpg" alt=""></div>       
+                            <div class="label"><h2>Partenaires</h2></div>                       
+                    </div></a>
+                </div>
             </div>
-            <!-- end of slide -->
-          
-        </div> <!-- end of masterslider -->
-         
-        <a href="#firstSection"><i class="fa fa-chevron-down" id="go-down"></i></a>
-        
-    </div><!-- end of slider-wrapper -->
+        </div>
+    </nav>
+
+
+    <!-- content -->
+    <section class="content">
+        <div class="container">
+        <div class="row">
+                <!-- LEFT COLONNE -->
+            <div class="col col-md-3 refheight">
+                <div class="blockgrisgauche">
+                    <h4 class="calendrier">Calendrier</h4>
+                </div>
+                <div class="blockgrisgauche">
+                    <div class="logoME"><img src="images/ME-logo.png" alt=""></div>
+                    <h4 class="plaquette">Téléchargez la plaquette de la Maison de l'Emploi</h4>
+                </div>
+                <div class="blockgrisgauche blockbleugris">
+                    <h4>Contactez-nous !</h4>
+                    <p>Par téléphone au <br> 01 60 09 84 83</p>
+                    <p>ou par mail <br> info@mdene77-mlidf.org</p>
+                    <p>Adresse:  <br> <b>Maison de l’Economie et de l’Emploi - 2ème étage</b> <br>
+                    12, bd Jean Rose - BP103 <br>
+                    77105 Meaux Cedex   
+                    </p>
+                </div>
+            </div>
+                <!-- MAIN CONTENT -->
+            <div class="col col-md-9 contentWrapper">
+                <div class="carouselcontainer">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                          <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item active">
+                              <img src="images/slide1.jpg"  width="100%" alt="...">
+                            </div>
+                            <div class="item">
+                              <img src="images/slide2.jpg"  width="100%" alt="...">
+                            </div>
+                            <div class="item">
+                              <img src="images/slide3.jpg"  width="100%" alt="...">
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <!-- <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a> -->
+                    </div>
+                </div>
+
+                <div class="col-md-4 pl0">
     
-    <span id="nav-begins"></span><!-- place before navigation bar-->
-    <div class="container-wrapper navigation">
-        <nav class="navbar navbar-default" role="navigation">
-        
-            <div class="container">
-            
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img src="images/front/arbatouligne.svg"  />
-                    </a>
-                    <ul class="mini"></ul><!-- mobile navigation -->
-                </div><!-- .navbar-header -->
-                
-                <div class="collapse navbar-collapse">
-                    <div class="right">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="/">Home</a></li>
-                            <li class=""><a href="/presta">Prestations</a></li>
-                            <li class=""><a href="/grimpes">Grimpes</a></li>
-                            <li class=""><a href="/blog">Blog</a></li>
-                            <li class=""><a href="/contact">Contact</a> </li>
+                    <div class="blockgrisbas ">
+                        <h2>Agenda & evènements</h2>
+                        <ul>
+                            <li><a href="">Journée portes Ouvertes sur les métiers de la justice, Sécurité et défense</a></li>
+                            <li><a href="">Atelier d'initiation à l'informatique</a></li>
+                            <li><a href="">Forum Emploi & Handicap</a></li>
+                            <li><a href="">Atelier Création du CPF</a></li>
+                            <li><a href="">Atelier DUER</a></li>
                         </ul>
                     </div>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-            
-        </nav>
-    </div>
-   
-    <section class="content-section" id="firstSection">
-        <div class="container">
-            <p class="anim fadeInUp">
-                La grimpe encadrée dans les arbres est une activité sportive d'Education à l'Environnement. <br>
-                L'Ethique d'Arbatou est d'avoir le minimum d'impact sur le milieu et le maximum d'effet sur les humains, <br> en grimpant à la cime d'un arbre en toute sécurité.
-            </p>
+                </div>
+                <div class="col-md-4">
+                        
+                    <div class="blockgrisbas inverse">
+                        <h2>Dèrnières actualités</h2>
+                        <ul>
+                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
+                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
+                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
+                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 pr0">
+                    
+                    <div class="blockgrisbas ">
+                        <h2>Outils & publications</h2>
+                        <ul>
+                            <li><a href="">Agenda des évènements <small>Novembre 2015</small></a></li>
+                            <li><a href="">Newsletter mensuelle de la Plateforme RH <small>Novembre 2015</small></li>
+                            <li><a href="">Tableau de bord trimestriel <small>Octobre 2015</small></li>
+                            <li><a href="">Newsletter trimestrielle <small>Septembre 2015</small></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         </div>
     </section>
-    <section class="content-section" id="firstSection2" style="background-color: #f9f8f8;">
-        <div class="container">
-            <h1 class="anim fadeInDown"><i class="fa fa-th"></i>Ateliers à la <span>Carte</span></h1>
-        </div>
-    </section>
 
-    <section class="feature-list">
-        <div class="container">
-            
-        
-            <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
-                <i class="glypharbatou-cordeasoi"></i>
-                <div class="content">
-                    <h4>Corde à soi</h4>
-                    <p>Déplacement dans l'arbre, auto assurance et confiance en soi. </p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
-                <i class="glypharbatou-assur"></i>
-                <div class="content">
-                    <h4>Moulinette</h4>
-                    <p>Coopération et confiance en l'autre. Un assureur et un grimpeur.</p>
-                </div>
-            </div>
-            
-            
-            <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
-                <i class="glypharbatou-picvert"></i>
-                <div class="content">
-                    <h4>Éducation Environnement</h4>
-                    <p>Connaissances en sciences naturelles, approches ludiques et sensorielles.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
-                <i class="glypharbatou-slak"></i>
-                <div class="content">
-                    <h4>Slack line</h4>
-                    <p>Équilibre et concentration. </p>
-                </div>
-            </div>
-             <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
-                <i class="glypharbatou-tyro"></i>
-                <div class="content">
-                    <h4>Tyro</h4>
-                    <p>Sensationnel et spectaculaire.</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 feature anim fadeInDown" data-wow-delay="0.25s">
-                <i class="glypharbatou-pendul"></i>
-                <div class="content">
-                    <h4>Saut pendulaire</h4>
-                    <p>Spectaculaire et sensationnel. </p>
-                </div>
-            </div>
-            
-            
-
-            <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
-                <i class="glypharbatou-hamac"></i>
-                <div class="content">
-                    <h4>Hamac</h4>
-                    <p>Petite pause, goûter perché ou nuit en hamac, en filet ou en plate-forme. </p>
-                </div>
-            </div>
-            <div class="col-lg-4 feature anim fadeInLeft" data-wow-delay="0.25s">
-                <i class="glypharbatou-grimpe"></i>
-                <div class="content">
-                    <h4>Arbolonge</h4>
-                    <p>Technique de grimpe en autonomie avancée. </p>
-                </div>
-            </div>
-            
-            <div class="col-lg-4 feature anim fadeInRight" data-wow-delay="0.25s">
-                <i class="glypharbatou-guitar"></i>
-                <div class="content">
-                    <h4>Arbazik</h4>
-                    <p>Installation de musiciens, et artistes en tous genres...!</p>
-                </div>
-            </div>
-
-           
-            <!-- End of second row --> 
-            
-        </div>
-    </section><!-- .feature-list -->
-    
-    
-    
-    
-  
-    <section class="content-section parallax-bg-1" data-stellar-offset-parent="true" data-stellar-background-ratio="0.50" data-stellar-vertical-offset="500">
-        <span class="shadows"></span>
-        <div class="bg-height"></div>
-        <!-- <div class="video-wrapper">
-            <video id="video1" class="video-js vjs-default-skin" poster="videos/RecordPlayer/poster.jpg" width="1600" height="901" muted="" autoplay="" loop="" preload="">
-                <source src="videos/RecordPlayer/RecordPlayer.mp4" type='video/mp4' />
-                <source src="videos/RecordPlayer/RecordPlayer.webm" type='video/webm' />
-                <source src="videos/RecordPlayer/RecordPlayer.ogv" type='video/ogg' />
-            </video>
-        </div> -->
-      
-    </section>
-    <section class="content-section anim fadeInDown" data-wow-delay="0.25s">
-            <div class="container">
-                <h1><i class="fa  fa-wheelchair"></i></h1>
-                <p>
-                   Hormis le vertige, nous pouvons faire face à presque tous les handicaps. <br> N'hésitez pas à nous demander plus d'informations.
-                </p>
-            </div>
-    </section><!-- .content-section -->
-    
-    <!-- .content-section .form -->
-    
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-68126193-1', 'auto');
-  ga('send', 'pageview');
-
-</script>

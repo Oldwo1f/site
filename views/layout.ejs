@@ -1,229 +1,117 @@
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8">
+    <title>Maison de l'emploi</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keyword" content="<%- keyword %>">
-<meta name="description" content="<%- description %>">
-
-<title><%- title %></title>
-<base href="<%= baseurl %>" >
-
-    <!-- Bootstrap core CSS -->
-    <link href="styles/front/bootstrap.css" rel="stylesheet" />
-    <!-- Primary CSS styles -->
-    <link href="styles/front/style.css" rel="stylesheet" />
-    <!-- Masterslider CSS styles -->
-    <link href="styles/front/masterslider/masterslider.css" rel="stylesheet" />
-    <link href="styles/front/masterslider/skins/black-1/style.css" rel="stylesheet" />
-    <!-- Fontawesome CSS styles -->
-    <link href="styles/front/font-awesome.min.css" rel="stylesheet" />
-    <!-- Aniamte CSS styles -->
-    <link href="styles/front/animate.css" rel="stylesheet" />
-    <!-- Nivo Slider CSS Styles -->
-    <link href="styles/front/nivo-slider.css" rel="stylesheet" />
-    <!-- Isotope CSS Styles -->
-    <link href="styles/front/isotope.css" rel="stylesheet" />
-    <!-- Owl Carousel CSS Styles -->
-    <link href="styles/front/owl.carousel.css" rel="stylesheet" />
-    <link href="styles/front/owl.theme.css" rel="stylesheet" />
-    <link href="styles/front/owl.transitions.css" rel="stylesheet" />
-    <!-- Lightbox CSS Styles -->
-    <link href="styles/front/lightbox.css" rel="stylesheet" />
-
-        <!-- ****** favicons générés par faviconit.com ****** -->
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="196x196" href="/favicon-196.png">
-    <link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
-    <link rel="apple-touch-icon" href="/favicon-57.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
-    <meta name="msapplication-TileImage" content="/favicon-144.png">
-    <meta name="msapplication-config" content="/browserconfig.xml">
-    <!-- ****** favicons générés par faviconit.com ****** -->
-    
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-  
 <body>
-    <script language="javascript" src="js/front/jquery-1.11.0.min.js"></script>
- 
+
+
+
+<div class="globalContainer">
+
+<!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="logo col-xs-12 col-sm-6 col-md-3 col-lg-2 "><img src="images/maisonemploi.jpg" alt=""></div>
+                <div class="restduheader col-xs-12 col-sm-6 col-md-9 col-lg-10 "> <h3>BIENVENUE SUR LE SITE DE LA MAISON DE L’EMPLOI <br> ET DE LA FORMATION NORD-EST 77</h3></div>
+                
+            </div>
+        </div>
+    </header>
+
+<!-- MENU -->
+    <nav class="navprincipal">
+        <div class="container">
+            <div class="row">
+                <div class="recherche col-md-3">
+                    <input type="text" placeholder="Rechercher sur le site">
+                    <div class="logosearch"><i class="fa fa-search"></i></div>
+                </div>
+                <ul>
+                    <li class="lien"><a href="templates/quisommenous.html" class="ajax">Qui sommes-nous</a></li>
+                    <li class="lien"><a href="">Blog</a></li>
+                    <li class="lien"><a href="">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
     <%- body %>
 
- <footer>
-    <section class="content-section parallax-bg-3" data-stellar-background-ratio=".15" data-stellar-vertical-offset="-100">
-         <!-- <div class="overlay"> -->
-        <!-- .foot-wrapper -->
-        <div class="container">
-        
-            <div  class="bg-height2">
-                    <!-- <h1 class="anim fadeInDown">Convinced?</h1> -->
-                 <!-- <div class="center-buttons"> -->
-                   <!--  <p style="color:white">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui cupiditate numquam et aperiam eius nihil consequatur laboriosam, ex corporis, officia, aliquam nostrum veritatis quod provident magni pariatur blanditiis asperiores accusantium.
-                    </p> -->
-              
-                
-                <!-- </div>.center-buttons -->
-            </div>
-            
-        </div><!-- .container -->
-        
-        <div class="foot-wrapper">
-            <div class="container">
-                <div class="col-lg-12">
-                
-                    <div class="logo anim fadeInDown">
-                        <center><img src="images/front/arbatou.svg" style="width: 290px;" alt="Footer logo arbatou." /></center>
-                    </div><!-- .logo -->
-                    
-                    <p class="liner anim fadeInUp">L'arbre à tout faire</p>
-                    
-                    <ul class="social-media anim fadeInUp" data-wow-delay="0.25s">
-                        <li><a href="http://wwww.facebook.com/profile.php?id=100009429655662" target="_BLANK"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="mailTo:contact@arbatou.fr"><i class="fa fa-envelope"></i></a></li>
-                        <!-- <li><a href="#linkedin"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#github"><i class="fa fa-github"></i></a></li>
-                        <li><a href="#pintrest"><i class="fa fa-pinterest"></i></a></li> -->
-                    </ul><!-- .social-media -->
-                    <p class="liner anim fadeInUp">Nos partenaires</p>
-                    <ul class="footerpartenaire anim fadeInUp" data-wow-delay="0.25s">
-                        <li><a href="http://www.voyageursdescimes.com/">Les voyageurs des cimes</a></li>
-                        <li><a href="http://www.sam-branche.fr/">Sam'Branche</a></li>
-                        <li><a href="http://www.arboreale.com/">Arboréale</a></li>
-                        <li><a href="http://www.les-ega.fr/">SNGEA</a></li>
-                        <li><a href="http://www.savoie-sport-nature.com/">savoie-sport-nature</a></li>
-                        <li><a href="http://www.duodesbranches.com">Cie Duo des Branches</a></li>
-                    </ul>
-                    <p class="copyright anim fadeIn" data-wow-delay="0.35s">
-                        Copyright 2014 - All Rights Reserved
-                    </p><!-- .copyright -->
-                    
-                </div><!-- .col-lg-12 -->
-            </div><!-- .container -->
-        </div><!-- .foot-wrapper -->
-       <!-- </div>         -->
-    </section><!-- .content-section -->
     
-</footer>
-    
-    <!-- Easing core JavaScript -->
-    <script language="javascript" src="js/front/jquery.easing.1.3.js"></script>
-    <!-- Bootstrap core JavaScript -->
-    <script language="javascript" src="js/front/bootstrap.min.js"></script>
-    <!-- Master slider core JavaScript -->
-    <script language="javascript" src="js/front/masterslider.min.js"></script>
-    <!-- Master slider staff core JavaScript -->
-    <script language="javascript" src="js/front/masterslider.staff.carousel.dev.js"></script>
-    <!-- WOW core JavaScript -->
-    <script language="javascript" src="js/front/wow.min.js"></script>
-    <!-- Waypoints core JavaScript -->
-    <script language="javascript" src="js/front/waypoints.min.js"></script>
-    <!-- Underscore core JavaScript -->
-    <script language="javascript" src="js/front/underscore-min.js"></script>
-    <!-- jQuery Backstretch core -->
-    <script language="javascript" src="js/front/jquery.backstretch.min.js"></script>
-    <!-- jQuery color core JavaScript -->
-    <script language="javascript" src="js/front/jquery.animation.js"></script>
-    <!-- Isotope core JavaScript -->
-    <script language="javascript" src="js/front/jquery.isotope.min.js"></script>
-    <!-- Stellar core JavaScript -->
-    <script language="javascript" src="js/front/jquery.stellar.min.js"></script>
-    <!-- Contact core JavaScript -->
-    <script language="javascript" src="js/front/jquery.contact.min.js"></script>
-    <!-- NiceScroll core Javascript -->
-    <script language="javascript" src="js/front/jquery.nicescroll.min.js"></script>
-    <!-- Retina core JavaScript -->
-    <script language="javascript" src="js/front/retina-1.1.0.min.js"></script>
-    <!-- Nivo Slider JavaScript -->
-    <script language="javascript" src="js/front/jquery.nivo.slider.pack.js"></script>
-    <!-- Video core JavaScript -->
-    <script language="javascript" src="js/front/video.js"></script>
-    <!-- OWL Carousel core JavaScript -->
-    <script language="javascript" src="js/front/owl.carousel.min.js"></script>
-    <!-- twitterfeed core JavaScript -->
-    <!-- // <script language="javascript" src="js/front/jquery.twitterfeed.js"></script> -->
-    <!-- Lightbox core JavaScript -->
-    <script language="javascript" src="js/front/lightbox.min.js"></script>
-    <script language="javascript" src="js/front/fitvid.js"></script>
-    <script language="javascript" src="js/front/waitForImages.js"></script>
-    <!-- Everything else -->
-    <script language="javascript" src="js/front/custom.js"></script>
 
-    <script type="text/javascript" language="javascript">
-    <!--
-    jQuery(document).ready(function($) {
-        
-        /************************
-        ****** MasterSlider *****
-        *************************/
-        // Calibrate slider's height
-        var sliderHeight = 0; // Smallest hieght allowed (default height)
-        var sliderwidth = 1024; // Smallest hieght allowed (default height)
-        if ( $('#masterslider').data('height') == 'fullscreen' ) {
-            var winHeight = $(window).height();
-            console.log(winHeight);
-            sliderHeight = winHeight > sliderHeight ? winHeight : sliderHeight;
+
+    <footer>
+        <div class="bando">
+            <div class="container"><h5>Maison de l'emploi et de la formation NORD-EST 77</h5></div>
+        </div>
+        <div class="container">
+        <div class="bandoclient">
+            <ul>
+                <li><a href="#"><img src="images/logoPartenaire/logo1.png" class="img-responsive longueur"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo2.png" class="img-responsive portrait2"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo3.png" class="img-responsive portrait"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo4.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo5.png" class="img-responsive portrait"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo6.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo7.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo8.png" class="img-responsive longueur"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo7.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo9.png" class="img-responsive portrait"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo10.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo11.png" class="img-responsive"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo12.png" class="img-responsive portrait2"></a></li>
+                <li><a href="#"><img src="images/logoPartenaire/logo13.png" class="img-responsive longueur"></a></li>
+            </ul>
+        </div>
+        </div>
+    </footer>
+
+
+</div>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+$(document).ready(function() {
+
+        $('#clientCarousel').carousel({
+      interval: 4000
+    })
+
+    $('#clientCarousel.carousel .item').each(function(){
+      var next = $(this).next();
+      if (!next.length) {
+        next = $(this).siblings(':first');
+      }
+      next.children(':first-child').clone().appendTo($(this));
+      
+      for (var i=0;i<2;i++) {
+        next=next.next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
         }
-        var winWidth = $(window).width();
-            console.log(winWidth);
-        sliderwidth = winWidth < sliderwidth ? winWidth : sliderwidth;
-        console.log(sliderwidth);
-        // Initialize the main slider
-        var slider = new MasterSlider();
-        slider.setup('masterslider', {
-            space:0,
-            fullwidth:true,
-            autoplay:false,
-            // centerControls:false,
-            // overVideo:false,
-            overPause:false,
-            width:sliderwidth,
-            height:sliderHeight,
-            view:"fade",
-            // view:"mask",
-            // height:300,
-            // autoHeight:true,
-            heightLimit:true
-        });
-        // adds Arrows navigation control to the slider.
-        slider.control('bullets',{autohide:false, dir:"h"});
-        slider.control('thumblist',{autohide:true});
         
-        var teamslider = new MasterSlider();
-        teamslider.setup('teamslider' , {
-            loop:true,
-            width:300,
-            height:290,
-            speed:20,
-            view:'stffade',
-            grabCursor:false,
-            preload:0,
-            space:29
-        });
-        teamslider.control('slideinfo',{insertTo:'#staff-info'});
-        
-        $(".team .ms-nav-next").click(function() {
-            teamslider.api.next();  
-        });
-        
-        $(".team .ms-nav-prev").click(function() {
-            teamslider.api.previous();  
-        });
+        next.children(':first-child').clone().appendTo($(this));
+      }
+    })
+        $('a.ajax').click(function(e){
+        $('.contentWrapper').html('<div class="maincontainer"></div>')
+        e.preventDefault();
+        console.log();
+        var H = $('.refheight').height();
+        console.log(H);
+        $('.maincontainer').load($(this).attr('href')).css('height', H-9)
     });
-    
-    
-    // -->
-    </script>
+
+});
+</script>
 </body>
 </html>
