@@ -4,23 +4,31 @@
     <meta charset="UTF-8">
     <title>Maison de l'emploi</title>
 
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="bower_components/dist/fullcalendar.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="bower_components/fullcalendar/dist/lang/fr.js"></script>
+
 </head>
 <body>
 
 
 
-<div class="globalContainer">
+<div class="globalContainer" id="<%- menu %>">
 
 <!-- HEADER -->
     <header>
         <div class="container">
             <div class="row">
+                <a href="/">
                 <div class="logo col-xs-12 col-sm-6 col-md-3 col-lg-2 "><img src="images/maisonemploi.jpg" alt=""></div>
                 <div class="restduheader col-xs-12 col-sm-6 col-md-9 col-lg-10 "> <h3>BIENVENUE SUR LE SITE DE LA MAISON DE L’EMPLOI <br> ET DE LA FORMATION NORD-EST 77</h3></div>
-                
+                </a>
             </div>
         </div>
     </header>
@@ -34,7 +42,7 @@
                     <div class="logosearch"><i class="fa fa-search"></i></div>
                 </div>
                 <ul>
-                    <li class="lien"><a href="templates/quisommenous.html" class="ajax">Qui sommes-nous</a></li>
+                    <li class="lien"><a href="templates/quisommenous.html" class="ajax2">Qui sommes-nous</a></li>
                     <li class="lien"><a href="">Blog</a></li>
                     <li class="lien"><a href="">Contact</a></li>
                 </ul>
@@ -77,41 +85,12 @@
 
 
 </div>
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="js/<%- script %>.js"></script>
+<script src="js/calendar.js"></script>
 <script>
-$(document).ready(function() {
+    
 
-        $('#clientCarousel').carousel({
-      interval: 4000
-    })
-
-    $('#clientCarousel.carousel .item').each(function(){
-      var next = $(this).next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
-      
-      for (var i=0;i<2;i++) {
-        next=next.next();
-        if (!next.length) {
-            next = $(this).siblings(':first');
-        }
-        
-        next.children(':first-child').clone().appendTo($(this));
-      }
-    })
-        $('a.ajax').click(function(e){
-        $('.contentWrapper').html('<div class="maincontainer"></div>')
-        e.preventDefault();
-        console.log();
-        var H = $('.refheight').height();
-        console.log(H);
-        $('.maincontainer').load($(this).attr('href')).css('height', H-9)
-    });
-
-});
 </script>
 </body>
 </html>

@@ -33,6 +33,13 @@ module.exports.routes = {
   ***************************************************************************/
 
   'GET /': 'frontController.home',
+  'GET /chercheurdemploi': 'frontController.chercheurdemploi',
+  'GET /salaries': 'frontController.salaries',
+  'GET /entreprises': 'frontController.entreprises',
+  'GET /partenaires': 'frontController.partenaires',
+  'POST /calendar': 'frontController.calendar',
+
+
   'GET /grimpes': 'frontController.portfolio',
   'GET /avendre': 'frontController.avendre',
   'GET /projet/:id/*':'frontController.projet',

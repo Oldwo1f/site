@@ -1,0 +1,23 @@
+<div class="haut rose">
+	<img src="images/salarier.png" alt="">
+	<h2 class="fleche">Vous êtes Salarié(e) ?</h2>
+	<h3>Vous vous interrogez sur : </h3>
+	<ul>
+		<li>une nouvelle orientation professionnelle</li>
+		<li>les dispositifs de formation</li>
+		<li>une mobilité professionnelle</li>
+		<li>Le droit au travail...</li>
+	</ul>
+</div>
+<div class="contenu">
+	<div class="bandocouleur">Un service vous est dédié !</div>
+
+	<p class="big viollet">Si vous souhaitez en savoir plus, veuillez cliquer sur l'onglet <br><strong>"POLE DE SECURISATION DES PARCOURS PROFESSIONNELS"</strong><br> ci dessu ou <a href="templates/securepro.html" class="ajax">ici</a></p>
+</div>
+<script>
+	$('a.ajax').click(function(e){
+		e.preventDefault();
+		console.log();
+		$('.mainContainer').load($(this).attr('href'))
+	});
+</script>

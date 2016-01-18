@@ -58,7 +58,6 @@ module.exports={
 						title: req.__('SEO_HOME_title'),
 						keyword: req.__('SEO_HOME_keyword'),
 						description:req.__('SEO_HOME_description'),
-						scripturl:'script.js',
 						menu:'home',
 						baseurl:'',
 
@@ -72,17 +71,106 @@ module.exports={
 
 
 	},	
-	portfolio:function(req,res,next) {
+	chercheurdemploi:function(req,res,next) {
+
+		console.log('chercheurdemploi');
+		
+		
+					res.status(200).view('chercheurdemploi',{
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_chercheur_title'),
+						keyword: req.__('SEO_chercheur_keyword'),
+						description:req.__('SEO_chercheur_description'),
+						menu:'chercheur',
+						script:'chercheur',
+						baseurl:'',
+
+					})
+
+
+
+
+
+	},	
+	salaries:function(req,res,next) {
+
+		console.log('salaries');
+		
+		
+					res.status(200).view('salaries',{
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_salaries_title'),
+						keyword: req.__('SEO_salaries_keyword'),
+						description:req.__('SEO_salaries_description'),
+						menu:'salaries',
+						script:'salaries',
+						baseurl:'',
+
+					})
+
+
+
+
+
+	},	
+	entreprises:function(req,res,next) {
+
+		console.log('entreprises');
+		
+		
+					res.status(200).view('entreprises',{
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_entreprises_title'),
+						keyword: req.__('SEO_entreprises_keyword'),
+						description:req.__('SEO_entreprises_description'),
+						menu:'entreprises',
+						script:'entreprises',
+						baseurl:'',
+
+					})
+
+
+
+
+
+	},	
+	partenaires:function(req,res,next) {
+
+		console.log('partenaires');
+		
+		
+					res.status(200).view('partenaires',{
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_partenaires_title'),
+						keyword: req.__('SEO_partenaires_keyword'),
+						description:req.__('SEO_partenaires_description'),
+						menu:'partenaires',
+						script:'partenaires',
+						baseurl:'',
+
+					})
+
+
+
+
+
+	},	
+	calendar:function(req,res,next) {
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
-		baseurl='/'
-		console.log('portfolio');
+		
+		console.log('calendar');
 		async.parallel({
 			projs:function  (cb) {
-				Project.find({status:'actif'}).populateAll().sort('createdAt DESC').exec(function (err,projects) {
+				// .populateAll()
+				Project.find({status:'actif'}).sort('createdAt ASC').exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
-							console.log('---------------------------');
+							// console.log('---------------------------');
 							return new Promise(function(resolve,rej){
 								if(project.translations.length && req.locale!= 'fr'){
 									// console.log('we got Trad');
@@ -97,25 +185,27 @@ module.exports={
 										}
 									})
 								}
-								project.content = truncate(marked(project.content), 450)
-								if(project.images.length)
-								{
-									console.log("IMG.LENGTH");
-									var img0 = _.find(project.images, function(chr) {
-									  return chr.rank == 0;
-									})
-									Image.findOne(img0.image).exec(function (err,datas) {
-										// console.log('datas',datas);
-										project.img = datas
-										console.log(project);
-										resolve(project)
-									})
-								}else
-								{
-									console.log("IMG.NOT NOT");
-									console.log(project);
+								// project.content = truncate(marked(project.content), 450)
+								// if(project.images.length)
+								// {
+								// 	console.log("IMG.LENGTH");
+								// 	var img0 = _.find(project.images, function(chr) {
+								// 	  return chr.rank == 0;
+								// 	})
+								// 	Image.findOne(img0.image).exec(function (err,datas) {
+								// 		// console.log('datas',datas);
+								// 		project.img = datas
+								// 		console.log(project);
+								// 		resolve(project)
+								// 	})
+								// }else
+								// {
+								// 	console.log("IMG.NOT NOT");
+								// 	console.log(project);
+								// 	resolve(project)
+								// }
 									resolve(project)
-								}
+
 							})
 							
 						}).then(function (projectss) {
@@ -124,52 +214,51 @@ module.exports={
 						})
 					
 				})
-			},
-			cats:function  (cb) {
-				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
-			 _.remove(cats,function (n) {
-				return n.nbProjects <=0;
-			})
-						return Promise.map(cats,function  (cat) {
-							return new Promise(function(resolve,rej){
-								if(cat.translations.length && req.locale!= 'fr'){
-									_.map(cat.translations,function  (trad) {
-										if(trad.lang == req.locale){
-											cat.name = (trad.name) ? trad.name : cat.name;
-											// project.content = (trad.content) ? trad.content : project.content;
-											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
-											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
-											// project.description = (trad.description) ? trad.description : project.description;
-										}
-									})
-
-									resolve(cat)
-								}else
-								{
-									resolve(cat)
-								}
-							})
-							
-						}).then(function (projectss) {
-							cb(null,cats)
-						})
-					
-				})
 			}
 		},function  (err,results) {
+			console.log('---------------------------');
 			// res.send(JSON.stringify(results,null, 10));
-			res.status(200).view('portfolio',{
-				'projects':results.projs,
-				'categories':results.cats,
-				title: req.__('SEO_PORTFO_title'),
-				keyword: req.__('SEO_PORTFO_keyword'),
-				description:req.__('SEO_PORTFO_description'),
-				scripturl:'portfo.js',
-				menu:'portfo',
-				marked:marked,
-				domain : sails.config.COMPANY_DOMAIN,
-				baseurl:baseurl
-			})
+			var jsontoreturn = [];
+			// console.log('results.projs.length=' +results.projs.length);
+			for(var i = 0; i < results.projs.length; i++){
+				if(results.projs[i].category == '569bfa235dd553cf109efd6d' || results.projs[i].category == '569bf9c55dd553cf109efd6b' || results.projs[i].category == '569bf9f55dd553cf109efd6c' || results.projs[i].category == '569bf9b55dd553cf109efd6a')
+				{
+
+					console.log(results.projs[i].category);
+					var proj = {};
+					proj.title = results.projs[i].title;
+					if(results.projs[i].category == '569bfa235dd553cf109efd6d')
+						proj.category = 'salaries';
+					if(results.projs[i].category == '569bf9c55dd553cf109efd6b')
+						proj.category = 'partenaires';
+					if(results.projs[i].category == '569bf9f55dd553cf109efd6c')
+						proj.category = 'chercheurs';
+					if(results.projs[i].category == '569bf9b55dd553cf109efd6a')
+						proj.category = 'entreprises';
+					proj.start = results.projs[i].date;
+					if(typeof(results.projs[i].start)!='undefined')
+						proj.start = results.projs[i].start;
+					if(typeof(results.projs[i].end)!='undefined')
+						proj.end = results.projs[i].end;
+
+					jsontoreturn.push(proj)
+				}
+			}
+
+			res.send(jsontoreturn)
+
+			// res.status(200).view('portfolio',{
+			// 	'projects':results.projs,
+			// 	'categories':results.cats,
+			// 	title: req.__('SEO_PORTFO_title'),
+			// 	keyword: req.__('SEO_PORTFO_keyword'),
+			// 	description:req.__('SEO_PORTFO_description'),
+			// 	scripturl:'portfo.js',
+			// 	menu:'portfo',
+			// 	marked:marked,
+			// 	domain : sails.config.COMPANY_DOMAIN,
+			// 	baseurl:baseurl
+			// })
 			// res.status(200).view('blog',{
 			// 	articles:results.projs,
 			// 	title: req.__('SEO_BLOG_title'),

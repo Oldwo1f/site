@@ -1,0 +1,117 @@
+<nav class="navSecondaire">
+		<div class="container positioned">
+			<div class="prevBtn" style="display:none;"><i class="fa fa-chevron-left"></i></div>
+			<div class="row ">
+						<div class="col col-xs-6 col-md-3"  rel="1" >
+							<a href="templates/missionlocale.html" class="ajax"><div class="item item1" >
+								<div class="img"><img src="images/16-25.png" alt=""></div>		
+								<div class="label"><h2>Mission locale</h2></div>		
+							</div></a>
+						</div>
+						<div class="col col-xs-6 col-md-3"  rel="2">
+							<a href="templates/defi.html" class="ajax"><div class="item item1">
+								<div class="img"><img src="images/50.png" alt=""></div>		
+								<div class="label"><h2>Défi 50</h2></div>					
+							</div></a>
+						</div>
+						<div class="col col-xs-6 col-md-3"  rel="3">
+							<a href="templates/espaceinfo.html" class="ajax"><div class="item item1" >
+									<div class="img" style="margin-top: -30px"><img src="images/espaceinfo.png" alt=""></div>		
+									<div class="label"><h2>Espace informatique</h2></div>	
+							</div></a>						
+						</div>
+						<div class="col col-xs-6 col-md-3" rel="4" >
+							<a href="templates/structureaccomp.html" class="ajax"><div class="item item1 ">
+									<div class="img"><img src="images/maison.png" alt=""></div>		
+									<div class="label"><h2>Les structures <br>d'accompagnement</h2></div>						
+							</div></a>
+						</div>
+						<div class="col col-xs-6 col-md-3 hide"  rel="5" >
+							<a href="templates/mobilite.html" class="ajax"><div class="item item1 ">
+									<div class="img"><img src="images/voiture.png" alt="" style="padding-top : 30px"></div>		
+									<div class="label"><h2>Mobilité</h2></div>						
+							</div></a>
+						</div>
+			</div>
+			<div class="nextBtn" style="display:none;"><i class="fa fa-chevron-right"></i></div>
+
+		</div>
+	</nav>
+
+
+	<!-- content -->
+	<section class="content">
+		<div class="container">
+		<div class="row">
+				<!-- LEFT COLONNE -->
+			<div class="col col-md-3 refheight">
+				<div class="blockgrisgauche">
+					<h4 class="calendrier">Calendrier</h4>
+					<div id="calendar"></div>
+				</div>
+				<div class="blockgrisgauche">
+					<div class="logoME"><img src="images/ME-logo.png" alt=""></div>
+					<h4 class="plaquette">Téléchargez la plaquette de la Maison de l'Emploi</h4>
+				</div>
+				<div class="blockgrisgauche blockbleugris ">
+					<h4>Contactez-nous !</h4>
+					<p>Par téléphone au <br> 01 60 09 84 83</p>
+					<p>ou par mail <br> info@mdene77-mlidf.org</p>
+					<p>Adresse:  <br> <b>Maison de l’Economie et de l’Emploi - 2ème étage</b> <br>
+					12, bd Jean Rose - BP103 <br>
+					77105 Meaux Cedex	
+					</p>
+				</div>
+			</div>
+				<!-- MAIN CONTENT -->
+			<div class="col col-md-9">
+				<div class="mainContainer">
+					
+				</div>
+
+				<div class="col-md-6 pl0 refheight2" >
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+					<div class="blockgrisbas rose">
+						<h2>Liens Utiles</h2>
+						<ul>
+							<li><a href="http://www.fongecif-idf.fr/">http://www.fongecif-idf.fr/</a></li>
+							<li><a href="http://www.uniformation.fr/">http://www.uniformation.fr/</a></li>
+							<li><a href="http://www.moncompteformation.gouv.fr/">http://www.moncompteformation.gouv.fr/</a></li>
+							<li><a href="http://www.siteweb.fr">http://www.siteweb.fr</a></li>
+							<li><a href="http://www.siteweb.com">http://www.siteweb.com</a></li>
+							<li><a href="http://www.siteweb.fr">http://www.siteweb.fr</a></li>
+							<li><a href="http://www.siteweb.com	">http://www.siteweb.com</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 pr0">
+					
+					<div class="blockgrisbas rose large">
+						<h2>Documentation</h2>
+						<ul>
+							<li><a href="">Défi 50 </li>
+							<li><a href="">Newsletter mensuelle de la Plateforme RH <br><small>Téléchargez la fiche descriptive</small></li>
+							<li><a href="">Tableau de bord trimestriel <br><small>Téléchargez la fiche descriptive</small></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</section>
+
+
+
+    <script>
+$(document).ready(function() {
+
+    $('.mainContainer').load('templates/chercheuremploi.html')
+
+});
+</script>

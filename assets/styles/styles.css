@@ -1,17 +1,17 @@
 /*GENERIC*/
 @font-face {font-family: "Wingdings 3";
-  src: url("font/9e2ee65661bee40438d514fe592bfcf8.eot"); /* IE9*/
-  src: url("font/9e2ee65661bee40438d514fe592bfcf8.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("font/9e2ee65661bee40438d514fe592bfcf8.woff") format("woff"), /* chrome、firefox */
-  url("font/9e2ee65661bee40438d514fe592bfcf8.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("font/9e2ee65661bee40438d514fe592bfcf8.svg#Wingdings 3") format("svg"); /* iOS 4.1- */
+  src: url("fonts/9e2ee65661bee40438d514fe592bfcf8.eot"); /* IE9*/
+  src: url("fonts/9e2ee65661bee40438d514fe592bfcf8.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("fonts/9e2ee65661bee40438d514fe592bfcf8.woff") format("woff"), /* chrome、firefox */
+  url("fonts/9e2ee65661bee40438d514fe592bfcf8.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("fonts/9e2ee65661bee40438d514fe592bfcf8.svg#Wingdings 3") format("svg"); /* iOS 4.1- */
 }
 @font-face {font-family: "Wingdings";
-  src: url("font/e991cc888d4fb544fe0a88d065ab6efc.eot"); /* IE9*/
-  src: url("font/e991cc888d4fb544fe0a88d065ab6efc.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-  url("font/e991cc888d4fb544fe0a88d065ab6efc.woff") format("woff"), /* chrome、firefox */
-  url("font/e991cc888d4fb544fe0a88d065ab6efc.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-  url("font/e991cc888d4fb544fe0a88d065ab6efc.svg#Wingdings") format("svg"); /* iOS 4.1- */
+  src: url("fonts/e991cc888d4fb544fe0a88d065ab6efc.eot"); /* IE9*/
+  src: url("fonts/e991cc888d4fb544fe0a88d065ab6efc.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+  url("fonts/e991cc888d4fb544fe0a88d065ab6efc.woff") format("woff"), /* chrome、firefox */
+  url("fonts/e991cc888d4fb544fe0a88d065ab6efc.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url("fonts/e991cc888d4fb544fe0a88d065ab6efc.svg#Wingdings") format("svg"); /* iOS 4.1- */
 }
 
 body{ background:#f3f3f3; font-family: Arial; font-size:12px; color:#737b7f;}
@@ -63,17 +63,17 @@ header{ height: 126px;}
 #chercheur .nextBtn{color:#b81e57;}
 .hide{display:none;}
 
-#salarie .navSecondaire .item .img {text-align: center;padding-top : 70px;}
-#salarie .navSecondaire .item .img img{width:auto;}
-#salarie .navSecondaire .item h2{padding : 10px 10px 0px 10px; font-weight: bold;text-transform: uppercase;font-size: 2em}
-#salarie .prevBtn{color:#482b63;}
-#salarie .nextBtn{color:#482b63;}
+#salaries .navSecondaire .item .img {text-align: center;padding-top : 70px;}
+#salaries .navSecondaire .item .img img{width:auto;}
+#salaries .navSecondaire .item h2{padding : 10px 10px 0px 10px; font-weight: bold;text-transform: uppercase;font-size: 2em}
+#salaries .prevBtn{color:#482b63;}
+#salaries .nextBtn{color:#482b63;}
 
-#entreprise .navSecondaire .item .img {text-align: center;padding-top : 70px;}
-#entreprise .navSecondaire .item .img img{width:auto;}
-#entreprise .navSecondaire .item h2{padding : 10px 10px 0px 10px; font-weight: bold;text-transform: uppercase;font-size: 2em}
-#entreprise .prevBtn{color:#87ba40;}
-#entreprise .nextBtn{color:#87ba40;}
+#entreprises .navSecondaire .item .img {text-align: center;padding-top : 70px;}
+#entreprises .navSecondaire .item .img img{width:auto;}
+#entreprises .navSecondaire .item h2{padding : 10px 10px 0px 10px; font-weight: bold;text-transform: uppercase;font-size: 2em}
+#entreprises .prevBtn{color:#87ba40;}
+#entreprises .nextBtn{color:#87ba40;}
 
 #partenaires .navSecondaire .item .img {text-align: center;padding-top : 70px;}
 #partenaires .navSecondaire .item .img img{width:auto;}
@@ -87,7 +87,7 @@ header{ height: 126px;}
 .blockgrisgauche.blockbleugris{background:#183548; width:100%; margin-bottom: 10px;border-radius: 7px;  ;border: 2px solid #929391;position: relative;}
 .blockgrisgauche.blockbleugris h4{padding-top : 10px; color:#f3f3f3;font-size: 26px;  text-align: center;font-weight: bold;}
 .blockgrisgauche.blockbleugris p{ color:#f3f3f3;text-align: center;font-size: 20px; padding: 0px 10px;padding-top : 10px;}
-.blockgrisgauche h4.calendrier{color:#929391; font-size: 22px; text-transform:uppercase; text-align: center;font-weight: bold;}
+.blockgrisgauche h4.calendrier{color:#929391; font-size: 22px; text-transform:uppercase; text-align: center;font-weight: bold; margin-top : 5px;}
 .blockgrisgauche h4.plaquette{color:#929391; font-size: 17px; text-transform:uppercase; text-align: center; padding:0 10px;}
 .blockgrisgauche .logoME{height : 80%; text-align: center;padding-top: 10px;}
 .blockgrisgauche .logoME img{width:50%;}
@@ -171,8 +171,8 @@ header{ height: 126px;}
 .contenu ul > li{margin: 20px 0px; color: #737b7f;}
 .contenu ul > li:first-child{margin-top: 0px;}
 .contenu ul > li:first-child label{margin-top: 0px;padding-top: 0;}
-.contenu ul > li a{ font-weight: bold;color:#737b7f; font-size: 14px;}
-.contenu ul > li > a:before{content:'\f061';font-family: 'Wingdings 3';position:absolute;left: 20px;color:#b81e57;}
+.contenu ul > li a{ font-weight: bold;color:#737b7f; font-size: 14px; padding-left : 30px;}
+.contenu ul > li > a:before{content:'\f061';font-family: 'Wingdings 3';position:absolute;left: 40px;color:#b81e57;}
 .contenu ul > li > p a{font-size: 18px;color:#b81e57;}
 .contenu ul > li ul li{font-size:16px; margin-top: 5px;margin-bottom: 5px;}
 .contenu ul > li ul li:before{content:'\f06D';padding-right:15px;font-family: 'Wingdings';left: 40px;padding-left: 0px;color:#b81e57;}
@@ -189,34 +189,34 @@ ul.aveclogo > li > label { margin-left: 40px;}
 ul.aveclogo > li > label:before { left: 180px;}
 
 
-#salarie .haut.rose h2{ color:#482b63; margin-top:30px;margin-bottom:50px; font-weight: bold;}
-#salarie ul li a:before {color:#482b63;}
-#salarie .contenu label {color:#482b63;}
-#salarie .contenu label:before {color:#482b63;}
-#salarie .haut.rose a{color:#482b63;}
-#salarie .haut.rose ul li:before{color:#482b63;}
-#salarie .bandocouleur{background:#482b63; color:white;font-size: 36px;font-weight: bold;text-align: center;padding:0px;}
-#salarie p.big{margin-top:50px;text-align: center;font-size:2em;}
-#salarie p.big strong{color:#482b63; }
-#salarie p.big a{color:#482b63; text-decoration:underline;}
-#salarie .contenu ul li ul li:before{content:'\f061';padding-right:15px;font-family: 'Wingdings 3';left: 0px;color:#482b63;}
-#salarie .contenu ul li ul li strong{color:#482b63;}
-#salarie .contenu ul > li   a{color:#482b63;}
+#salaries .haut.rose h2{ color:#482b63; margin-top:30px;margin-bottom:50px; font-weight: bold;}
+#salaries ul li a:before {color:#482b63;}
+#salaries .contenu label {color:#482b63;}
+#salaries .contenu label:before {color:#482b63;}
+#salaries .haut.rose a{color:#482b63;}
+#salaries .haut.rose ul li:before{color:#482b63;}
+#salaries .bandocouleur{background:#482b63; color:white;font-size: 36px;font-weight: bold;text-align: center;padding:0px;}
+#salaries p.big{margin-top:50px;text-align: center;font-size:2em;}
+#salaries p.big strong{color:#482b63; }
+#salaries p.big a{color:#482b63; text-decoration:underline;}
+#salaries .contenu ul li ul li:before{content:'\f061';padding-right:15px;font-family: 'Wingdings 3';left: 0px;color:#482b63;}
+#salaries .contenu ul li ul li strong{color:#482b63;}
+#salaries .contenu ul > li   a{color:#482b63;}
 
-#entreprise .haut.rose h2{ color:#87ba40; margin-top:30px;margin-bottom:50px; font-weight: bold;}
-#entreprise ul li a:before {color:#87ba40;}
-#entreprise .contenu label {color:#87ba40;}
-#entreprise .contenu label:before {color:#87ba40;}
-#entreprise .haut.rose a{color:#87ba40;}
-#entreprise .haut.rose ul li:before{color:#87ba40;}
-#entreprise .bandocouleur{background:#87ba40; color:white;font-size: 36px;font-weight: bold;text-align: center;padding:0px;}
-#entreprise p.big{margin-top:50px;text-align: center;font-size:2em;}
-#entreprise p.big strong{color:#87ba40; }
-#entreprise p.big a{color:#87ba40; text-decoration:underline;}
-#entreprise .contenu ul li ul li:before{content:'\f061';padding-right:15px;font-family: 'Wingdings 3';left: 0px;color:#87ba40;}
-#entreprise .contenu ul li ul li strong{color:#87ba40;}
-#entreprise .contenu ul > li   a{color:#87ba40;}
-#entreprise .contenu span.green{color:#87ba40;}
+#entreprises .haut.rose h2{ color:#87ba40; margin-top:30px;margin-bottom:50px; font-weight: bold;}
+#entreprises ul li a:before {color:#87ba40;}
+#entreprises .contenu label {color:#87ba40;}
+#entreprises .contenu label:before {color:#87ba40;}
+#entreprises .haut.rose a{color:#87ba40;}
+#entreprises .haut.rose ul li:before{color:#87ba40;}
+#entreprises .bandocouleur{background:#87ba40; color:white;font-size: 36px;font-weight: bold;text-align: center;padding:0px;}
+#entreprises p.big{margin-top:50px;text-align: center;font-size:2em;}
+#entreprises p.big strong{color:#87ba40; }
+#entreprises p.big a{color:#87ba40; text-decoration:underline;}
+#entreprises .contenu ul li ul li:before{content:'\f061';padding-right:15px;font-family: 'Wingdings 3';left: 0px;color:#87ba40;}
+#entreprises .contenu ul li ul li strong{color:#87ba40;}
+#entreprises .contenu ul > li   a{color:#87ba40;}
+#entreprises .contenu span.green{color:#87ba40;}
 
 #partenaires .haut.rose h2{ color:#c79b35; margin-top:30px;margin-bottom:50px; font-weight: bold;}
 #partenaires ul li a:before {color:#c79b35;}
@@ -249,7 +249,32 @@ ul.aveclogo > li > label:before { left: 180px;}
 
 
 
+/*CALENDAR*/
 
+#calendar{height:230px;}
+#calendar h2{font-size : 18px; font-weight:bold;}
+#calendar .fc-basic-view .fc-body .fc-row {
+    min-height: 10px;
+    height: 29px; text-align: center;
+}
+#calendar .fc-day-number{text-align: center;vertical-align: middle; font-weight:bold; font-size: 17px;}
+#calendar .fc-content-skeleton{padding-top : 1px;}
+#calendar .fc th {font-size: 16px;}
+#calendar .fc-state-default {background-color: none; background-image: none;background-image: none; background-image: none; background-image: none;background-image: none; background-repeat: none; border-color: none; border-color:none; color: #777; text-shadow: none; box-shadow: none;border : none; background:none;}
+#calendar .fc-state-default .fc-icon{font-size: 16px;}
+#calendar .fc-state-default:hover {color:#222;}
+/*#calendar .fc-other-month  {color:transparent;}*/
+#calendar .fc-today  { background:#183548; color:white;}
+#calendar .fc-bg .fc-today  { background:transparent;}
+#calendar .fc-bgevent  { opacity:1;}
+/*#calendar .fc td, #calendar .fc th  {border:none;border-style:none;border-width:0px;}*/
+
+.fc-row .fc-content-skeleton tbody td, .fc-row .fc-helper-skeleton tbody td { position: relative; top:-20px;display: none;}
+
+.calendarchercheurs{ color:#b81e57 !important; cursor:pointer;}
+.calendarsalaries{ color:#482b63 !important; cursor:pointer;}
+.calendarentreprises{ color:#87ba40 !important; cursor:pointer;}
+.calendarpartenaires{ color:#c79b35 !important; cursor:pointer;}
 
 
 /* Small devices (tablets, 768px and up) */
