@@ -31,8 +31,6 @@ $(document).ready(function() {
 	        success: function(res) {
 	            console.log(res);
 	        },
-	        color: 'yellow',   // a non-ajax option
-	        textColor: 'black' // a non-ajax option
 	    },
 		 // events: [
 	  //       {
@@ -82,6 +80,7 @@ $(document).ready(function() {
 	       		$('#calendar').find('.fc-day-number[data-date="' + dateString + '"]').addClass('calendar'+event.category).attr('title',event.title);
 	        }
 	     }
-    })
+    });
+	$('.fc td, .fc th').css({'border':'none'})
 
 });

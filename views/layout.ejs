@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Maison de l'emploi</title>
-
+    <% if(baseurl){%>
+    <base href="<%- baseurl %>" >
+    <%} %>
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
@@ -37,13 +39,21 @@
     <nav class="navprincipal">
         <div class="container">
             <div class="row">
-                <div class="recherche col-md-3">
+                <!-- <div class="recherche col-md-3">
                     <input type="text" placeholder="Rechercher sur le site">
                     <div class="logosearch"><i class="fa fa-search"></i></div>
-                </div>
+                </div> -->
                 <ul>
+                    <% if(menu != 'home'){%>
+                    <li class="lien"><a href="/" >Accueil</a></li>
+                    <li class="lien"><a href="/chercheurdemploi" >Chercheur d'emploi</a></li>
+                    <li class="lien"><a href="/salaries" >Salaries</a></li>
+                    <li class="lien"><a href="/entreprises" >Entreprises</a></li>
+                    <li class="lien"><a href="/partenaires" >Partenaires</a></li>
+                    <li class="lien" style="top: -2px;position:relative;">|</li>
+                    <%}%>
                     <li class="lien"><a href="templates/quisommenous.html" class="ajax2">Qui sommes-nous</a></li>
-                    <li class="lien"><a href="">Blog</a></li>
+                    <li class="lien"><a href="/blog">Blog</a></li>
                     <li class="lien"><a href="">Contact</a></li>
                 </ul>
             </div>

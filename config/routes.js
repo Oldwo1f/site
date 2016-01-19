@@ -38,12 +38,12 @@ module.exports.routes = {
   'GET /entreprises': 'frontController.entreprises',
   'GET /partenaires': 'frontController.partenaires',
   'POST /calendar': 'frontController.calendar',
+  'GET /blog': 'frontController.blog',
 
 
   'GET /grimpes': 'frontController.portfolio',
   'GET /avendre': 'frontController.avendre',
   'GET /projet/:id/*':'frontController.projet',
-  'GET /blog': 'frontController.blog',
   'GET /blog/:page': 'frontController.blog',
   'GET /blog/category/:thiscat': 'frontController.category',
   'GET /blog/category/:thiscat/:page': 'frontController.category',
