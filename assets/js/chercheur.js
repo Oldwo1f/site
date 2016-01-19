@@ -7,12 +7,7 @@ $(document).ready(function() {
 	}
 
 	$('.mainContainer').load('templates/chercheuremploi.html')
-	$('a.ajax').click(function(e){
-		e.preventDefault();
-		console.log();
-		$('.maincontainer').addClass('mainContainer').removeClass('maincontainer');
-		$('.mainContainer').load($(this).attr('href'))
-	});
+
 
 	$('.nextBtn').click(function(e){
 		console.log('click');
@@ -60,7 +55,13 @@ $(document).ready(function() {
 			$('.navSecondaire .row > div[rel="'+i+'"]').removeClass('hide');
 		}
 	})
-
+	$('a.ajax').click(function(e){
+		e.preventDefault();
+		console.log();
+		$('.maincontainer').addClass('mainContainer').removeClass('maincontainer');
+		$('.mainContainer').load($(this).attr('href'))
+	});
+	
 	$('a.ajax2').click(function(e){
         $('.mainContainer').addClass('maincontainer').removeClass('mainContainer').html()
         e.preventDefault();

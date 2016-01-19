@@ -305,9 +305,34 @@ ul.aveclogo > li > label:before { left: 180px;}
 #article .commentaires .postcoment input{color: #737b7f;width : 100%;}
 #article .commentaires .postcoment textarea{color: #737b7f;width : 100%; height:100px;}
 #article .commentaires .boxcomment {color: #737b7f;font-size: 16px; border-bottom : 1px solid #929391;padding-bottom:3px;}
-#article .commentaires .boxcomment .boxcomment{padding-left: 30px;}
+#article .commentaires .boxcomment .boxcomment{padding-left: 30px;border-bottom :none;}
 #article .commentaires .boxcomment h6{color: #737b7f;font-size: 16px;}
 #article .commentaires .boxcomment h6+p{color: black;font-size: 16px; }
+#article .commentaires input.btn-default{display:inline-block;width:auto; }
+
+.errorMessageError{display:none; float:left;margin-left: 0px;font-size : 16px;}
+.errorMessageRequired{display:none; float:left;margin-left: 0px;font-size : 16px;}
+.successMessage{display:none; float:left;margin-left: 0px;font-size : 16px;}
+
+#article .article.chercheur h1, #BLOG .article.chercheur h1{color:#b81e57;}
+#article .article.chercheur h2, #BLOG .article.chercheur h2{color:#b81e57;}
+#article .article.chercheur h3, #BLOG .article.chercheur h3{color:#b81e57;}
+#article .article.chercheur h4, #BLOG .article.chercheur h4{color:#b81e57;}
+
+#article .article.salarie h1, #BLOG .article.salarie h1{color:#482b63;}
+#article .article.salarie h2, #BLOG .article.salarie h2{color:#482b63;}
+#article .article.salarie h3, #BLOG .article.salarie h3{color:#482b63;}
+#article .article.salarie h4, #BLOG .article.salarie h4{color:#482b63;}
+
+#article .article.entreprise h1, #BLOG .article.entreprise h1{color:#87ba40;}
+#article .article.entreprise h2, #BLOG .article.entreprise h2{color:#87ba40;}
+#article .article.entreprise h3, #BLOG .article.entreprise h3{color:#87ba40;}
+#article .article.entreprise h4, #BLOG .article.entreprise h4{color:#87ba40;}
+
+#article .article.partenaire h1, #BLOG .article.partenaire h1{color:#c79b35;}
+#article .article.partenaire h2, #BLOG .article.partenaire h2{color:#c79b35;}
+#article .article.partenaire h3, #BLOG .article.partenaire h3{color:#c79b35;}
+#article .article.partenaire h4, #BLOG .article.partenaire h4{color:#c79b35;}
 
 
 

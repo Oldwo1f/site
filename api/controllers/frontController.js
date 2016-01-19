@@ -170,6 +170,28 @@ module.exports={
 
 
 
+	},		
+	quisommenous:function(req,res,next) {
+
+		console.log('quisommenous');
+		
+		
+					res.status(200).view('quisommenous',{
+						// articles:articles,
+						marked:marked,
+						title: req.__('SEO_quisommenous_title'),
+						keyword: req.__('SEO_quisommenous_keyword'),
+						description:req.__('SEO_quisommenous_description'),
+						menu:'quisommenous',
+						script:'quisommenous',
+						baseurl:'',
+
+					})
+
+
+
+
+
 	},	
 	calendar:function(req,res,next) {
 		req.locale = req.locale || 'en'
@@ -679,18 +701,21 @@ module.exports={
 		   
 	},
 	addCommentProj:function(req,res,next) {
-
+		console.log('project add comment');
+		console.log(req.params.itemid);
 		Project.findOne(req.params.itemid).exec(function (err,project) {
 			Comment.create({
-				author:req.body.author,
+				author:req.body.name,
 		  		email:req.body.email,
-		  		content:req.body.content,
+		  		content:req.body.message,
 		  		status:'new',
 		  		project:req.params.itemid
 	  		}).exec(function (err,coment){
+				if(err){
+
 									console.log(err)
-				if(err)
 					res.status(400).send(err)
+				}
 				else{
 
 				Notification.create({type:'projectcomment',status:'todo',info1:project.title,info2:'par '+coment.author,item:'project',itemid:req.params.itemid}).exec(function (err,notif){
@@ -935,6 +960,7 @@ module.exports={
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'portfo.js',
 				menu:'BLOG',
+				iscategory:'blog',
 				marked:marked,
 				nbPage:nbPage,
 				thiscategory:null,
@@ -957,17 +983,19 @@ module.exports={
 		req.locale = req.locale || 'en'
 		moment.locale(req.locale);
 		page = 1;
-		nbperpage = 2;
+		nbperpage = 3;
 		baseurl='/../'
 		if(req.params.page){
 			baseurl='/../../'
 			page = req.params.page;
 		}
 
+
+		console.log('blog');
 		async.parallel({
-			projs:function  (cb) {
-				Article.find({where:{status:'actif',category:req.params.thiscat},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
-					console.log(projects);
+			articles:function  (cb) {
+				Project.find({where:{status:'actif',category:req.params.thiscat},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
+			
 						return Promise.map(projects,function  (project) {
 							// console.log('---------------------------');
 							return new Promise(function(resolve,rej){
@@ -1009,34 +1037,46 @@ module.exports={
 					
 				})
 			},
-			catThis:function(cb) {
-				CategoryBlog.findOne(req.params.thiscat).populateAll().exec(function(err,data) {
-				if(err)
-					cb(err)
-
-					console.log(data);
-					console.log("datadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadatadata");
-					return new Promise(function(resolve,rej){
-								if(data.translations.length && req.locale!= 'fr'){
-									console.log('we got Trad');
-									_.map(data.translations,function  (trad) {
+			mostseen:function  (cb) {
+				Project.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
 										if(trad.lang == req.locale){
-											data.name = (trad.name) ? trad.name : data.name;
-											
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
 										}
 									})
-
-									resolve(data)
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										project.img = datas
+										resolve(project)
+									})
 								}else
 								{
-									resolve(data)
+									resolve(project)
 								}
-							}).then(function(category) {cb(null,category);})
-				})
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
 					
+				})
 			},
-			mostseen:function  (cb) {
-				Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+			recent:function  (cb) {
+				Project.find({where:{status:'actif'},sort:'date DESC',limit:5}).populateAll().exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
 							return new Promise(function(resolve,rej){
@@ -1075,7 +1115,7 @@ module.exports={
 			},
 			count:function(cb) {
 
-				Article.count({where:{status:'actif',category:req.params.thiscat}}).exec(function(err,data) {
+				Project.count({where:{status:'actif',category:req.params.thiscat}}).exec(function(err,data) {
 					console.log(data);
 					// console.log(datastogo);
 					return cb(null,data)
@@ -1085,16 +1125,22 @@ module.exports={
 				
 			},
 			cats:function  (cb) {
-				CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			console.log(err);
+			console.log(cats);
 			 _.remove(cats,function (n) {
 				return n.nbArticles <=0;
 			})
 						return Promise.map(cats,function  (cat) {
+							console.log('---------------------------');
 							return new Promise(function(resolve,rej){
+								console.log(cat.translations.length);
 								if(cat.translations.length && req.locale!= 'fr'){
 									console.log('we got Trad');
 									_.map(cat.translations,function  (trad) {
+										console.log('---------------------------');
 										if(trad.lang == req.locale){
+											console.log('local cool');
 											cat.name = (trad.name) ? trad.name : cat.name;
 											
 										}
@@ -1114,37 +1160,25 @@ module.exports={
 				})
 			}
 		},function  (err,results) {
+			console.log(err);
 			console.log('results');
+			console.log(results.cats);
 			var nbPage = Math.ceil(results.count / nbperpage)
-			console.log(results);
-			// res.status(200).view('blog',{
-			// 	articles:results.projs,
-			// 	title: results.catThis.name + req.__('SEO_BLOG_title'),
-			// 	keyword: results.catThis.name + req.__('SEO_BLOG_keyword'),
-			// 	description: req.__('SEO_BLOG_description'),
-			// 	scripturl:'portfo.js',
-			// 	menu:'blog',
-			// 	marked:marked,
-			// 	nbPage:nbPage,
-			// 	thiscategory:results.catThis,
-			// 	currentPage:page,
-			// 	mostseen:results.mostseen,
-			// 	category:results.cats,
-			// 	moment: moment,
-			// 	baseurl:baseurl
-			// })
+			// console.log(results);
 			res.status(200).view('blog',{
-				articles:results.projs,
+				articles:results.articles,
 				title: req.__('SEO_BLOG_title'),
 				keyword: req.__('SEO_BLOG_keyword'),
 				description:req.__('SEO_BLOG_description'),
 				scripturl:'portfo.js',
-				menu:'blog',
+				menu:'BLOG',
+				iscategory:'category',
 				marked:marked,
 				nbPage:nbPage,
-				thiscategory:results.catThis,
+				thiscategory:req.params.thiscat,
 				currentPage:page,
 				mostseen:results.mostseen,
+				recent:results.recent,
 				category:results.cats,
 				moment: moment,
 				baseurl:baseurl

@@ -8,7 +8,19 @@
                 <!-- MAIN CONTENT -->
             <div class="col col-md-9">
                 <div class="mainContainer">
-                    <article class="article">
+                    <%
+                    var customclass="";
+                    if(typeof(article.category)!='undefined' && article.category.id == "569bfa235dd553cf109efd6d")
+                        customclass="chercheur"; 
+                    if(typeof(article.category)!='undefined' && article.category.id == "569bfa235dd553cf109efd6d")
+                        customclass="salarie"; 
+                    if(typeof(article.category)!='undefined' && article.category.id == "569bfa235dd553cf109efd6d")
+                        customclass="entreprise"; 
+                    if(typeof(article.category)!='undefined' && article.category.id == "569bfa235dd553cf109efd6d")
+                        customclass="partenaire"; 
+                    %>
+
+                    <article class="article <%- customclass %> ">
                         <h2><%- article.title %></h2>
                         <p>
                         <% if(typeof(article.category)!='undefined'){ %> 
@@ -42,27 +54,42 @@
                         <div class="clearfix"></div>
                         
                     </article>
+                    <% if(article.activeComent){ %>
                     <div class="commentaires">
                         <h5>Laissez un commentaire</h5>
 
                         <div class="form postcoment">
-                            <form target="#" name="contact">
+                            <form method="post" class="commentform" item="project" projid="<%= article.id %>" >
                                     
                                 <span class="input-group  col-md-6" >
-                                    <input type="text" name="contactName" id="author" class="lg" placeholder="Nom" />
+                                    <input type="text" name="name" id="author" class="lg" placeholder="Nom" />
                                 </span><!-- .input-group -->
                                  
                                 <span class="input-group  col-md-6" >
-                                    <input type="text" name="contactEmail" id="email" class="lg" placeholder="Email" />
+                                    <input type="text" name="email" id="email" class="lg" placeholder="Email" />
                                 </span><!-- .input-group -->
                                 
                                 <span class="input-group col-md-12 " >
-                                    <textarea name="contactMessage" id="content" class="lg" placeholder="Exprimez-vous!"></textarea>
+                                    <textarea name="message" id="content" class="lg" placeholder="Exprimez-vous!"></textarea>
                                 </span><!-- .input-group -->
                                 
-                                <span id="message"></span>
+                                 <div class="row errorMessageRequired">
+                                    <div class="12u text-center">
+                                        <small class=" label label-danger"><%= __('Veuillez remplir tout les champs correctement.') %></small>
+                                    </div>
+                                </div>
+                                <div class="row errorMessageError">
+                                    <div class="12u text-center">
+                                        <small class=" label label-danger"><%= __('Une erreur est survenue.') %></small>
+                                    </div>
+                                </div>
+                                <div class="row successMessage">
+                                    <div class="12u text-center">
+                                        <small class=" label label-success"><%= __('Votre commentaire a été envoyé. Il est en attente de modération.') %></small>
+                                    </div>
+                                </div>
                                 
-                                <a class="btn btn-sm btn-default pull-right" id='comentprojADD' data-wow-delay=".45s" role="button">Envoyer</a>
+                                <input type="submit" value="Envoyer" class="btn btn-default pull-right">
                                 <div class="clearfix"></div>
                             </form>
                         </div>
@@ -91,7 +118,7 @@
                         </ul>
 
                     </div>
-
+                    <%}%>
                      
                     
                 </div>
@@ -156,3 +183,4 @@
     console.log(article);
 
 </script>
+<script src="js/proj.js"></script>

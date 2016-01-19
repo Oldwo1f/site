@@ -9,7 +9,20 @@
             <div class="col col-md-9">
                 <div class="mainContainer">
                     <% for(var i in articles){ %> 
-                    <article class="article">
+
+                    <%
+                    var customclass="";
+                    if(typeof(articles[i].category)!='undefined' && articles[i].category.id == "569bfa235dd553cf109efd6d")
+                        customclass="chercheur"; 
+                    if(typeof(articles[i].category)!='undefined' && articles[i].category.id == "569bfa235dd553cf109efd6d")
+                        customclass="salarie"; 
+                    if(typeof(articles[i].category)!='undefined' && articles[i].category.id == "569bfa235dd553cf109efd6d")
+                        customclass="entreprise"; 
+                    if(typeof(articles[i].category)!='undefined' && articles[i].category.id == "569bfa235dd553cf109efd6d")
+                        customclass="partenaire"; 
+                    %>
+
+                    <article class="article <%- customclass %>">
                         <h2><%- articles[i].title %></h2>
                         <p>
                         <% if(typeof(articles[i].category)!='undefined'){ %> 
@@ -48,7 +61,7 @@
                    
 
                     <div class="paginationcontainer">
-                            
+                        <% if(iscategory == 'blog'){ %>
                           <ul class="pagination">
                             <% if(currentPage-1>0){ %>
                             <li>
@@ -70,6 +83,29 @@
                             </li>
                             <% } %>
                           </ul>
+                        <% }else if(iscategory == 'category'){%>
+                                <ul class="pagination">
+                                    <% if(currentPage-1>0){ %>
+                                    <li>
+                                      <a href="blog/category/<%= thiscategory %>/<%= currentPage-1 %>" aria-label="Previous">
+                                        <span aria-hidden="true">Page précédente</span>
+                                      </a>
+                                    </li>
+                                    <% } %>
+                                    <% for(var i=1; i<= nbPage ; i++){ %>
+                                  
+                                        <li <%if(i == currentPage){ %> class="active" <% } %> ><a href="blog/category/<%= thiscategory %>/<%= i %>"><%= i %></a></li>
+                                    <% } %>
+                                    
+                                    <% if(parseInt(currentPage)+1<=nbPage){ %>
+                                    <li>
+                                      <a href="blog/category/<%= thiscategory %>/<%= parseInt(currentPage)+1 %>" aria-label="Next">
+                                        <span aria-hidden="true">Page suivante</span>
+                                      </a>
+                                    </li>
+                                    <% } %>
+                                </ul>
+                        <% } %>
                     </div>  
                 </div>
             </div>

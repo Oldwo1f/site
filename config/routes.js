@@ -38,21 +38,24 @@ module.exports.routes = {
   'GET /entreprises': 'frontController.entreprises',
   'GET /partenaires': 'frontController.partenaires',
   'POST /calendar': 'frontController.calendar',
+  'GET /quisommenous': 'frontController.quisommenous',
   'GET /blog': 'frontController.blog',
   'GET /blog/article/:id/*':'frontController.projet',
+  'GET /blog/category/:thiscat': 'frontController.category',
+  'GET /blog/category/:thiscat/:page': 'frontController.category',
 
 
   'GET /grimpes': 'frontController.portfolio',
   'GET /avendre': 'frontController.avendre',
   'GET /projet/:id/*':'frontController.projet',
   'GET /blog/:page': 'frontController.blog',
-  'GET /blog/category/:thiscat': 'frontController.category',
-  'GET /blog/category/:thiscat/:page': 'frontController.category',
+
   'GET /contact':'frontController.contact',
   'GET /presta':'frontController.presta',
   
   'POST /contactEmail':'frontController.contactEmail',
   'POST /project/:itemid/addComment':'frontController.addCommentProj',
+
   'POST /project/addReponse/:itemid/:projid':'frontController.addReponseProj',  
   'POST /article/:itemid/addComment':'frontController.addCommentArticle',
   'POST /article/addReponse/:itemid/:projid':'frontController.addReponseArticle',
