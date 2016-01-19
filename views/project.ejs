@@ -1,165 +1,87 @@
-<style type="text/css">
 
-</style>
-<div class="container-wrapper navigation fixed">
-        <nav class="navbar navbar-default" role="navigation">
-        
-            <div class="container">
+    <!-- content -->
+    <section class="content" >
+        <div class="container">
+        <div class="row">
+                <!-- LEFT COLONNE -->
             
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    <a class="navbar-brand" href="/">
-                        <img src="images/front/arbatouligne.svg"  />
-                    </a>
-                    <ul class="mini"></ul><!-- mobile navigation -->
-                </div><!-- .navbar-header -->
-                
-                <div class="collapse navbar-collapse">
-                    <div class="right">
-                        <ul class="nav navbar-nav">
-                            <li class=""><a href="/">Home</a></li>
-                            <li class=""><a href="/presta">Prestations</a></li>
-                            <li class="active"><a href="/grimpes">Grimpes</a></li>
-                            <li class=""><a href="/blog">Blog</a></li>
-                            <li class=""><a href="/contact">Contact</a> </li>
-                        </ul>
-                    </div>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-            
-        </nav>
-    </div>
-    <div id="nav-ends"></div>
+                <!-- MAIN CONTENT -->
+            <div class="col col-md-9">
+                <div class="mainContainer">
+                    <article class="article">
+                        <h2><%- article.title %></h2>
+                        <p>
+                        <% if(typeof(article.category)!='undefined'){ %> 
+                            <a href="blog/article/<%= article.id %>/<%= article.rewriteurl %>">
+                                <span><%= article.category.name %></span>
+                            </a> -
+                        <%} %>
+                        <% if(typeof(article.tags)!='undefined'){ %> 
+                            <% for(var j=0; j< article.tags.length ; j++){ %> 
+                                <span><%= article.tags[j].text %></span>
+                            -
+                            <%} %>
+                        <%} %>
+                        <% if(typeof(article.comments)!='undefined'){ %> 
+                            <span><%= article.comments.length %> commentaire<% if(article.comments.length>1){ %>s<%} %></span> -
+                        <%} %>
+                         <span>Publié le <%= moment(article.date).format('D MMMM YYYY à HH:mm') %></span>
+                        </p>
 
-   	<section class="content-section low-rider margintop blog">
-    	<div class="container">
-        	<div class="row">
-            
-            	<div class="col-xs-12 single">
-                   	<div class="blog" style="margin-top:70px;">
-                             
-                            
-                         <% if(project.publishVideo==true && project.video){ %>
-                            <div class="pretty-embed" data-pe-videoid="<%= project.video %>"></div>
-                            <%} if(project.images.length) { %>
+
+                        <% if(typeof(article.images)!='undefined' && !article.publishVideo && article.images.length>0){ %>    
+                            <div class="articleimage"><img src="file/image/originalsize/<%= article.images[0].image.filename %>" alt="<%= article.images[0].image.filename %>"></div>
+                        <%}%>
+                            <div class="articlecontent">
                                 
-                                <div class="imagesblog" style="margin-top:20px">
-                                    <% for(var j =0; j < project.images.length; j++) { %>
-                                            <div class="image2">
-                                                <img src="/file/image/originalsize/<%= project.images[j].image.filename %>" alt="<%= project.images[j].image.alt %>"/>
-                                            </div>
-                                    <% } %>
-                                </div>
-                            <% } %>
+                                    <%- marked(article.content) %>
 
-             
-                            <div class="date" >
-                                <a  class="day" title="<%- moment(project.date).fromNow() %>">
-                                    <%- moment(project.date).format('D') %>
-                                </a>
-                                <a  class="month" title="<%- moment(project.date).format('YYYY') %>" >
-                                    <%- moment(project.date).format('MMM') %>
-                                </a>
-                            </div><!-- .date -->
-                        
-                        <span class="title-desc anim fadeIn">
-                            <h1 ><%= project.title %></h1>
-                            <ul class="meta">
-                                    <% if( project.author ){%> 
-                                        <% if(project.author.usename==true){%> 
-                                        <li><i class="fa fa-user"></i><%= project.author.name %></li>
-                                        <% }else{ %>
-                                        <i class="fa fa-user"></i><%= project.author.pseudo %></li>
-                                        <% } %>
-                                    <% } %>
-                                    <li><i class="fa fa-eye"></i><%= project.nbView %></li>
-                                    <li>
-                                        <% for(var j in category){ %>
-                                           
-                                         <%  if(project.category && category[j].id==project.category){%>
-                                                <a href="blog/category/<%= category[j].id  %>"><i class="fa fa-th-list"></i>
-                                                <%= category[j].name %>
-                                                </a>
-                                          <% } %>
-                                        <% } %>
-                                    </li>
-                                    
-                            </ul>
-                        </span><!-- .title-desc -->
-                        
-                        <div class="contenu">
-                            
-                        <%- marked(project.content) %>
-
-                        </div>
-                        <div class="clearfix"></div>
-                        <% if(project.documents.length > 0) {%> 
-                            <div class="pj">
-                                <label><%=  __('Pièces jointes') %></label>
-                                <ul>
-                                    <% for(var i=0; i<project.documents.length; i++) {%>
-                                    <li><a href="/file/document/<%= project.documents[i].document.filename %>" target="_BLANK"><%= project.documents[i].document.filename %></a></li>
-                                    <% } %>  
-                                </ul>
                             </div>
-                        <% } %>
                         
-                    </div><!-- .blog -->
-                     <div id="socials">
-                     <div id="example1">
-                      <div id="twitter" data-url="<%= domain %>blog/project/<%= project.id %>/<%- project.rewriteurl %>" data-text="<%= project.title %>" data-title="Tweet"></div>
-                      <div id="facebook" data-url="<%= domain %>blog/project/<%= project.id %>/<%- project.rewriteurl %>" data-text="<%= project.title %>" data-title="Like"></div>
-                    </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    
-                	<h4 class="anim fadeIn">
-                        <%= __('Commentaires') %> (<%= project.comments.length %>)
-                    </h4>
-                   
-                    
-                    
-                	<div class="form contact postcoment style-2">
-                        <form target="#" name="contact">
-                            <span class="input-group anim fadeIn" data-wow-delay="0.1s">
-                                <i class="fa fa-user"></i>
-                                <input type="text" name="contactName" id="author" class="lg" placeholder="Nom" />
-                            </span><!-- .input-group -->
-                            
-                            <span class="input-group anim fadeIn" data-wow-delay="0.20s">
-                                <i class="fa fa-envelope"></i>
-                                <input type="text" name="contactEmail" id="email" class="lg" placeholder="Address email " />
-                            </span><!-- .input-group -->
-                            
-                            <span class="input-group anim fadeIn" data-wow-delay="0.30s">
-                                <textarea name="contactMessage" id="content" class="lg" placeholder="Exprimez-vous!"></textarea>
-                            </span><!-- .input-group -->
-                            
-                            <span id="message"></span>
-                            
-                           	<a class="btn btn-sm btn-primary icon anim fadeIn" id='comentprojADD' data-wow-delay=".45s" role="button"><i class="fa fa-long-arrow-right"></i><%= __('Poster mon commentaire') %></a>
-                            <span id="message_sent"><i class="fa-check fa"></i></span>
-                        </form>
-                    </div>
 
-                    <div id="" class="box boxcomment addCommentForm <%= project.id %>">
-                           
+                        <div class="clearfix"></div>
+                        
+                    </article>
+                    <div class="commentaires">
+                        <h5>Laissez un commentaire</h5>
+
+                        <div class="form postcoment">
+                            <form target="#" name="contact">
+                                    
+                                <span class="input-group  col-md-6" >
+                                    <input type="text" name="contactName" id="author" class="lg" placeholder="Nom" />
+                                </span><!-- .input-group -->
+                                 
+                                <span class="input-group  col-md-6" >
+                                    <input type="text" name="contactEmail" id="email" class="lg" placeholder="Email" />
+                                </span><!-- .input-group -->
+                                
+                                <span class="input-group col-md-12 " >
+                                    <textarea name="contactMessage" id="content" class="lg" placeholder="Exprimez-vous!"></textarea>
+                                </span><!-- .input-group -->
+                                
+                                <span id="message"></span>
+                                
+                                <a class="btn btn-sm btn-default pull-right" id='comentprojADD' data-wow-delay=".45s" role="button">Envoyer</a>
+                                <div class="clearfix"></div>
+                            </form>
+                        </div>
+
+                        <h5>Commentaires (<%= article.comments.length %>)</h5>
                         
                         <ul class="comments">
-                            <% for(var j=0; j<project.comments.length; j++) {%>
+                            <% for(var j=0; j<article.comments.length; j++) {%>
                             <li class="box boxcomment">
-                                <h5><%= project.comments[j].author %>  <span class="date pull-right small"><%= moment(new Date(project.comments[j].createdAt)).fromNow() %></span></h5>
+                                <h6>Le <%= moment(new Date(article.comments[j].createdAt)).format(' DD MMMM à HH:mm') %>, <b><%= article.comments[j].author %></b>  a écrit :</h6>
                                
-                                <p><%= project.comments[j].content %></p>
+                                <p><%= article.comments[j].content %></p>
 
                                 <ul class="comments" >
-                                    <% for(var k=0; k<project.comments[j].reponses.length; k++) {%>
+                                    <% for(var k=0; k<article.comments[j].reponses.length; k++) {%>
                                     <li class="box boxcomment">
-                                        <h5 ><%= project.comments[j].reponses[k].author %><span class="date pull-right small"><%= moment(new Date(project.comments[j].reponses[k].createdAt)).fromNow() %></span></h5>
+                                        <h6>Le <%= moment(new Date(article.comments[j].createdAt)).format(' DD MMMM à HH:mm') %>, <b><%= article.comments[j].author %></b> (administrateur MDENE-77)  a écrit :</h6>
                                         
-                                        <p><%= project.comments[j].reponses[k].content %></p>
+                                        <p><%= article.comments[j].reponses[k].content %></p>
                                         
                                     </li>
                                     <% } %>
@@ -167,30 +89,70 @@
                             </li>
                             <% } %>
                         </ul>
-                    
+
                     </div>
-                </div><!-- .col-lg-9 -->
-                
-              	
-                
-            </div><!-- .row -->
-        </div><!-- .container -->
-    </section><!-- .content-section -->
- <script>
 
-   
-    var project = <%- JSON.stringify(project) %>
-    console.log(project);
+                     
+                    
+                </div>
+            </div>
+
+            <div class="col col-md-3">
+                <div class="blockrightcol">
+                    <h4 class="calendrier">Calendrier</h4>
+                    <div id="calendar"></div>
+                </div>
+                <div class="blockrightcol">
+                    <h3>Les plus vues</h3>
+                    <ul>
+                        <% for(var i in mostseen){ %> 
+                            <li>
+                                <a href="blog/article/<%= mostseen[i].id %>/<%= mostseen[i].rewriteurl %>">
+                                    
+                                    <%= mostseen[i].title %>
+                                </a>
+
+                            </li>
+                        <% } %> 
+                    </ul>
+                </div>
+                <div class="blockrightcol">
+                    <h3>Dernier articles</h3>
+                    <ul>
+                        <% for(var i in recent){ %> 
+                            <li>
+                                <a href="blog/article/<%= recent[i].id %>/<%= recent[i].rewriteurl %>">
+                                    
+                                    <%= recent[i].title %>
+                                </a>
+
+                            </li>
+                        <% } %> 
+                    </ul>
+                </div>
+                <div class="blockrightcol">
+                    <h3>Catégories</h3>
+                    <ul class="avecfleche">
+                        <% for(var i in category){ %> 
+                                <li><a href="blog/category/<%= category[i].id %>"><%= category[i].name %></a></li>
+                            <% } %> 
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
     
-
-</script>
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-68126193-1', 'auto');
-  ga('send', 'pageview');
+    var category = <%- JSON.stringify(category) %>
+    console.log(category);
+    var mostseen = <%- JSON.stringify(mostseen) %>
+    console.log(mostseen);
+    var recent = <%- JSON.stringify(recent) %>
+    console.log(recent);
+    var article = <%- JSON.stringify(article) %>
+    console.log(article);
 
 </script>

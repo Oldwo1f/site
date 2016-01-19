@@ -78,11 +78,15 @@
                     <div class="blockgrisbas ">
                         <h2>Agenda & evènements</h2>
                         <ul>
-                            <li><a href="">Journée portes Ouvertes sur les métiers de la justice, Sécurité et défense</a></li>
-                            <li><a href="">Atelier d'initiation à l'informatique</a></li>
-                            <li><a href="">Forum Emploi & Handicap</a></li>
-                            <li><a href="">Atelier Création du CPF</a></li>
-                            <li><a href="">Atelier DUER</a></li>
+                            <% for(var i in events){ %> 
+                            <li>
+                                <a href="blog/article/<%= events[i].id %>/<%= events[i].rewriteurl %>">
+                                    
+                                    <%= events[i].title %>
+                                </a>
+
+                            </li>
+                            <% } %> 
                         </ul>
                     </div>
                 </div>
@@ -91,10 +95,15 @@
                     <div class="blockgrisbas inverse">
                         <h2>Dèrnières actualités</h2>
                         <ul>
-                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
-                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
-                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
-                            <li><a href="">Les saisons de Meaux - Les enseignes recrutent encore !</a></li>
+                            <% for(var i in articles){ %> 
+                            <li>
+                                <a href="blog/article/<%= articles[i].id %>/<%= articles[i].rewriteurl %>">
+                                    
+                                    <%= articles[i].title %>
+                                </a>
+
+                            </li>
+                            <% } %> 
                         </ul>
                     </div>
                 </div>
@@ -102,12 +111,8 @@
                     
                     <div class="blockgrisbas ">
                         <h2>Outils & publications</h2>
-                        <ul>
-                            <li><a href="">Agenda des évènements <small>Novembre 2015</small></a></li>
-                            <li><a href="">Newsletter mensuelle de la Plateforme RH <small>Novembre 2015</small></li>
-                            <li><a href="">Tableau de bord trimestriel <small>Octobre 2015</small></li>
-                            <li><a href="">Newsletter trimestrielle <small>Septembre 2015</small></li>
-                        </ul>
+                        
+                        <% include ../assets/templates/LINK-outils.html  %>
                     </div>
                 </div>
             </div>
@@ -134,3 +139,11 @@
         </div>
         </div>
     </section>
+    <script>
+        var articles = <%- JSON.stringify(articles) %>
+        console.log(articles);
+        var events = <%- JSON.stringify(events) %>
+        console.log(events);
+        
+
+    </script>

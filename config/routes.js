@@ -39,6 +39,7 @@ module.exports.routes = {
   'GET /partenaires': 'frontController.partenaires',
   'POST /calendar': 'frontController.calendar',
   'GET /blog': 'frontController.blog',
+  'GET /blog/article/:id/*':'frontController.projet',
 
 
   'GET /grimpes': 'frontController.portfolio',
@@ -47,7 +48,6 @@ module.exports.routes = {
   'GET /blog/:page': 'frontController.blog',
   'GET /blog/category/:thiscat': 'frontController.category',
   'GET /blog/category/:thiscat/:page': 'frontController.category',
-  'GET /blog/article/:id/*':'frontController.article',
   'GET /contact':'frontController.contact',
   'GET /presta':'frontController.presta',
   

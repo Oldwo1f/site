@@ -8,65 +8,77 @@ module.exports={
 	home:function(req,res,next) {
 
 		console.log('home');
-		
-		Article.find({status:'actif'}).populate('translations').populate('images').sort('createdAt DESC').limit(3).exec(function (err,articles) {
-			// body...
-			console.log(err);
-			console.log(articles);
-			console.log(req.locale);
-			// if(req.locale!= 'fr')
-			// {
-				return Promise.map(articles,function  (article) {
-					console.log('---------------------------');
-					return new Promise(function(resolve,rej){
-						if(article.translations.length && req.locale!= 'fr'){
-							console.log('we got Trad');
-							_.map(article.translations,function  (trad) {
-								console.log('---------------------------');
-								if(trad.lang == req.locale){
-									article.title = (trad.title) ? trad.title : article.title;
-									article.content = (trad.content) ? trad.content : article.content;
-									article.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : article.rewriteurl;
-									article.keyword = (trad.keyword) ? trad.keyword : article.keyword;
-									article.description = (trad.description) ? trad.description : article.description;
-								}
-							})
-						}
-						article.content = truncate(marked(article.content), 450)
-						if(article.images.length)
-						{
-							var img0 = _.find(article.images, function(chr) {
-							  return chr.rank == 0;
-							})
-							Image.findOne(img0.image).exec(function (err,datas) {
-								console.log('datas',datas);
-								article.img = datas
-
-								resolve(article)
-							})
-						}else
-						{
-							resolve(article)
-						}
-					})
-					
-				}).then(function (articless) {
-					console.log(articless);
-					res.status(200).view('index',{
-						articles:articles,
-						marked:marked,
-						title: req.__('SEO_HOME_title'),
-						keyword: req.__('SEO_HOME_keyword'),
-						description:req.__('SEO_HOME_description'),
-						menu:'home',
-						baseurl:'',
-
-					})
-				})
-			// }
+		async.parallel({
+			recentevent:function  (cb) {
+				Project.find({where:{status:'actif',evenement:'event'},sort:'date DESC',limit:5}).populateAll().exec(function (err,projects) {
 			
-		})
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								
+									resolve(project)
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
+					
+				})
+			},
+			recentarticles:function  (cb) {
+				Project.find({where:{status:'actif',evenement:'article'},sort:'date DESC',limit:5}).populateAll().exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								
+									resolve(project)
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			console.log(err);
+			console.log('results');
+			console.log(results.recent);
+			
+			// console.log(results);
+				res.status(200).view('index',{
+					articles:results.recentarticles,
+					events:results.recentevent,
+					marked:marked,
+					title: req.__('SEO_HOME_title'),
+					keyword: req.__('SEO_HOME_keyword'),
+					description:req.__('SEO_HOME_description'),
+					menu:'home',
+					baseurl:'',
 
+				})
+		})
 
 
 
@@ -167,7 +179,7 @@ module.exports={
 		async.parallel({
 			projs:function  (cb) {
 				// .populateAll()
-				Project.find({status:'actif'}).sort('createdAt ASC').exec(function (err,projects) {
+				Project.find({status:'actif',evenement:'event',start:{ '>': new Date('2/4/2014') }}).sort('createdAt ASC').exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
 							// console.log('---------------------------');
@@ -281,7 +293,129 @@ module.exports={
 
 
 
-	},
+	}
+	,	
+	portfolio:function(req,res,next) {
+		req.locale = req.locale || 'en'
+		moment.locale(req.locale);
+		baseurl='/'
+		console.log('portfolio');
+		async.parallel({
+			projs:function  (cb) {
+				Project.find({status:'actif'}).populateAll().sort('createdAt DESC').exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							console.log('---------------------------');
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									// console.log('we got Trad');
+									_.map(project.translations,function  (trad) {
+										// console.log('---------------------------');
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									console.log("IMG.LENGTH");
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										// console.log('datas',datas);
+										project.img = datas
+										console.log(project);
+										resolve(project)
+									})
+								}else
+								{
+									console.log("IMG.NOT NOT");
+									console.log(project);
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							// console.log(projectss);
+							cb(null,projects)
+						})
+					
+				})
+			},
+			cats:function  (cb) {
+				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
+			 _.remove(cats,function (n) {
+				return n.nbProjects <=0;
+			})
+						return Promise.map(cats,function  (cat) {
+							return new Promise(function(resolve,rej){
+								if(cat.translations.length && req.locale!= 'fr'){
+									_.map(cat.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											cat.name = (trad.name) ? trad.name : cat.name;
+											// project.content = (trad.content) ? trad.content : project.content;
+											// project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											// project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											// project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+
+									resolve(cat)
+								}else
+								{
+									resolve(cat)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,cats)
+						})
+					
+				})
+			}
+		},function  (err,results) {
+			// res.send(JSON.stringify(results,null, 10));
+			res.status(200).view('portfolio',{
+				'projects':results.projs,
+				'categories':results.cats,
+				title: req.__('SEO_PORTFO_title'),
+				keyword: req.__('SEO_PORTFO_keyword'),
+				description:req.__('SEO_PORTFO_description'),
+				scripturl:'portfo.js',
+				menu:'portfo',
+				marked:marked,
+				domain : sails.config.COMPANY_DOMAIN,
+				baseurl:baseurl
+			})
+			// res.status(200).view('blog',{
+			// 	articles:results.projs,
+			// 	title: req.__('SEO_BLOG_title'),
+			// 	keyword: req.__('SEO_BLOG_keyword'),
+			// 	description:req.__('SEO_BLOG_description'),
+			// 	scripturl:'portfo.js',
+			// 	menu:'blog',
+			// 	marked:marked,
+			// 	nbPage:nbPage,
+			// 	thiscategory:null,
+			// 	currentPage:page,
+			// 	mostseen:results.mostseen,
+			// 	category:results.cats,
+			// 	moment: moment,
+			// 	baseurl:baseurl
+			// })
+		})
+		
+
+
+
+
+	},	
 	projet:function(req,res,next) {
 
 		console.log(req.locale);
@@ -308,22 +442,6 @@ module.exports={
 								items[0].nbView= Number(items[0].nbView) + 1;
 								Project.update({id: items[0].id}, {nbView: items[0].nbView})
 								.exec(function(err, updatedProject){
-
-									console.log("-----------------------------------------------------------------------------------");
-									console.log(items[0].id);
-
-									console.log(err);
-									console.log("-----------------------------------------------------------------------------------");
-									console.log(updatedProject);
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log("-----------------------------------------------------------------------------------");
-									console.log(items[0].nbView);
 								var project= items[0];
 								// console.log('item',item);
 								async.series({
@@ -408,44 +526,82 @@ module.exports={
 										cbparalelle(null,allcomments)
 									})
 								},
-								// mostseen:function  (cb) {
-								// 	Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+								mostseen:function  (cb) {
+									Project.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
 								
-								// 			return Promise.map(projects,function  (project) {
-								// 				return new Promise(function(resolve,rej){
-								// 					if(project.translations.length && req.locale!= 'fr'){
-								// 						_.map(project.translations,function  (trad) {
-								// 							if(trad.lang == req.locale){
-								// 								project.title = (trad.title) ? trad.title : project.title;
-								// 								project.content = (trad.content) ? trad.content : project.content;
-								// 								project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
-								// 								project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
-								// 								project.description = (trad.description) ? trad.description : project.description;
-								// 							}
-								// 						})
-								// 					}
-								// 					project.content = truncate(marked(project.content), 450)
-								// 					if(project.images.length)
-								// 					{
-								// 						var img0 = _.find(project.images, function(chr) {
-								// 						  return chr.rank == 0;
-								// 						})
-								// 						Image.findOne(img0.image).exec(function (err,datas) {
-								// 							project.img = datas
-								// 							resolve(project)
-								// 						})
-								// 					}else
-								// 					{
-								// 						resolve(project)
-								// 					}
-								// 				})
+											return Promise.map(projects,function  (project) {
+												return new Promise(function(resolve,rej){
+													if(project.translations.length && req.locale!= 'fr'){
+														_.map(project.translations,function  (trad) {
+															if(trad.lang == req.locale){
+																project.title = (trad.title) ? trad.title : project.title;
+																project.content = (trad.content) ? trad.content : project.content;
+																project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+																project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+																project.description = (trad.description) ? trad.description : project.description;
+															}
+														})
+													}
+													project.content = truncate(marked(project.content), 450)
+													if(project.images.length)
+													{
+														var img0 = _.find(project.images, function(chr) {
+														  return chr.rank == 0;
+														})
+														Image.findOne(img0.image).exec(function (err,datas) {
+															project.img = datas
+															resolve(project)
+														})
+													}else
+													{
+														resolve(project)
+													}
+												})
 												
-								// 			}).then(function (projectss) {
-								// 				cb(null,projects)
-								// 			})
+											}).then(function (projectss) {
+												cb(null,projects)
+											})
 										
-								// 	})
-								// },
+									})
+								},
+								recent:function  (cb) {
+									Project.find({where:{status:'actif'},sort:'date DESC',limit:5}).populateAll().exec(function (err,projects) {
+								
+											return Promise.map(projects,function  (project) {
+												return new Promise(function(resolve,rej){
+													if(project.translations.length && req.locale!= 'fr'){
+														_.map(project.translations,function  (trad) {
+															if(trad.lang == req.locale){
+																project.title = (trad.title) ? trad.title : project.title;
+																project.content = (trad.content) ? trad.content : project.content;
+																project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+																project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+																project.description = (trad.description) ? trad.description : project.description;
+															}
+														})
+													}
+													project.content = truncate(marked(project.content), 450)
+													if(project.images.length)
+													{
+														var img0 = _.find(project.images, function(chr) {
+														  return chr.rank == 0;
+														})
+														Image.findOne(img0.image).exec(function (err,datas) {
+															project.img = datas
+															resolve(project)
+														})
+													}else
+													{
+														resolve(project)
+													}
+												})
+												
+											}).then(function (projectss) {
+												cb(null,projects)
+											})
+										
+									})
+								},
 								cats:function  (cb) {
 									CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
 											 _.remove(cats,function (n) {
@@ -477,18 +633,11 @@ module.exports={
 								}
 							},function(err,ress) {
 
- 										console.log('DELETE');
-									if(project.category)
-										project.category=project.category.id;
-									
 
 									var projecttogo = _.clone(project)
 
 									delete projecttogo.comments
 									projecttogo.comments=ress.comment
-									// console.log(projecttogo.comments);
-									// console.log(projecttogo);
-									console.log('Final Data');
 
 									var pathtoshare ='';
 									pathtoshare = sails.config.URL_HOME +'article/'+ projecttogo.id +'/';
@@ -500,14 +649,16 @@ module.exports={
 									// console.log('fetch ONE Project', projecttogo);
 									// res.status(200).send(projecttogo)
 									res.status(200).view('project',{
-										'project':projecttogo,
+										article:projecttogo,
 										pathtoshare:pathtoshare,
-										'title': projecttogo.title +' - Project - AAVO',
+										'title': projecttogo.title +' - BLOG MDENE',
 										keyword: projecttogo.keyword,
 										description:projecttogo.description,
-										menu:'blog',
+										menu:'article',
+										thiscategory:null,
 										marked:marked,
-										// mostseen:ress.mostseen,
+										mostseen:ress.mostseen,
+										recent:ress.recent,
 										category:ress.cats,
 										moment: moment,
 										baseurl:baseurl,
@@ -606,7 +757,7 @@ module.exports={
 		console.log('blog');
 		async.parallel({
 			articles:function  (cb) {
-				Article.find({where:{status:'actif'},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
+				Project.find({where:{status:'actif'},sort:'date DESC',skip:(page-1)*nbperpage,limit:nbperpage}).populateAll().exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
 							// console.log('---------------------------');
@@ -650,7 +801,45 @@ module.exports={
 				})
 			},
 			mostseen:function  (cb) {
-				Article.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+				Project.find({where:{status:'actif'},sort:'nbView DESC',limit:5}).populateAll().exec(function (err,projects) {
+			
+						return Promise.map(projects,function  (project) {
+							return new Promise(function(resolve,rej){
+								if(project.translations.length && req.locale!= 'fr'){
+									_.map(project.translations,function  (trad) {
+										if(trad.lang == req.locale){
+											project.title = (trad.title) ? trad.title : project.title;
+											project.content = (trad.content) ? trad.content : project.content;
+											project.rewriteurl = (trad.rewriteurl) ? trad.rewriteurl : project.rewriteurl;
+											project.keyword = (trad.keyword) ? trad.keyword : project.keyword;
+											project.description = (trad.description) ? trad.description : project.description;
+										}
+									})
+								}
+								project.content = truncate(marked(project.content), 450)
+								if(project.images.length)
+								{
+									var img0 = _.find(project.images, function(chr) {
+									  return chr.rank == 0;
+									})
+									Image.findOne(img0.image).exec(function (err,datas) {
+										project.img = datas
+										resolve(project)
+									})
+								}else
+								{
+									resolve(project)
+								}
+							})
+							
+						}).then(function (projectss) {
+							cb(null,projects)
+						})
+					
+				})
+			},
+			recent:function  (cb) {
+				Project.find({where:{status:'actif'},sort:'date DESC',limit:5}).populateAll().exec(function (err,projects) {
 			
 						return Promise.map(projects,function  (project) {
 							return new Promise(function(resolve,rej){
@@ -689,7 +878,7 @@ module.exports={
 			},
 			count:function(cb) {
 
-				Article.count({where:{status:'actif'}}).exec(function(err,data) {
+				Project.count({where:{status:'actif'}}).exec(function(err,data) {
 					console.log(data);
 					// console.log(datastogo);
 					return cb(null,data)
@@ -699,7 +888,7 @@ module.exports={
 				
 			},
 			cats:function  (cb) {
-				CategoryBlog.find().populateAll().sort('name DESC').exec(function (err,cats) {
+				CategoryProject.find().populateAll().sort('name DESC').exec(function (err,cats) {
 			console.log(err);
 			console.log(cats);
 			 _.remove(cats,function (n) {
@@ -751,6 +940,7 @@ module.exports={
 				thiscategory:null,
 				currentPage:page,
 				mostseen:results.mostseen,
+				recent:results.recent,
 				category:results.cats,
 				moment: moment,
 				baseurl:baseurl
